@@ -91,7 +91,8 @@
     background:rgba(34,24,84,.85);backdrop-filter:blur(10px) saturate(125%);
     border-bottom:1px solid var(--hair);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .nav{display:flex;align-items:center;gap:38px;height:72px}
+  nav.main{margin-left:auto}
   .logo{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--ivory);position:relative}
   .logo svg{width:34px;height:34px;overflow:visible;position:relative;z-index:1}
   .logo .logo-glow{position:absolute;left:17px;top:50%;width:66px;height:66px;border-radius:50%;z-index:0;pointer-events:none;
@@ -357,6 +358,32 @@
   .nav-phone svg{width:16px;height:16px}
   .nav-phone:hover{color:var(--gold)}
   @media(max-width:980px){.nav-phone{display:none}}
+  /* ===== two-tier header: util bar + nav tabs + dropdowns ===== */
+  .util-bar{border-bottom:1px solid rgba(201,168,106,.14)}
+  .util-inner{display:flex;align-items:center;justify-content:space-between;height:38px;font-size:12px}
+  .util-tag{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted);letter-spacing:.02em}
+  .util-links{display:flex;align-items:center;gap:22px}
+  .util-links a{color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .3s}
+  .util-links a:hover{color:var(--gold)}
+  .util-phone{color:var(--ivory)}
+  .util-search{background:none;border:0;color:var(--muted);cursor:pointer;display:flex;padding:0}
+  .util-search svg{width:16px;height:16px} .util-search:hover{color:var(--gold)}
+  .tabs{display:flex;gap:28px;list-style:none}
+  .tab{position:relative}
+  .tab>a{display:flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.09em;text-transform:uppercase;padding:24px 0;transition:color .35s}
+  .tab>a::after{display:none}
+  .tab>a:hover{color:var(--ivory)}
+  .caret{font-size:8px;color:var(--gold);transition:transform .3s}
+  .tab:hover .caret{transform:rotate(180deg)}
+  .drop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(10px);min-width:210px;
+    background:rgba(30,22,74,.98);border:1px solid var(--hair);border-radius:8px;padding:12px;display:grid;gap:2px;
+    opacity:0;visibility:hidden;transition:opacity .3s var(--ease),transform .3s var(--ease);box-shadow:0 24px 60px -22px rgba(0,0,0,.75);z-index:130}
+  .tab:hover .drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .drop a{color:var(--muted);text-decoration:none;font-size:13.5px;letter-spacing:.02em;padding:9px 14px;border-radius:5px;transition:all .25s;white-space:nowrap;text-transform:none}
+  .drop a::after{display:none}
+  .drop a:hover{color:var(--ivory);background:rgba(255,255,255,.06)}
+  .drop-zodiac{grid-template-columns:1fr 1fr;min-width:250px}
+  .nav-cta{margin-left:4px}
 
   .step-ico{width:26px;height:26px;color:var(--gold);display:block;margin-bottom:16px}
   .spec-ico{width:13px;height:13px;vertical-align:-2px;margin-right:7px}
@@ -396,7 +423,7 @@
     .steps,.promise-grid{grid-template-columns:1fr}
     .promise{border-right:0;border-bottom:1px solid var(--hair)}.promise:last-child{border-bottom:0}
     .step::before{display:none}
-    nav ul,.nav-cta{display:none}
+    nav.main,.nav-cta,.util-bar{display:none}
     .burger{display:flex}
     .foot-grid{grid-template-columns:1fr 1fr}
   }
@@ -413,6 +440,17 @@
 
 <!-- ===== HEADER ===== -->
 <header id="hdr">
+  <div class="util-bar">
+    <div class="wrap util-inner">
+      <span class="util-tag">Life's possibilities, revealed.</span>
+      <div class="util-links">
+        <a href="#">Login</a>
+        <a href="#">Customer Care</a>
+        <a class="util-phone" href="tel:+18009653049">+1.800.965.3049</a>
+        <button class="util-search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+      </div>
+    </div>
+  </div>
   <div class="wrap nav">
     <a class="logo" href="#">
       <span class="logo-glow" aria-hidden="true"></span>
@@ -422,7 +460,7 @@
         <g class="star">
           <path d="M20 1.5 L21.5 18.5 L38.5 20 L21.5 21.5 L20 38.5 L18.5 21.5 L1.5 20 L18.5 18.5 Z" fill="url(#g1)"/>
           <path d="M20 7 L20.8 19.2 L33 20 L20.8 20.8 L20 33 L19.2 20.8 L7 20 L19.2 19.2 Z" fill="url(#g1)" opacity=".5" transform="rotate(45 20 20)"/>
-          <circle cx="20" cy="20" r="2" fill="#0B0A12"/>
+          <circle cx="20" cy="20" r="2" fill="#1C1550"/>
           <circle cx="20" cy="20" r=".9" fill="url(#g1)"/>
         </g>
         <defs><linearGradient id="g1" x1="2" y1="2" x2="38" y2="38">
@@ -434,19 +472,19 @@
         <span class="logo-tag">Est. 1989</span>
       </span>
     </a>
-    <nav>
-      <ul>
-        <li><a href="#advisors">Advisors</a></li>
-        <li><a href="#ritual">Readings</a></li>
-        <li><a href="#promise">The House</a></li>
-        <li><a href="#voices">Voices</a></li>
+    <nav class="main">
+      <ul class="tabs">
+        <li class="tab"><a href="advisors.html">Psychics <span class="caret">&#9662;</span></a>
+          <div class="drop"><a href="advisors.html">All Psychics</a><a href="advisors.html">Love Psychics</a><a href="advisors.html">Psychic Mediums</a><a href="advisors.html">Clairvoyants</a><a href="advisors.html">Tarot Readers</a><a href="advisors.html">Pet Psychics</a></div></li>
+        <li class="tab"><a href="#ritual">Psychic Readings <span class="caret">&#9662;</span></a>
+          <div class="drop"><a href="#ritual">Tarot Readings</a><a href="#ritual">Astrology Readings</a><a href="#ritual">Love Readings</a><a href="#ritual">Numerology</a><a href="#ritual">Past Life</a><a href="#ritual">Dream Interpretation</a></div></li>
+        <li class="tab"><a href="#">Horoscopes <span class="caret">&#9662;</span></a>
+          <div class="drop drop-zodiac"><a href="#">Aries</a><a href="#">Taurus</a><a href="#">Gemini</a><a href="#">Cancer</a><a href="#">Leo</a><a href="#">Virgo</a><a href="#">Libra</a><a href="#">Scorpio</a><a href="#">Sagittarius</a><a href="#">Capricorn</a><a href="#">Aquarius</a><a href="#">Pisces</a></div></li>
+        <li class="tab"><a href="#">Articles &amp; Media <span class="caret">&#9662;</span></a>
+          <div class="drop"><a href="#">All Articles &amp; Media</a><a href="#">Astrology</a><a href="#">Numerology</a><a href="#">Tarot</a></div></li>
       </ul>
     </nav>
-    <a class="nav-phone" href="tel:+18009653049">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
-      <span>800.965.3049</span>
-    </a>
-    <a class="nav-cta" href="#offer">Begin a Reading</a>
+    <a class="nav-cta" href="#offer">Get a Reading</a>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -456,13 +494,13 @@
 <!-- ===== MOBILE MENU ===== -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <nav>
-    <a href="#advisors">Advisors</a>
-    <a href="#ritual">Readings</a>
-    <a href="#promise">The House</a>
-    <a href="#voices">Voices</a>
+    <a href="advisors.html">Psychics</a>
+    <a href="#ritual">Psychic Readings</a>
+    <a href="#">Horoscopes</a>
+    <a href="#">Articles &amp; Media</a>
   </nav>
-  <a class="btn-primary" href="#offer" style="margin-top:8px">Begin a Reading</a>
-  <div class="mm-foot">+1.800.965.3049 · 24/7</div>
+  <a class="btn-primary" href="#offer" style="margin-top:8px">Get a Reading</a>
+  <div class="mm-foot">Login · Customer Care · +1.800.965.3049</div>
 </div>
 
 <main>
