@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Headshot treatment — examples</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#181228;color:#F7F2E8;font-family:'Jost',system-ui,sans-serif;font-weight:300;line-height:1.6;padding:60px 24px 100px}
+  .wrap{max-width:1100px;margin:0 auto}
+  .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#C9A86A}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,58px);margin:14px 0 18px;letter-spacing:-.01em}
+  p.lead{color:rgba(247,242,232,.7);max-width:640px;margin-bottom:10px}
+  h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;margin:60px 0 22px}
+  .pairs{display:grid;grid-template-columns:repeat(2,1fr);gap:34px}
+  .pair{border:1px solid rgba(247,242,232,.14);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.03)}
+  .pair .imgs{display:grid;grid-template-columns:1fr 1fr}
+  .pair img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+  .pair .lab{display:grid;grid-template-columns:1fr 1fr;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,242,232,.55)}
+  .pair .lab span{padding:12px 16px}
+  .pair .lab span:last-child{color:#C9A86A;text-align:right}
+  .full{width:100%;border-radius:8px;border:1px solid rgba(247,242,232,.14);margin-top:8px}
+  .note{margin-top:16px;font-size:14px;color:rgba(247,242,232,.6);max-width:720px}
+  @media(max-width:720px){.pairs{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Headshot Treatment · Direction Test</span>
+  <h1>Filmic studio grade — examples</h1>
+  <p class="lead">A new direction for the advisor headshots: a moody, film-lit studio grade with directional light, cinematic color, and fine grain — replacing the flat "halo glow." Every real face is preserved; this is grading, not generation.</p>
+
+  <h2>Before &amp; after</h2>
+  <div class="pairs">
+    <div class="pair"><div class="imgs"><img src="assets/examples/Ben-6067_orig.jpg"><img src="assets/examples/Ben-6067_film.jpg"></div><div class="lab"><span>Original</span><span>Filmic</span></div></div>
+    <div class="pair"><div class="imgs"><img src="assets/examples/Carlos-6164_orig.jpg"><img src="assets/examples/Carlos-6164_film.jpg"></div><div class="lab"><span>Original</span><span>Filmic</span></div></div>
+    <div class="pair"><div class="imgs"><img src="assets/examples/Sapphire-3149_orig.jpg"><img src="assets/examples/Sapphire-3149_film.jpg"></div><div class="lab"><span>Original</span><span>Filmic</span></div></div>
+    <div class="pair"><div class="imgs"><img src="assets/examples/Angela-9978_orig.jpg"><img src="assets/examples/Angela-9978_film.jpg"></div><div class="lab"><span>Original</span><span>Filmic</span></div></div>
+  </div>
+
+  <h2>Full comparison (original / current halo / new filmic)</h2>
+  <img class="full" src="assets/examples/compare.png" alt="comparison grid" />
+
+  <p class="note">Honest note: the source photos are only 330&times;330 web thumbnails, so no treatment can add real detail. This grade fixes the tacky glow and the muddy tone, but the edge cutout is soft (done with a fallback matte). True Annie-Leibovitz-grade results — sharp skin, real studio relighting, clean edges — need either the advisors' original high-res photos or a face-preserving generative model (CodeFormer / GFPGAN / InstantID) run via a GPU or an image API.</p>
+</div>
+</body>
+</html>
