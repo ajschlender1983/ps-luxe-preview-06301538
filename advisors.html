@@ -23,16 +23,17 @@
   .wrap{max-width:1320px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
   .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
   .cosmos{position:fixed;inset:0;z-index:-2;overflow:hidden;
-    background:radial-gradient(120% 90% at 70% 0%,rgba(124,86,220,.45),transparent 55%),linear-gradient(165deg,#2C2070,#241A60 38%,#1E1652 68%,#2C2072)}
-  .cosmos .wash{position:absolute;border-radius:50%;filter:blur(80px);opacity:.6;mix-blend-mode:screen;will-change:transform,opacity}
-  .w1{width:66vw;height:66vw;background:radial-gradient(circle,var(--violet),transparent 62%);top:-16%;left:-12%;animation:d1 30s ease-in-out infinite alternate,pw 14s ease-in-out infinite}
-  .w2{width:60vw;height:60vw;background:radial-gradient(circle,var(--indigo),transparent 62%);bottom:-18%;right:-10%;animation:d2 36s ease-in-out infinite alternate,pw 17s ease-in-out infinite 2s}
-  .w3{width:52vw;height:52vw;background:radial-gradient(circle,var(--magenta),transparent 64%);top:40%;left:40%;animation:d3 42s ease-in-out infinite alternate,pw 12s ease-in-out infinite 1s;opacity:.5}
-  .w4{width:48vw;height:48vw;background:radial-gradient(circle,#4F8BF0,transparent 62%);top:70%;left:-8%;animation:d1 40s ease-in-out infinite alternate-reverse,pw 15s ease-in-out infinite;opacity:.48}
-  @keyframes d1{to{transform:translate(16vw,12vh) scale(1.22)}}
-  @keyframes d2{to{transform:translate(-15vw,-10vh) scale(1.18)}}
-  @keyframes d3{to{transform:translate(-13vw,14vh) scale(1.28)}}
-  @keyframes pw{0%,100%{opacity:.42}50%{opacity:.74}}
+    background:
+      radial-gradient(60vw 55vw at 10% 6%,rgba(138,87,224,.55),transparent 60%),
+      radial-gradient(58vw 55vw at 90% 96%,rgba(62,107,234,.5),transparent 60%),
+      radial-gradient(46vw 44vw at 62% 40%,rgba(178,84,220,.42),transparent 62%),
+      radial-gradient(50vw 48vw at 18% 88%,rgba(79,139,240,.4),transparent 62%),
+      linear-gradient(165deg,#2C2070,#241A60 40%,#1E1652 70%,#2C2072)}
+  .cosmos .drift{position:absolute;border-radius:50%;pointer-events:none;will-change:transform;backface-visibility:hidden}
+  .cosmos .g1{width:72vw;height:72vw;top:-16%;left:-16%;background:radial-gradient(circle,rgba(150,96,235,.5),transparent 60%);animation:cdrift1 46s ease-in-out infinite alternate}
+  .cosmos .g2{width:66vw;height:66vw;bottom:-18%;right:-14%;background:radial-gradient(circle,rgba(70,120,240,.45),transparent 60%);animation:cdrift2 60s ease-in-out infinite alternate}
+  @keyframes cdrift1{to{transform:translate3d(11vw,8vh,0)}}
+  @keyframes cdrift2{to{transform:translate3d(-10vw,-7vh,0)}}
   .starscape{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .starscape .cs{position:absolute;border-radius:50%;background:#FBF6EA;box-shadow:0 0 6px #E8CF9A;animation:twinkle 8s ease-in-out infinite}
   @keyframes twinkle{0%,100%{opacity:.12}50%{opacity:.92}}
@@ -40,7 +41,7 @@
     transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(233,207,154,.18),rgba(201,168,106,.06) 34%,transparent 64%);filter:blur(46px);animation:breathe 9s ease-in-out infinite}
   @keyframes breathe{0%,100%{opacity:.82}50%{opacity:1}}
   header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid transparent}
-  header.scrolled{background:rgba(34,24,84,.6);backdrop-filter:blur(18px) saturate(130%);border-bottom:1px solid var(--hair)}
+  header.scrolled{background:rgba(34,24,84,.85);backdrop-filter:blur(10px) saturate(125%);border-bottom:1px solid var(--hair)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
   .logo{display:flex;align-items:center;gap:13px;text-decoration:none;position:relative}
   .logo svg{width:34px;height:34px;overflow:visible;position:relative;z-index:1}
@@ -73,6 +74,7 @@
   .chip.active{color:var(--ink);background:linear-gradient(135deg,var(--gold-bright),var(--gold));border-color:transparent}
   .adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding-bottom:120px}
   .adv-card{border:1px solid var(--faint);border-radius:6px;padding:24px;position:relative;overflow:hidden;
+    content-visibility:auto;contain-intrinsic-size:0 460px;
     background:linear-gradient(165deg,rgba(255,253,247,.08),rgba(255,253,247,.02));transition:transform .5s var(--ease),border-color .5s,box-shadow .5s}
   .adv-card::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .5s}
   .adv-card:hover{transform:translateY(-8px);border-color:var(--hair);box-shadow:0 30px 60px -28px rgba(0,0,0,.6)}
@@ -97,7 +99,7 @@
   .adv-ways svg{width:14px;height:14px;opacity:.7}
   .adv-ways .resp{margin-left:auto;font-size:11px;color:#7BD389}
   .adv-ways .resp.busy{color:#E0A23F} .adv-ways .resp.off{color:var(--muted)}
-  footer{background:rgba(20,14,56,.5);backdrop-filter:blur(4px);border-top:1px solid var(--hair);padding:50px 0;text-align:center}
+  footer{background:rgba(20,14,56,.72);border-top:1px solid var(--hair);padding:50px 0;text-align:center}
   footer p{font-size:12px;color:rgba(247,242,232,.45);letter-spacing:.04em}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
   .reveal.in{opacity:1;transform:none}
@@ -108,7 +110,7 @@
 </style>
 </head>
 <body>
-<div class="cosmos" aria-hidden="true"><span class="wash w1"></span><span class="wash w2"></span><span class="wash w3"></span><span class="wash w4"></span><div class="starscape cosmos-stars"></div></div>
+<div class="cosmos" aria-hidden="true"><span class="drift g1"></span><span class="drift g2"></span><div class="starscape cosmos-stars"></div></div>
 <div id="sourceGlow" aria-hidden="true"></div>
 
 <header id="hdr">
@@ -1696,7 +1698,7 @@
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const reduceM=matchMedia('(prefers-reduced-motion:reduce)').matches;
   document.querySelectorAll('.starscape').forEach(sc=>{
-    const big=sc.classList.contains('cosmos-stars');const n=big?(reduceM?44:96):42;
+    const big=sc.classList.contains('cosmos-stars');const n=big?(reduceM?30:44):28;
     for(let i=0;i<n;i++){const s=document.createElement('span');s.className='cs';const r=Math.random()*1.5+.4;
       s.style.cssText='left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;width:'+r+'px;height:'+r+'px;animation-delay:'+(Math.random()*8).toFixed(2)+'s;animation-duration:'+(7+Math.random()*7).toFixed(1)+'s';
       if(reduceM)s.style.animation='none';sc.appendChild(s);}

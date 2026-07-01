@@ -47,27 +47,23 @@
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
-  /* ===== cosmic moving wash (fixed, behind everything) ===== */
+  /* ===== cosmic background: static nebula (free) + 2 GPU-cheap drifting glows ===== */
   .cosmos{position:fixed;inset:0;z-index:-2;overflow:hidden;
     background:
-      radial-gradient(120% 90% at 70% 0%,rgba(124,86,220,.45),transparent 55%),
-      linear-gradient(165deg,#2C2070 0%,#241A60 38%,#1E1652 68%,#2C2072 100%)}
-  .cosmos .wash{position:absolute;border-radius:50%;filter:blur(80px);opacity:.6;mix-blend-mode:screen;will-change:transform,opacity}
-  .cosmos .w1{width:66vw;height:66vw;background:radial-gradient(circle,var(--violet),transparent 62%);top:-16%;left:-12%;animation:drift1 30s ease-in-out infinite alternate,pulseW 14s ease-in-out infinite}
-  .cosmos .w2{width:60vw;height:60vw;background:radial-gradient(circle,var(--indigo),transparent 62%);bottom:-18%;right:-10%;animation:drift2 36s ease-in-out infinite alternate,pulseW 17s ease-in-out infinite 2s}
-  .cosmos .w3{width:52vw;height:52vw;background:radial-gradient(circle,var(--magenta),transparent 64%);top:30%;left:40%;animation:drift3 42s ease-in-out infinite alternate,pulseW 12s ease-in-out infinite 1s;opacity:.5}
-  .cosmos .w4{width:48vw;height:48vw;background:radial-gradient(circle,#4F8BF0,transparent 62%);top:58%;left:-8%;animation:drift1 40s ease-in-out infinite alternate-reverse,pulseW 15s ease-in-out infinite;opacity:.5}
-  .cosmos .w5{width:40vw;height:40vw;background:radial-gradient(circle,#D06AD6,transparent 64%);top:6%;right:18%;animation:drift2 46s ease-in-out infinite alternate,pulseW 13s ease-in-out infinite 3s;opacity:.42}
-  @keyframes drift1{to{transform:translate(16vw,12vh) scale(1.22)}}
-  @keyframes drift2{to{transform:translate(-15vw,-10vh) scale(1.18)}}
-  @keyframes drift3{to{transform:translate(-13vw,14vh) scale(1.28)}}
-  @keyframes pulseW{0%,100%{opacity:.4}50%{opacity:.72}}
-  /* always-present source glow (gold), breathes + scroll-reactive */
-  #sourceGlow{position:fixed;left:50%;top:var(--src-y,40%);z-index:-1;pointer-events:none;
-    width:62vw;height:62vw;border-radius:50%;
-    transform:translate(-50%,-50%) scale(var(--src-s,1));
-    background:radial-gradient(circle,rgba(233,207,154,var(--src-a,.16)),rgba(201,168,106,.05) 34%,transparent 64%);
-    filter:blur(46px);animation:breathe 9s ease-in-out infinite}
+      radial-gradient(60vw 55vw at 10% 6%,rgba(138,87,224,.55),transparent 60%),
+      radial-gradient(58vw 55vw at 90% 96%,rgba(62,107,234,.5),transparent 60%),
+      radial-gradient(46vw 44vw at 62% 40%,rgba(178,84,220,.42),transparent 62%),
+      radial-gradient(50vw 48vw at 18% 88%,rgba(79,139,240,.4),transparent 62%),
+      linear-gradient(165deg,#2C2070 0%,#241A60 40%,#1E1652 70%,#2C2072 100%)}
+  .cosmos .drift{position:absolute;border-radius:50%;pointer-events:none;will-change:transform;backface-visibility:hidden}
+  .cosmos .g1{width:72vw;height:72vw;top:-16%;left:-16%;background:radial-gradient(circle,rgba(150,96,235,.5),transparent 60%);animation:cdrift1 46s ease-in-out infinite alternate}
+  .cosmos .g2{width:66vw;height:66vw;bottom:-18%;right:-14%;background:radial-gradient(circle,rgba(70,120,240,.45),transparent 60%);animation:cdrift2 60s ease-in-out infinite alternate}
+  @keyframes cdrift1{to{transform:translate3d(11vw,8vh,0)}}
+  @keyframes cdrift2{to{transform:translate3d(-10vw,-7vh,0)}}
+  /* always-present source glow (gold), static */
+  #sourceGlow{position:fixed;left:50%;top:40%;z-index:-1;pointer-events:none;
+    width:58vw;height:58vw;border-radius:50%;transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(233,207,154,.17),rgba(201,168,106,.05) 34%,transparent 64%)}
   @keyframes breathe{0%,100%{opacity:.82}50%{opacity:1}}
   body::after{
     content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;
@@ -92,7 +88,7 @@
     border-bottom:1px solid transparent;
   }
   header.scrolled{
-    background:rgba(34,24,84,.6);backdrop-filter:blur(18px) saturate(130%);
+    background:rgba(34,24,84,.85);backdrop-filter:blur(10px) saturate(125%);
     border-bottom:1px solid var(--hair);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
@@ -224,7 +220,7 @@
   @keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
   /* ---------- TRUST STRIP ---------- */
-  .trust{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:30px 0;background:rgba(28,20,70,.45);backdrop-filter:blur(4px)}
+  .trust{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:30px 0;background:rgba(28,20,70,.6)}
   .trust-inner{display:flex;align-items:center;justify-content:center;gap:54px;flex-wrap:wrap}
   .trust-inner .as{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
   .trust-inner .name{font-family:var(--serif);font-size:21px;letter-spacing:.06em;color:rgba(245,240,230,.62);font-weight:500}
@@ -331,7 +327,7 @@
   .offer .fine{margin-top:26px;font-size:11px;letter-spacing:.06em;color:rgba(245,240,230,.36)}
 
   /* ---------- FOOTER ---------- */
-  footer{background:rgba(20,14,56,.5);backdrop-filter:blur(4px);border-top:1px solid var(--hair);padding:80px 0 38px}
+  footer{background:rgba(20,14,56,.72);border-top:1px solid var(--hair);padding:80px 0 38px}
   .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:60px}
   .foot-brand .logo{margin-bottom:20px}
   .foot-brand p{color:var(--muted);font-size:14px;max-width:280px}
@@ -410,7 +406,7 @@
 <body>
 <a class="skip" href="#advisors">Skip to content</a>
 <div class="cosmos" aria-hidden="true">
-  <span class="wash w1"></span><span class="wash w2"></span><span class="wash w3"></span><span class="wash w4"></span><span class="wash w5"></span>
+  <span class="drift g1"></span><span class="drift g2"></span>
   <div class="starscape cosmos-stars"></div>
 </div>
 <div id="sourceGlow" aria-hidden="true"></div>
@@ -770,7 +766,7 @@
   // constellation: fill each .starscape with faint twinkling stars
   document.querySelectorAll('.starscape').forEach(sc=>{
     const big = sc.classList.contains('cosmos-stars');
-    const n = big ? (reduce?44:96) : (reduce?22:42);
+    const n = big ? (reduce?30:44) : (reduce?16:28);
     for(let i=0;i<n;i++){
       const s=document.createElement('span'); s.className='cs';
       const r=Math.random()*1.5+.4;
@@ -826,20 +822,12 @@
       stagger:{each:.09,from:'center'},
       scrollTrigger:{trigger:'.adv-grid',start:'top 82%'}});
 
-    // Pinned hero: the page is born from the source as it blooms
-    const hero=document.querySelector('.hero');
-    if(hero){
-      gsap.timeline({scrollTrigger:{trigger:hero,start:'top top',end:'+=85%',scrub:true,pin:true,anticipatePin:1}})
-        .to('.hero-video',{scale:1.18,ease:'none'},0)
-        .to('.hero-inner',{yPercent:-10,opacity:0,ease:'none'},0)
-        .to('.scroll-hint',{opacity:0,ease:'none'},0)
-        .fromTo('#sourceGlow',{'--src-a':.16,'--src-s':1},{'--src-a':.42,'--src-s':1.7,ease:'none'},0);
+    // Hero copy drifts up gently on scroll (compositor-only, no pin)
+    const heroCopy=document.querySelector('.hero-copy');
+    if(heroCopy){
+      gsap.to(heroCopy,{yPercent:-14,opacity:.15,ease:'none',
+        scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.3}});
     }
-
-    // The source is always present: it drifts and intensifies gently with scroll
-    ScrollTrigger.create({start:0,end:'max',onUpdate:s=>{
-      document.documentElement.style.setProperty('--src-y',(40-6*s.progress)+'%');
-    }});
   })();
 </script>
 </body>
