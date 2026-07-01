@@ -727,6 +727,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
@@ -793,7 +794,13 @@
     gsap.registerPlugin(ScrollTrigger);
     document.documentElement.classList.add('gsap-on');
 
-    // Native scrolling (no smooth-scroll hijack). ScrollTrigger drives reveals.
+    // Subtle smooth scroll: native scroll distance (wheelMultiplier 1), light catch-up.
+    if(window.Lenis){
+      const lenis=new Lenis({lerp:.18, wheelMultiplier:1, smoothWheel:true});
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(t=>lenis.raf(t*1000));
+      gsap.ticker.lagSmoothing(0);
+    }
 
     // Generic reveal → fade/drift up (replaces the CSS reveal while GSAP is on)
     ScrollTrigger.batch('.reveal:not(.adv-card)', {start:'top 88%',
