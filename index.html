@@ -149,25 +149,25 @@
   @media(max-width:560px){.float-cta{right:14px;left:14px;bottom:14px;justify-content:center}}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% center;animation:heroPush 34s ease-in-out infinite alternate}
-  @keyframes heroPush{from{transform:scale(1)}to{transform:scale(1.08)}}
-  /* scrim: dark on the left for text legibility, lets the light source breathe on the right */
+  .hero-media{position:absolute;inset:0}
+  .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:heroPush 40s ease-in-out infinite alternate}
+  @keyframes heroPush{from{transform:scale(1)}to{transform:scale(1.07)}}
+  /* scrim: dark top (header legibility) + dark bottom (copy), cosmos breathes in the middle */
   .hero-scrim{position:absolute;inset:0;background:
-    linear-gradient(90deg,rgba(20,15,56,.95) 0%,rgba(20,15,56,.82) 30%,rgba(20,15,56,.42) 62%,rgba(20,15,56,.30) 80%,rgba(20,15,56,.55) 100%),
-    linear-gradient(0deg,rgba(20,15,56,.92),rgba(20,15,56,.18) 42%,rgba(20,15,56,.5) 100%),
-    radial-gradient(120% 80% at 72% 45%,transparent,rgba(20,15,56,.35) 100%)}
+    linear-gradient(180deg,rgba(20,15,56,.62) 0%,rgba(20,15,56,.12) 20%,rgba(20,15,56,.10) 42%,rgba(20,15,56,.62) 74%,rgba(20,15,56,.96) 100%),
+    radial-gradient(120% 80% at 50% 42%,transparent,rgba(20,15,56,.28) 100%)}
   .hero-grain{position:absolute;inset:0;opacity:.05;pointer-events:none;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-  .hero-inner{position:relative;z-index:2;padding-top:84px}
-  .hero-copy{max-width:600px}
-  .hero-stats{display:flex;gap:38px;margin-top:52px;padding-top:30px;border-top:1px solid var(--hair);max-width:560px}
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:62px;text-align:center}
+  .hero-copy{max-width:760px;margin:0 auto}
+  .hero-stats{display:flex;gap:38px;margin:46px auto 0;padding-top:28px;border-top:1px solid var(--hair);max-width:600px;justify-content:center}
   .hero-stats .hs{display:flex;flex-direction:column;gap:4px}
   .hero-stats .num{font-family:var(--serif);font-size:30px;font-weight:500;color:var(--ivory);line-height:1}
   .hero-stats .lbl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-  .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+  .hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:26px}
   .hero-eyebrow .line{width:46px;height:1px;background:var(--gold)}
   h1{
     font-family:var(--serif);font-weight:500;
@@ -181,7 +181,7 @@
   .hero p.lead{
     font-size:18px;color:var(--muted);max-width:440px;margin:30px 0 38px;font-weight:300;line-height:1.7;
   }
-  .cta-row{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+  .cta-row{display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap}
   .btn-primary{
     font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
     background:linear-gradient(135deg,var(--gold-bright),var(--gold));
@@ -213,7 +213,9 @@
   .hc-stat .num{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--ivory)}
   .hc-stat .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right}
 
-  .scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted)}
+  .scroll-hint{display:none}
+  .hero h1{text-shadow:0 2px 40px rgba(15,10,40,.55)}
+  .hero .lead{text-shadow:0 1px 20px rgba(15,10,40,.6)}
   .scroll-hint .ln{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:drop 2.4s var(--ease) infinite}
   .scroll-hint span{font-size:10px;letter-spacing:.3em;text-transform:uppercase}
   @keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -529,18 +531,18 @@
 <!-- ===== HERO ===== -->
 <section class="hero" aria-label="Introduction">
   <div class="hero-bg">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-light.jpg" aria-hidden="true">
-      <source src="assets/hero-light.webm" type="video/webm" />
-      <source src="assets/hero-light.mp4" type="video/mp4" />
-    </video>
+    <picture class="hero-media">
+      <source media="(max-width:760px)" srcset="assets/hero-cosmos-mobile.jpg" />
+      <img src="assets/hero-cosmos.jpg" alt="A psychic advisor and a seeker in profile, the cosmos flowing between them" />
+    </picture>
     <div class="hero-scrim"></div>
     <div class="hero-grain"></div>
   </div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <div class="hero-eyebrow reveal in"><span class="line"></span><span class="eyebrow">America's most trusted psychic house · since 1989</span></div>
+      <div class="hero-eyebrow reveal in"><span class="line"></span><span class="eyebrow">America's most trusted psychic service · since 1989</span><span class="line"></span></div>
       <h1 class="reveal in" data-d="1">Life's possibilities,<br><em>revealed.</em></h1>
-      <p class="lead reveal in" data-d="2">Guidance from the rarest gifted advisors in the world. Vetted, intuitive, and entirely your own — by phone, chat, or video, the moment you need clarity.</p>
+      <p class="lead reveal in" data-d="2">Guidance from gifted, rigorously vetted advisors — by phone, chat, or video, the moment you need clarity.</p>
       <div class="cta-row reveal in" data-d="3">
         <a class="btn-primary" href="#offer">Begin Your First Reading</a>
         <a class="btn-text" href="advisors.html">Meet the advisors <span class="arrow">→</span></a>
