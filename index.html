@@ -154,6 +154,7 @@
   .hero-media{position:absolute;inset:0}
   .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:heroPush 40s ease-in-out infinite alternate}
   @keyframes heroPush{from{transform:scale(1)}to{transform:scale(1.07)}}
+  .hero-energy{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:.8}
   /* scrim: dark top (header legibility) + dark bottom (copy), cosmos breathes in the middle */
   .hero-scrim{position:absolute;inset:0;background:
     linear-gradient(180deg,rgba(20,15,56,.62) 0%,rgba(20,15,56,.12) 20%,rgba(20,15,56,.10) 42%,rgba(20,15,56,.62) 74%,rgba(20,15,56,.96) 100%),
@@ -535,6 +536,7 @@
       <source media="(max-width:760px)" srcset="assets/hero-cosmos-mobile.jpg" />
       <img src="assets/hero-cosmos.jpg" alt="A psychic advisor and a seeker in profile, the cosmos flowing between them" />
     </picture>
+    <canvas class="hero-energy" aria-hidden="true"></canvas>
     <div class="hero-scrim"></div>
     <div class="hero-grain"></div>
   </div>
@@ -832,6 +834,58 @@
   })();
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});
   document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+  // ===== hero energy: gentle current of light transmitted psychic -> seeker =====
+  (function(){
+    const c=document.querySelector('.hero-energy');
+    if(!c || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const ctx=c.getContext('2d'); const DPR=Math.min(devicePixelRatio||1,2);
+    let W,H,portrait;
+    function size(){W=c.width=Math.max(1,c.offsetWidth*DPR);H=c.height=Math.max(1,c.offsetHeight*DPR);portrait=c.offsetHeight>c.offsetWidth*1.05;}
+    size(); addEventListener('resize',size,{passive:true});
+    const rnd=(a,b)=>a+Math.random()*(b-a);
+    const COL={gold:[255,228,168], violet:[186,148,244]};
+    function seed(p){
+      p.life=0; p.max=rnd(220,460);
+      p.hue=Math.random()<.62?'gold':'violet';
+      p.r=rnd(.8,2.6)*DPR; p.amp=rnd(6,22)*DPR; p.ph=rnd(0,6.28);
+      if(portrait){                              // psychic above -> seeker below
+        p.x=W*rnd(.44,.56); p.y=H*rnd(.20,.28);
+        p.vx=rnd(-.12,.12)*DPR; p.vy=rnd(.18,.42)*DPR;
+      }else{                                     // psychic left -> seeker right
+        p.x=W*rnd(.28,.34); p.y=H*rnd(.40,.52);
+        p.vx=rnd(.22,.5)*DPR; p.vy=rnd(-.1,.1)*DPR;
+      }
+      return p;
+    }
+    const N=innerWidth<760?30:56;
+    const P=Array.from({length:N},()=>{const p=seed({});p.life=rnd(0,p.max);return p;});
+    let raf;
+    function frame(){
+      ctx.clearRect(0,0,W,H);
+      ctx.globalCompositeOperation='lighter';
+      for(const p of P){
+        p.life++; p.x+=p.vx; p.y+=p.vy;
+        const wob=Math.sin(p.life*.028+p.ph)*.5*DPR;
+        if(portrait)p.x+=wob; else p.y+=wob;
+        const t=p.life/p.max, a=Math.sin(t*Math.PI); // ease in/out
+        const rr=p.r*(1+t*1.6)*4, col=COL[p.hue];
+        const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,rr);
+        g.addColorStop(0,`rgba(${col[0]},${col[1]},${col[2]},${(a*.85).toFixed(3)})`);
+        g.addColorStop(.35,`rgba(${col[0]},${col[1]},${col[2]},${(a*.28).toFixed(3)})`);
+        g.addColorStop(1,`rgba(${col[0]},${col[1]},${col[2]},0)`);
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,rr,0,6.283); ctx.fill();
+        if(p.life>=p.max) seed(p);
+      }
+      raf=requestAnimationFrame(frame);
+    }
+    // pause when hero off-screen (perf)
+    const hero=document.querySelector('.hero');
+    new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){ if(!raf) raf=requestAnimationFrame(frame); }
+      else { cancelAnimationFrame(raf); raf=0; }
+    }),{threshold:0}).observe(hero);
+  })();
 
   const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
