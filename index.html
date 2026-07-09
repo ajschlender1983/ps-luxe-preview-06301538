@@ -151,7 +151,8 @@
   /* ---------- HERO ---------- */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% center}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% center;animation:heroPush 34s ease-in-out infinite alternate}
+  @keyframes heroPush{from{transform:scale(1)}to{transform:scale(1.08)}}
   /* scrim: dark on the left for text legibility, lets the light source breathe on the right */
   .hero-scrim{position:absolute;inset:0;background:
     linear-gradient(90deg,rgba(20,15,56,.95) 0%,rgba(20,15,56,.82) 30%,rgba(20,15,56,.42) 62%,rgba(20,15,56,.30) 80%,rgba(20,15,56,.55) 100%),
@@ -187,10 +188,7 @@
     padding:18px 38px;border-radius:2px;text-decoration:none;font-weight:400;position:relative;overflow:hidden;
     transition:transform .4s var(--ease),box-shadow .4s;
   }
-  .btn-primary::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
-    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s var(--ease)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(201,168,106,.55)}
-  .btn-primary:hover::before{left:130%}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(201,168,106,.6)}
   .btn-text{
     font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);text-decoration:none;
     display:flex;align-items:center;gap:10px;transition:gap .4s var(--ease),color .4s;
@@ -329,7 +327,16 @@
 
   /* ---------- OFFER CTA ---------- */
   .offer{position:relative;overflow:hidden;text-align:center;border-top:1px solid var(--hair);padding-top:170px;padding-bottom:170px}
-  .offer-bg{position:absolute;inset:0;background:url("assets/offer-light.jpg") center 30%/cover no-repeat;opacity:.5}
+  .offer-bg{position:absolute;top:-12%;left:0;width:100%;height:124%;background:url("assets/offer-light.jpg") center 30%/cover no-repeat;opacity:.5;will-change:transform}
+  /* ===== cinematic interstitial ===== */
+  .cine{position:relative;overflow:hidden;min-height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;border-top:1px solid var(--hair)}
+  .cine-bg{position:absolute;top:-12%;left:0;width:100%;height:124%;background-size:cover;background-position:center 28%;will-change:transform}
+  .cine-scrim{position:absolute;inset:0;background:
+    radial-gradient(72% 72% at 50% 44%,rgba(20,15,56,.28),rgba(20,15,56,.8) 100%),
+    linear-gradient(180deg,rgba(20,15,56,.72),rgba(20,15,56,.32) 42%,rgba(20,15,56,.88))}
+  .cine-inner{position:relative;z-index:1;max-width:840px;padding:0 24px}
+  .cine-line{font-family:var(--serif);font-size:clamp(30px,4.6vw,60px);font-weight:500;line-height:1.22;margin-top:22px;color:var(--ivory);text-wrap:balance}
+  .cine-line em{font-style:italic;color:var(--gold)}
   .offer-scrim{position:absolute;inset:0;background:
     radial-gradient(70% 60% at 50% 42%,rgba(20,15,56,.25),rgba(20,15,56,.82) 78%),
     linear-gradient(180deg,rgba(20,15,56,.9),rgba(20,15,56,.55) 40%,rgba(20,15,56,.95))}
@@ -697,6 +704,16 @@
   </div>
 </section>
 
+<!-- ===== CINEMATIC INTERSTITIAL ===== -->
+<section class="cine reveal">
+  <div class="cine-bg parallax-bg" style="background-image:url('assets/angel-wings.jpg')" aria-hidden="true"></div>
+  <div class="cine-scrim" aria-hidden="true"></div>
+  <div class="wrap cine-inner">
+    <span class="eyebrow">Always within reach</span>
+    <p class="cine-line">Whatever you're facing, <em>you don't have to face it alone.</em></p>
+  </div>
+</section>
+
 <!-- ===== VOICES ===== -->
 <section id="voices" class="ritual sec-pad">
   <div class="starscape" aria-hidden="true"></div>
@@ -874,6 +891,12 @@
     gsap.from('.adv-card',{opacity:0,yPercent:16,scale:.95,duration:.8,ease:'power3.out',
       stagger:{each:.09,from:'center'},
       scrollTrigger:{trigger:'.adv-grid',start:'top 82%'}});
+
+    // Cinematic parallax on the angel background layers (compositor-only)
+    gsap.utils.toArray('.parallax-bg').forEach(el=>{
+      gsap.fromTo(el,{yPercent:-8},{yPercent:8,ease:'none',
+        scrollTrigger:{trigger:el.parentElement,start:'top bottom',end:'bottom top',scrub:.4}});
+    });
 
   })();
 </script>
