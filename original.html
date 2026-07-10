@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Original — Psychic Source (A/B)</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#15102a;font-family:'Jost',system-ui,sans-serif}
+  .orig-shot{display:block;width:100%;max-width:1450px;margin:0 auto;box-shadow:0 0 80px rgba(0,0,0,.5)}
+  .orig-note{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:2147483646;
+    font-size:12px;letter-spacing:.02em;color:rgba(247,242,232,.85);background:rgba(18,12,38,.82);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(233,207,154,.28);
+    padding:8px 18px;border-radius:999px;box-shadow:0 8px 30px rgba(0,0,0,.4);white-space:nowrap}
+  .orig-note a{color:#E9CF9A;text-decoration:none;font-weight:500}
+  .orig-note a:hover{text-decoration:underline}
+  /* shared A/B toggle */
+  .ab-toggle{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:2147483647;display:flex;align-items:center;gap:4px;
+    padding:6px;border-radius:999px;background:rgba(18,12,38,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(233,207,154,.38);box-shadow:0 12px 44px rgba(0,0,0,.55);font-family:'Jost',system-ui,sans-serif}
+  .ab-toggle .ab-lab{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(233,207,154,.78);padding:0 10px}
+  .ab-btn{font-size:13px;letter-spacing:.03em;color:#F7F2E8;text-decoration:none;padding:8px 20px;border-radius:999px;transition:background .25s,color .25s;white-space:nowrap}
+  .ab-btn:hover{background:rgba(255,255,255,.08)}
+  .ab-btn.is-active{background:linear-gradient(120deg,#E9CF9A,#C9A86A);color:#1a1230;font-weight:500}
+  @media(max-width:600px){.ab-toggle{bottom:14px}.ab-btn{padding:7px 15px;font-size:12px}.ab-toggle .ab-lab{padding:0 6px}.orig-note{font-size:11px;padding:7px 13px}}
+</style>
+</head>
+<body>
+  <div class="orig-note">Current live site &nbsp;·&nbsp; <a href="https://www.psychicsource.com/" target="_blank" rel="noopener">open live site ↗</a></div>
+  <img class="orig-shot" src="assets/original/home.jpg" alt="Original psychicsource.com homepage" />
+  <div class="ab-toggle">
+    <span class="ab-lab">A / B</span>
+    <a href="index.html" class="ab-btn">Redesign</a>
+    <a href="original.html" class="ab-btn is-active">Original</a>
+  </div>
+</body>
+</html>
