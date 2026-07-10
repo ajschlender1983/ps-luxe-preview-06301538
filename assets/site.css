@@ -125,7 +125,7 @@ section{position:relative}
 /* ---------- PAGE HERO (interior) ---------- */
 .page-hero{position:relative;padding:190px 0 90px;overflow:hidden;border-bottom:1px solid var(--hair)}
 .page-hero.tall{padding:220px 0 120px}
-.ph-media{position:absolute;inset:0;z-index:0}
+.ph-media{position:absolute;top:-8%;left:0;width:100%;height:116%;z-index:0;will-change:transform}
 .ph-media img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.5;animation:heroPush 40s ease-in-out infinite alternate}
 @keyframes heroPush{from{transform:scale(1)}to{transform:scale(1.07)}}
 .ph-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,56,.72) 0%,rgba(20,15,56,.34) 34%,rgba(20,15,56,.6) 72%,rgba(26,19,70,.96) 100%)}
@@ -177,10 +177,26 @@ section{position:relative}
 .statband .st .n{font-family:var(--serif);font-size:clamp(38px,4.6vw,56px);font-weight:500;line-height:1;color:var(--ivory)}
 .statband .st .l{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:10px}
 
+/* ---------- CINEMATIC INTERSTITIAL (page-break band) ---------- */
+.cine{position:relative;overflow:hidden;min-height:66vh;display:flex;align-items:center;justify-content:center;text-align:center;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.cine-bg{position:absolute;top:-10%;left:0;width:100%;height:120%;z-index:0;will-change:transform}
+.cine-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;animation:cineZoom 30s ease-in-out infinite alternate}
+@keyframes cineZoom{from{transform:scale(1.02)}to{transform:scale(1.13)}}
+.cine-scrim{position:absolute;inset:0;z-index:1;background:radial-gradient(74% 74% at 50% 44%,rgba(20,15,56,.22),rgba(20,15,56,.82) 100%),linear-gradient(180deg,rgba(20,15,56,.72),rgba(20,15,56,.3) 42%,rgba(26,19,70,.9))}
+.cine-glow{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(closest-side at 50% 50%,rgba(232,207,154,.18),rgba(178,84,220,.06) 55%,transparent 72%);animation:cineGlow 8.5s ease-in-out infinite}
+@keyframes cineGlow{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1.07)}}
+.cine-inner{position:relative;z-index:2;max-width:880px;padding:64px 26px}
+.cine-eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-bright);display:inline-flex;align-items:center;gap:14px;margin-bottom:22px}
+.cine-eyebrow::before,.cine-eyebrow::after{content:"";width:34px;height:1px;background:var(--gold);opacity:.7}
+.cine-line{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.4vw,58px);line-height:1.2;color:var(--ivory);letter-spacing:-.01em;text-wrap:balance;text-shadow:0 2px 34px rgba(8,6,26,.6)}
+.cine-line em{font-style:italic;color:var(--gold)}
+@media(prefers-reduced-motion:reduce){.cine-bg img,.cine-glow{animation:none}}
+
 /* wing / feather bands (RISE textures, cosmic-tinted) */
 .wingband{position:relative;overflow:hidden;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-.wingband .wb-bg{position:absolute;inset:0;z-index:0}
+.wingband .wb-bg{position:absolute;top:-10%;left:0;width:100%;height:120%;z-index:0;will-change:transform}
 .wingband .wb-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.42;filter:saturate(.7) hue-rotate(-8deg)}
+.wingband .wb-glow{position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(closest-side at 50% 50%,rgba(232,207,154,.16),transparent 70%);animation:cineGlow 8.5s ease-in-out infinite}
 .wingband .wb-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,56,.94),rgba(20,15,56,.4) 45%,rgba(20,15,56,.4) 55%,rgba(20,15,56,.94)),radial-gradient(70% 90% at 50% 50%,rgba(138,87,224,.24),transparent 70%)}
 .wingband .wrap{position:relative;z-index:1}
 

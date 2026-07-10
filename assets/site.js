@@ -104,6 +104,30 @@
     mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';});});
   }
 
+  // ---- parallax on cinematic bands, hero + wing media ----
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce){
+    var plx = [].slice.call(document.querySelectorAll('.cine-bg, .wingband .wb-bg, .ph-media'));
+    var ticking = false;
+    function runParallax(){
+      ticking = false;
+      var vh = window.innerHeight;
+      for(var i=0;i<plx.length;i++){
+        var el = plx[i];
+        var host = el.closest('section') || el.parentElement;
+        var r = host.getBoundingClientRect();
+        if(r.bottom < -40 || r.top > vh + 40) continue;
+        // progress: -1 (below) .. +1 (above), 0 when host centered
+        var prog = ((r.top + r.height/2) - vh/2) / vh;
+        var range = el.classList.contains('ph-media') ? 26 : 46;
+        el.style.transform = 'translate3d(0,' + (prog * -range).toFixed(1) + 'px,0)';
+      }
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(runParallax); } }, {passive:true});
+    window.addEventListener('resize', runParallax, {passive:true});
+    runParallax();
+  }
+
   // ---- reveal on scroll ----
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
