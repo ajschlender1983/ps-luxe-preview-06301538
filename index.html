@@ -322,14 +322,17 @@
   .insight-price{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
   .guarantee{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:240px}
   .guarantee-seal{position:relative;width:190px;height:190px;flex:none}
-  .seal-aura{position:absolute;inset:-16%;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(201,168,106,0) 40%,rgba(201,168,106,.34) 52%,rgba(138,87,224,.30) 63%,rgba(62,107,234,0) 80%);filter:blur(7px);animation:sealBreath 7.5s ease-in-out infinite}
-  @keyframes sealBreath{0%,100%{opacity:.62;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
-  .seal-ring{position:absolute;inset:0;animation:churn 46s linear infinite}
-  .seal-ring text{fill:var(--gold-bright);font-family:var(--sans);font-size:8.8px;font-weight:500;letter-spacing:2.1px;text-transform:uppercase;opacity:.82}
-  .seal-orb{position:absolute;inset:30px;border-radius:50%;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,#2a1e55 0%,#160f38 44%,#0a0814 100%);box-shadow:0 0 0 1px rgba(232,207,154,.45),0 0 24px 2px rgba(201,168,106,.30),0 0 48px rgba(138,87,224,.28),inset 0 0 30px 6px rgba(0,0,0,.85)}
-  .seal-corona{position:absolute;inset:2px;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,rgba(232,207,154,0),rgba(232,207,154,.6),rgba(138,87,224,.5),rgba(232,207,154,0),rgba(232,207,154,.55),rgba(138,87,224,.4),rgba(232,207,154,0));-webkit-mask:radial-gradient(circle,transparent 63%,#000 72%,#000 86%,transparent 95%);mask:radial-gradient(circle,transparent 63%,#000 72%,#000 86%,transparent 95%);animation:churn 18s linear infinite reverse;opacity:.7}
-  .seal-pct{position:relative;font-family:var(--serif);font-size:44px;font-weight:600;line-height:1;color:var(--gold-bright);text-shadow:0 0 20px rgba(232,207,154,.55),0 0 4px rgba(232,207,154,.7)}
-  .seal-lbl{position:relative;font-family:var(--sans);font-size:8.5px;font-weight:500;letter-spacing:.22em;line-height:1.5;text-transform:uppercase;color:rgba(247,242,232,.72);margin-top:5px}
+  .seal-aura{position:absolute;inset:-13%;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(201,168,106,0) 46%,rgba(201,168,106,.26) 55%,rgba(138,87,224,.22) 65%,rgba(62,107,234,0) 80%);filter:blur(6px);animation:sealBreath 7.5s ease-in-out infinite}
+  @keyframes sealBreath{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.85;transform:scale(1.045)}}
+  /* crisp, complete rims that frame the engraved band */
+  .seal-rim{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(232,207,154,.66);box-shadow:0 0 12px rgba(201,168,106,.32),inset 0 0 9px rgba(201,168,106,.2)}
+  .seal-rim-in{position:absolute;inset:28px;border-radius:50%;border:1px solid rgba(232,207,154,.5)}
+  .seal-ring{position:absolute;inset:0;animation:churn 60s linear infinite}
+  .seal-ring text{fill:var(--gold-bright);font-family:var(--sans);font-size:9px;font-weight:500;letter-spacing:2.7px;text-transform:uppercase}
+  .seal-orb{position:absolute;inset:31px;border-radius:50%;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,#2a1e55 0%,#160f38 46%,#0a0814 100%);box-shadow:inset 0 0 26px 6px rgba(0,0,0,.85)}
+  .seal-corona{position:absolute;inset:0;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,rgba(232,207,154,0),rgba(232,207,154,.5),rgba(138,87,224,.4),rgba(232,207,154,0),rgba(232,207,154,.45),rgba(138,87,224,.32),rgba(232,207,154,0));-webkit-mask:radial-gradient(circle,transparent 56%,#000 78%,transparent 100%);mask:radial-gradient(circle,transparent 56%,#000 78%,transparent 100%);animation:churn 20s linear infinite reverse;opacity:.55}
+  .seal-pct{position:relative;font-family:var(--serif);font-size:42px;font-weight:600;line-height:1;color:var(--gold-bright);text-shadow:0 0 16px rgba(232,207,154,.45),0 0 3px rgba(232,207,154,.55)}
+  .seal-lbl{position:relative;font-family:var(--sans);font-size:8px;font-weight:500;letter-spacing:.22em;line-height:1.5;text-transform:uppercase;color:rgba(247,242,232,.7);margin-top:5px}
   .guarantee-note{font-family:var(--sans);font-size:12.5px;line-height:1.5;color:var(--muted);text-align:center}
   .insight-marquee{position:relative;margin-top:52px;padding:16px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);overflow:hidden;background:rgba(20,15,56,.35);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
   .marquee-track{display:inline-flex;align-items:center;white-space:nowrap;will-change:transform;animation:marquee 36s linear infinite}
@@ -661,9 +664,11 @@
     <div class="guarantee reveal" data-d="2">
       <div class="guarantee-seal" aria-hidden="true">
         <span class="seal-aura"></span>
+        <span class="seal-rim"></span>
+        <span class="seal-rim-in"></span>
         <svg class="seal-ring" viewBox="0 0 190 190">
-          <defs><path id="sealCircle" d="M95,95 m-73,0 a73,73 0 1,1 146,0 a73,73 0 1,1 -146,0"/></defs>
-          <text><textPath href="#sealCircle" startOffset="0">· 100% Satisfaction Guaranteed · Risk-Free Readings </textPath></text>
+          <defs><path id="sealCircle" d="M95,95 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+          <text><textPath href="#sealCircle" startOffset="0">100% Satisfaction Guaranteed · Risk-Free Readings · Since 1989 · </textPath></text>
         </svg>
         <span class="seal-orb">
           <span class="seal-corona"></span>
