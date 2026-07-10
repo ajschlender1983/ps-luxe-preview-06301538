@@ -43,7 +43,7 @@
   <div class="ab-bar">
     <div class="ab-grp">
       <a class="ab-btn" data-page="home">Home</a>
-      <a class="ab-btn" data-page="listing">Advisors</a>
+      <a class="ab-btn" data-page="listing">Psychics</a>
     </div>
     <span class="ab-div"></span>
     <div class="ab-grp">
@@ -96,6 +96,20 @@
     if(w){try{w.scrollTo(0,f*leftMax(w));}catch(e){}}
     release();
   },{passive:true});
+
+  // --- carry scroll fraction to/from the other views ---
+  function splitFrac(){var rm=rightMax();return rm>0?scR.scrollTop/rm:0;}
+  bar.addEventListener('click',function(e){var t=e.target;while(t&&t!==bar){if(t.classList&&t.classList.contains('ab-btn')){try{sessionStorage.setItem('abCarry',splitFrac().toFixed(4));}catch(_){}break;}t=t.parentNode;}},true);
+  var carry=null;try{carry=sessionStorage.getItem('abCarry');}catch(_){}
+  if(carry!=null){try{sessionStorage.removeItem('abCarry');}catch(_){}
+    var cf=parseFloat(carry);
+    if(cf>0.002){
+      var applyCarry=function(){lock=true;scR.scrollTop=cf*rightMax();var w=leftWin();if(w){try{w.scrollTo(0,cf*leftMax(w));}catch(_){}}release();};
+      imgR.addEventListener('load',function(){setTimeout(applyCarry,60);});
+      fL.addEventListener('load',function(){setTimeout(applyCarry,150);});
+      setTimeout(applyCarry,450);setTimeout(applyCarry,850);
+    }
+  }
 })();
 </script>
 </body>
