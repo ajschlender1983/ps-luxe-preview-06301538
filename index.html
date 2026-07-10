@@ -389,10 +389,15 @@
   .step .idx{display:none}
   .step::before{display:none}
   /* tarot-card treatment */
-  .step-img{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;margin-bottom:26px;border:1px solid rgba(201,168,106,.4);box-shadow:0 22px 54px rgba(0,0,0,.46),0 0 0 1px rgba(0,0,0,.3)}
+  .step-img{position:relative;aspect-ratio:3/4;border-radius:10px;overflow:hidden;margin-bottom:18px;box-shadow:0 22px 54px rgba(0,0,0,.5)}
   .step-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--ease)}
   .step:hover .step-img img{transform:scale(1.05)}
-  .step-img::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(to bottom,rgba(18,13,48,.5),rgba(18,13,48,0) 24%),linear-gradient(to top,rgba(18,13,48,.64),rgba(18,13,48,0) 40%)}
+  .step-img::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(232,207,154,.22)}
+  .step-cap{text-align:center;font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.02em;color:var(--ivory);margin-bottom:14px}
+  .step-cap .cap-num{display:inline-block;color:var(--gold);font-size:14px;letter-spacing:.18em;margin-right:10px;vertical-align:middle}
+  .steps{text-align:center}
+  .step h3,.step p{margin-left:auto;margin-right:auto}
+  .step p{text-align:center}
   .tarot-frame{position:absolute;inset:9px;border:1px solid rgba(232,207,154,.5);border-radius:7px;pointer-events:none;z-index:2}
   .tarot-frame::before{content:"";position:absolute;inset:3px;border:1px solid rgba(232,207,154,.24);border-radius:5px}
   .tarot-num{position:absolute;top:17px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:16px;letter-spacing:.34em;color:var(--gold-bright);text-shadow:0 2px 10px rgba(0,0,0,.75);z-index:3}
@@ -826,14 +831,17 @@
       <p>No theatrics. No pressure. A considered process designed to bring you the right voice at the right moment.</p>
     </div>
     <div class="steps">
-      <div class="step reveal" data-d="1"><span class="idx">I</span>
-        <div class="step-img"><img src="assets/steps/step-1.jpg" alt="A seeker turning to the cosmos with her question" loading="lazy" decoding="async" /><span class="tarot-frame"></span><span class="tarot-num">I</span><span class="tarot-name">The Seeker</span></div>
+      <div class="step reveal" data-d="1">
+        <div class="step-img"><img src="assets/steps/step-1.jpg" alt="The Seeker — a crowned woman turning her question to the cosmos" loading="lazy" decoding="async" /></div>
+        <div class="step-cap"><span class="cap-num">I</span>The Seeker</div>
         <h3>Create your account</h3><p>A few private details and your account is ready. Your first reading is moments away.</p></div>
-      <div class="step reveal" data-d="2"><span class="idx">II</span>
-        <div class="step-img"><img src="assets/steps/step-2.jpg" alt="A psychic guide summoned in golden light" loading="lazy" decoding="async" /><span class="tarot-frame"></span><span class="tarot-num">II</span><span class="tarot-name">The Oracle</span></div>
+      <div class="step reveal" data-d="2">
+        <div class="step-img"><img src="assets/steps/step-2.jpg" alt="The Oracle — a crowned psychic summoned in golden light" loading="lazy" decoding="async" /></div>
+        <div class="step-cap"><span class="cap-num">II</span>The Oracle</div>
         <h3>Choose your psychic</h3><p>Browse by gift and specialty. Read real reviews. Trust the connection that resonates.</p></div>
-      <div class="step reveal" data-d="3"><span class="idx">III</span>
-        <div class="step-img"><img src="assets/steps/step-3.jpg" alt="Seeker and psychic linked by a current of light, communicating" loading="lazy" decoding="async" /><span class="tarot-frame"></span><span class="tarot-num">III</span><span class="tarot-name">The Union</span></div>
+      <div class="step reveal" data-d="3">
+        <div class="step-img"><img src="assets/steps/step-3.jpg" alt="The Union — seeker and psychic linked by a current of light" loading="lazy" decoding="async" /></div>
+        <div class="step-cap"><span class="cap-num">III</span>The Union</div>
         <h3>Receive your reading</h3><p>Connect by phone, chat, or video and leave with the confidence to move forward.</p></div>
     </div>
   </div>
