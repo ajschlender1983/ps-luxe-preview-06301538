@@ -835,7 +835,7 @@
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});
   document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
 
-  // ===== hero energy: gentle current of light transmitted psychic -> seeker =====
+  // ===== hero energy: slow 3D spiral of light rising into soft wisps =====
   (function(){
     const c=document.querySelector('.hero-energy');
     if(!c || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
@@ -843,44 +843,55 @@
     let W,H,portrait;
     function size(){W=c.width=Math.max(1,c.offsetWidth*DPR);H=c.height=Math.max(1,c.offsetHeight*DPR);portrait=c.offsetHeight>c.offsetWidth*1.05;}
     size(); addEventListener('resize',size,{passive:true});
-    const rnd=(a,b)=>a+Math.random()*(b-a);
-    const COL={gold:[255,228,168], violet:[186,148,244]};
+    const rnd=(a,b)=>a+Math.random()*(b-a), TAU=6.2832;
+    const COL={gold:[255,226,164], violet:[192,152,246]};
     function seed(p){
-      p.life=0; p.max=rnd(220,460);
-      p.hue=Math.random()<.62?'gold':'violet';
-      p.r=rnd(.8,2.6)*DPR; p.amp=rnd(6,22)*DPR; p.ph=rnd(0,6.28);
-      if(portrait){                              // psychic above -> seeker below
-        p.x=W*rnd(.44,.56); p.y=H*rnd(.20,.28);
-        p.vx=rnd(-.12,.12)*DPR; p.vy=rnd(.18,.42)*DPR;
-      }else{                                     // desktop: light rising up the central column
-        p.x=W*rnd(.45,.55); p.y=H*rnd(.70,.82);
-        p.vx=rnd(-.12,.12)*DPR; p.vy=rnd(-.52,-.24)*DPR;
-        p.hue=Math.random()<.78?'gold':'violet';
+      p.life=0;
+      p.hue=Math.random()<.8?'gold':'violet';
+      p.ang0=rnd(0,TAU);
+      p.turns=rnd(.5,1.3)*(Math.random()<.5?1:-1);        // spiral amount + direction
+      p.baseR=rnd(1.6,3.6)*DPR;
+      p.axis=W*rnd(.475,.525);                            // central axis
+      if(portrait){                                       // psychic (top) -> seeker (below)
+        p.max=rnd(560,940); p.rad0=W*rnd(.03,.09); p.radGrow=W*rnd(.05,.14);
+        p.y0=H*.24; p.y1=H*.66;
+      }else{                                              // desktop: rise up the central column
+        p.max=rnd(820,1400); p.rad0=W*rnd(.004,.02); p.radGrow=W*rnd(.11,.26);
+        p.y0=H*.80; p.y1=H*-.10;
       }
       return p;
     }
-    const N=innerWidth<760?30:56;
+    const N=innerWidth<760?24:44;
     const P=Array.from({length:N},()=>{const p=seed({});p.life=rnd(0,p.max);return p;});
+    const ease=t=>1-Math.pow(1-t,2);                      // decelerate toward the top
     let raf;
     function frame(){
       ctx.clearRect(0,0,W,H);
       ctx.globalCompositeOperation='lighter';
       for(const p of P){
-        p.life++; p.x+=p.vx; p.y+=p.vy;
-        const wob=Math.sin(p.life*.028+p.ph)*.5*DPR;
-        p.x+=wob;
-        const t=p.life/p.max, a=Math.sin(t*Math.PI); // ease in/out
-        const rr=p.r*(1+t*1.6)*4, col=COL[p.hue];
-        const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,rr);
-        g.addColorStop(0,`rgba(${col[0]},${col[1]},${col[2]},${(a*.85).toFixed(3)})`);
-        g.addColorStop(.35,`rgba(${col[0]},${col[1]},${col[2]},${(a*.28).toFixed(3)})`);
+        p.life++;
+        const t=p.life/p.max, et=ease(t);
+        const ang=p.ang0 + p.turns*TAU*t;
+        const rad=p.rad0 + p.radGrow*et;
+        const near=Math.cos(ang)*.5+.5;                   // 0 far … 1 near (3D depth)
+        const x=p.axis + Math.sin(ang)*rad;
+        const y=p.y0 + (p.y1-p.y0)*et;
+        const grow=portrait ? (1+t*2.4) : (1+t*5.5);      // larger as they expand
+        const rr=p.baseR*grow*(.6+.55*near)*3.2;
+        const fin=Math.min(1,t/.09);                      // soft fade-in
+        const fade=portrait ? Math.sin(t*Math.PI) : (1-t*.9);
+        const a=Math.max(0,fin*fade*(.32+.68*near))*.78;  // fainter as they rise
+        const core=a*(1-t*.6);                            // softer core toward the top (wisps)
+        const col=COL[p.hue];
+        const g=ctx.createRadialGradient(x,y,0,x,y,rr);
+        g.addColorStop(0,`rgba(${col[0]},${col[1]},${col[2]},${core.toFixed(3)})`);
+        g.addColorStop(.4,`rgba(${col[0]},${col[1]},${col[2]},${(a*.26).toFixed(3)})`);
         g.addColorStop(1,`rgba(${col[0]},${col[1]},${col[2]},0)`);
-        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,rr,0,6.283); ctx.fill();
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,rr,0,TAU); ctx.fill();
         if(p.life>=p.max) seed(p);
       }
       raf=requestAnimationFrame(frame);
     }
-    // pause when hero off-screen (perf)
     const hero=document.querySelector('.hero');
     new IntersectionObserver(es=>es.forEach(e=>{
       if(e.isIntersecting){ if(!raf) raf=requestAnimationFrame(frame); }
