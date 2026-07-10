@@ -209,6 +209,7 @@
   .adv-ways svg{width:14px;height:14px;opacity:.7}
   .adv-ways .resp{margin-left:auto;font-size:11px;color:#7BD389}
   .adv-ways .resp.busy{color:#E0A23F} .adv-ways .resp.off{color:var(--muted)}
+  .adv-card[data-status="away"] .adv-ways svg{opacity:.26}
   footer{background:rgba(20,14,56,.72);border-top:1px solid var(--hair);padding:50px 0;text-align:center}
   footer p{font-size:12px;color:rgba(247,242,232,.45);letter-spacing:.04em}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -1879,6 +1880,10 @@
   document.querySelectorAll('.adv-stars').forEach(function(el){
     var n=(el.textContent.match(/★/g)||[]).length||5; el.textContent='';
     for(var i=0;i<n;i++){var s=document.createElement('i');s.appendChild(starSVG());el.appendChild(s);}
+  });
+  // away psychics can't be connected live — the CTA becomes "Leave a message"
+  document.querySelectorAll('.adv-card[data-status="away"] .adv-link').forEach(function(a){
+    a.textContent='Leave a message →';
   });
   // four-point starfield confined to each portrait's backdrop (never over the subject)
   document.querySelectorAll('.adv-photo').forEach(function(ph){
