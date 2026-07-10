@@ -12,12 +12,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site.css" />
+<style>
+  /* ===== horoscopes hero: constellation sky + twinkling stars + magical quill ===== */
+  .horo-hero .ph-media img{opacity:.74}
+  .horo-hero .ph-inner{z-index:3}
+  /* dense field of the same four-point twinkling stars used on the psychic cards */
+  .horo-sky{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;mix-blend-mode:screen}
+  .hstar{position:absolute;background:radial-gradient(circle at 50% 50%,rgba(255,250,235,.92) 0,rgba(232,207,154,.5) 42%,rgba(201,168,106,0) 72%);clip-path:polygon(50% 0,57% 43%,100% 50%,57% 57%,50% 100%,43% 57%,0 50%,43% 43%);animation:hTwinkle var(--tw,6.5s) ease-in-out infinite;will-change:opacity,transform}
+  @keyframes hTwinkle{0%,100%{opacity:.05;transform:translate(-50%,-50%) scale(.4)}50%{opacity:.74;transform:translate(-50%,-50%) scale(1)}}
+  /* the central star breathes */
+  .horo-core{position:absolute;left:50%;top:21%;width:40vw;height:40vw;max-width:520px;max-height:520px;transform:translate(-50%,-50%);z-index:1;pointer-events:none;border-radius:50%;mix-blend-mode:screen;background:radial-gradient(circle,rgba(232,207,154,.22),rgba(232,207,154,.06) 34%,transparent 62%);animation:coreBreath 6.5s ease-in-out infinite}
+  @keyframes coreBreath{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(.93)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
+  /* featured cosmic magical quill, glowing, gently drifting */
+  .horo-quill{position:absolute;z-index:2;pointer-events:none;left:1%;bottom:-7%;width:clamp(150px,18vw,286px);mix-blend-mode:screen;opacity:.96;
+    -webkit-mask-image:radial-gradient(ellipse 52% 86% at 52% 46%,#000 12%,rgba(0,0,0,.55) 46%,transparent 80%);mask-image:radial-gradient(ellipse 52% 86% at 52% 46%,#000 12%,rgba(0,0,0,.55) 46%,transparent 80%);
+    animation:quillFloat 9.5s ease-in-out infinite alternate}
+  @keyframes quillFloat{from{transform:translateY(8px) rotate(-6deg)}to{transform:translateY(-16px) rotate(-2.5deg)}}
+  @media(max-width:820px){.horo-quill{left:-8%;width:150px;opacity:.78}}
+  @media(prefers-reduced-motion:reduce){.hstar,.horo-core,.horo-quill{animation:none}.hstar{opacity:.4}}
+</style>
 </head>
 <body data-page="horoscopes.html">
 <main id="main">
 
-  <section class="page-hero center tall">
-    <div class="ph-media"><img src="assets/heroes/horoscopes.jpg" alt="" /></div>
+  <section class="page-hero center tall horo-hero">
+    <div class="ph-media"><img src="assets/heroes/horoscopes-sky.jpg" alt="" /></div>
+    <div class="horo-core" aria-hidden="true"></div>
+    <div class="horo-sky" id="horoSky" aria-hidden="true"></div>
+    <img class="horo-quill" src="assets/heroes/horoscopes-quill.jpg" alt="" aria-hidden="true" />
     <div class="wrap ph-inner">
       <div class="breadcrumb reveal"><a href="index.html">Home</a><span>/</span>Horoscopes</div>
       <span class="eyebrow reveal" data-d="1">Daily Horoscopes</span>
@@ -96,5 +118,24 @@
 
 </main>
 <script src="assets/site.js"></script>
+<script>
+/* scatter a dense field of twinkling four-point stars across the horoscopes hero */
+(function(){
+  var sky=document.getElementById('horoSky'); if(!sky) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var N=window.innerWidth<820?80:150;
+  for(var i=0;i<N;i++){
+    var s=document.createElement('span'); s.className='hstar';
+    var sz=(Math.random()*Math.random()*7+2.5); // bias small, a few larger
+    s.style.width=sz.toFixed(1)+'px'; s.style.height=sz.toFixed(1)+'px';
+    s.style.left=(Math.random()*100).toFixed(2)+'%';
+    s.style.top=(Math.random()*100).toFixed(2)+'%';
+    s.style.setProperty('--tw',(Math.random()*4.5+4.5).toFixed(1)+'s');
+    if(reduce){ s.style.animation='none'; s.style.opacity='.4'; s.style.transform='translate(-50%,-50%)'; }
+    else { s.style.animationDelay=(-Math.random()*9).toFixed(1)+'s'; }
+    sky.appendChild(s);
+  }
+})();
+</script>
 </body>
 </html>
