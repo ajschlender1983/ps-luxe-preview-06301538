@@ -31,11 +31,14 @@
   /* ===== hero: tarot cards spinning & drifting in cosmic space (depth of field + overhead light) ===== */
   .page-hero.tarot-hero{--focus:1}
   .page-hero.tarot-hero .ph-media img{opacity:.3}
-  .tcards{position:absolute;inset:0;z-index:1;perspective:1400px;pointer-events:none;overflow:hidden}
+  /* mask fades cards out of the header band at the top (and softly at the foot) so they never collide with the nav */
+  .tcards{position:absolute;inset:0;z-index:1;perspective:1400px;pointer-events:none;overflow:hidden;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 4%,#000 16%,#000 92%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0,transparent 4%,#000 16%,#000 92%,transparent 100%)}
   /* --blur gives shallow depth of field; near + far cards soften, the mid plane stays sharp */
-  .tc{position:absolute;transform-style:preserve-3d;will-change:transform,filter;filter:blur(var(--blur,0px));animation:tcFloat var(--fd,16s) ease-in-out infinite alternate}
-  .tc-spin{position:relative;width:100%;height:100%;transform-style:preserve-3d;will-change:transform;animation:tcSpin var(--sd,20s) linear infinite;filter:drop-shadow(0 26px 46px rgba(0,0,0,.66))}
-  .tc-face{position:absolute;inset:0;border-radius:9px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(232,207,154,.32);box-shadow:0 0 22px rgba(232,207,154,.14),inset 0 0 30px rgba(12,8,28,.42)}
+  .tc{position:absolute;transform-style:preserve-3d;will-change:transform;filter:blur(var(--blur,0px));animation:tcFloat var(--fd,16s) ease-in-out infinite alternate}
+  .tc-spin{position:relative;width:100%;height:100%;transform-style:preserve-3d;will-change:transform;animation:tcSpin var(--sd,20s) linear infinite}
+  .tc-face{position:absolute;inset:0;border-radius:9px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(232,207,154,.32);box-shadow:0 22px 42px rgba(0,0,0,.55),0 0 22px rgba(232,207,154,.13),inset 0 0 30px rgba(12,8,28,.42)}
   .tc-face img{width:100%;height:100%;object-fit:cover;display:block}
   /* light from above: bright top edge, soft shadow at the foot of every card */
   .tc-face::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,248,230,.32) 0%,rgba(255,248,230,.05) 24%,transparent 52%,rgba(10,7,24,.34) 88%,rgba(10,7,24,.5) 100%)}
@@ -43,11 +46,9 @@
   @keyframes tcSpin{to{transform:rotateY(360deg)}}
   @keyframes tcFloat{from{transform:translate3d(0,-16px,0) rotateZ(-5deg)}to{transform:translate3d(0,16px,0) rotateZ(5deg)}}
   /* overhead key light washing down over the scene */
-  .tcards-light{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen;background:
+  .tcards-light{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.85;mix-blend-mode:screen;background:
     radial-gradient(64% 46% at 50% -6%,rgba(232,207,154,.30),rgba(178,84,220,.07) 46%,transparent 70%),
-    linear-gradient(180deg,rgba(232,207,154,.12),transparent 26%);
-    animation:tcLight 9s ease-in-out infinite}
-  @keyframes tcLight{0%,100%{opacity:.72}50%{opacity:1}}
+    linear-gradient(180deg,rgba(232,207,154,.12),transparent 26%)}
   /* keep the headline legible over the drifting cards */
   .tcards-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(56% 44% at 50% 48%,rgba(20,15,56,.82),rgba(20,15,56,.34) 62%,transparent 82%)}
   .page-hero.tarot-hero .ph-inner{z-index:3}
@@ -137,16 +138,16 @@
   // x,y = position (% of hero); sd = spin secs; fd = float secs; opt = hide on mobile
   var C=[
     // --- far plane: small, soft, dim (background bokeh) ---
-    {f:6, x:40, y:5,  d:.12, sd:34, fd:22, opt:true},
-    {f:1, x:63, y:3,  d:.16, sd:32, fd:21, opt:true},
-    {f:4, x:14, y:6,  d:.10, sd:36, fd:23, opt:true},
+    {f:6, x:40, y:19, d:.12, sd:34, fd:22, opt:true},
+    {f:1, x:63, y:24, d:.16, sd:32, fd:21, opt:true},
+    {f:4, x:14, y:20, d:.10, sd:36, fd:23, opt:true},
     {f:7, x:88, y:22, d:.18, sd:31, fd:20, opt:true},
     {f:2, x:6,  y:34, d:.20, sd:30, fd:19, opt:true},
     {f:8, x:92, y:74, d:.15, sd:33, fd:22, opt:true},
     {f:5, x:33, y:86, d:.22, sd:29, fd:20, opt:true},
     // --- mid plane: the sharp, in-focus cards ---
-    {f:1, x:5,  y:14, d:.55, sd:22, fd:15, opt:false},
-    {f:2, x:80, y:9,  d:.58, sd:24, fd:17, opt:false},
+    {f:1, x:5,  y:22, d:.55, sd:22, fd:15, opt:false},
+    {f:2, x:80, y:20, d:.58, sd:24, fd:17, opt:false},
     {f:3, x:11, y:60, d:.52, sd:20, fd:14, opt:false},
     {f:4, x:82, y:55, d:.6,  sd:25, fd:18, opt:false},
     {f:6, x:70, y:78, d:.5,  sd:23, fd:16, opt:true},
@@ -177,6 +178,8 @@
     var spin=document.createElement('div'); spin.className='tc-spin';
     spin.style.setProperty('--sd', c.sd+'s');
     spin.style.animationDelay=(-i*2.1).toFixed(1)+'s';
+    // the heavily-blurred foreground card drifts only (spinning it would re-rasterize the big blur every frame)
+    if(c.big){ spin.style.animation='none'; spin.style.transform='rotateY(-14deg)'; }
     var front=document.createElement('div'); front.className='tc-face';
     var fi=document.createElement('img'); fi.src=F[c.f]; fi.alt=''; fi.loading='lazy'; fi.decoding='async'; front.appendChild(fi);
     var back=document.createElement('div'); back.className='tc-face tc-back';
