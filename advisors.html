@@ -166,6 +166,12 @@
   .adv-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(20,15,56,.85),rgba(20,15,56,.06) 42%,transparent 70%)}
   .av-status{position:absolute;top:14px;right:14px;width:11px;height:11px;border-radius:50%;background:#7BD389;border:2px solid rgba(20,15,56,.6);box-shadow:0 0 10px #7BD389;z-index:2}
   .av-status.busy{background:#E0A23F;box-shadow:0 0 10px #E0A23F}
+  /* churning starfield over each portrait's dark backdrop — echoes the header logo */
+  .pstars{position:absolute;inset:-28%;pointer-events:none;mix-blend-mode:screen;animation:churn 120s linear infinite;will-change:transform}
+  @keyframes churn{to{transform:rotate(360deg)}}
+  .pstars .ps{position:absolute;border-radius:50%;background:#FBF6EA;box-shadow:0 0 6px 1px rgba(232,207,154,.9);animation:pstar 6s ease-in-out infinite;will-change:opacity,transform}
+  @keyframes pstar{0%,100%{opacity:.16;transform:scale(.55)}50%{opacity:1;transform:scale(1.28)}}
+  @media(prefers-reduced-motion:reduce){.pstars{animation:none}.pstars .ps{animation:none;opacity:.5}}
   .adv-name{font-family:var(--serif);font-size:24px;font-weight:500;margin-bottom:5px}
   .adv-spec{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;min-height:30px}
   .spec-ico{width:13px;height:13px;margin-right:7px;flex:none}
@@ -1854,6 +1860,20 @@
   document.querySelectorAll('.adv-stars').forEach(el=>{
     const n=(el.textContent.match(/★/g)||[]).length||5; el.textContent='';
     for(let i=0;i<n;i++){const s=document.createElement('i');s.textContent='★';el.appendChild(s);}
+  });
+  // churning starfield over each portrait background (echoes the header logo)
+  document.querySelectorAll('.adv-photo').forEach(ph=>{
+    if(ph.querySelector('.pstars'))return;
+    const layer=document.createElement('div'); layer.className='pstars';
+    layer.style.animationDelay='-'+(Math.random()*120).toFixed(0)+'s';
+    if(Math.random()<0.5)layer.style.animationDirection='reverse';
+    for(let i=0;i<11;i++){
+      const s=document.createElement('span'); s.className='ps';
+      const d=(Math.random()*1.8+1.1).toFixed(1);
+      s.style.cssText='left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+'%;width:'+d+'px;height:'+d+'px;animation-delay:-'+(Math.random()*6).toFixed(2)+'s;animation-duration:'+(4.5+Math.random()*4).toFixed(1)+'s';
+      layer.appendChild(s);
+    }
+    ph.appendChild(layer);
   });
   const reduceM=matchMedia('(prefers-reduced-motion:reduce)').matches;
   document.querySelectorAll('.starscape').forEach(sc=>{
