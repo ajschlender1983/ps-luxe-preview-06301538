@@ -852,9 +852,10 @@
       if(portrait){                              // psychic above -> seeker below
         p.x=W*rnd(.44,.56); p.y=H*rnd(.20,.28);
         p.vx=rnd(-.12,.12)*DPR; p.vy=rnd(.18,.42)*DPR;
-      }else{                                     // psychic left -> seeker right
-        p.x=W*rnd(.28,.34); p.y=H*rnd(.40,.52);
-        p.vx=rnd(.22,.5)*DPR; p.vy=rnd(-.1,.1)*DPR;
+      }else{                                     // desktop: light rising up the central column
+        p.x=W*rnd(.45,.55); p.y=H*rnd(.70,.82);
+        p.vx=rnd(-.12,.12)*DPR; p.vy=rnd(-.52,-.24)*DPR;
+        p.hue=Math.random()<.78?'gold':'violet';
       }
       return p;
     }
@@ -867,7 +868,7 @@
       for(const p of P){
         p.life++; p.x+=p.vx; p.y+=p.vy;
         const wob=Math.sin(p.life*.028+p.ph)*.5*DPR;
-        if(portrait)p.x+=wob; else p.y+=wob;
+        p.x+=wob;
         const t=p.life/p.max, a=Math.sin(t*Math.PI); // ease in/out
         const rr=p.r*(1+t*1.6)*4, col=COL[p.hue];
         const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,rr);
