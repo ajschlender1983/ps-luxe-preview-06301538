@@ -260,8 +260,12 @@
   /* ---------- MANIFESTO ---------- */
   .manifesto{position:relative;border-top:1px solid var(--hair);overflow:hidden}
   .mani-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
-  .mani-bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:.44}
+  .mani-bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:.44;animation:maniDrift 32s ease-in-out infinite alternate;will-change:transform}
+  @keyframes maniDrift{from{transform:scale(1.02)}to{transform:scale(1.09)}}
   .mani-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,56,.95),rgba(20,15,56,.5) 30%,rgba(20,15,56,.26) 50%,rgba(20,15,56,.5) 70%,rgba(20,15,56,.95)),linear-gradient(180deg,rgba(20,15,56,.62),rgba(20,15,56,.16) 34%,rgba(20,15,56,.5) 62%,rgba(20,15,56,.95))}
+  .mani-glow{position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(closest-side at 50% 47%,rgba(232,207,154,.20),rgba(178,84,220,.08) 55%,transparent 72%);animation:maniGlow 7.5s ease-in-out infinite}
+  @keyframes maniGlow{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1.06)}}
+  @media(prefers-reduced-motion:reduce){.mani-bg img,.mani-glow{animation:none}}
   .manifesto .wrap{position:relative;z-index:1}
   .mani-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:end}
   .mani-statement{font-family:var(--serif);font-size:clamp(30px,3.7vw,50px);font-weight:500;line-height:1.18;margin-top:24px;letter-spacing:-.01em;text-shadow:0 2px 34px rgba(8,6,26,.6)}
@@ -693,6 +697,7 @@
 <!-- ===== MANIFESTO ===== -->
 <section class="manifesto sec-pad">
   <div class="mani-bg" aria-hidden="true"><img src="assets/manifesto-hands.jpg" alt="" loading="lazy" decoding="async" /></div>
+  <div class="mani-glow" aria-hidden="true"></div>
   <div class="starscape" aria-hidden="true"></div>
   <div class="wrap mani-grid">
     <div class="mani-left reveal">
