@@ -216,6 +216,11 @@
   .hc-stat .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right}
 
   .scroll-hint{display:none}
+  /* mobile hero: lift the copy up onto the figure so there's less empty space */
+  @media(max-width:760px){
+    .hero{align-items:flex-start}
+    .hero .hero-inner{padding-top:46vh;padding-bottom:40px}
+  }
   .hero h1{text-shadow:0 2px 40px rgba(15,10,40,.55)}
   .hero .lead{text-shadow:0 1px 20px rgba(15,10,40,.6)}
   .scroll-hint .ln{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:drop 2.4s var(--ease) infinite}
@@ -461,8 +466,13 @@
   .util-links a{color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .3s}
   .util-links a:hover{color:var(--gold)}
   .util-phone{color:var(--ivory)}
-  .util-search{background:none;border:0;color:var(--muted);cursor:pointer;display:flex;padding:0}
-  .util-search svg{width:16px;height:16px} .util-search:hover{color:var(--gold)}
+  .util-search{display:flex;align-items:center;height:30px;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,106,.3);border-radius:999px;overflow:hidden;transition:border-color .3s,background .3s}
+  .util-search:focus-within{border-color:var(--gold);background:rgba(255,255,255,.08)}
+  .util-search input{background:none;border:0;outline:0;color:var(--ivory);font-family:var(--sans);font-size:12px;letter-spacing:.02em;padding:0 4px 0 15px;width:150px}
+  .util-search input::placeholder{color:var(--muted)}
+  .util-search button{background:none;border:0;cursor:pointer;color:var(--muted);display:flex;align-items:center;padding:0 13px 0 7px;height:100%;transition:color .3s}
+  .util-search button:hover{color:var(--gold)}
+  .util-search button svg{width:15px;height:15px}
   .tabs{display:flex;gap:28px;list-style:none}
   .tab{position:relative}
   .tab>a{display:flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.09em;text-transform:uppercase;padding:24px 0;transition:color .35s}
@@ -548,7 +558,7 @@
         <a href="#">Login</a>
         <a href="#">Customer Care</a>
         <a class="util-phone" href="tel:+18009653049">+1.800.965.3049</a>
-        <button class="util-search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+        <form class="util-search" role="search" action="#" onsubmit="return false"><input type="search" placeholder="Search psychics…" aria-label="Search psychics" /><button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button></form>
       </div>
     </div>
   </div>
