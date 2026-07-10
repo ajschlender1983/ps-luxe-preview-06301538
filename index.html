@@ -265,9 +265,9 @@
   /* ---------- MANIFESTO ---------- */
   .manifesto{position:relative;border-top:1px solid var(--hair);overflow:hidden}
   .mani-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
-  .mani-bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:.44;animation:maniDrift 32s ease-in-out infinite alternate;will-change:transform}
+  .mani-bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:.6;animation:maniDrift 32s ease-in-out infinite alternate;will-change:transform}
   @keyframes maniDrift{from{transform:scale(1.02)}to{transform:scale(1.09)}}
-  .mani-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,56,.95),rgba(20,15,56,.5) 30%,rgba(20,15,56,.26) 50%,rgba(20,15,56,.5) 70%,rgba(20,15,56,.95)),linear-gradient(180deg,rgba(20,15,56,.62),rgba(20,15,56,.16) 34%,rgba(20,15,56,.5) 62%,rgba(20,15,56,.95))}
+  .mani-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,56,.9),rgba(20,15,56,.42) 30%,rgba(20,15,56,.16) 50%,rgba(20,15,56,.42) 70%,rgba(20,15,56,.9)),linear-gradient(180deg,rgba(20,15,56,.54),rgba(20,15,56,.1) 34%,rgba(20,15,56,.42) 62%,rgba(20,15,56,.9))}
   .mani-glow{position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(closest-side at 50% 47%,rgba(232,207,154,.20),rgba(178,84,220,.08) 55%,transparent 72%);animation:maniGlow 7.5s ease-in-out infinite}
   @keyframes maniGlow{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1.06)}}
   @media(prefers-reduced-motion:reduce){.mani-bg img,.mani-glow{animation:none}}
@@ -277,7 +277,7 @@
   .mani-statement em{font-style:italic;color:var(--gold)}
   .mani-right p{color:var(--muted);font-size:16px;line-height:1.8;text-shadow:0 1px 20px rgba(8,6,26,.72)}
   .mani-sign{margin-top:24px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-  @media(max-width:880px){.mani-grid{grid-template-columns:1fr;gap:34px}.mani-bg img{object-position:center 28%;opacity:.4}}
+  @media(max-width:880px){.mani-grid{grid-template-columns:1fr;gap:34px}.mani-bg img{object-position:center 28%;opacity:.54}}
 
   /* ---------- ADVISORS ---------- */
   .adv-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:54px;gap:30px;flex-wrap:wrap}
