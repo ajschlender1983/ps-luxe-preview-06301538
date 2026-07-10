@@ -392,9 +392,9 @@
   .step-img{position:relative;aspect-ratio:3/4;border-radius:10px;overflow:hidden;margin-bottom:18px;box-shadow:0 22px 54px rgba(0,0,0,.5)}
   .step-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--ease)}
   .step:hover .step-img img{transform:scale(1.05)}
-  .step-img::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(232,207,154,.22)}
-  .step-cap{text-align:center;font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.02em;color:var(--ivory);margin-bottom:14px}
-  .step-cap .cap-num{display:inline-block;color:var(--gold);font-size:14px;letter-spacing:.18em;margin-right:10px;vertical-align:middle}
+  .step-img::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;border-radius:10px;box-shadow:inset 0 -42px 46px rgba(12,8,28,.4)}
+  .step-name{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;white-space:nowrap;padding:6px 18px;border-radius:4px;background:rgba(12,8,28,.74);border:1px solid rgba(232,207,154,.5);box-shadow:0 4px 16px rgba(0,0,0,.5);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:var(--serif);font-size:15px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory)}
+  .step-name .n{color:var(--gold-bright);letter-spacing:.16em;margin-right:11px;padding-right:11px;border-right:1px solid rgba(232,207,154,.34)}
   .steps{text-align:center}
   .step h3,.step p{margin-left:auto;margin-right:auto}
   .step p{text-align:center}
@@ -832,16 +832,13 @@
     </div>
     <div class="steps">
       <div class="step reveal" data-d="1">
-        <div class="step-img"><img src="assets/steps/step-1.jpg" alt="The Seeker — a crowned woman turning her question to the cosmos" loading="lazy" decoding="async" /></div>
-        <div class="step-cap"><span class="cap-num">I</span>The Seeker</div>
+        <div class="step-img"><img src="assets/steps/step-1.jpg" alt="The Seeker — a crowned woman turning her question to the cosmos" loading="lazy" decoding="async" /><span class="step-name"><span class="n">I</span>The Seeker</span></div>
         <h3>Create your account</h3><p>A few private details and your account is ready. Your first reading is moments away.</p></div>
       <div class="step reveal" data-d="2">
-        <div class="step-img"><img src="assets/steps/step-2.jpg" alt="The Oracle — a crowned psychic summoned in golden light" loading="lazy" decoding="async" /></div>
-        <div class="step-cap"><span class="cap-num">II</span>The Oracle</div>
+        <div class="step-img"><img src="assets/steps/step-2.jpg" alt="The Oracle — a crowned psychic summoned in golden light" loading="lazy" decoding="async" /><span class="step-name"><span class="n">II</span>The Oracle</span></div>
         <h3>Choose your psychic</h3><p>Browse by gift and specialty. Read real reviews. Trust the connection that resonates.</p></div>
       <div class="step reveal" data-d="3">
-        <div class="step-img"><img src="assets/steps/step-3.jpg" alt="The Union — seeker and psychic linked by a current of light" loading="lazy" decoding="async" /></div>
-        <div class="step-cap"><span class="cap-num">III</span>The Union</div>
+        <div class="step-img"><img src="assets/steps/step-3.jpg" alt="The Connection — seeker and psychic linked by a current of light" loading="lazy" decoding="async" /><span class="step-name"><span class="n">III</span>The Connection</span></div>
         <h3>Receive your reading</h3><p>Connect by phone, chat, or video and leave with the confidence to move forward.</p></div>
     </div>
   </div>
