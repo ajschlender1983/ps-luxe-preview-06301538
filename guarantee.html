@@ -14,8 +14,13 @@
 <link rel="stylesheet" href="assets/site.css" />
 <style>
   /* the cosmic source-seal (scoped to this page) */
-  .seal-wrap{display:flex;justify-content:center;margin:0 auto 10px}
-  .guarantee-seal{position:relative;width:230px;height:230px;flex:none}
+  /* dim the background so its baked light-ring becomes soft atmosphere, not a competing off-center circle */
+  .page-hero .ph-media img{opacity:.3}
+  /* the halo of light is anchored to the seal so the two are always perfectly concentric */
+  .seal-wrap{position:relative;display:flex;justify-content:center;margin:0 auto 10px}
+  .seal-halo{position:absolute;left:50%;top:50%;width:min(76vw,600px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;z-index:0;mix-blend-mode:screen;background:radial-gradient(circle,rgba(232,207,154,.34),rgba(178,84,220,.13) 36%,rgba(62,107,234,.06) 54%,transparent 70%);animation:haloBreath 7.5s ease-in-out infinite}
+  @keyframes haloBreath{0%,100%{opacity:.72;transform:translate(-50%,-50%) scale(.95)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
+  .guarantee-seal{position:relative;z-index:1;width:230px;height:230px;flex:none}
   @keyframes churn{to{transform:rotate(360deg)}}
   @keyframes sealBreath{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.85;transform:scale(1.045)}}
   .seal-aura{position:absolute;inset:-13%;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(201,168,106,0) 46%,rgba(201,168,106,.26) 55%,rgba(138,87,224,.22) 65%,rgba(62,107,234,0) 80%);filter:blur(6px);animation:sealBreath 7.5s ease-in-out infinite}
@@ -38,6 +43,7 @@
     <div class="wrap ph-inner">
       <div class="breadcrumb reveal"><a href="index.html">Home</a><span>/</span>The Satisfaction Guarantee</div>
       <div class="seal-wrap reveal" data-d="1">
+        <div class="seal-halo" aria-hidden="true"></div>
         <div class="guarantee-seal" aria-hidden="true">
           <span class="seal-aura"></span>
           <span class="seal-rim"></span>
