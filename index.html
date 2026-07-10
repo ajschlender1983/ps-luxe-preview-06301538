@@ -380,14 +380,19 @@
   /* ---------- RITUAL / HOW ---------- */
   .ritual{background:rgba(28,20,70,.4);border-top:1px solid var(--hair)}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;margin-top:20px}
-  .step{position:relative;padding-top:40px}
-  .step .idx{font-family:var(--serif);font-size:15px;color:var(--gold);letter-spacing:.2em;position:absolute;top:0;left:0}
-  .step::before{content:"";position:absolute;top:7px;left:42px;right:0;height:1px;background:var(--faint)}
-  .step:last-child::before{display:none}
-  .step-img{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;margin-bottom:26px;border:1px solid var(--hair);box-shadow:0 22px 54px rgba(0,0,0,.42)}
+  .step{position:relative;padding-top:0}
+  .step .idx{display:none}
+  .step::before{display:none}
+  /* tarot-card treatment */
+  .step-img{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;margin-bottom:26px;border:1px solid rgba(201,168,106,.4);box-shadow:0 22px 54px rgba(0,0,0,.46),0 0 0 1px rgba(0,0,0,.3)}
   .step-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--ease)}
   .step:hover .step-img img{transform:scale(1.05)}
-  .step-img::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(20,15,56,.55),rgba(20,15,56,0) 42%)}
+  .step-img::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(to bottom,rgba(18,13,48,.5),rgba(18,13,48,0) 24%),linear-gradient(to top,rgba(18,13,48,.64),rgba(18,13,48,0) 40%)}
+  .tarot-frame{position:absolute;inset:9px;border:1px solid rgba(232,207,154,.5);border-radius:7px;pointer-events:none;z-index:2}
+  .tarot-frame::before{content:"";position:absolute;inset:3px;border:1px solid rgba(232,207,154,.24);border-radius:5px}
+  .tarot-num{position:absolute;top:17px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:16px;letter-spacing:.34em;color:var(--gold-bright);text-shadow:0 2px 10px rgba(0,0,0,.75);z-index:3}
+  .tarot-name{position:absolute;bottom:19px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:15px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ivory);text-shadow:0 2px 12px rgba(0,0,0,.85);z-index:3}
+  .tarot-name::before,.tarot-name::after{content:"✦";display:inline-block;margin:0 9px;font-size:8px;color:var(--gold);vertical-align:middle;text-transform:none}
   .step h3{font-family:var(--serif);font-size:27px;font-weight:500;margin-bottom:14px;letter-spacing:.01em}
   .step p{color:var(--muted);font-size:15px;max-width:280px}
 
@@ -810,13 +815,13 @@
     </div>
     <div class="steps">
       <div class="step reveal" data-d="1"><span class="idx">I</span>
-        <div class="step-img"><img src="assets/steps/step-1.jpg" alt="A seeker turning to the cosmos with her question" loading="lazy" decoding="async" /></div>
+        <div class="step-img"><img src="assets/steps/step-1.jpg" alt="A seeker turning to the cosmos with her question" loading="lazy" decoding="async" /><span class="tarot-frame"></span><span class="tarot-num">I</span><span class="tarot-name">The Seeker</span></div>
         <h3>Create your account</h3><p>A few private details and your account is ready. Your first reading is moments away.</p></div>
       <div class="step reveal" data-d="2"><span class="idx">II</span>
-        <div class="step-img"><img src="assets/steps/step-2.jpg" alt="A psychic guide summoned in golden light" loading="lazy" decoding="async" /></div>
+        <div class="step-img"><img src="assets/steps/step-2.jpg" alt="A psychic guide summoned in golden light" loading="lazy" decoding="async" /><span class="tarot-frame"></span><span class="tarot-num">II</span><span class="tarot-name">The Oracle</span></div>
         <h3>Choose your psychic</h3><p>Browse by gift and specialty. Read real reviews. Trust the connection that resonates.</p></div>
       <div class="step reveal" data-d="3"><span class="idx">III</span>
-        <div class="step-img"><img src="assets/steps/step-3.jpg" alt="Seeker and psychic linked by a current of light, communicating" loading="lazy" decoding="async" /></div>
+        <div class="step-img"><img src="assets/steps/step-3.jpg" alt="Seeker and psychic linked by a current of light, communicating" loading="lazy" decoding="async" /><span class="tarot-frame"></span><span class="tarot-num">III</span><span class="tarot-name">The Union</span></div>
         <h3>Receive your reading</h3><p>Connect by phone, chat, or video and leave with the confidence to move forward.</p></div>
     </div>
   </div>
