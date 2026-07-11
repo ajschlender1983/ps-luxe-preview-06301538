@@ -163,7 +163,8 @@
   .gcol .plus{color:var(--gold);font-size:22px;transition:transform .3s;margin-left:2px}
   .gcol[open] .plus{transform:rotate(45deg)}
   .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:6px 20px 20px;border-top:1px solid var(--faint)}
-  .gitem{display:block;text-decoration:none}
+  .galcol .gal{padding:0;border-top:0}
+  .gitem{display:block;text-decoration:none;cursor:pointer}
   .gitem img{width:100%;height:150px;object-fit:cover;border-radius:9px;border:1px solid var(--faint);transition:all .25s;background:rgba(0,0,0,.25);display:block}
   .gitem:hover img{border-color:var(--gold);transform:translateY(-2px)}
   .gitem .cap{font-size:11.5px;color:var(--muted);margin-top:6px;text-align:center;line-height:1.3}
@@ -232,11 +233,11 @@
   .doccard .dmeta b{font-family:var(--serif);font-size:20px;font-weight:600;display:block}
   .doccard .dmeta span{font-size:12.5px;color:var(--muted)}
   .doccard .dgo{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
-  .stripcol{margin-bottom:24px}
-  .stripcol .sh{display:flex;align-items:baseline;gap:12px;margin-bottom:9px;flex-wrap:wrap}
-  .stripcol .sh .st{font-family:var(--serif);font-size:21px;font-weight:600}
-  .stripcol .sh .sd{font-size:12.5px;color:var(--muted)}
-  .stripcol .sh .sc{margin-left:auto;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .stripcol,.galcol{margin-bottom:28px}
+  .stripcol .sh,.galcol .sh{display:flex;align-items:baseline;gap:12px;margin-bottom:13px;flex-wrap:wrap}
+  .stripcol .sh .st,.galcol .sh .st{font-family:var(--serif);font-size:21px;font-weight:600}
+  .stripcol .sh .sd,.galcol .sh .sd{font-size:12.5px;color:var(--muted)}
+  .stripcol .sh .sc,.galcol .sh .sc{margin-left:auto;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);padding:3px 10px;border-radius:999px;white-space:nowrap}
   .filmwrap{position:relative;background:#0b0818;border:1px solid var(--faint);border-radius:9px;padding:18px 0}
   .filmwrap::before,.filmwrap::after{content:"";position:absolute;left:14px;right:14px;height:8px;background:repeating-linear-gradient(90deg,#4a4568 0 9px,transparent 9px 22px);opacity:.5;z-index:2;pointer-events:none;border-radius:2px}
   .filmwrap::before{top:6px}.filmwrap::after{bottom:6px}
@@ -365,7 +366,7 @@
   <section id="story"><div class="sec-h"><span class="n">05</span><h2>The Story</h2></div><p class="sec-sub">A play-by-play of the redesign — from the first concept to this dashboard — built conversationally, one refinement at a time. Each beat is shown before and after: the original psychicsource.com beside the redesign. Click any pair to enlarge.</p><div class="story" id="storyBody"></div></section>
   <section id="prompts"><div class="sec-h"><span class="n">06</span><h2>The Prompt Library</h2></div><p class="sec-sub">The core prompts that shaped the work — including the image-generation prompts behind the tarot cards, cosmic heroes, quill, and reader scene. Tap to expand.</p><div class="prompts" id="promptsBody"></div></section>
   <section id="changelog"><div class="sec-h"><span class="n">07</span><h2>Changelog</h2></div><p class="sec-sub">Every change, newest first. Collapsed by default.</p><details class="clog"><summary>Full change history <span class="cnt" id="clogCount"></span><span class="plus">+</span></summary><div class="list" id="clogList"></div></details></section>
-  <section id="assets"><div class="sec-h"><span class="n">08</span><h2>The Asset Library</h2></div><p class="sec-sub">Every image made for this build, told as a set of film strips — one per collection. Scroll a strip, click any frame to preview it full size. The whole library plus the build document is a single download.</p><div id="assetsBody"></div></section>
+  <section id="assets"><div class="sec-h"><span class="n">08</span><h2>The Asset Library</h2></div><p class="sec-sub">Every image made for this build, grouped by collection. Click any image to preview it full size. The whole library plus the build document is a single download.</p><div id="assetsBody"></div></section>
 </div>
 
 <div class="lb" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><div class="lb-inner" id="lbInner"></div></div>
@@ -502,20 +503,20 @@
   var dm=E('div','dmeta');dm.appendChild(H('b',null,'The build document'));dm.appendChild(T('span',null,'BUILD.md — the concept, the process, and the full asset manifest. Click to read it here.'));
   dc.appendChild(dm);dc.appendChild(T('span','dgo','Preview →'));
   dc.onclick=openDoc;ab.appendChild(dc);
-  // film strips, one per collection
+  // grid gallery, one per collection
   ASSET_COLLECTIONS.forEach(function(col){
     if(col.link)return;
-    var sc=E('div','stripcol');
+    var sc=E('div','galcol');
     var sh=E('div','sh');sh.appendChild(T('span','st',col.t));sh.appendChild(T('span','sd',col.d));
-    var n=col.items.length;sh.appendChild(T('span','sc',n+(n>1?' frames':' frame')));sc.appendChild(sh);
-    var fw=E('div','filmwrap');var fs=E('div','filmstrip');
+    var n=col.items.length;sh.appendChild(T('span','sc',n+(n>1?' images':' image')));sc.appendChild(sh);
+    var gal=E('div','gal');
     col.items.forEach(function(x){
-      var fr=E('div','frame');var img=E('img');img.src=x.href;img.alt=x.cap||'';img.loading='lazy';
-      fr.appendChild(img);if(x.cap)fr.appendChild(T('div','fcap',x.cap));
-      fr.onclick=(function(xx){return function(){openImage(xx.href,xx.cap?(col.t+' — '+xx.cap):col.t);};})(x);
-      fs.appendChild(fr);
+      var it=E('div','gitem');var img=E('img');img.src=x.href;img.alt=x.cap||'';img.loading='lazy';
+      it.appendChild(img);if(x.cap)it.appendChild(T('div','cap',x.cap));
+      it.onclick=(function(xx){return function(){openImage(xx.href,xx.cap?(col.t+' — '+xx.cap):col.t);};})(x);
+      gal.appendChild(it);
     });
-    fw.appendChild(fs);sc.appendChild(fw);ab.appendChild(sc);
+    sc.appendChild(gal);ab.appendChild(sc);
   });
   document.getElementById('clogCount').textContent='('+CHANGELOG.length+' changes)';
   var clist=document.getElementById('clogList');
