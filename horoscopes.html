@@ -33,9 +33,9 @@
   @media(prefers-reduced-motion:reduce){.hstar,.horo-core,.horo-quill{animation:none}.hstar{opacity:.4}}
   /* clean zodiac emblems — crisp gold vector line-art */
   .zcard .zn,.zcard .zd{display:block}
-  .zcard .zico{display:flex;align-items:center;justify-content:center;width:60px;height:60px;margin:0 auto 14px}
-  .zcard .zico svg{width:100%;height:100%;color:var(--gold);stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s var(--ease),color .45s}
-  .zcard:hover .zico svg{transform:scale(1.08);color:var(--gold-bright)}
+  .zcard .zico{display:flex;align-items:center;justify-content:center;width:80px;height:80px;margin:0 auto 12px}
+  .zcard .zico img{width:100%;height:100%;object-fit:contain;transition:transform .45s var(--ease)}
+  .zcard:hover .zico img{transform:scale(1.09)}
   /* free daily horoscope — framed as a gift, above the fold */
   .horo-gift{display:inline-flex;align-items:center;gap:16px;margin-top:30px;padding:13px 15px 13px 20px;border:1px solid var(--hair);border-radius:999px;background:linear-gradient(120deg,rgba(232,207,154,.15),rgba(178,84,220,.07));backdrop-filter:blur(6px);text-align:left}
   .horo-gift .gift-ico{color:var(--gold-bright);flex-shrink:0;display:flex}
@@ -76,18 +76,18 @@
     <div class="wrap">
       <div class="sec-head center reveal"><span class="eyebrow">The Twelve</span><h2>Find your sign</h2><p>Choose the constellation you were born beneath. Each one carries its own weather, its own gifts, and its own way of moving through the day.</p></div>
       <div class="zgrid">
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 23V13M16 13c0-6-5.6-6.4-6.4-1.4c-.35 2.2 2 2.7 3.1 1.1M16 13c0-6 5.6-6.4 6.4-1.4c.35 2.2-2 2.7-3.1 1.1"/></svg></span><span class="zn">Aries</span><span class="zd">Mar 21 to Apr 19</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="21" r="6"/><path d="M8 8c1.2 5.4 4.6 7.6 8 7.6S22.8 13.4 24 8"/></svg></span><span class="zn">Taurus</span><span class="zd">Apr 20 to May 20</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M11 7c2.6 2.1 7.4 2.1 10 0M11 25c2.6-2.1 7.4-2.1 10 0M13.5 8.2v15.6M18.5 8.2v15.6"/></svg></span><span class="zn">Gemini</span><span class="zd">May 21 to Jun 20</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8.5 14.5c0-4 10.5-5 15-1.8M23.5 17.5c0 4-10.5 5-15 1.8"/><circle cx="22.2" cy="12.5" r="2.6"/><circle cx="9.8" cy="19.5" r="2.6"/></svg></span><span class="zn">Cancer</span><span class="zd">Jun 21 to Jul 22</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="11.5" cy="20.5" r="3.6"/><path d="M12.6 17.1C12.2 10 20 8.6 22.5 13.6c1.9 3.9-1.6 6.8-3.6 4.2"/></svg></span><span class="zn">Leo</span><span class="zd">Jul 23 to Aug 22</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 22V11.5M8 12.5c0-3.2 4-3.2 4 0V22M12 12.5c0-3.2 4-3.2 4 0V22M16 12.5c0-3.6 5-3.4 5 1.2c0 4.2-3.8 6.2-6.2 3.4"/></svg></span><span class="zn">Virgo</span><span class="zd">Aug 23 to Sep 22</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 23h20M6 16.5h5.2a5 5 0 0 1 9.6 0H26"/></svg></span><span class="zn">Libra</span><span class="zd">Sep 23 to Oct 22</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 22V11.5M6 12.5c0-3.2 4-3.2 4 0V22M10 12.5c0-3.2 4-3.2 4 0V22M14 12.5c0-3.2 4-3.2 4 0v8.5l5.5 4.2M23.5 24.7l-3.6.5M23.5 24.7l-.5-3.7"/></svg></span><span class="zn">Scorpio</span><span class="zd">Oct 23 to Nov 21</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 24L23 9M23 9h-6.5M23 9v6.5M12 15l5 5"/></svg></span><span class="zn">Sagittarius</span><span class="zd">Nov 22 to Dec 21</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 11c.8 8.5 6.4 9.6 7.5 3.4c.7-3.8-3.2-4.6-3.8-1M14.5 15c1.2 6 6.8 7.6 8.6 2.6"/><circle cx="20.6" cy="18.6" r="2.8"/></svg></span><span class="zn">Capricorn</span><span class="zd">Dec 22 to Jan 19</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 13.5l3-3l3 3l3-3l3 3l3-3M7 19.5l3-3l3 3l3-3l3 3l3-3"/></svg></span><span class="zn">Aquarius</span><span class="zd">Jan 20 to Feb 18</span></a>
-        <a class="zcard reveal" href="advisors.html"><span class="zico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M11 7c-4.2 4.2-4.2 13.6 0 18M21 7c4.2 4.2 4.2 13.6 0 18M9 16h14"/></svg></span><span class="zn">Pisces</span><span class="zd">Feb 19 to Mar 20</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/aries.png" alt="Aries" loading="lazy" /></span><span class="zn">Aries</span><span class="zd">Mar 21 to Apr 19</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/taurus.png" alt="Taurus" loading="lazy" /></span><span class="zn">Taurus</span><span class="zd">Apr 20 to May 20</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/gemini.png" alt="Gemini" loading="lazy" /></span><span class="zn">Gemini</span><span class="zd">May 21 to Jun 20</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/cancer.png" alt="Cancer" loading="lazy" /></span><span class="zn">Cancer</span><span class="zd">Jun 21 to Jul 22</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/leo.png" alt="Leo" loading="lazy" /></span><span class="zn">Leo</span><span class="zd">Jul 23 to Aug 22</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/virgo.png" alt="Virgo" loading="lazy" /></span><span class="zn">Virgo</span><span class="zd">Aug 23 to Sep 22</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/libra.png" alt="Libra" loading="lazy" /></span><span class="zn">Libra</span><span class="zd">Sep 23 to Oct 22</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/scorpio.png" alt="Scorpio" loading="lazy" /></span><span class="zn">Scorpio</span><span class="zd">Oct 23 to Nov 21</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/sagittarius.png" alt="Sagittarius" loading="lazy" /></span><span class="zn">Sagittarius</span><span class="zd">Nov 22 to Dec 21</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/capricorn.png" alt="Capricorn" loading="lazy" /></span><span class="zn">Capricorn</span><span class="zd">Dec 22 to Jan 19</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/aquarius.png" alt="Aquarius" loading="lazy" /></span><span class="zn">Aquarius</span><span class="zd">Jan 20 to Feb 18</span></a>
+        <a class="zcard reveal" href="advisors.html"><span class="zico"><img src="assets/zodiac/pisces.png" alt="Pisces" loading="lazy" /></span><span class="zn">Pisces</span><span class="zd">Feb 19 to Mar 20</span></a>
       </div>
     </div>
   </section>
