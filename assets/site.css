@@ -240,6 +240,9 @@ section{position:relative}
 .ctaband h2 em{font-style:italic;color:var(--gold)}
 .ctaband p{color:var(--muted);max-width:440px;margin:0 auto 38px;font-size:16px}
 .ctaband .fine{margin-top:24px;font-size:11px;letter-spacing:.06em;color:rgba(245,240,230,.4)}
+/* reassurance microcopy directly under a primary CTA (price + risk reversal) */
+.cta-micro{margin:15px auto 0;font-size:12.5px;letter-spacing:.03em;color:var(--gold);display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.ph-cta + .cta-micro{margin-top:18px}
 
 /* split feature (image + copy) */
 .split-feat{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}

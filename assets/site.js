@@ -42,16 +42,16 @@
           '<div class="drop"><a href="tarot.html">Tarot Readings</a><a href="horoscopes.html">Astrology Readings</a><a href="love.html">Love Readings</a><a href="mediumship.html">Mediumship</a><a href="readings.html">All Readings</a><a href="how-it-works.html">How It Works</a></div></li>'+
         '<li class="tab"><a href="horoscopes.html">Horoscopes <span class="caret">▾</span></a>'+
           '<div class="drop drop-zodiac">'+zodDrop+'</div></li>'+
-        '<li class="tab"><a href="manifesto.html">The House <span class="caret">▾</span></a>'+
+        '<li class="tab"><a href="manifesto.html">About <span class="caret">▾</span></a>'+
           '<div class="drop"><a href="manifesto.html">Our Manifesto</a><a href="guarantee.html">Satisfaction Guarantee</a><a href="ethics.html">Code of Ethics</a><a href="reviews.html">Reviews</a><a href="become-a-psychic.html">Become a Psychic</a></div></li>'+
       '</ul></nav>'+
-      '<a class="nav-cta" href="advisors.html">Get a Reading</a>'+
+      '<a class="nav-cta" href="advisors.html">Get Your Reading</a>'+
       '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>'+
     '</div>'+
   '</header>'+
   '<div class="mobile-menu" id="mobileMenu" aria-hidden="true"><nav>'+
-    '<a href="advisors.html">Psychics</a><a href="readings.html">Readings</a><a href="horoscopes.html">Horoscopes</a><a href="manifesto.html">The House</a>'+
-  '</nav><a class="btn-primary" href="advisors.html" style="margin-top:8px">Get a Reading</a>'+
+    '<a href="advisors.html">Psychics</a><a href="readings.html">Readings</a><a href="horoscopes.html">Horoscopes</a><a href="manifesto.html">About</a>'+
+  '</nav><a class="btn-primary" href="advisors.html" style="margin-top:8px">Get Your Reading</a>'+
   '<div class="mm-foot">Login · Customer Care · +1.800.965.3049</div></div>';
 
   var FOOTER =
@@ -61,7 +61,7 @@
       '<span class="logo-word"><span class="logo-name" style="font-size:18px">Psychic Source</span><span class="logo-tag">Life’s possibilities, revealed</span></span></a>'+
       '<p>America’s oldest and most respected psychic service, guiding seekers to clarity since 1989.</p></div>'+
     '<div class="foot-col"><h4>Discover</h4><ul><li><a href="advisors.html">All Psychics</a></li><li><a href="love.html">Love &amp; Relationships</a></li><li><a href="tarot.html">Tarot Readings</a></li><li><a href="mediumship.html">Mediumship</a></li><li><a href="horoscopes.html">Horoscopes</a></li></ul></div>'+
-    '<div class="foot-col"><h4>The House</h4><ul><li><a href="manifesto.html">Our Manifesto</a></li><li><a href="ethics.html">Code of Ethics</a></li><li><a href="guarantee.html">Satisfaction Guarantee</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="reviews.html">Reviews</a></li></ul></div>'+
+    '<div class="foot-col"><h4>About</h4><ul><li><a href="manifesto.html">Our Manifesto</a></li><li><a href="ethics.html">Code of Ethics</a></li><li><a href="guarantee.html">Satisfaction Guarantee</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="reviews.html">Reviews</a></li></ul></div>'+
     '<div class="foot-col"><h4>Care</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="rewards.html">Membership Rewards</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="become-a-psychic.html">Become a Psychic</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>'+
   '</div><div class="foot-bottom"><p>© 2026 Psychic Source. All rights reserved. For entertainment only. 18+</p>'+
     '<div class="foot-social">'+
