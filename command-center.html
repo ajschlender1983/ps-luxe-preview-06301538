@@ -132,9 +132,46 @@
   .big-dl h3{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:8px}
   .big-dl p{font-size:14px;color:var(--muted)}
   .btn{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));padding:14px 26px;border-radius:3px;text-decoration:none;font-weight:500;margin-top:16px}
+  .btn-ghost{background:transparent;border:1px solid var(--hair);color:var(--ivory)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
+  /* ---- portal launcher ---- */
+  .portal{padding:8px 0 6px}
+  .portal-hero{position:relative;overflow:hidden;border:1px solid var(--hair);border-radius:18px;padding:40px 42px 38px;background:linear-gradient(145deg,rgba(232,207,154,.13),rgba(178,84,220,.09) 58%,rgba(20,15,56,.15));margin-bottom:18px}
+  .portal-hero::after{content:"";position:absolute;right:-80px;top:-90px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,207,154,.18),transparent 62%);pointer-events:none}
+  .portal-hero .phe{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-bright)}
+  .portal-hero h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,48px);margin:8px 0 8px;line-height:1.02}
+  .portal-hero p{color:var(--muted);font-size:15px;max-width:580px;margin-bottom:8px;position:relative}
+  .portal-hero .btns{display:flex;gap:13px;flex-wrap:wrap;position:relative}
+  .portal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .pnav{position:relative;display:flex;flex-direction:column;border:1px solid var(--faint);border-radius:14px;padding:20px 20px 17px;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01));text-decoration:none;transition:all .25s;min-height:148px}
+  .pnav:hover{border-color:var(--gold);transform:translateY(-3px);background:linear-gradient(165deg,rgba(232,207,154,.1),rgba(245,240,230,.02))}
+  .pnav .n{font-family:var(--serif);font-size:15px;color:var(--gold)}
+  .pnav .t{font-family:var(--serif);font-size:21px;font-weight:600;margin:5px 0 6px;line-height:1.12}
+  .pnav .d{font-size:12.5px;color:var(--muted);line-height:1.5;flex:1}
+  .pnav .go{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:14px}
+  .pnav:hover .go{color:var(--gold-bright)}
+  /* ---- asset galleries ---- */
+  .gcol{border:1px solid var(--faint);border-radius:13px;margin-bottom:13px;overflow:hidden;background:linear-gradient(165deg,rgba(245,240,230,.04),rgba(245,240,230,.008))}
+  .gcol>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:16px;padding:15px 20px;transition:background .2s}
+  .gcol>summary:hover{background:rgba(232,207,154,.04)}
+  .gcol>summary::-webkit-details-marker{display:none}
+  .gcol .thumb0{width:52px;height:52px;border-radius:8px;object-fit:cover;border:1px solid var(--hair);flex-shrink:0;background:rgba(0,0,0,.25)}
+  .gcol .meta{flex:1;min-width:0}
+  .gcol .meta .t{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.1}
+  .gcol .meta .d{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .gcol .cnt{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);padding:4px 11px;border-radius:999px;white-space:nowrap}
+  .gcol .plus{color:var(--gold);font-size:22px;transition:transform .3s;margin-left:2px}
+  .gcol[open] .plus{transform:rotate(45deg)}
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:6px 20px 20px;border-top:1px solid var(--faint)}
+  .gitem{display:block;text-decoration:none}
+  .gitem img{width:100%;height:150px;object-fit:cover;border-radius:9px;border:1px solid var(--faint);transition:all .25s;background:rgba(0,0,0,.25);display:block}
+  .gitem:hover img{border-color:var(--gold);transform:translateY(-2px)}
+  .gitem .cap{font-size:11.5px;color:var(--muted);margin-top:6px;text-align:center;line-height:1.3}
   .loading{color:var(--muted);font-size:14px;padding:30px;text-align:center;border:1px dashed var(--hair);border-radius:12px}
   footer.end{padding:50px 0 80px;text-align:center;color:var(--muted);font-size:12.5px;border-top:1px solid var(--faint)}
-  @media(max-width:820px){.scores{grid-template-columns:1fr 1fr}.cols,.pgrid,.exp,.twowrap{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.find-row{grid-template-columns:1fr}}
+  @media(max-width:820px){.scores{grid-template-columns:1fr 1fr}.cols,.pgrid,.exp,.twowrap{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.find-row{grid-template-columns:1fr}
+    .portal-grid{grid-template-columns:1fr 1fr}.portal-hero{padding:30px 24px 28px}.gal{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.portal-grid{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.gcol>summary{gap:12px}}
 </style>
 </head>
 <body>
@@ -150,8 +187,30 @@
   </div>
 </div></header>
 
+<div class="wrap"><section class="portal">
+  <div class="portal-hero">
+    <span class="phe">Start here · walk the redesign</span>
+    <h2>Experience it first</h2>
+    <p>Step into the full Celestial Atelier build, or set it side by side against the live psychicsource.com. Everything below is the review board's read on what you'll see.</p>
+    <div class="btns">
+      <a class="btn" href="index.html">Enter the redesign →</a>
+      <a class="btn btn-ghost" href="compare.html?p=home">Side-by-side compare</a>
+    </div>
+  </div>
+  <div class="portal-grid">
+    <a class="pnav" href="#overview"><span class="n">01</span><span class="t">Overview</span><span class="d">The verdict at a glance, scored by the board.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#experts"><span class="n">02</span><span class="t">Expert Panel</span><span class="d">Luxury brand &amp; AI-native conversion, each with cited sources.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#personas"><span class="n">03</span><span class="t">10 Personas</span><span class="d">Market-researched customers react in character.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#cto"><span class="n">04</span><span class="t">CTO Verdict</span><span class="d">Should this replace the live site? Risk &amp; cost.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#story"><span class="n">05</span><span class="t">The Story</span><span class="d">How the redesign was built, step by step.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#prompts"><span class="n">06</span><span class="t">Prompts</span><span class="d">The core prompts, including image generation.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#changelog"><span class="n">07</span><span class="t">Changelog</span><span class="d">Every change, newest first.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#assets"><span class="n">08</span><span class="t">The Assets</span><span class="d">Every generated image — browse each collection.</span><span class="go">View →</span></a>
+  </div>
+</section></div>
+
 <nav class="sticky"><div class="in">
-  <a href="#overview">Overview</a><a href="#experts">Expert Panel</a><a href="#personas">Personas</a><a href="#cto">CTO Verdict</a><a href="#story">The Story</a><a href="#prompts">Prompts</a><a href="#changelog">Changelog</a><a href="#assets">Assets</a><a href="#experience">Experience</a>
+  <a href="#overview">Overview</a><a href="#experts">Expert Panel</a><a href="#personas">Personas</a><a href="#cto">CTO Verdict</a><a href="#story">The Story</a><a href="#prompts">Prompts</a><a href="#changelog">Changelog</a><a href="#assets">Assets</a>
 </div></nav>
 
 <div class="wrap">
@@ -162,11 +221,7 @@
   <section id="story"><div class="sec-h"><span class="n">05</span><h2>The Story</h2></div><p class="sec-sub">A play-by-play of the redesign — from the first concept to this dashboard — built conversationally, one refinement at a time.</p><div class="story" id="storyBody"></div></section>
   <section id="prompts"><div class="sec-h"><span class="n">06</span><h2>The Prompt Library</h2></div><p class="sec-sub">The core prompts that shaped the work — including the image-generation prompts behind the tarot cards, cosmic heroes, quill, and reader scene. Tap to expand.</p><div class="prompts" id="promptsBody"></div></section>
   <section id="changelog"><div class="sec-h"><span class="n">07</span><h2>Changelog</h2></div><p class="sec-sub">Every change, newest first. Collapsed by default.</p><details class="clog"><summary>Full change history <span class="cnt" id="clogCount"></span><span class="plus">+</span></summary><div class="list" id="clogList"></div></details></section>
-  <section id="assets"><div class="sec-h"><span class="n">08</span><h2>Download the Assets</h2></div><p class="sec-sub">The generated imagery is hosted live — open any to view or save. The full source (all HTML/CSS/JS + assets) is in the repository.</p><div class="cards" id="assetsBody"></div></section>
-  <section id="experience"><div class="sec-h"><span class="n">09</span><h2>Experience It</h2></div><p class="sec-sub">Walk the redesign, or compare it side by side against the original site.</p><div class="exp">
-    <a class="big-dl" href="index.html"><h3>Enter the redesign →</h3><p>The full Celestial Atelier build — home, psychics, readings, tarot, horoscopes, guarantee, and more.</p><span class="btn">Open the site</span></a>
-    <a class="big-dl" href="compare.html?p=home"><h3>Side-by-side compare →</h3><p>The redesign next to the current psychicsource.com, with synced scrolling and a page switcher.</p><span class="btn">Open A/B compare</span></a>
-  </div></section>
+  <section id="assets"><div class="sec-h"><span class="n">08</span><h2>The Assets</h2></div><p class="sec-sub">Every generated image, grouped by collection — open a collection to browse all of its frames, then click any image to view or save it full size. The full source (all HTML/CSS/JS + assets) is in the repository.</p><div id="assetsBody"></div></section>
 </div>
 
 <footer class="end"><div class="wrap">Psychic Source — Celestial Atelier redesign · Internal review dashboard · Prototype, not affiliated with the live site's production systems.</div></footer>
@@ -210,16 +265,34 @@
     {k:'The reader scene',t:'A three-quarter overhead shot of a big rustic farm table, candlelit, deep violet-indigo cosmic setting: a traditional tarot cross spread laid out FACE UP, every card a unique ornate Art Nouveau design, cards oriented toward the reader (upside-down to the camera), a neat squared deck with a star-backed top card on the right, a pair of hands at the near edge.'},
     {k:'The guarantee seal',t:'A cosmic "source" medallion: a deep orb with a soft aura and a crisp complete gold rim, engraved ring text "100% Satisfaction Guaranteed · Risk-Free Readings · Since 1989", with a concentric breathing halo of gold light anchored to the seal so stamp and glow stay centered.'}
   ];
-  var ASSETS=[
-    {t:'Tarot deck',d:'The Seeker, The Oracle, The Insight — the three-card arc.',href:'assets/steps/step-1.jpg'},
-    {t:'Tarot spreads',d:'Six bespoke spread cards (Three-Card, Celtic Cross, Relationship, Year Ahead, Yes/No, Decision).',href:'assets/tarot/three-card.jpg'},
-    {t:'Card back',d:'The Psychic Source star card-back design.',href:'assets/tarot/card-back.jpg'},
-    {t:'The reader scene',d:'Candlelit tarot reader with a spread facing her.',href:'assets/tarot/reader-scene.jpg'},
-    {t:'Cosmic heroes',d:'Fifteen unique per-page hero backdrops.',href:'assets/heroes/tarot.jpg'},
-    {t:'The magical quill',d:'Glowing gold quill from the horoscopes hero.',href:'assets/heroes/horoscopes-quill.jpg'},
-    {t:'Cinematic bands',d:'Twelve ethereal interstitial images.',href:'assets/cine/love.jpg'},
-    {t:'Angel wings',d:'The winged figure from the manifesto.',href:'assets/angel-wings.jpg'},
-    {t:'Full source',d:'All HTML/CSS/JS + every asset, in the repository.',href:'https://github.com/ajschlender1983/ps-luxe-preview-06301538'}
+  function im(href,cap){return {href:href,cap:cap};}
+  var ASSET_COLLECTIONS=[
+    {t:'Tarot deck',d:'The three-card arc',items:[
+      im('assets/steps/step-1.jpg','The Seeker'),im('assets/steps/step-2.jpg','The Oracle'),im('assets/steps/step-3.jpg','The Insight')]},
+    {t:'Tarot spreads',d:'Six bespoke spread cards',items:[
+      im('assets/tarot/three-card.jpg','Three-Card'),im('assets/tarot/celtic-cross.jpg','Celtic Cross'),im('assets/tarot/relationship.jpg','Relationship'),
+      im('assets/tarot/year-ahead.jpg','Year Ahead'),im('assets/tarot/yes-no.jpg','Yes / No'),im('assets/tarot/decision.jpg','Decision')]},
+    {t:'The card back',d:'The Psychic Source star',items:[im('assets/tarot/card-back.jpg','Card back')]},
+    {t:'The reader scene',d:'Candlelit flat-lay + the five variations explored',items:[
+      im('assets/tarot/reader-scene.jpg','Final scene'),im('assets/tarot/options/across.jpg','Across'),im('assets/tarot/options/hands.jpg','Hands only'),
+      im('assets/tarot/options/lean-in.jpg','Lean in'),im('assets/tarot/options/over-shoulder.jpg','Over shoulder'),im('assets/tarot/options/profile.jpg','Profile')]},
+    {t:'Cosmic heroes',d:'A unique per-page hero backdrop — no two alike',items:[
+      im('assets/heroes/love.jpg','Love'),im('assets/heroes/readings.jpg','Readings'),im('assets/heroes/tarot.jpg','Tarot'),im('assets/heroes/mediumship.jpg','Mediumship'),
+      im('assets/heroes/how-it-works.jpg','How It Works'),im('assets/heroes/manifesto.jpg','Manifesto'),im('assets/heroes/guarantee-cosmic.jpg','Guarantee'),im('assets/heroes/horoscopes-sky.jpg','Horoscopes sky'),
+      im('assets/heroes/reviews.jpg','Reviews'),im('assets/heroes/rewards.jpg','Rewards'),im('assets/heroes/ethics.jpg','Ethics'),im('assets/heroes/faqs.jpg','FAQs'),
+      im('assets/heroes/contact.jpg','Contact'),im('assets/heroes/become-a-psychic.jpg','Become a Psychic'),im('assets/heroes/privacy.jpg','Privacy')]},
+    {t:'Cinematic bands',d:'Twelve ethereal mid-page interstitials',items:[
+      im('assets/cine/love.jpg','Love'),im('assets/cine/readings.jpg','Readings'),im('assets/cine/how-it-works.jpg','How It Works'),im('assets/cine/mediumship.jpg','Mediumship'),
+      im('assets/cine/horoscopes.jpg','Horoscopes'),im('assets/cine/guarantee.jpg','Guarantee'),im('assets/cine/reviews.jpg','Reviews'),im('assets/cine/rewards.jpg','Rewards'),
+      im('assets/cine/ethics.jpg','Ethics'),im('assets/cine/faqs.jpg','FAQs'),im('assets/cine/contact.jpg','Contact'),im('assets/cine/become-a-psychic.jpg','Become a Psychic')]},
+    {t:'The magical quill',d:'The glowing gold quill behind the horoscopes headline',items:[
+      im('assets/heroes/horoscopes-quill.jpg','Quill · hero layer'),im('assets/rise/quill.jpg','Quill · source study')]},
+    {t:'Angels & wings',d:'The winged figures and RISE wing textures',items:[
+      im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','Wing texture')]},
+    {t:'Home atmosphere',d:'The cosmos, light and hands behind the home page',items:[
+      im('assets/hero-cosmos.jpg','Hero cosmos'),im('assets/hero-cosmos-mobile.jpg','Hero cosmos · mobile'),im('assets/hero-light.jpg','Hero light'),
+      im('assets/offer-light.jpg','Offer light'),im('assets/manifesto-hands.jpg','Two hands'),im('assets/manifesto-hands-alt.jpg','Two hands · alt')]},
+    {t:'Full source',d:'All HTML/CSS/JS + every asset, in the repository.',link:'https://github.com/ajschlender1983/ps-luxe-preview-06301538'}
   ];
   var CHANGELOG=[{"date": "2026-07-10", "msg": "CRO copy pass: standardize primary CTA to 'Get Your Reading' sitewide + '$1/min · guaranteed' microcopy; benefit-led home H1 with tagline eyebrow; nav/footer 'The House'->'About'; House prose kept to Manifesto/Ethics; seekers->you near CTAs/FAQ; fix em dashes"}, {"date": "2026-07-10", "msg": "Add CRO copy/CTA review tool: interactive before/after (original vs redesign) with instance counts, specialist recs, real-time picks + export"}, {"date": "2026-07-10", "msg": "Guarantee hero: replace ringed background with a plain ringless cosmic nebula so the seal's concentric halo is the only ring"}, {"date": "2026-07-10", "msg": "Guarantee hero: anchor the halo of light to the seal so stamp and glow are concentric; dim the background ring"}, {"date": "2026-07-10", "msg": "Horoscopes hero: quill moved behind the type as a glowing backdrop; 10x the star field (1500) and brighter"}, {"date": "2026-07-10", "msg": "Horoscopes hero: constellation-littered sky (central star kept) + dense twinkling four-point starfield + featured cosmic quill"}, {"date": "2026-07-10", "msg": "Tarot hero: mask cards out of the header band; fix animation hitch (drop full-screen blend animation + per-card drop-shadow filter; foreground card drifts without re-blurring)"}, {"date": "2026-07-10", "msg": "Tarot hero: animated cards spinning in cosmic space + depth-of-field field with overhead lighting and star card-back"}, {"date": "2026-07-10", "msg": "How It Works cine line: 'Insight begins the moment you dare to ask'"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: use variation 3 (reader leaning in) with cards laid facing the psychic rather than the camera"}, {"date": "2026-07-10", "msg": "Add reader-variations review gallery (5 options with named cards, varied psychic presence)"}, {"date": "2026-07-10", "msg": "Fix hand/arm handedness on The Seeker and The Insight cards (correct left hand on left arm); cache-bust step-1/step-3 references"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: three-quarter overhead, face-up unique cards in a cross, neat deck stack on the right with a Psychic-Source-star card back"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: top-down farm-table flat-lay, hands only, traditional cross spread with realistic-sized cards (replaces portrait reader)"}, {"date": "2026-07-10", "msg": "Cinematic consistency: add parallax + animated .cine interstitial page-breaks to all interior pages (12 bespoke bands), breathing glow on wingbands, hero parallax; swap Tarot 'Living Tradition' to a card reader laying our-design spread in the home-header style"}, {"date": "2026-07-10", "msg": "De-duplicate imagery: unique generated cosmic hero per interior page (15) + reassign secondary images so none repeat; rename card III The Connection -> The Insight and regenerate step-3"}, {"date": "2026-07-10", "msg": "Tarot: generate six bespoke spread cards (Three-Card, Celtic Cross, Relationship, Year Ahead, Yes/No, Decision) in the crowned Art Nouveau x ink style; show as illustrated cards"}, {"date": "2026-07-10", "msg": "Apply Rising Current as The Connection; build out full interior site (15 pages) on a shared shell with RISE angel/wing textures; interlink nav + footer"}, {"date": "2026-07-10", "msg": "Leena: use the actual Oracle card under a new filename to defeat browser cache"}, {"date": "2026-07-10", "msg": "Fix The Seeker hand (correct pinch gesture); add Connection variations gallery"}, {"date": "2026-07-10", "msg": "psychics: use the Oracle tarot card as Leena's avatar (replace the too-grim hooded figure)"}, {"date": "2026-07-10", "msg": "fix seeker hand/arm (cards I & III, blue arm kept blue); Leena becomes an anonymous hooded tarot-style avatar instead of the flower"}, {"date": "2026-07-10", "msg": "psychics: restyle Leena's image (her source avatar is a pressed flower, not a portrait) into a dark studio still-life matching the other cards; removes the old white-halo artifact"}, {"date": "2026-07-10", "msg": "how it works: fix seeker's hand (cards I & III) and replace the heart in The Connection with a flowing ribbon of light"}, {"date": "2026-07-10", "msg": "manifesto: brighten the two-hands background (opacity .44->.6, lighter scrim), keep text legible"}, {"date": "2026-07-10", "msg": "how it works: crop white margins to full-bleed, regenerate Union to match set + rename 'The Connection', move name+number onto card as bottom name plate"}, {"date": "2026-07-10", "msg": "how it works: swap to Regal & Crowned tarot set (Art Nouveau x ink) — self-framed illustrated cards with caption below, keep thread + flip"}, {"date": "2026-07-10", "msg": "add character workshop: 5 variations of the two characters in merged Art Nouveau x ink/engraving style"}, {"date": "2026-07-10", "msg": "add style workshop: 3 How-It-Works cards x 5 style directions (painterly -> ink & engraving) for review"}, {"date": "2026-07-10", "msg": "tarot cards: add corner filigree ornaments, 3D flip/lift on scroll-in, and a shared gold thread with glowing nodes connecting the three cards"}, {"date": "2026-07-10", "msg": "how it works: style step panels as tarot cards — gold double-frame, top Roman numeral, bottom name plate (The Seeker / The Oracle / The Union)"}, {"date": "2026-07-10", "msg": "how it works: three story images (seeker asks -> psychic summoned -> two linked communicating), same characters as header; restore 'As seen on' label weight"}, {"date": "2026-07-10", "msg": "trust: enlarge press logos again + de-emphasize 'As seen on' label so logos lead hierarchy; footer: All Advisors->All Psychics, Become an Advisor->Become a Psychic"}, {"date": "2026-07-10", "msg": "hero: substantially enlarge stat numbers (30px -> clamp 40-56px) and labels; more spacing"}, {"date": "2026-07-10", "msg": "seal: crisper, complete medallion — add two defined gold rims framing the band, engraving now wraps the full ring, softer aura (less fuzzy)"}, {"date": "2026-07-09", "msg": "compare: rename bottom tab Advisors->Psychics; carry scroll position across toggles + split so you stay at ~the same section"}, {"date": "2026-07-09", "msg": "header: add 'Search psychics…' box to top-right utility bar (like original); mobile hero: lift copy onto the figure's neck/shoulder to remove the empty band (desktop unchanged)"}, {"date": "2026-07-09", "msg": "cards: away psychics now read consistently — CTA becomes 'Leave a message', phone/chat/video icons dimmed (online cards unchanged)"}, {"date": "2026-07-09", "msg": "manifesto bg: bring it to life — slow Ken Burns drift on the hands + breathing gold 'source' glow at the fingertip meeting point (reduced-motion safe)"}, {"date": "2026-07-09", "msg": "manifesto: add thematic 'two hands almost touching' cosmic background (bespoke, on-brand) with legibility scrim; conveys the 'trusted voice / emerges from source' concept"}, {"date": "2026-07-09", "msg": "dim backdrop starfield (softer gold, lower opacity); rebuild guarantee seal as cosmic 'source' — dark void orb + pulsing aura + swirling corona with rotating guarantee text (echoes header)"}, {"date": "2026-07-09", "msg": "trust: enlarge 'As seen on' press logos (~2x), more band padding, mobile sizes"}, {"date": "2026-07-09", "msg": "hero: remove '2% accepted' stat"}, {"date": "2026-07-09", "msg": "star pass: four-point logo-style starfield confined to portrait backdrops (keep-out over subject), denser; SVG icon pass (rating stars, marquee sparkles, trust rating); glossy dimensional guarantee seal; move insight banner above 'As seen on'"}, {"date": "2026-07-09", "msg": "add animated Insight banner (Experience the power of insight / $1 per minute / Get a Reading / 100% satisfaction seal + trust marquee w/ over-10-million-readings); align copy to 'psychics'"}, {"date": "2026-07-09", "msg": "A/B compare v2: page-matched original snapshots, 3-way toggle (Redesign/Split/Original), synced-scroll split view, persistent page+side switcher"}, {"date": "2026-07-09", "msg": "add A/B compare: toggle pill between redesign and a snapshot of the current live site (+ open-live link)"}, {"date": "2026-07-09", "msg": "cards: churning twinkle starfield over each portrait backdrop (screen-blend, echoes header logo)"}, {"date": "2026-07-09", "msg": "cards: fix Leota green rim (regenerated), add subtle name-glow + sequential star light-up impulse on reveal/hover"}, {"date": "2026-07-09", "msg": "hero energy: slow 3D spiral rising into soft expanding low-opacity light wisps around the figures"}, {"date": "2026-07-09", "msg": "advisors: replace all headshots with Gemini studio portraits (209 listing + featured homepage), face-preserving Leibovitz relight"}, {"date": "2026-07-09", "msg": "hero: set chosen winners — 'Looking to the Light' (desktop) + 'Facing & Haloed' (mobile); energy now rises up desktop central column, falls psychic->seeker on mobile"}, {"date": "2026-07-09", "msg": "add header concept gallery (5 peaceful haloed directions, desktop + mobile each)"}, {"date": "2026-07-09", "msg": "hero: gentle energy particle stream (psychic->seeker), additive-blended into the cosmos, reduced-motion safe, pauses off-screen"}, {"date": "2026-07-09", "msg": "hero: stunning cosmic 'psychic revelation' header image (responsive desktop 16:9 + mobile 9:16), bottom-anchored copy; button + interstitial fixes"}, {"date": "2026-07-08", "msg": "cinematic: remove buggy button shimmer, add winged-angel interstitial with parallax, slow hero push-in, offer-bg parallax"}, {"date": "2026-07-08", "msg": "add zodiac glyphs to Horoscopes dropdown (both pages)"}, {"date": "2026-06-30", "msg": "add headshot treatment examples page (filmic studio grade direction test)"}, {"date": "2026-06-30", "msg": "trust strip: real press logos (FOX/Lifetime/USA Today/BuzzFeed/Bustle, monochrome) + sequential star light-up animation"}, {"date": "2026-06-30", "msg": "feat: real nav tabs + dropdowns header (both pages) and advisor filter sidebar (name/type/sort/specialties) with working filters"}, {"date": "2026-06-30", "msg": "scroll: subtle Lenis smoothing (lerp .18, wheelMultiplier 1) — native distance, minimal lag"}, {"date": "2026-06-30", "msg": "fix: remove Lenis smooth-scroll hijack + scroll-behavior smooth + blur/scrub animations — native scrolling"}, {"date": "2026-06-30", "msg": "perf: static nebula bg, drop animated blur/blend + hero pin, content-visibility, fewer stars — 11fps to 120fps"}, {"date": "2026-06-30", "msg": "Psychic Source luxury redesign preview"}];
 
@@ -237,9 +310,26 @@
     d.appendChild(T('div','body',p.t));pb.appendChild(d);
   });
   var ab=document.getElementById('assetsBody');
-  ASSETS.forEach(function(a){
-    var link=E('a','dl');link.href=a.href;link.target='_blank';link.rel='noopener';
-    link.appendChild(T('div','t',a.t));link.appendChild(T('div','d',a.d));link.appendChild(T('span','go','Open →'));ab.appendChild(link);
+  ASSET_COLLECTIONS.forEach(function(col,i){
+    if(col.link){
+      var link=E('a','dl');link.href=col.link;link.target='_blank';link.rel='noopener';
+      link.appendChild(T('div','t',col.t));link.appendChild(T('div','d',col.d));link.appendChild(T('span','go','Open repository →'));ab.appendChild(link);return;
+    }
+    var det=E('details','gcol');if(i===0)det.open=true;
+    var sm=E('summary');
+    var th=E('img','thumb0');th.src=col.items[0].href;th.alt='';th.loading='lazy';
+    var meta=E('div','meta');meta.appendChild(T('div','t',col.t));meta.appendChild(T('div','d',col.d));
+    var n=col.items.length;
+    sm.appendChild(th);sm.appendChild(meta);
+    sm.appendChild(T('span','cnt',n+(n>1?' images':' image')));
+    sm.appendChild(T('span','plus','+'));det.appendChild(sm);
+    var gal=E('div','gal');
+    col.items.forEach(function(x){
+      var a=E('a','gitem');a.href=x.href;a.target='_blank';a.rel='noopener';
+      var img=E('img');img.src=x.href;img.alt=x.cap||'';img.loading='lazy';
+      a.appendChild(img);if(x.cap)a.appendChild(T('div','cap',x.cap));gal.appendChild(a);
+    });
+    det.appendChild(gal);ab.appendChild(det);
   });
   document.getElementById('clogCount').textContent='('+CHANGELOG.length+' changes)';
   var clist=document.getElementById('clogList');
