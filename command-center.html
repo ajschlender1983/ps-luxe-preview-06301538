@@ -168,10 +168,90 @@
   .gitem:hover img{border-color:var(--gold);transform:translateY(-2px)}
   .gitem .cap{font-size:11.5px;color:var(--muted);margin-top:6px;text-align:center;line-height:1.3}
   .loading{color:var(--muted);font-size:14px;padding:30px;text-align:center;border:1px dashed var(--hair);border-radius:12px}
+  /* ---- agentic market research ---- */
+  .method{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 30px}
+  .mstep{border:1px solid var(--faint);border-radius:12px;padding:18px 18px 16px;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01))}
+  .mstep .mv{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;color:var(--gold-bright)}
+  .mstep .mi{font-family:var(--serif);font-size:16px;color:var(--gold);margin:2px 0 6px}
+  .mstep .md{font-size:12px;color:var(--muted);line-height:1.5}
+  .agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px;margin-top:6px}
+  .acard{position:relative;border:1px solid var(--faint);border-radius:14px;background:linear-gradient(180deg,rgba(245,240,230,.05),rgba(245,240,230,.01));cursor:pointer;transition:all .25s;overflow:hidden;text-align:center;padding-bottom:15px}
+  .acard:hover{border-color:var(--gold);transform:translateY(-4px)}
+  .acard .avwrap{position:relative}
+  .acard .av{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#1a1440}
+  .acard .avwrap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(19,14,46,.92));pointer-events:none}
+  .acard .conv2{position:absolute;top:11px;right:11px;z-index:2;font-size:9px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;padding:3px 9px;border-radius:999px}
+  .acard .nm2{font-family:var(--serif);font-size:20px;font-weight:600;margin:11px 12px 2px;line-height:1.1}
+  .acard .arc2{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);margin:0 12px 9px;min-height:24px;line-height:1.3}
+  .acard .meet{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .acard:hover .meet{color:var(--gold-bright)}
+  /* ---- lightbox ---- */
+  .lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:30px;background:rgba(9,6,20,.88);backdrop-filter:blur(10px)}
+  .lb.on{display:flex}
+  .lb-close{position:fixed;top:16px;right:26px;font-size:40px;line-height:1;color:var(--muted);cursor:pointer;font-family:var(--serif);z-index:101}
+  .lb-close:hover{color:var(--gold-bright)}
+  .lb-inner{max-width:1040px;width:100%;max-height:88vh;overflow:auto;border:1px solid var(--hair);border-radius:16px;background:linear-gradient(160deg,#1c1442,#130e2c);box-shadow:0 34px 100px -34px #000}
+  .lb-photo{display:block;max-width:100%;max-height:74vh;margin:0 auto;border-radius:12px 12px 0 0}
+  .lb-cap{text-align:center;color:var(--muted);font-size:13px;padding:15px}
+  .aprofile{display:grid;grid-template-columns:250px 1fr;gap:0}
+  .aprofile .side{padding:26px}
+  .aprofile .side img{width:100%;border-radius:12px;border:1px solid var(--hair);display:block}
+  .aprofile .side .conv{position:static;display:inline-block;margin-top:14px}
+  .aprofile .body2{padding:30px 32px 32px 8px}
+  .aprofile .pnm{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.05}
+  .aprofile .parc{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:6px 0 10px}
+  .aprofile .pgoal{font-size:13px;color:var(--muted);margin-bottom:6px}
+  .aprofile .pgoal b{color:var(--gold-bright);font-weight:500}
+  .aprofile .imp{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ivory);border-left:2px solid var(--gold);padding-left:14px;margin:14px 0 16px;line-height:1.42}
+  .aprofile .tip{font-size:13px;color:var(--muted);margin-top:6px}.aprofile .tip b{color:var(--gold-bright);font-weight:500}
+  .aprofile .q{margin-top:14px;font-size:14px;color:rgba(247,242,232,.82);font-style:italic}
+  /* ---- film strip assets ---- */
+  .dlbar{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:2px 0 22px;padding:22px 24px;border:1px solid var(--hair);border-radius:14px;background:linear-gradient(150deg,rgba(232,207,154,.09),rgba(178,84,220,.06))}
+  .dlbar .dlt{flex:1;min-width:230px}
+  .dlbar .dlt b{font-family:var(--serif);font-size:21px;font-weight:600;display:block}
+  .dlbar .dlt span{font-size:12.5px;color:var(--muted)}
+  .dlbar .btn{margin-top:0}
+  .doccard{display:flex;align-items:center;gap:18px;padding:19px 22px;border:1px solid var(--faint);border-radius:14px;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01));margin-bottom:24px;cursor:pointer;transition:all .25s}
+  .doccard:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .doccard .dicon{font-family:var(--serif);font-size:26px;color:var(--gold);width:52px;height:52px;display:flex;align-items:center;justify-content:center;border:1px solid var(--hair);border-radius:10px;flex-shrink:0}
+  .doccard .dmeta{flex:1;min-width:0}
+  .doccard .dmeta b{font-family:var(--serif);font-size:20px;font-weight:600;display:block}
+  .doccard .dmeta span{font-size:12.5px;color:var(--muted)}
+  .doccard .dgo{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+  .stripcol{margin-bottom:24px}
+  .stripcol .sh{display:flex;align-items:baseline;gap:12px;margin-bottom:9px;flex-wrap:wrap}
+  .stripcol .sh .st{font-family:var(--serif);font-size:21px;font-weight:600}
+  .stripcol .sh .sd{font-size:12.5px;color:var(--muted)}
+  .stripcol .sh .sc{margin-left:auto;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .filmwrap{position:relative;background:#0b0818;border:1px solid var(--faint);border-radius:9px;padding:18px 0}
+  .filmwrap::before,.filmwrap::after{content:"";position:absolute;left:14px;right:14px;height:8px;background:repeating-linear-gradient(90deg,#4a4568 0 9px,transparent 9px 22px);opacity:.5;z-index:2;pointer-events:none;border-radius:2px}
+  .filmwrap::before{top:6px}.filmwrap::after{bottom:6px}
+  .filmstrip{overflow-x:auto;overflow-y:hidden;display:flex;gap:10px;padding:0 14px}
+  .filmstrip::-webkit-scrollbar{height:8px}.filmstrip::-webkit-scrollbar-thumb{background:var(--hair);border-radius:9px}
+  .frame{flex:0 0 auto;cursor:pointer}
+  .frame img{height:152px;width:auto;max-width:280px;display:block;border-radius:4px;border:1px solid rgba(201,168,106,.2);background:#000;transition:all .2s}
+  .frame:hover img{border-color:var(--gold);filter:brightness(1.09)}
+  .frame .fcap{font-size:10px;color:var(--muted);text-align:center;margin-top:6px;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mdoc{padding:34px 42px}
+  .mdoc h1{font-family:var(--serif);font-size:33px;font-weight:600;margin-bottom:12px;line-height:1.1}
+  .mdoc h2{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--gold-bright);margin:26px 0 10px}
+  .mdoc h3{font-family:var(--serif);font-size:19px;margin:18px 0 8px}
+  .mdoc p{color:rgba(247,242,232,.82);font-size:14.5px;margin-bottom:12px;line-height:1.7}
+  .mdoc ul,.mdoc ol{margin:0 0 14px 20px;color:var(--muted);font-size:14px}
+  .mdoc li{margin-bottom:6px;line-height:1.6}
+  .mdoc hr{border:0;border-top:1px solid var(--faint);margin:24px 0}
+  .mdoc strong{color:var(--ivory);font-weight:500}
+  .mdoc em{color:var(--muted)}
+  .mdoc code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--gold-bright);background:rgba(0,0,0,.3);padding:1px 5px;border-radius:4px}
+  .mdoc table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  .mdoc th,.mdoc td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--faint)}
+  .mdoc th{color:var(--gold);font-weight:500}
   footer.end{padding:50px 0 80px;text-align:center;color:var(--muted);font-size:12.5px;border-top:1px solid var(--faint)}
   @media(max-width:820px){.scores{grid-template-columns:1fr 1fr}.cols,.pgrid,.exp,.twowrap{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.find-row{grid-template-columns:1fr}
-    .portal-grid{grid-template-columns:1fr 1fr}.portal-hero{padding:30px 24px 28px}.gal{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:520px){.portal-grid{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.gcol>summary{gap:12px}}
+    .portal-grid{grid-template-columns:1fr 1fr}.portal-hero{padding:30px 24px 28px}.gal{grid-template-columns:repeat(3,1fr)}
+    .method{grid-template-columns:1fr 1fr}.agrid{grid-template-columns:repeat(3,1fr)}.aprofile{grid-template-columns:1fr}.aprofile .body2{padding:8px 26px 28px}}
+  @media(max-width:520px){.portal-grid{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.gcol>summary{gap:12px}
+    .agrid{grid-template-columns:repeat(2,1fr)}.method{grid-template-columns:1fr 1fr}.mdoc{padding:26px 22px}}
 </style>
 </head>
 <body>
@@ -199,30 +279,32 @@
   </div>
   <div class="portal-grid">
     <a class="pnav" href="#overview"><span class="n">01</span><span class="t">Overview</span><span class="d">The verdict at a glance, scored by the board.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#experts"><span class="n">02</span><span class="t">Expert Panel</span><span class="d">Luxury brand &amp; AI-native conversion, each with cited sources.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#personas"><span class="n">03</span><span class="t">10 Personas</span><span class="d">Market-researched customers react in character.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#research"><span class="n">02</span><span class="t">Market Research</span><span class="d">Ten AI agents, each a researched customer — meet them.</span><span class="go">Meet the agents →</span></a>
+    <a class="pnav" href="#experts"><span class="n">03</span><span class="t">Expert Panel</span><span class="d">Go deeper — luxury brand &amp; conversion, with cited sources.</span><span class="go">View →</span></a>
     <a class="pnav" href="#cto"><span class="n">04</span><span class="t">CTO Verdict</span><span class="d">Should this replace the live site? Risk &amp; cost.</span><span class="go">View →</span></a>
     <a class="pnav" href="#story"><span class="n">05</span><span class="t">The Story</span><span class="d">How the redesign was built, step by step.</span><span class="go">View →</span></a>
     <a class="pnav" href="#prompts"><span class="n">06</span><span class="t">Prompts</span><span class="d">The core prompts, including image generation.</span><span class="go">View →</span></a>
     <a class="pnav" href="#changelog"><span class="n">07</span><span class="t">Changelog</span><span class="d">Every change, newest first.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#assets"><span class="n">08</span><span class="t">The Assets</span><span class="d">Every generated image — browse each collection.</span><span class="go">View →</span></a>
+    <a class="pnav" href="#assets"><span class="n">08</span><span class="t">The Assets</span><span class="d">The full image library — as a film strip — plus the build doc.</span><span class="go">Browse →</span></a>
   </div>
 </section></div>
 
 <nav class="sticky"><div class="in">
-  <a href="#overview">Overview</a><a href="#experts">Expert Panel</a><a href="#personas">Personas</a><a href="#cto">CTO Verdict</a><a href="#story">The Story</a><a href="#prompts">Prompts</a><a href="#changelog">Changelog</a><a href="#assets">Assets</a>
+  <a href="#overview">Overview</a><a href="#research">Market Research</a><a href="#experts">Expert Panel</a><a href="#cto">CTO Verdict</a><a href="#story">The Story</a><a href="#prompts">Prompts</a><a href="#changelog">Changelog</a><a href="#assets">Assets</a>
 </div></nav>
 
 <div class="wrap">
   <section id="overview"><div class="sec-h"><span class="n">01</span><h2>Overview</h2></div><p class="sec-sub">The verdict at a glance, scored by the review board.</p><div id="overviewBody" class="loading">Loading the review board…</div></section>
-  <section id="experts"><div class="sec-h"><span class="n">02</span><h2>Expert Panel</h2></div><p class="sec-sub">A world-class luxury brand expert and an AI-native conversion strategist, each doing a subtle visual-design and conversion pass.</p><div id="expertsBody" class="loading">Loading experts…</div></section>
-  <section id="personas"><div class="sec-h"><span class="n">03</span><h2>Ten Customer Personas</h2></div><p class="sec-sub">Market-researched ICPs for a psychic-reading service — love, grief, career, skeptics, spiritual practitioners, budget, availability, gifting — each reacting to the redesign in character.</p><div id="personasBody" class="loading">Loading personas…</div></section>
+  <section id="research"><div class="sec-h"><span class="n">02</span><h2>Agentic Market Research</h2></div><p class="sec-sub">Before asking any expert, we did the market research — the agentic way. Ten autonomous AI agents, each built from a real customer profile, were dispatched in parallel to walk the live redesign and react honestly, in character. This is who they are, and what they told us. Meet any agent to sit with their full read.</p><div id="researchBody" class="loading">Loading the research agents…</div></section>
+  <section id="experts"><div class="sec-h"><span class="n">03</span><h2>Dive deeper — the Expert Panel</h2></div><p class="sec-sub">Where the agents are the market, the panel is the craft: a world-class luxury brand expert and an AI-native conversion strategist, each doing a subtle visual-design and conversion pass, with cited, verified sources.</p><div id="expertsBody" class="loading">Loading experts…</div></section>
   <section id="cto"><div class="sec-h"><span class="n">04</span><h2>CTO — Should this replace the live site?</h2></div><p class="sec-sub">A pragmatic assessment of the risk and technical expense of adopting this build to replace psychicsource.com — the migration and the ongoing operations — and whether it's worth it.</p><div id="ctoBody" class="loading">Loading assessment…</div></section>
   <section id="story"><div class="sec-h"><span class="n">05</span><h2>The Story</h2></div><p class="sec-sub">A play-by-play of the redesign — from the first concept to this dashboard — built conversationally, one refinement at a time.</p><div class="story" id="storyBody"></div></section>
   <section id="prompts"><div class="sec-h"><span class="n">06</span><h2>The Prompt Library</h2></div><p class="sec-sub">The core prompts that shaped the work — including the image-generation prompts behind the tarot cards, cosmic heroes, quill, and reader scene. Tap to expand.</p><div class="prompts" id="promptsBody"></div></section>
   <section id="changelog"><div class="sec-h"><span class="n">07</span><h2>Changelog</h2></div><p class="sec-sub">Every change, newest first. Collapsed by default.</p><details class="clog"><summary>Full change history <span class="cnt" id="clogCount"></span><span class="plus">+</span></summary><div class="list" id="clogList"></div></details></section>
-  <section id="assets"><div class="sec-h"><span class="n">08</span><h2>The Assets</h2></div><p class="sec-sub">Every generated image, grouped by collection — open a collection to browse all of its frames, then click any image to view or save it full size. The full source (all HTML/CSS/JS + assets) is in the repository.</p><div id="assetsBody"></div></section>
+  <section id="assets"><div class="sec-h"><span class="n">08</span><h2>The Asset Library</h2></div><p class="sec-sub">Every image made for this build, told as a set of film strips — one per collection. Scroll a strip, click any frame to preview it full size. The whole library plus the build document is a single download.</p><div id="assetsBody"></div></section>
 </div>
+
+<div class="lb" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><div class="lb-inner" id="lbInner"></div></div>
 
 <footer class="end"><div class="wrap">Psychic Source — Celestial Atelier redesign · Internal review dashboard · Prototype, not affiliated with the live site's production systems.</div></footer>
 
@@ -267,6 +349,10 @@
   ];
   function im(href,cap){return {href:href,cap:cap};}
   var ASSET_COLLECTIONS=[
+    {t:'Agent avatars',d:'The ten market-research agents',items:[
+      im('assets/personas/hannah.jpg','Heartbroken Hannah'),im('assets/personas/wendy.jpg','Night-Owl Wendy'),im('assets/personas/bella.jpg','Budget Bella'),
+      im('assets/personas/greg.jpg','Gift-Giver Greg'),im('assets/personas/dana.jpg','Anxious Dana'),im('assets/personas/grace.jpg','Grieving Grace'),
+      im('assets/personas/sofia.jpg','Spiritual Sofia'),im('assets/personas/sam.jpg','Skeptical Sam'),im('assets/personas/rosa.jpg','Loyal Rosa'),im('assets/personas/carla.jpg','Career-Crossroads Carla')]},
     {t:'Tarot deck',d:'The three-card arc',items:[
       im('assets/steps/step-1.jpg','The Seeker'),im('assets/steps/step-2.jpg','The Oracle'),im('assets/steps/step-3.jpg','The Insight')]},
     {t:'Tarot spreads',d:'Six bespoke spread cards',items:[
@@ -310,26 +396,33 @@
     d.appendChild(T('div','body',p.t));pb.appendChild(d);
   });
   var ab=document.getElementById('assetsBody');
-  ASSET_COLLECTIONS.forEach(function(col,i){
-    if(col.link){
-      var link=E('a','dl');link.href=col.link;link.target='_blank';link.rel='noopener';
-      link.appendChild(T('div','t',col.t));link.appendChild(T('div','d',col.d));link.appendChild(T('span','go','Open repository →'));ab.appendChild(link);return;
-    }
-    var det=E('details','gcol');if(i===0)det.open=true;
-    var sm=E('summary');
-    var th=E('img','thumb0');th.src=col.items[0].href;th.alt='';th.loading='lazy';
-    var meta=E('div','meta');meta.appendChild(T('div','t',col.t));meta.appendChild(T('div','d',col.d));
-    var n=col.items.length;
-    sm.appendChild(th);sm.appendChild(meta);
-    sm.appendChild(T('span','cnt',n+(n>1?' images':' image')));
-    sm.appendChild(T('span','plus','+'));det.appendChild(sm);
-    var gal=E('div','gal');
+  // download-everything bar
+  var bar=E('div','dlbar');
+  var bt=E('div','dlt');bt.appendChild(H('b',null,'The whole library'));bt.appendChild(T('span',null,'Every generated image plus the build document — one folder, one zip (8.7 MB).'));
+  bar.appendChild(bt);
+  var dz=E('a','btn');dz.href='downloads/celestial-atelier-assets.zip';dz.setAttribute('download','');dz.textContent='Download all assets (.zip)';bar.appendChild(dz);
+  var rz=E('a','btn btn-ghost');rz.href='https://github.com/ajschlender1983/ps-luxe-preview-06301538';rz.target='_blank';rz.rel='noopener';rz.textContent='Full repository';bar.appendChild(rz);
+  ab.appendChild(bar);
+  // build document card (preview + download)
+  var dc=E('div','doccard');
+  dc.appendChild(T('div','dicon','MD'));
+  var dm=E('div','dmeta');dm.appendChild(H('b',null,'The build document'));dm.appendChild(T('span',null,'BUILD.md — the concept, the process, and the full asset manifest. Click to read it here.'));
+  dc.appendChild(dm);dc.appendChild(T('span','dgo','Preview →'));
+  dc.onclick=openDoc;ab.appendChild(dc);
+  // film strips, one per collection
+  ASSET_COLLECTIONS.forEach(function(col){
+    if(col.link)return;
+    var sc=E('div','stripcol');
+    var sh=E('div','sh');sh.appendChild(T('span','st',col.t));sh.appendChild(T('span','sd',col.d));
+    var n=col.items.length;sh.appendChild(T('span','sc',n+(n>1?' frames':' frame')));sc.appendChild(sh);
+    var fw=E('div','filmwrap');var fs=E('div','filmstrip');
     col.items.forEach(function(x){
-      var a=E('a','gitem');a.href=x.href;a.target='_blank';a.rel='noopener';
-      var img=E('img');img.src=x.href;img.alt=x.cap||'';img.loading='lazy';
-      a.appendChild(img);if(x.cap)a.appendChild(T('div','cap',x.cap));gal.appendChild(a);
+      var fr=E('div','frame');var img=E('img');img.src=x.href;img.alt=x.cap||'';img.loading='lazy';
+      fr.appendChild(img);if(x.cap)fr.appendChild(T('div','fcap',x.cap));
+      fr.onclick=(function(xx){return function(){openImage(xx.href,xx.cap?(col.t+' — '+xx.cap):col.t);};})(x);
+      fs.appendChild(fr);
     });
-    det.appendChild(gal);ab.appendChild(det);
+    fw.appendChild(fs);sc.appendChild(fw);ab.appendChild(sc);
   });
   document.getElementById('clogCount').textContent='('+CHANGELOG.length+' changes)';
   var clist=document.getElementById('clogList');
@@ -374,16 +467,89 @@
     var sb=sourcesBlock(d.sources);if(sb)p.appendChild(sb);
     return p;
   }
-  function personaCard(p){
-    var c=E('div','pcard');c.appendChild(T('span','conv '+convClass(p.would_convert),p.would_convert));
-    c.appendChild(T('div','nm',p.name));c.appendChild(T('div','arc',(p.archetype||'')+' · '+(p.age||'')));
-    c.appendChild(T('div','ctx',p.context));c.appendChild(T('div','imp',p.first_impression));
-    var wrap=E('div','twowrap');
+  var AVATARS={'Heartbroken Hannah':'hannah','Night-Owl Wendy':'wendy','Budget Bella':'bella','Gift-Giver Greg':'greg','Anxious Dana':'dana','Grieving Grace':'grace','Spiritual Sofia':'sofia','Skeptical Sam':'sam','Loyal Rosa':'rosa','Career-Crossroads Carla':'carla'};
+  function avatarFor(name){var s=AVATARS[name];return s?('assets/personas/'+s+'.jpg'):null;}
+  function shortArc(a){a=a||'';return a.split('—')[0].split('(')[0].trim();}
+  function agentCard(p){
+    var c=E('div','acard');
+    var aw=E('div','avwrap');
+    var img=E('img','av');var src=avatarFor(p.name);if(src){img.src=src;img.loading='lazy';img.alt=p.name;}aw.appendChild(img);
+    aw.appendChild(T('span','conv2 '+convClass(p.would_convert),p.would_convert));
+    c.appendChild(aw);
+    c.appendChild(T('div','nm2',p.name));
+    c.appendChild(T('div','arc2',shortArc(p.archetype)));
+    c.appendChild(T('div','meet','Meet '+p.name.split(' ')[0]+' →'));
+    c.onclick=function(){openAgent(p);};
+    return c;
+  }
+  function agentProfile(p){
+    var wrap=E('div','aprofile');
+    var side=E('div','side');
+    var img=E('img');var src=avatarFor(p.name);if(src)img.src=src;img.alt=p.name;side.appendChild(img);
+    side.appendChild(T('span','conv '+convClass(p.would_convert),'Would convert: '+p.would_convert));
+    wrap.appendChild(side);
+    var b=E('div','body2');
+    b.appendChild(T('div','pnm',p.name));
+    b.appendChild(T('div','parc',(p.archetype||'')+' · age '+(p.age||'')));
+    b.appendChild(H('div','pgoal','<b>Context:</b> '+esc(p.context)));
+    if(p.goal)b.appendChild(H('div','pgoal','<b>Goal:</b> '+esc(p.goal)));
+    b.appendChild(T('div','imp',p.first_impression));
+    var tw=E('div','twowrap');
     var w=E('div','two works');w.appendChild(T('h5',null,'What works'));var wu=E('ul');(p.what_works||[]).forEach(function(x){wu.appendChild(T('li',null,x));});w.appendChild(wu);
     var fr=E('div','two fric');fr.appendChild(T('h5',null,'Friction'));var fu=E('ul');(p.friction||[]).forEach(function(x){fu.appendChild(T('li',null,x));});fr.appendChild(fu);
-    wrap.appendChild(w);wrap.appendChild(fr);c.appendChild(wrap);
-    c.appendChild(H('div','tip','<b>Tipping point:</b> '+esc(p.tipping_point)));
-    c.appendChild(T('div','q','“'+(p.quote||'')+'”'));return c;
+    tw.appendChild(w);tw.appendChild(fr);b.appendChild(tw);
+    b.appendChild(H('div','tip','<b>Tipping point:</b> '+esc(p.tipping_point)));
+    b.appendChild(T('div','q','“'+(p.quote||'')+'”'));
+    wrap.appendChild(b);
+    return wrap;
+  }
+  // ---- lightbox + preview ----
+  var LB=document.getElementById('lightbox'),LBI=document.getElementById('lbInner');
+  function lbOpen(node){clear(LBI);LBI.appendChild(node);LB.classList.add('on');document.body.style.overflow='hidden';LBI.scrollTop=0;}
+  function lbClose(){LB.classList.remove('on');clear(LBI);document.body.style.overflow='';}
+  document.getElementById('lbClose').onclick=lbClose;
+  LB.addEventListener('click',function(e){if(e.target===LB)lbClose();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lbClose();});
+  function openAgent(p){lbOpen(agentProfile(p));}
+  function openImage(src,cap){var w=E('div');var img=E('img','lb-photo');img.src=src;img.alt=cap||'';w.appendChild(img);if(cap)w.appendChild(T('div','lb-cap',cap));lbOpen(w);}
+  function openDoc(){
+    fetch('assets/BUILD.md').then(function(r){return r.text();}).then(function(md){var art=E('article','mdoc');renderMarkdown(md,art);lbOpen(art);})
+    .catch(function(){var w=E('div','mdoc');w.appendChild(T('p',null,'Could not load the build document. Download it instead.'));lbOpen(w);});
+  }
+  function mdInline(text,parent){
+    var parts=text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g);
+    parts.forEach(function(t){
+      if(!t)return;
+      if(t.length>4&&t.slice(0,2)==='**'&&t.slice(-2)==='**'){var b=E('strong');b.textContent=t.slice(2,-2);parent.appendChild(b);}
+      else if(t.length>2&&t.charAt(0)==='`'&&t.charAt(t.length-1)==='`'){var cd=E('code');cd.textContent=t.slice(1,-1);parent.appendChild(cd);}
+      else if(t.length>2&&t.charAt(0)==='*'&&t.charAt(t.length-1)==='*'){var i2=E('em');i2.textContent=t.slice(1,-1);parent.appendChild(i2);}
+      else parent.appendChild(document.createTextNode(t));
+    });
+  }
+  function mdCells(line){return line.split('|').map(function(c){return c.trim();}).filter(function(c,i,a){return !(i===0&&c==='')&&!(i===a.length-1&&c==='');});}
+  function renderMarkdown(md,root){
+    var lines=md.replace(/\r/g,'').split('\n'),i=0;
+    function isSep(s){return s.indexOf('-')>=0&&/^\s*\|?[\s:\-|]+\|?\s*$/.test(s);}
+    while(i<lines.length){
+      var ln=lines[i];
+      if(!ln.trim()){i++;continue;}
+      if(/^#{1,3}\s/.test(ln)){var lvl=ln.match(/^#+/)[0].length;var h=E('h'+lvl);mdInline(ln.replace(/^#+\s/,''),h);root.appendChild(h);i++;continue;}
+      if(/^---+\s*$/.test(ln)){root.appendChild(E('hr'));i++;continue;}
+      if(ln.indexOf('|')>=0&&i+1<lines.length&&isSep(lines[i+1])){
+        var tbl=E('table'),thead=E('thead'),htr=E('tr');
+        mdCells(ln).forEach(function(c){var th=E('th');mdInline(c,th);htr.appendChild(th);});
+        thead.appendChild(htr);tbl.appendChild(thead);i+=2;var tb=E('tbody');
+        while(i<lines.length&&lines[i].indexOf('|')>=0&&lines[i].trim()){
+          var tr=E('tr');mdCells(lines[i]).forEach(function(c){var td=E('td');mdInline(c,td);tr.appendChild(td);});tb.appendChild(tr);i++;
+        }
+        tbl.appendChild(tb);root.appendChild(tbl);continue;
+      }
+      if(/^\s*[-*]\s/.test(ln)){var ul=E('ul');while(i<lines.length&&/^\s*[-*]\s/.test(lines[i])){var li=E('li');mdInline(lines[i].replace(/^\s*[-*]\s/,''),li);ul.appendChild(li);i++;}root.appendChild(ul);continue;}
+      if(/^\s*\d+\.\s/.test(ln)){var ol=E('ol');while(i<lines.length&&/^\s*\d+\.\s/.test(lines[i])){var li2=E('li');mdInline(lines[i].replace(/^\s*\d+\.\s/,''),li2);ol.appendChild(li2);i++;}root.appendChild(ol);continue;}
+      var para=[ln];i++;
+      while(i<lines.length&&lines[i].trim()&&!/^#{1,3}\s/.test(lines[i])&&!/^\s*[-*]\s/.test(lines[i])&&!/^\s*\d+\.\s/.test(lines[i])&&!/^---+\s*$/.test(lines[i])&&lines[i].indexOf('|')<0){para.push(lines[i]);i++;}
+      var pn=E('p');mdInline(para.join(' '),pn);root.appendChild(pn);
+    }
   }
   function ctoPanel(T2){
     var p=E('div','panel');var top=E('div','panel-top');
@@ -420,10 +586,15 @@
     eb.appendChild(expertPanel('Brand Expert','World-class luxury brand & visual design',B,'Strengths','Watch-outs'));
     eb.appendChild(expertPanel('CRO Strategist','AI-native conversion optimization',C,'Quick wins','What to test'));
 
-    var pb2=document.getElementById('personasBody');pb2.className='';clear(pb2);
-    var tal=H('div','ptally','<span><b style="background:var(--good)"></b>'+yes+' would convert</span><span><b style="background:var(--warn)"></b>'+maybe+' leaning yes</span><span><b style="background:var(--bad)"></b>'+no+' not yet</span>');
-    pb2.appendChild(tal);
-    var grid=E('div','pgrid');P.forEach(function(x){grid.appendChild(personaCard(x));});pb2.appendChild(grid);
+    var rb=document.getElementById('researchBody');rb.className='';clear(rb);
+    var method=E('div','method');
+    [['10','ICPs researched','Love, grief, career, skeptics, practitioners, budget, night-owls, gifting, loyalty.'],
+     ['10','Autonomous agents','Each agent embodies one profile and browses the live redesign itself.'],
+     ['&#8734;','Run in parallel','All ten dispatched at once — market research in minutes, not weeks.'],
+     [(yes+maybe)+'/'+P.length,'Open to converting',yes+' yes · '+maybe+' leaning yes · '+no+' not yet.']
+    ].forEach(function(m){var s=E('div','mstep');s.appendChild(H('div','mv',m[0]));s.appendChild(T('div','mi',m[1]));s.appendChild(T('div','md',m[2]));method.appendChild(s);});
+    rb.appendChild(method);
+    var ag=E('div','agrid');P.forEach(function(x){ag.appendChild(agentCard(x));});rb.appendChild(ag);
 
     var cb=document.getElementById('ctoBody');cb.className='';clear(cb);cb.appendChild(ctoPanel(Tc));
   }
