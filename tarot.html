@@ -138,27 +138,29 @@
   // depth d: 0 = far (small, blurred, dim) .. 1 = near (big, slight blur). Mid plane (~.55) is the sharp focus.
   // x,y = position (% of hero); sd = spin secs; fd = float secs; opt = hide on mobile
   var C=[
-    // --- far plane: small, soft, dim (background bokeh) ---
-    {f:6, x:40, y:19, d:.12, sd:34, fd:22, opt:true},
-    {f:1, x:63, y:24, d:.16, sd:32, fd:21, opt:true},
-    {f:4, x:14, y:20, d:.10, sd:36, fd:23, opt:true},
-    {f:7, x:88, y:22, d:.18, sd:31, fd:20, opt:true},
-    {f:2, x:6,  y:34, d:.20, sd:30, fd:19, opt:true},
-    {f:8, x:92, y:74, d:.15, sd:33, fd:22, opt:true},
-    {f:5, x:33, y:86, d:.22, sd:29, fd:20, opt:true},
-    // --- mid plane: the sharp, in-focus cards ---
-    {f:1, x:5,  y:22, d:.55, sd:22, fd:15, opt:false},
-    {f:2, x:80, y:20, d:.58, sd:24, fd:17, opt:false},
-    {f:3, x:11, y:60, d:.52, sd:20, fd:14, opt:false},
-    {f:4, x:82, y:55, d:.6,  sd:25, fd:18, opt:false},
-    {f:6, x:70, y:78, d:.5,  sd:23, fd:16, opt:true},
-    {f:0, x:26, y:40, d:.62, sd:21, fd:15, opt:true},
-    // --- near plane: large, gently soft (shallow DoF falloff) ---
-    {f:8, x:60, y:44, d:.82, sd:19, fd:13, opt:true},
-    {f:5, x:22, y:80, d:.85, sd:18, fd:12, opt:false},
-    {f:7, x:88, y:36, d:.8,  sd:20, fd:14, opt:true},
+    // --- far plane: soft bokeh, spread evenly across the top band, edges + faint fills behind the type ---
+    {f:6, x:12, y:15, d:.14, sd:34, fd:22, opt:true},
+    {f:1, x:31, y:8,  d:.20, sd:32, fd:21, opt:true},
+    {f:4, x:50, y:11, d:.12, sd:36, fd:23, opt:true},
+    {f:7, x:69, y:8,  d:.22, sd:31, fd:20, opt:true},
+    {f:2, x:87, y:16, d:.16, sd:30, fd:19, opt:true},
+    {f:8, x:47, y:88, d:.15, sd:33, fd:22, opt:true},
+    {f:5, x:14, y:84, d:.20, sd:29, fd:20, opt:true},
+    {f:0, x:39, y:38, d:.12, sd:35, fd:24, opt:true},
+    {f:3, x:57, y:60, d:.11, sd:37, fd:25, opt:true},
+    // --- mid plane: the sharp, in-focus cards framing the type on every side ---
+    {f:1, x:4,  y:33, d:.55, sd:22, fd:15, opt:false},
+    {f:2, x:85, y:30, d:.58, sd:24, fd:17, opt:false},
+    {f:3, x:6,  y:60, d:.52, sd:20, fd:14, opt:false},
+    {f:4, x:88, y:56, d:.6,  sd:25, fd:18, opt:false},
+    {f:6, x:68, y:82, d:.5,  sd:23, fd:16, opt:true},
+    {f:0, x:26, y:80, d:.62, sd:21, fd:15, opt:true},
+    // --- near plane: large, gently soft — flanking the headline left/right ---
+    {f:8, x:82, y:40, d:.8,  sd:19, fd:13, opt:true},
+    {f:5, x:10, y:47, d:.85, sd:18, fd:12, opt:false},
+    {f:7, x:76, y:66, d:.8,  sd:20, fd:14, opt:true},
     // --- foreground: one card very close to the frame, soft bokeh, partly off-edge ---
-    {f:3, x:-8, y:52, d:1,   sd:24, fd:11, opt:false, big:true}
+    {f:3, x:-8, y:54, d:1,   sd:24, fd:11, opt:false, big:true}
   ];
   function lerp(a,b,t){return a+(b-a)*t;}
   C.forEach(function(c,i){
