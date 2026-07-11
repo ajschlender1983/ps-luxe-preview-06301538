@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Copy &amp; CTA — CRO Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--gold:#C9A86A;--gold-bright:#E8CF9A;--ivory:#F7F2E8;--muted:rgba(247,242,232,.62);--faint:rgba(247,242,232,.13);--hair:rgba(201,168,106,.24);
+    --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;
+    --orig:#8FA6C4;--ours:#B254DC;--cro:#7BD389}
+  body{background:radial-gradient(120% 80% at 50% 0,#241a45,#160f33 55%,#0e0a20);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.6;min-height:100vh;padding-bottom:120px}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  header.top{padding:52px 0 20px;text-align:center}
+  .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-bright)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5vw,50px);margin:12px 0 12px;letter-spacing:-.01em}
+  .sub{color:var(--muted);max-width:640px;margin:0 auto;font-size:15.5px}
+  .legend{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:20px;font-size:12px;color:var(--muted)}
+  .legend b{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:1px}
+  .lg-orig b{background:var(--orig)}.lg-ours b{background:var(--ours)}.lg-cro b{background:var(--cro)}
+  /* filter chips */
+  .filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:26px 0 8px;position:sticky;top:0;z-index:20;padding:14px 0;background:linear-gradient(180deg,#160f33ee,#160f33cc 70%,transparent);backdrop-filter:blur(6px)}
+  .chip{font-size:12px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--hair);background:rgba(255,255,255,.03);padding:8px 15px;border-radius:999px;cursor:pointer;transition:all .25s;white-space:nowrap}
+  .chip:hover{color:var(--ivory);border-color:var(--gold)}
+  .chip.active{background:linear-gradient(120deg,var(--gold-bright),var(--gold));color:#1a1230;border-color:transparent;font-weight:500}
+  /* decision card */
+  .card{border:1px solid var(--faint);border-radius:12px;padding:26px 26px 22px;margin:20px 0;background:linear-gradient(165deg,rgba(245,240,230,.045),rgba(245,240,230,.012));position:relative;scroll-margin-top:80px}
+  .card.decided{border-color:rgba(123,211,137,.4)}
+  .card-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+  .cat{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);padding:4px 10px;border-radius:999px}
+  .inst{font-size:11.5px;letter-spacing:.04em;color:var(--gold-bright);background:rgba(232,207,154,.1);border:1px solid rgba(232,207,154,.24);padding:4px 11px;border-radius:999px;font-weight:500}
+  .idx{margin-left:auto;font-family:var(--serif);font-size:15px;color:var(--muted)}
+  .card h3{font-family:var(--serif);font-weight:600;font-size:25px;letter-spacing:.01em;margin-bottom:4px}
+  .where{font-size:12.5px;color:var(--muted);margin-bottom:18px}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+  .box{border:1px solid var(--faint);border-radius:8px;padding:14px 16px;background:rgba(0,0,0,.16)}
+  .box .lab{font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px;font-weight:500}
+  .box.b-orig .lab{color:var(--orig)}.box.b-ours .lab{color:var(--ours)}
+  .box p{font-size:14px;color:var(--ivory);line-height:1.55}
+  .box p em{font-style:italic;color:var(--muted)}
+  .cro-note{border-left:2px solid var(--cro);background:rgba(123,211,137,.06);padding:13px 16px;border-radius:0 8px 8px 0;margin-bottom:18px}
+  .cro-note .lab{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--cro);font-weight:600;margin-bottom:6px}
+  .cro-note p{font-size:14px;color:rgba(247,242,232,.8);line-height:1.6}
+  /* options */
+  .opts{display:flex;gap:10px;flex-wrap:wrap}
+  .opt{flex:1;min-width:200px;text-align:left;border:1px solid var(--hair);background:rgba(255,255,255,.03);border-radius:9px;padding:13px 15px;cursor:pointer;transition:all .2s;position:relative;font-family:var(--sans);color:var(--ivory)}
+  .opt:hover{border-color:var(--gold);background:rgba(255,255,255,.06)}
+  .opt .ok{display:flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:5px}
+  .opt .dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--muted);flex:none;transition:all .2s}
+  .opt .otext{font-size:13px;color:var(--muted);line-height:1.5}
+  .opt[data-key="original"] .ok{color:var(--orig)}
+  .opt[data-key="ours"] .ok{color:var(--ours)}
+  .opt[data-key="cro"] .ok{color:var(--cro)}
+  .opt.sel{background:rgba(123,211,137,.1);border-color:var(--cro)}
+  .opt.sel .dot{background:var(--cro);border-color:var(--cro);box-shadow:0 0 0 3px rgba(123,211,137,.2)}
+  .opt.sel .otext{color:var(--ivory)}
+  .rec{position:absolute;top:-9px;right:12px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;background:linear-gradient(120deg,#E9CF9A,#C9A86A);color:#1a1230;padding:2px 9px;border-radius:999px;font-weight:600}
+  /* sticky summary */
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(18,12,38,.94);backdrop-filter:blur(14px);border-top:1px solid var(--hair);padding:12px 24px}
+  .bar-in{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .prog{flex:1;min-width:180px}
+  .prog .track{height:6px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:6px}
+  .prog .fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-bright));transition:width .35s}
+  .prog .txt{font-size:12px;color:var(--muted)}
+  .prog .txt b{color:var(--ivory);font-weight:500}
+  .tallies{display:flex;gap:14px;font-size:12px;color:var(--muted)}
+  .tallies b{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:1px}
+  .act{display:flex;gap:9px}
+  .btn{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;border-radius:7px;cursor:pointer;border:1px solid var(--hair);background:rgba(255,255,255,.04);color:var(--ivory);transition:all .2s}
+  .btn:hover{border-color:var(--gold)}
+  .btn.primary{background:linear-gradient(120deg,var(--gold-bright),var(--gold));color:#1a1230;border-color:transparent;font-weight:500}
+  .toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%) translateY(20px);background:rgba(123,211,137,.16);border:1px solid var(--cro);color:var(--ivory);padding:10px 20px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:all .3s;z-index:50}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  dialog{border:1px solid var(--hair);border-radius:12px;background:#1a1240;color:var(--ivory);max-width:640px;width:92%;padding:0}
+  dialog::backdrop{background:rgba(8,6,26,.7);backdrop-filter:blur(4px)}
+  .dlg-h{padding:20px 22px 12px;border-bottom:1px solid var(--faint);display:flex;justify-content:space-between;align-items:center}
+  .dlg-h h4{font-family:var(--serif);font-size:22px;font-weight:600}
+  .dlg-x{background:none;border:0;color:var(--muted);font-size:22px;cursor:pointer;line-height:1}
+  .dlg textarea{width:100%;height:340px;border:0;background:#120c28;color:var(--ivory);font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.65;padding:18px 22px;resize:vertical;outline:none}
+  .dlg-f{padding:14px 22px;display:flex;justify-content:flex-end;gap:9px}
+  @media(max-width:640px){.compare{grid-template-columns:1fr}.opt{min-width:100%}.idx{display:none}}
+</style>
+</head>
+<body>
+  <header class="top"><div class="wrap">
+    <span class="eyebrow">Conversion Rate Optimization · Working Session</span>
+    <h1>Copy &amp; CTA — Before / After</h1>
+    <p class="sub">Every meaningful language change from the original psychicsource.com, with how many places it appears and a CRO specialist's call. Pick a direction on each — your choices save as you go, and you can copy the full decision list at the end.</p>
+    <div class="legend">
+      <span class="lg-orig"><b></b>Original site</span>
+      <span class="lg-ours"><b></b>Our redesign</span>
+      <span class="lg-cro"><b></b>CRO-optimized</span>
+    </div>
+  </div></header>
+
+  <div class="wrap">
+    <div class="filters" id="filters"></div>
+    <div id="cards"></div>
+  </div>
+
+  <div class="bar"><div class="bar-in">
+    <div class="prog">
+      <div class="txt"><b id="pDone">0</b> of <span id="pTotal">0</span> decided</div>
+      <div class="track"><span class="fill" id="pFill"></span></div>
+    </div>
+    <div class="tallies">
+      <span><b style="background:var(--orig)"></b><span id="tOrig">0</span> original</span>
+      <span><b style="background:var(--ours)"></b><span id="tOurs">0</span> ours</span>
+      <span><b style="background:var(--cro)"></b><span id="tCro">0</span> CRO</span>
+    </div>
+    <div class="act">
+      <button class="btn" id="reset">Reset</button>
+      <button class="btn primary" id="copy">Copy decisions</button>
+    </div>
+  </div></div>
+
+  <div class="toast" id="toast"></div>
+
+  <dialog id="dlg"><div class="dlg">
+    <div class="dlg-h"><h4>Your CRO decisions</h4><button class="dlg-x" id="dlgX">×</button></div>
+    <textarea id="dlgText" readonly></textarea>
+    <div class="dlg-f"><button class="btn" id="dlgDownload">Download .txt</button><button class="btn primary" id="dlgCopy">Copy to clipboard</button></div>
+  </div></dialog>
+
+<script>
+(function(){
+  "use strict";
+  function frag(h){return document.createRange().createContextualFragment(h);}
+  var LS='ps-cro-decisions-v1';
+
+  var DATA=[
+    {id:'cta-primary',cat:'CTA Buttons',title:'Primary button wording',inst:'~20 primary buttons · 12 different wordings',where:'Every page (nav + hero + section CTAs)',
+      orig:'“Get a Reading” — one consistent primary button used across the whole site.',
+      ours:'Fragmented: “Find your psychic” ×7, “Choose your psychic” ×6, “Get a Reading” ×6, plus “Ask a psychic today”, “Connect with a medium”, “Choose a tarot psychic”…',
+      cro:'A single, repeated primary CTA is a CRO fundamental — it removes decision friction, builds recognition, and makes A/B testing possible. Twelve variants dilute all three. Choose one action-and-outcome phrase for every primary button and reserve contextual phrases for secondary text links.',
+      opts:[{k:'original',l:'Original',t:'“Get a Reading” everywhere'},{k:'ours',l:'Keep ours',t:'Contextual variety per page'},{k:'cro',l:'CRO pick',t:'Standardize to one — “Get a Reading” (or “Get Your Reading”) sitewide',rec:true}]},
+
+    {id:'cta-offer',cat:'CTA Buttons',title:'Put the offer beside the button',inst:'0 CTAs currently pair the price',where:'All primary CTAs',
+      orig:'“As low as $1 per minute” sits directly above the “Get a Reading” button.',
+      ours:'“$1/min” lives in body copy and fine print, rarely within sight of the button itself.',
+      cro:'The first-time price is the single biggest friction-reducer on this page type, and it belongs within a glance of the button. Add a one-line reassurance under every primary CTA so the value and the risk-reversal travel with the click.',
+      opts:[{k:'original',l:'Original',t:'Price directly above the button'},{k:'ours',l:'Keep ours',t:'Price in body copy only'},{k:'cro',l:'CRO pick',t:'Microcopy under each CTA: “New members from $1/min · Satisfaction guaranteed”',rec:true}]},
+
+    {id:'hero-cta',cat:'CTA Buttons',title:'Home hero button',inst:'1 (home hero)',where:'Home above-the-fold',
+      orig:'“Get a Reading”',
+      ours:'“Begin Your First Reading”',
+      cro:'“Begin Your First Reading” cues the new-customer offer (good) but is long and soft. A punchier “Get Your Reading” matches a standardized CTA and tests well. If you standardize in Decision 1, align this button to it and let the microcopy carry “first reading”.',
+      opts:[{k:'original',l:'Original',t:'“Get a Reading”'},{k:'ours',l:'Keep ours',t:'“Begin Your First Reading”'},{k:'cro',l:'CRO pick',t:'“Get Your Reading” + “first reading from $1/min” microcopy',rec:true}]},
+
+    {id:'term-seekers',cat:'Terminology &amp; Voice',title:'“Customers” → “Seekers”',inst:'~25 instances',where:'Sitewide editorial copy',
+      orig:'“…offering guidance to our customers.” / “readings delivered to customers.”',
+      ours:'“seekers” throughout — the people who come for a reading.',
+      cro:'“Seekers” is evocative and reinforces the journey framing — a genuine brand asset that sets you apart from generic competitors. The only risk is near money and forms, where plain “you” converts better. Keep “seekers” in editorial and headlines; switch to “you” in pricing, FAQs and around CTAs.',
+      opts:[{k:'original',l:'Original',t:'“customers”'},{k:'ours',l:'Keep ours',t:'“seekers” everywhere'},{k:'cro',l:'CRO pick',t:'“seekers” in editorial; “you” near CTAs, pricing &amp; FAQ',rec:true}]},
+
+    {id:'term-house',cat:'Terminology &amp; Voice',title:'“The House” brand concept',inst:'22 instances',where:'Manifesto, footer, service pages',
+      orig:'None — referred to as “Psychic Source” and “our community”.',
+      ours:'“The House”, “The House of Psychic Source”, “no place in the House”, “The House remembers”.',
+      cro:'A distinctive device that can build identity — but it is insider language a first-time visitor won’t decode, and right now it appears on conversion pages. Keep it where you are building brand (Manifesto, Ethics, About) and drop it from home, service and CTA contexts where plain comprehension drives the click.',
+      opts:[{k:'original',l:'Original',t:'No “house” concept'},{k:'ours',l:'Keep ours',t:'“The House” across 22 spots'},{k:'cro',l:'CRO pick',t:'Keep on Manifesto/Ethics; remove from home, service &amp; CTA copy',rec:true}]},
+
+    {id:'term-sovereign',cat:'Terminology &amp; Voice',title:'“The seeker is sovereign”',inst:'6 instances',where:'Ethics, Manifesto',
+      orig:'None.',
+      ours:'“The seeker is sovereign”, “your sovereignty is never for sale”.',
+      cro:'A lovely principle, but abstract — low comprehension for the average visitor and no conversion job to do. It is perfect as a values line on Ethics and Manifesto, and out of place anywhere transactional.',
+      opts:[{k:'original',l:'Original',t:'—'},{k:'ours',l:'Keep ours',t:'Used in 6 places'},{k:'cro',l:'CRO pick',t:'Keep on Ethics/Manifesto only; remove elsewhere',rec:true}]},
+
+    {id:'voice-cine',cat:'Terminology &amp; Voice',title:'Poetic interstitial lines',inst:'~12 (one per interior page)',where:'Mid-page cinematic break bands',
+      orig:'Plain, benefit-led: “Go beyond gaining clarity on your future.”',
+      ours:'“Insight begins the moment you dare to ask.” / “Love does not end. It only changes its distance.”',
+      cro:'These earn their place as emotional beats and premium feel — they make the site memorable, which most competitors are not. They just don’t sell on their own. Keep them as atmosphere, but make sure every one is followed within a scroll by a concrete benefit and a CTA, so the feeling has somewhere to convert.',
+      opts:[{k:'original',l:'Original',t:'Plain benefit lines'},{k:'ours',l:'Keep ours',t:'Poetic lines as-is'},{k:'cro',l:'CRO pick',t:'Keep the poetry; ensure a benefit + CTA follows each',rec:true}]},
+
+    {id:'term-psychics',cat:'Terminology &amp; Voice',title:'“Psychics” (not “Advisors”)',inst:'Sitewide',where:'Everywhere',
+      orig:'Mixes “Psychics” and “Advisors” (“professional Psychic Advisors”, “our trusted Advisors”).',
+      ours:'Standardized on “psychics”.',
+      cro:'This one is a clear win — keep it. “Psychics” is how people search and think; “advisors” is vaguer and off-intent, and mixing both is inconsistent. Standardizing also helps SEO. No change needed.',
+      opts:[{k:'original',l:'Original',t:'Mix of “psychics” / “advisors”'},{k:'cro',l:'Keep ours',t:'“Psychics” everywhere — an improvement',rec:true}]},
+
+    {id:'hero-headline',cat:'Headlines &amp; Above-fold',title:'Home H1: tagline vs benefit',inst:'1 (home H1)',where:'Home above-the-fold',
+      orig:'Benefit headline “Experience the power of insight”, with the tagline “Life’s possibilities. Revealed.” as a small line.',
+      ours:'The tagline promoted to the H1: “Life’s possibilities, revealed.”',
+      cro:'The tagline is elegant, but abstract — it doesn’t say what you get. Above the fold, a benefit-led H1 converts better; demote the tagline to the eyebrow. You keep the brand line and add a clear promise the visitor can act on.',
+      opts:[{k:'original',l:'Original',t:'Benefit H1 + tagline beneath'},{k:'ours',l:'Keep ours',t:'Tagline as the H1'},{k:'cro',l:'CRO pick',t:'Benefit H1 (e.g., “Answers you can trust”) with the tagline as eyebrow',rec:true}]},
+
+    {id:'hero-subhead',cat:'Headlines &amp; Above-fold',title:'Home subhead',inst:'1',where:'Home above-the-fold',
+      orig:'“As low as $1 per minute.”',
+      ours:'“Guidance from gifted, rigorously vetted psychics — by phone, chat, or video, the moment you need clarity.”',
+      cro:'Ours is stronger — it packs trust, channels and a use-moment into one line. Just add the price so the transactional trigger is also present above the fold. That gives you the best of both.',
+      opts:[{k:'original',l:'Original',t:'Price-only subhead'},{k:'ours',l:'Keep ours',t:'Trust + channels line'},{k:'cro',l:'CRO pick',t:'Keep ours, append “from $1/min”',rec:true}]},
+
+    {id:'trust-numbers',cat:'Trust &amp; Value',title:'Social-proof stats',inst:'Home + Reviews + Guarantee',where:'Multiple pages',
+      orig:'“Over 10 million readings”, “since 1989”, “carefully vetted”.',
+      ours:'Adds “270k+ five-star reviews”, “4.9 average rating”, “fewer than 1 in 20 accepted”.',
+      cro:'A clear upgrade — you added a review count, a star rating and a selectivity stat, all of which lift trust and none of which the original shows. Keep them, and surface at least two of them above the fold on the home page.',
+      opts:[{k:'original',l:'Original',t:'Readings + since 1989'},{k:'cro',l:'Keep ours',t:'Adds reviews, rating, selectivity',rec:true}]},
+
+    {id:'trust-guarantee',cat:'Trust &amp; Value',title:'Risk reversal',inst:'“satisfaction guarantee” ×27 · “risk-free” ×8',where:'Sitewide + dedicated page',
+      orig:'“100% Satisfaction Guaranteed · Risk-Free.”',
+      ours:'Same promise, plus a dedicated Guarantee page and repeated reassurance.',
+      cro:'Excellent — risk reversal is one of the highest-leverage elements you have. Keep it, and make sure a short guarantee line sits within sight of every primary CTA, not only on its own page.',
+      opts:[{k:'original',l:'Original',t:'Guarantee mentioned'},{k:'cro',l:'Keep ours',t:'Keep; surface near every CTA',rec:true}]},
+
+    {id:'channels',cat:'Trust &amp; Value',title:'Ways to connect',inst:'Several pages',where:'How It Works, home, service pages',
+      orig:'“…through a phone call, chat, video, or sending a message if your favorite Psychic is offline.”',
+      ours:'“by phone, chat, or video.”',
+      cro:'Ours reads cleaner. One caution: the original lists “message” as a fourth option for when a psychic is offline. If offline messaging is a real path, don’t drop it — a visitor whose favorite psychic is unavailable still needs a way to act.',
+      opts:[{k:'original',l:'Original',t:'4 channels incl. offline message'},{k:'ours',l:'Keep ours',t:'3 channels, cleaner'},{k:'cro',l:'CRO pick',t:'Keep 3; add “or leave a message” if offline messaging exists',rec:true}]}
+  ];
+
+  var state={};
+  try{state=JSON.parse(localStorage.getItem(LS))||{};}catch(e){state={};}
+  var activeCat='All';
+  var cats=['All'].concat(DATA.map(function(d){return d.cat;}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+
+  // filters
+  var fEl=document.getElementById('filters');
+  cats.forEach(function(c){
+    var b=document.createElement('button');b.className='chip'+(c==='All'?' active':'');b.textContent=c.replace('&amp;','&');
+    b.addEventListener('click',function(){activeCat=c;[].forEach.call(fEl.children,function(x){x.classList.remove('active');});b.classList.add('active');render();});
+    fEl.appendChild(b);
+  });
+
+  var cardsEl=document.getElementById('cards');
+  function render(){
+    cardsEl.textContent='';
+    DATA.forEach(function(d,i){
+      if(activeCat!=='All'&&d.cat!==activeCat)return;
+      var chosen=state[d.id];
+      var optsHtml=d.opts.map(function(o){
+        var sel=chosen===o.k?' sel':'';
+        return '<button class="opt'+sel+'" data-id="'+d.id+'" data-key="'+o.k+'">'+(o.rec?'<span class="rec">★ Recommended</span>':'')+
+          '<span class="ok"><span class="dot"></span>'+o.l+'</span><span class="otext">'+o.t+'</span></button>';
+      }).join('');
+      var html='<div class="card'+(chosen?' decided':'')+'" id="c-'+d.id+'">'+
+        '<div class="card-top"><span class="cat">'+d.cat+'</span><span class="inst">'+d.inst+'</span><span class="idx">'+(i+1)+' / '+DATA.length+'</span></div>'+
+        '<h3>'+d.title+'</h3><div class="where">Appears on: '+d.where+'</div>'+
+        '<div class="compare">'+
+          '<div class="box b-orig"><div class="lab">Original site</div><p>'+d.orig+'</p></div>'+
+          '<div class="box b-ours"><div class="lab">Our redesign</div><p>'+d.ours+'</p></div>'+
+        '</div>'+
+        '<div class="cro-note"><div class="lab">CRO specialist</div><p>'+d.cro+'</p></div>'+
+        '<div class="opts">'+optsHtml+'</div></div>';
+      cardsEl.appendChild(frag(html));
+    });
+    [].forEach.call(cardsEl.querySelectorAll('.opt'),function(btn){
+      btn.addEventListener('click',function(){
+        var id=btn.getAttribute('data-id'),key=btn.getAttribute('data-key');
+        state[id]=(state[id]===key)?undefined:key;
+        if(state[id]===undefined)delete state[id];
+        save();render();updateBar();
+      });
+    });
+    updateBar();
+  }
+
+  function save(){try{localStorage.setItem(LS,JSON.stringify(state));}catch(e){}}
+
+  function updateBar(){
+    var done=0,o=0,u=0,c=0;
+    DATA.forEach(function(d){var v=state[d.id];if(v){done++;if(v==='original')o++;else if(v==='ours')u++;else if(v==='cro')c++;}});
+    document.getElementById('pDone').textContent=done;
+    document.getElementById('pTotal').textContent=DATA.length;
+    document.getElementById('pFill').style.width=(done/DATA.length*100)+'%';
+    document.getElementById('tOrig').textContent=o;
+    document.getElementById('tOurs').textContent=u;
+    document.getElementById('tCro').textContent=c;
+  }
+
+  function labelFor(d){var v=state[d.id];if(!v)return null;var o=d.opts.filter(function(x){return x.k===v;})[0];
+    var name=v==='original'?'ORIGINAL':v==='ours'?'OURS':'CRO-OPTIMIZED';
+    return {name:name,text:o?o.t:''};}
+
+  function buildReport(){
+    var lines=['PSYCHIC SOURCE — COPY & CTA DECISIONS','Generated from the CRO review tool','',];
+    var byCat={};
+    DATA.forEach(function(d){(byCat[d.cat]=byCat[d.cat]||[]).push(d);});
+    Object.keys(byCat).forEach(function(cat){
+      lines.push('== '+cat.replace('&amp;','&').toUpperCase()+' ==');
+      byCat[cat].forEach(function(d){
+        var ch=labelFor(d);
+        lines.push('• '+d.title+'  ('+d.inst.replace(/&amp;/g,'&')+')');
+        lines.push('   Decision: '+(ch?ch.name+' — '+ch.text.replace(/&amp;/g,'&').replace(/&#39;|’/g,"'"):'(not yet decided)'));
+      });
+      lines.push('');
+    });
+    var done=0;DATA.forEach(function(d){if(state[d.id])done++;});
+    lines.push('Decided: '+done+' / '+DATA.length);
+    return lines.join('\n');
+  }
+
+  var dlg=document.getElementById('dlg'),dlgText=document.getElementById('dlgText');
+  document.getElementById('copy').addEventListener('click',function(){dlgText.value=buildReport();dlg.showModal();});
+  document.getElementById('dlgX').addEventListener('click',function(){dlg.close();});
+  document.getElementById('dlgCopy').addEventListener('click',function(){dlgText.select();
+    (navigator.clipboard?navigator.clipboard.writeText(dlgText.value):Promise.reject()).then(function(){toast('Copied to clipboard');},function(){try{document.execCommand('copy');toast('Copied');}catch(e){toast('Select all and copy');}});});
+  document.getElementById('dlgDownload').addEventListener('click',function(){
+    var blob=new Blob([dlgText.value],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ps-cro-decisions.txt';a.click();toast('Downloaded');});
+  document.getElementById('reset').addEventListener('click',function(){if(confirm('Clear all your decisions?')){state={};save();render();}});
+
+  var toastEl=document.getElementById('toast'),tt;
+  function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('show');},1900);}
+
+  render();
+})();
+</script>
+</body>
+</html>
