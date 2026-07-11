@@ -63,6 +63,16 @@
   .find-row .b{font-size:13.5px;color:var(--muted);line-height:1.55}
   .find-row .b b{color:var(--ivory);font-weight:500}
   .find-row .b i{color:var(--good);font-style:normal}
+  .srcs{border-top:1px solid var(--faint);margin-top:18px;padding-top:16px}
+  .srcs h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .srcs .hint{font-size:12px;color:var(--muted);margin-bottom:12px}
+  .src{display:block;text-decoration:none;padding:11px 0;border-bottom:1px solid var(--faint)}
+  .src:last-child{border-bottom:0}
+  .src .st{font-size:13.5px;color:var(--ivory);font-weight:400;line-height:1.4}
+  .src .st .pub{color:var(--gold);font-size:12px}
+  .src .sb{font-size:12px;color:var(--muted);margin-top:3px}
+  .src:hover .st{color:var(--gold-bright)}
+  .src:hover .st .pub{text-decoration:underline}
   .ptally{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;font-size:13px;color:var(--muted)}
   .ptally b{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
   .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -239,6 +249,18 @@
   var REVIEW=window.REVIEW||null;
   function scoreCard(lbl,val,suf,d){var s=E('div','score');s.appendChild(T('div','lbl',lbl));s.appendChild(H('div','v',esc(val)+'<small>'+esc(suf)+'</small>'));s.appendChild(T('div','d',d));return s;}
   function miniList(title,titleColor,items){var m=E('div','mini');var h=T('h4',null,title);if(titleColor)h.style.color=titleColor;m.appendChild(h);var ul=E('ul');(items||[]).forEach(function(x){ul.appendChild(T('li',null,x));});m.appendChild(ul);return m;}
+  function sourcesBlock(sources){
+    if(!sources||!sources.length)return null;
+    var s=E('div','srcs');s.appendChild(T('h4',null,'Evidence & sources'));
+    s.appendChild(T('div','hint','External research this expert cited — click to open in a new tab.'));
+    sources.forEach(function(x){
+      var a=E('a','src');a.href=x.url;a.target='_blank';a.rel='noopener noreferrer';
+      a.appendChild(H('div','st',esc(x.title)+' <span class="pub">· '+esc(x.publisher)+' ↗</span>'));
+      if(x.backs)a.appendChild(T('div','sb','Supports: '+x.backs));
+      s.appendChild(a);
+    });
+    return s;
+  }
   function expertPanel(role,sub,d,leftTitle,rightTitle){
     var p=E('div','panel');var top=E('div','panel-top');
     top.appendChild(H('div','role',esc(role)+'<small>'+esc(sub)+'</small>'));
@@ -258,7 +280,9 @@
       var b=H('div','b','<b>'+esc(f.observation||f.issue)+'</b> — '+esc(f.recommendation||f.fix)+(f.impact?' <i>('+esc(f.impact)+')</i>':''));
       r.appendChild(a);r.appendChild(b);find.appendChild(r);
     });
-    p.appendChild(find);return p;
+    p.appendChild(find);
+    var sb=sourcesBlock(d.sources);if(sb)p.appendChild(sb);
+    return p;
   }
   function personaCard(p){
     var c=E('div','pcard');c.appendChild(T('span','conv '+convClass(p.would_convert),p.would_convert));
@@ -283,7 +307,9 @@
     var cols=E('div','cols');cols.style.marginTop='20px';
     cols.appendChild(miniList('Ongoing operations',null,T2.ongoing_ops));
     var m2=E('div','mini');m2.appendChild(T('h4',null,'Is it worth it?'));var b=H('div','summ',esc(T2.cost_effort)+'<br><br><b style="color:var(--gold)">Verdict:</b> '+esc(T2.worth_it));b.style.marginTop='0';m2.appendChild(b);
-    cols.appendChild(m2);p.appendChild(cols);return p;
+    cols.appendChild(m2);p.appendChild(cols);
+    var sb=sourcesBlock(T2.sources);if(sb)p.appendChild(sb);
+    return p;
   }
 
   function renderReview(){
