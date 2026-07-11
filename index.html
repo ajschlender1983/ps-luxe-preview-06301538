@@ -191,7 +191,14 @@
     padding:18px 38px;border-radius:2px;text-decoration:none;font-weight:400;position:relative;overflow:hidden;
     transition:transform .4s var(--ease),box-shadow .4s;
   }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(201,168,106,.6)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px -10px rgba(201,168,106,.6);filter:brightness(1.05) saturate(1.05)}
+  /* CTA polish: material highlight + breathing glow */
+  .btn-primary,.nav-cta{animation:ctaBreath 3.8s ease-in-out infinite}
+  @keyframes ctaBreath{0%,100%{box-shadow:0 8px 24px -12px rgba(201,168,106,.5)}50%{box-shadow:0 13px 40px -8px rgba(232,207,154,.72)}}
+  .btn-primary::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0) 46%);mix-blend-mode:soft-light}
+  .cta-micro::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 0 rgba(232,207,154,.6);animation:microPulse 2.4s ease-out infinite}
+  @keyframes microPulse{0%{box-shadow:0 0 0 0 rgba(232,207,154,.55)}70%{box-shadow:0 0 0 7px rgba(232,207,154,0)}100%{box-shadow:0 0 0 0 rgba(232,207,154,0)}}
+  @media(prefers-reduced-motion:reduce){.btn-primary,.nav-cta,.cta-micro::before{animation:none}}
   .btn-text{
     font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);text-decoration:none;
     display:flex;align-items:center;gap:10px;transition:gap .4s var(--ease),color .4s;

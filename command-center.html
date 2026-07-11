@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Psychic Source — Redesign Command Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--gold:#C9A86A;--gold-bright:#E8CF9A;--ink:#140F38;--ivory:#F7F2E8;--muted:rgba(247,242,232,.62);--faint:rgba(247,242,232,.12);--hair:rgba(201,168,106,.22);
+    --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;--good:#8FB98A;--warn:#E8B45A;--bad:#E0736B;--violet:#B254DC;--blue:#8FA6C4}
+  body{background:radial-gradient(130% 90% at 50% -10%,#241a45,#160f33 55%,#0d0a1e);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.6;min-height:100vh}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 26px}
+  a{color:inherit}
+  .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-bright)}
+  header.top{padding:58px 0 26px;text-align:center;position:relative;overflow:hidden}
+  header.top .star{position:absolute;left:50%;top:-40px;transform:translateX(-50%);width:340px;height:340px;background:radial-gradient(circle,rgba(232,207,154,.16),transparent 62%);pointer-events:none}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,6vw,62px);letter-spacing:-.01em;margin:14px 0 10px;position:relative}
+  h1 em{font-style:italic;color:var(--gold)}
+  header.top p{color:var(--muted);max-width:660px;margin:0 auto;font-size:16px}
+  .meta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .pill{font-size:12px;letter-spacing:.05em;color:var(--muted);border:1px solid var(--hair);background:rgba(255,255,255,.03);padding:8px 15px;border-radius:999px}
+  .pill b{color:var(--gold-bright);font-weight:500}
+  nav.sticky{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,#160f33f2,#160f33d0 70%,transparent);backdrop-filter:blur(8px);padding:12px 0;margin-top:22px}
+  nav.sticky .in{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+  nav.sticky a{font-size:12.5px;letter-spacing:.04em;color:var(--muted);padding:8px 14px;border-radius:999px;text-decoration:none;transition:all .2s;white-space:nowrap;border:1px solid transparent}
+  nav.sticky a:hover{color:var(--ivory);border-color:var(--hair)}
+  section{padding:52px 0;border-top:1px solid var(--faint);scroll-margin-top:64px}
+  .sec-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .sec-h h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.6vw,40px)}
+  .sec-h .n{font-family:var(--serif);font-size:16px;color:var(--gold)}
+  .sec-sub{color:var(--muted);font-size:15px;max-width:720px;margin-bottom:30px}
+  .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:8px}
+  .score{border:1px solid var(--faint);border-radius:12px;padding:22px;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01))}
+  .score .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .score .v{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1.05;margin-top:6px}
+  .score .v small{font-size:20px;color:var(--muted)}
+  .score .d{font-size:13px;color:var(--muted);margin-top:6px}
+  .verdict-tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;padding:5px 13px;border-radius:999px}
+  .vt-go{background:rgba(143,185,138,.16);color:var(--good);border:1px solid rgba(143,185,138,.4)}
+  .vt-cond{background:rgba(232,180,90,.14);color:var(--warn);border:1px solid rgba(232,180,90,.4)}
+  .vt-no{background:rgba(224,115,107,.14);color:var(--bad);border:1px solid rgba(224,115,107,.4)}
+  .panel{border:1px solid var(--faint);border-radius:14px;padding:26px 26px 22px;background:linear-gradient(165deg,rgba(245,240,230,.045),rgba(245,240,230,.01));margin-bottom:22px}
+  .panel-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .panel-top .role{font-family:var(--serif);font-size:23px;font-weight:600}
+  .panel-top .role small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:400}
+  .panel-top .big{margin-left:auto;font-family:var(--serif);font-size:38px;font-weight:600;color:var(--gold-bright)}
+  .panel-top .big small{font-size:17px;color:var(--muted)}
+  .panel .head{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--ivory);margin-bottom:10px;line-height:1.35}
+  .panel .summ{color:rgba(247,242,232,.82);font-size:14.5px;margin-bottom:18px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .mini h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+  .mini ul{list-style:none}
+  .mini li{position:relative;padding-left:20px;margin-bottom:8px;font-size:13.5px;color:var(--muted);line-height:1.55}
+  .mini li::before{content:"✦";position:absolute;left:0;top:1px;color:var(--gold);font-size:9px}
+  .find{border-top:1px solid var(--faint);margin-top:18px;padding-top:16px}
+  .find-row{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--faint)}
+  .find-row:last-child{border-bottom:0}
+  .find-row .a{font-size:12.5px;color:var(--gold-bright);font-weight:500;display:flex;flex-direction:column;gap:6px}
+  .prio{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:999px;width:fit-content}
+  .p-high{background:rgba(224,115,107,.16);color:var(--bad)}.p-med{background:rgba(232,180,90,.14);color:var(--warn)}.p-low{background:rgba(143,166,196,.14);color:var(--blue)}
+  .find-row .b{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .find-row .b b{color:var(--ivory);font-weight:500}
+  .find-row .b i{color:var(--good);font-style:normal}
+  .ptally{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;font-size:13px;color:var(--muted)}
+  .ptally b{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
+  .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pcard{border:1px solid var(--faint);border-radius:12px;padding:22px;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.012));position:relative}
+  .pcard .conv{position:absolute;top:18px;right:18px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;padding:3px 10px;border-radius:999px}
+  .c-yes{background:rgba(143,185,138,.16);color:var(--good)}.c-maybe{background:rgba(232,180,90,.14);color:var(--warn)}.c-no{background:rgba(224,115,107,.14);color:var(--bad)}
+  .pcard .nm{font-family:var(--serif);font-size:22px;font-weight:600}
+  .pcard .arc{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .pcard .ctx{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .pcard .imp{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ivory);border-left:2px solid var(--gold);padding-left:14px;margin:10px 0 14px;line-height:1.4}
+  .twowrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .two h5{font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
+  .two.works h5{color:var(--good)}.two.fric h5{color:var(--bad)}
+  .two ul{list-style:none}.two li{font-size:12.5px;color:var(--muted);margin-bottom:6px;line-height:1.45;padding-left:14px;position:relative}
+  .two li::before{content:"·";position:absolute;left:3px;color:var(--gold)}
+  .pcard .tip{font-size:12.5px;color:var(--muted)}.pcard .tip b{color:var(--gold-bright);font-weight:500}
+  .pcard .q{margin-top:12px;font-size:13px;color:rgba(247,242,232,.8);font-style:italic}
+  .risk{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px}
+  .risk .r{border:1px solid var(--faint);border-radius:9px;padding:13px 16px;background:rgba(0,0,0,.14);display:grid;grid-template-columns:1fr auto;gap:8px}
+  .risk .r .t{font-size:14px;color:var(--ivory);font-weight:400}
+  .risk .r .m{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+  .sev{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:999px;height:fit-content}
+  .s-high{background:rgba(224,115,107,.16);color:var(--bad)}.s-med{background:rgba(232,180,90,.14);color:var(--warn)}.s-low{background:rgba(143,166,196,.14);color:var(--blue)}
+  .story .step{display:grid;grid-template-columns:44px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--faint)}
+  .story .step .num{font-family:var(--serif);font-size:20px;color:var(--gold)}
+  .story .step h4{font-family:var(--serif);font-size:21px;font-weight:600;margin-bottom:4px}
+  .story .step p{font-size:14px;color:var(--muted)}
+  .story .step .ph{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:3px}
+  .prompts{margin-top:26px}
+  .prompt{border:1px solid var(--faint);border-radius:10px;margin-bottom:12px;overflow:hidden}
+  .prompt summary{cursor:pointer;padding:14px 18px;list-style:none;display:flex;align-items:center;gap:12px;font-size:14px}
+  .prompt summary::-webkit-details-marker{display:none}
+  .prompt summary .k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);padding:3px 9px;border-radius:999px}
+  .prompt summary .plus{margin-left:auto;color:var(--gold);transition:transform .3s}
+  .prompt[open] summary .plus{transform:rotate(45deg)}
+  .prompt .body{padding:0 18px 16px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:rgba(247,242,232,.78);white-space:pre-wrap}
+  .clog{border:1px solid var(--faint);border-radius:12px;overflow:hidden}
+  .clog summary{cursor:pointer;list-style:none;padding:18px 22px;display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:20px;font-weight:600}
+  .clog summary::-webkit-details-marker{display:none}
+  .clog summary .cnt{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:300}
+  .clog summary .plus{margin-left:auto;color:var(--gold);font-size:22px;transition:transform .3s}
+  .clog[open] summary .plus{transform:rotate(45deg)}
+  .clog .list{border-top:1px solid var(--faint);max-height:440px;overflow:auto}
+  .clog .ci{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:11px 22px;border-bottom:1px solid var(--faint);font-size:13px}
+  .clog .ci:last-child{border-bottom:0}
+  .clog .ci .dt{color:var(--gold);font-family:ui-monospace,monospace;font-size:11.5px}
+  .clog .ci .msg{color:var(--muted);line-height:1.5}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .dl{border:1px solid var(--faint);border-radius:12px;padding:20px;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01));text-decoration:none;display:block;transition:all .25s}
+  .dl:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .dl .t{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:5px}
+  .dl .d{font-size:13px;color:var(--muted)}
+  .dl .go{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:12px;display:inline-block}
+  .exp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .big-dl{border:1px solid var(--hair);border-radius:14px;padding:30px;background:linear-gradient(160deg,rgba(232,207,154,.08),rgba(178,84,220,.05));text-decoration:none;display:block;transition:all .25s}
+  .big-dl:hover{transform:translateY(-3px);border-color:var(--gold)}
+  .big-dl h3{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:8px}
+  .big-dl p{font-size:14px;color:var(--muted)}
+  .btn{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));padding:14px 26px;border-radius:3px;text-decoration:none;font-weight:500;margin-top:16px}
+  .loading{color:var(--muted);font-size:14px;padding:30px;text-align:center;border:1px dashed var(--hair);border-radius:12px}
+  footer.end{padding:50px 0 80px;text-align:center;color:var(--muted);font-size:12.5px;border-top:1px solid var(--faint)}
+  @media(max-width:820px){.scores{grid-template-columns:1fr 1fr}.cols,.pgrid,.exp,.twowrap{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.find-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><span class="star"></span><div class="wrap">
+  <span class="eyebrow">Psychic Source · The Celestial Atelier Redesign</span>
+  <h1>Redesign <em>Command Center</em></h1>
+  <p>An AI-native review board — a luxury brand expert, a conversion strategist, a CTO migration assessment, and ten market-researched customer personas — evaluating the redesign, plus the full story of how it was built.</p>
+  <div class="meta-row">
+    <span class="pill"><b>17</b> pages redesigned</span>
+    <span class="pill"><b>40+</b> AI-generated assets</span>
+    <span class="pill"><b>13</b> expert &amp; persona reviewers</span>
+    <span class="pill"><b>2</b> days, one session</span>
+  </div>
+</div></header>
+
+<nav class="sticky"><div class="in">
+  <a href="#overview">Overview</a><a href="#experts">Expert Panel</a><a href="#personas">Personas</a><a href="#cto">CTO Verdict</a><a href="#story">The Story</a><a href="#prompts">Prompts</a><a href="#changelog">Changelog</a><a href="#assets">Assets</a><a href="#experience">Experience</a>
+</div></nav>
+
+<div class="wrap">
+  <section id="overview"><div class="sec-h"><span class="n">01</span><h2>Overview</h2></div><p class="sec-sub">The verdict at a glance, scored by the review board.</p><div id="overviewBody" class="loading">Loading the review board…</div></section>
+  <section id="experts"><div class="sec-h"><span class="n">02</span><h2>Expert Panel</h2></div><p class="sec-sub">A world-class luxury brand expert and an AI-native conversion strategist, each doing a subtle visual-design and conversion pass.</p><div id="expertsBody" class="loading">Loading experts…</div></section>
+  <section id="personas"><div class="sec-h"><span class="n">03</span><h2>Ten Customer Personas</h2></div><p class="sec-sub">Market-researched ICPs for a psychic-reading service — love, grief, career, skeptics, spiritual practitioners, budget, availability, gifting — each reacting to the redesign in character.</p><div id="personasBody" class="loading">Loading personas…</div></section>
+  <section id="cto"><div class="sec-h"><span class="n">04</span><h2>CTO — Should this replace the live site?</h2></div><p class="sec-sub">A pragmatic assessment of the risk and technical expense of adopting this build to replace psychicsource.com — the migration and the ongoing operations — and whether it's worth it.</p><div id="ctoBody" class="loading">Loading assessment…</div></section>
+  <section id="story"><div class="sec-h"><span class="n">05</span><h2>The Story</h2></div><p class="sec-sub">A play-by-play of the redesign — from the first concept to this dashboard — built conversationally, one refinement at a time.</p><div class="story" id="storyBody"></div></section>
+  <section id="prompts"><div class="sec-h"><span class="n">06</span><h2>The Prompt Library</h2></div><p class="sec-sub">The core prompts that shaped the work — including the image-generation prompts behind the tarot cards, cosmic heroes, quill, and reader scene. Tap to expand.</p><div class="prompts" id="promptsBody"></div></section>
+  <section id="changelog"><div class="sec-h"><span class="n">07</span><h2>Changelog</h2></div><p class="sec-sub">Every change, newest first. Collapsed by default.</p><details class="clog"><summary>Full change history <span class="cnt" id="clogCount"></span><span class="plus">+</span></summary><div class="list" id="clogList"></div></details></section>
+  <section id="assets"><div class="sec-h"><span class="n">08</span><h2>Download the Assets</h2></div><p class="sec-sub">The generated imagery is hosted live — open any to view or save. The full source (all HTML/CSS/JS + assets) is in the repository.</p><div class="cards" id="assetsBody"></div></section>
+  <section id="experience"><div class="sec-h"><span class="n">09</span><h2>Experience It</h2></div><p class="sec-sub">Walk the redesign, or compare it side by side against the original site.</p><div class="exp">
+    <a class="big-dl" href="index.html"><h3>Enter the redesign →</h3><p>The full Celestial Atelier build — home, psychics, readings, tarot, horoscopes, guarantee, and more.</p><span class="btn">Open the site</span></a>
+    <a class="big-dl" href="compare.html?p=home"><h3>Side-by-side compare →</h3><p>The redesign next to the current psychicsource.com, with synced scrolling and a page switcher.</p><span class="btn">Open A/B compare</span></a>
+  </div></section>
+</div>
+
+<footer class="end"><div class="wrap">Psychic Source — Celestial Atelier redesign · Internal review dashboard · Prototype, not affiliated with the live site's production systems.</div></footer>
+
+<script src="assets/review-data.js"></script>
+<script>
+(function(){
+  "use strict";
+  function frag(h){return document.createRange().createContextualFragment(h);}
+  function E(tag,cls){var e=document.createElement(tag);if(cls)e.className=cls;return e;}
+  function T(tag,cls,text){var e=E(tag,cls);if(text!=null)e.textContent=text;return e;}
+  function H(tag,cls,html){var e=E(tag,cls);if(html!=null)e.appendChild(frag(html));return e;}
+  function esc(s){return (s==null?'':(''+s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function clear(node){while(node.firstChild)node.removeChild(node.firstChild);}
+  function convClass(v){v=(v||'').toLowerCase();return v.indexOf('yes')>=0?'c-yes':v.indexOf('no')>=0?'c-no':'c-maybe';}
+  function prioClass(p){p=(p||'').toLowerCase();return p.indexOf('high')>=0?'p-high':p.indexOf('low')>=0?'p-low':'p-med';}
+  function sevClass(p){p=(p||'').toLowerCase();return p.indexOf('high')>=0?'s-high':p.indexOf('low')>=0?'s-low':'s-med';}
+  function verdictClass(v){v=(v||'').toLowerCase();return v.indexOf('no')>=0?'vt-no':(v.indexOf('cond')>=0?'vt-cond':'vt-go');}
+
+  var STORY=[
+    {ph:'Concept',t:'The Celestial Atelier',b:'Reimagine psychicsource.com as a heritage luxury house rather than a transactional psychic directory. Deep violet-indigo cosmos, champagne gold, Cormorant Garamond + Jost, and a guiding idea: everything emerges from a single point of source-light.'},
+    {ph:'Home',t:'A living home page',b:'A four-point compass-star logo, an animated cosmic background with drifting glows and twinkling stars, a cinematic hero, advisor cards with twinkling starfields, a manifesto with two hands and a breathing "source" glow, and a floating $1/min CTA.'},
+    {ph:'Compare',t:'A/B against the original',b:'Built an original-vs-redesign toggle, a synced-scroll split view, and page-matched comparison so every change could be judged against the live site.'},
+    {ph:'Psychics',t:'190 real psychics, studio-graded',b:'Scraped 215 psychic photos and graded them locally (light background, hair-halo backlight, unified lighting) with no generative API, then built the full 190-psychic listing with real names, ratings, and live-status logic.'},
+    {ph:'Tarot cards',t:'A bespoke tarot deck',b:'Ran a style workshop, chose a "Regal & Crowned" Art Nouveau x ink direction, and generated a cohesive set — The Seeker, The Oracle, The Insight — plus six spread cards and a card-back bearing the Psychic Source star. Hands were fixed until the anatomy was right.'},
+    {ph:'Build-out',t:'Fifteen interior pages',b:'Built the full site on a shared shell (site.css + a chrome-injecting site.js), interlinked nav and footer, and gave every page its own cinematic hero.'},
+    {ph:'Imagery',t:'No two pages alike',b:'Generated a unique cosmic hero for each interior page so nothing repeats, and adapted RISE angel/wing textures into the palette.'},
+    {ph:'Motion',t:'Cinematic consistency',b:'Added parallax and animated cinematic "page-break" interstitials to every page, a breathing guarantee seal, and scroll-reveal throughout — motion as storytelling, not decoration.'},
+    {ph:'Tarot hero',t:'Cards spinning in space',b:'Built a hero of our double-sided tarot cards spinning and drifting through cosmic space at multiple depths with shallow depth-of-field and overhead light — a live animation using our real card art, not a video.'},
+    {ph:'Horoscopes',t:'A constellation sky',b:'A constellation-littered night sky with a central star, ~1500 twinkling four-point stars, and a magical gold quill floating behind the headline.'},
+    {ph:'Guarantee',t:'The source seal',b:'A cosmic 100%-satisfaction medallion with a concentric breathing halo, over a plain nebula so the seal is the only ring.'},
+    {ph:'Conversion',t:'A CRO copy pass',b:'Built an interactive CRO decision tool, then standardized the primary CTA to "Get Your Reading" with reassurance microcopy, led the home with a benefit headline, and cleaned up terminology — all reviewed decision by decision.'},
+    {ph:'This board',t:'The review board',b:'Deployed a team of AI experts and ten researched personas to pressure-test the result, and built this command center to tell the whole story.'}
+  ];
+  var PROMPTS=[
+    {k:'Tarot card style',t:'Ornate hand-drawn tarot card illustration, Art Nouveau merged with antique pen-and-ink engraving, fine gold linework, intricate decorative ornamental border, deep violet-indigo and gold palette, cosmic galaxy background, aspect ratio 3:4. [+ per-card scene: The Seeker / The Oracle / The Insight, and six spreads]'},
+    {k:'Cosmic page heroes',t:'Luxury cosmic editorial background image in a deep violet and indigo night sky washed with champagne-gold light, soft nebula clouds and scattered stars, painterly and atmospheric, the sense that everything emerges from a single point of golden source-light. Cinematic, elegant, generous dark negative space so text can sit over it. No text, no letters. [+ per-page concept]'},
+    {k:'Cinematic interstitials',t:'Cinematic painterly image in the exact luxury style of a high-end mystical brand hero: deep violet-indigo cosmic atmosphere washed with soft champagne-gold light, ethereal, dreamlike, gentle film grain, an ethereal figure as an emotional beat. [+ per-page scene]'},
+    {k:'The magical quill',t:'A single ornate cosmic magical quill pen: one long elegant golden feather quill, its shaft and barbs glowing with warm champagne-gold light, fine gold filigree, wisps of glowing gold stardust trailing from the nib, floating at a diagonal in deep violet-indigo cosmic space against near-black so it reads as a luminous object. No text.'},
+    {k:'The card back',t:'Design a tarot card back in the ornate Art Nouveau x ink style: fine gold filigree, an intricate decorative gold border, deep violet-indigo and gold, perfectly symmetrical, with a single radiant four-pointed gold compass-star emblem centered (the Psychic Source mark). No text, no figure.'},
+    {k:'The reader scene',t:'A three-quarter overhead shot of a big rustic farm table, candlelit, deep violet-indigo cosmic setting: a traditional tarot cross spread laid out FACE UP, every card a unique ornate Art Nouveau design, cards oriented toward the reader (upside-down to the camera), a neat squared deck with a star-backed top card on the right, a pair of hands at the near edge.'},
+    {k:'The guarantee seal',t:'A cosmic "source" medallion: a deep orb with a soft aura and a crisp complete gold rim, engraved ring text "100% Satisfaction Guaranteed · Risk-Free Readings · Since 1989", with a concentric breathing halo of gold light anchored to the seal so stamp and glow stay centered.'}
+  ];
+  var ASSETS=[
+    {t:'Tarot deck',d:'The Seeker, The Oracle, The Insight — the three-card arc.',href:'assets/steps/step-1.jpg'},
+    {t:'Tarot spreads',d:'Six bespoke spread cards (Three-Card, Celtic Cross, Relationship, Year Ahead, Yes/No, Decision).',href:'assets/tarot/three-card.jpg'},
+    {t:'Card back',d:'The Psychic Source star card-back design.',href:'assets/tarot/card-back.jpg'},
+    {t:'The reader scene',d:'Candlelit tarot reader with a spread facing her.',href:'assets/tarot/reader-scene.jpg'},
+    {t:'Cosmic heroes',d:'Fifteen unique per-page hero backdrops.',href:'assets/heroes/tarot.jpg'},
+    {t:'The magical quill',d:'Glowing gold quill from the horoscopes hero.',href:'assets/heroes/horoscopes-quill.jpg'},
+    {t:'Cinematic bands',d:'Twelve ethereal interstitial images.',href:'assets/cine/love.jpg'},
+    {t:'Angel wings',d:'The winged figure from the manifesto.',href:'assets/angel-wings.jpg'},
+    {t:'Full source',d:'All HTML/CSS/JS + every asset, in the repository.',href:'https://github.com/ajschlender1983/ps-luxe-preview-06301538'}
+  ];
+  var CHANGELOG=[{"date": "2026-07-10", "msg": "CRO copy pass: standardize primary CTA to 'Get Your Reading' sitewide + '$1/min · guaranteed' microcopy; benefit-led home H1 with tagline eyebrow; nav/footer 'The House'->'About'; House prose kept to Manifesto/Ethics; seekers->you near CTAs/FAQ; fix em dashes"}, {"date": "2026-07-10", "msg": "Add CRO copy/CTA review tool: interactive before/after (original vs redesign) with instance counts, specialist recs, real-time picks + export"}, {"date": "2026-07-10", "msg": "Guarantee hero: replace ringed background with a plain ringless cosmic nebula so the seal's concentric halo is the only ring"}, {"date": "2026-07-10", "msg": "Guarantee hero: anchor the halo of light to the seal so stamp and glow are concentric; dim the background ring"}, {"date": "2026-07-10", "msg": "Horoscopes hero: quill moved behind the type as a glowing backdrop; 10x the star field (1500) and brighter"}, {"date": "2026-07-10", "msg": "Horoscopes hero: constellation-littered sky (central star kept) + dense twinkling four-point starfield + featured cosmic quill"}, {"date": "2026-07-10", "msg": "Tarot hero: mask cards out of the header band; fix animation hitch (drop full-screen blend animation + per-card drop-shadow filter; foreground card drifts without re-blurring)"}, {"date": "2026-07-10", "msg": "Tarot hero: animated cards spinning in cosmic space + depth-of-field field with overhead lighting and star card-back"}, {"date": "2026-07-10", "msg": "How It Works cine line: 'Insight begins the moment you dare to ask'"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: use variation 3 (reader leaning in) with cards laid facing the psychic rather than the camera"}, {"date": "2026-07-10", "msg": "Add reader-variations review gallery (5 options with named cards, varied psychic presence)"}, {"date": "2026-07-10", "msg": "Fix hand/arm handedness on The Seeker and The Insight cards (correct left hand on left arm); cache-bust step-1/step-3 references"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: three-quarter overhead, face-up unique cards in a cross, neat deck stack on the right with a Psychic-Source-star card back"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: top-down farm-table flat-lay, hands only, traditional cross spread with realistic-sized cards (replaces portrait reader)"}, {"date": "2026-07-10", "msg": "Cinematic consistency: add parallax + animated .cine interstitial page-breaks to all interior pages (12 bespoke bands), breathing glow on wingbands, hero parallax; swap Tarot 'Living Tradition' to a card reader laying our-design spread in the home-header style"}, {"date": "2026-07-10", "msg": "De-duplicate imagery: unique generated cosmic hero per interior page (15) + reassign secondary images so none repeat; rename card III The Connection -> The Insight and regenerate step-3"}, {"date": "2026-07-10", "msg": "Tarot: generate six bespoke spread cards (Three-Card, Celtic Cross, Relationship, Year Ahead, Yes/No, Decision) in the crowned Art Nouveau x ink style; show as illustrated cards"}, {"date": "2026-07-10", "msg": "Apply Rising Current as The Connection; build out full interior site (15 pages) on a shared shell with RISE angel/wing textures; interlink nav + footer"}, {"date": "2026-07-10", "msg": "Leena: use the actual Oracle card under a new filename to defeat browser cache"}, {"date": "2026-07-10", "msg": "Fix The Seeker hand (correct pinch gesture); add Connection variations gallery"}, {"date": "2026-07-10", "msg": "psychics: use the Oracle tarot card as Leena's avatar (replace the too-grim hooded figure)"}, {"date": "2026-07-10", "msg": "fix seeker hand/arm (cards I & III, blue arm kept blue); Leena becomes an anonymous hooded tarot-style avatar instead of the flower"}, {"date": "2026-07-10", "msg": "psychics: restyle Leena's image (her source avatar is a pressed flower, not a portrait) into a dark studio still-life matching the other cards; removes the old white-halo artifact"}, {"date": "2026-07-10", "msg": "how it works: fix seeker's hand (cards I & III) and replace the heart in The Connection with a flowing ribbon of light"}, {"date": "2026-07-10", "msg": "manifesto: brighten the two-hands background (opacity .44->.6, lighter scrim), keep text legible"}, {"date": "2026-07-10", "msg": "how it works: crop white margins to full-bleed, regenerate Union to match set + rename 'The Connection', move name+number onto card as bottom name plate"}, {"date": "2026-07-10", "msg": "how it works: swap to Regal & Crowned tarot set (Art Nouveau x ink) — self-framed illustrated cards with caption below, keep thread + flip"}, {"date": "2026-07-10", "msg": "add character workshop: 5 variations of the two characters in merged Art Nouveau x ink/engraving style"}, {"date": "2026-07-10", "msg": "add style workshop: 3 How-It-Works cards x 5 style directions (painterly -> ink & engraving) for review"}, {"date": "2026-07-10", "msg": "tarot cards: add corner filigree ornaments, 3D flip/lift on scroll-in, and a shared gold thread with glowing nodes connecting the three cards"}, {"date": "2026-07-10", "msg": "how it works: style step panels as tarot cards — gold double-frame, top Roman numeral, bottom name plate (The Seeker / The Oracle / The Union)"}, {"date": "2026-07-10", "msg": "how it works: three story images (seeker asks -> psychic summoned -> two linked communicating), same characters as header; restore 'As seen on' label weight"}, {"date": "2026-07-10", "msg": "trust: enlarge press logos again + de-emphasize 'As seen on' label so logos lead hierarchy; footer: All Advisors->All Psychics, Become an Advisor->Become a Psychic"}, {"date": "2026-07-10", "msg": "hero: substantially enlarge stat numbers (30px -> clamp 40-56px) and labels; more spacing"}, {"date": "2026-07-10", "msg": "seal: crisper, complete medallion — add two defined gold rims framing the band, engraving now wraps the full ring, softer aura (less fuzzy)"}, {"date": "2026-07-09", "msg": "compare: rename bottom tab Advisors->Psychics; carry scroll position across toggles + split so you stay at ~the same section"}, {"date": "2026-07-09", "msg": "header: add 'Search psychics…' box to top-right utility bar (like original); mobile hero: lift copy onto the figure's neck/shoulder to remove the empty band (desktop unchanged)"}, {"date": "2026-07-09", "msg": "cards: away psychics now read consistently — CTA becomes 'Leave a message', phone/chat/video icons dimmed (online cards unchanged)"}, {"date": "2026-07-09", "msg": "manifesto bg: bring it to life — slow Ken Burns drift on the hands + breathing gold 'source' glow at the fingertip meeting point (reduced-motion safe)"}, {"date": "2026-07-09", "msg": "manifesto: add thematic 'two hands almost touching' cosmic background (bespoke, on-brand) with legibility scrim; conveys the 'trusted voice / emerges from source' concept"}, {"date": "2026-07-09", "msg": "dim backdrop starfield (softer gold, lower opacity); rebuild guarantee seal as cosmic 'source' — dark void orb + pulsing aura + swirling corona with rotating guarantee text (echoes header)"}, {"date": "2026-07-09", "msg": "trust: enlarge 'As seen on' press logos (~2x), more band padding, mobile sizes"}, {"date": "2026-07-09", "msg": "hero: remove '2% accepted' stat"}, {"date": "2026-07-09", "msg": "star pass: four-point logo-style starfield confined to portrait backdrops (keep-out over subject), denser; SVG icon pass (rating stars, marquee sparkles, trust rating); glossy dimensional guarantee seal; move insight banner above 'As seen on'"}, {"date": "2026-07-09", "msg": "add animated Insight banner (Experience the power of insight / $1 per minute / Get a Reading / 100% satisfaction seal + trust marquee w/ over-10-million-readings); align copy to 'psychics'"}, {"date": "2026-07-09", "msg": "A/B compare v2: page-matched original snapshots, 3-way toggle (Redesign/Split/Original), synced-scroll split view, persistent page+side switcher"}, {"date": "2026-07-09", "msg": "add A/B compare: toggle pill between redesign and a snapshot of the current live site (+ open-live link)"}, {"date": "2026-07-09", "msg": "cards: churning twinkle starfield over each portrait backdrop (screen-blend, echoes header logo)"}, {"date": "2026-07-09", "msg": "cards: fix Leota green rim (regenerated), add subtle name-glow + sequential star light-up impulse on reveal/hover"}, {"date": "2026-07-09", "msg": "hero energy: slow 3D spiral rising into soft expanding low-opacity light wisps around the figures"}, {"date": "2026-07-09", "msg": "advisors: replace all headshots with Gemini studio portraits (209 listing + featured homepage), face-preserving Leibovitz relight"}, {"date": "2026-07-09", "msg": "hero: set chosen winners — 'Looking to the Light' (desktop) + 'Facing & Haloed' (mobile); energy now rises up desktop central column, falls psychic->seeker on mobile"}, {"date": "2026-07-09", "msg": "add header concept gallery (5 peaceful haloed directions, desktop + mobile each)"}, {"date": "2026-07-09", "msg": "hero: gentle energy particle stream (psychic->seeker), additive-blended into the cosmos, reduced-motion safe, pauses off-screen"}, {"date": "2026-07-09", "msg": "hero: stunning cosmic 'psychic revelation' header image (responsive desktop 16:9 + mobile 9:16), bottom-anchored copy; button + interstitial fixes"}, {"date": "2026-07-08", "msg": "cinematic: remove buggy button shimmer, add winged-angel interstitial with parallax, slow hero push-in, offer-bg parallax"}, {"date": "2026-07-08", "msg": "add zodiac glyphs to Horoscopes dropdown (both pages)"}, {"date": "2026-06-30", "msg": "add headshot treatment examples page (filmic studio grade direction test)"}, {"date": "2026-06-30", "msg": "trust strip: real press logos (FOX/Lifetime/USA Today/BuzzFeed/Bustle, monochrome) + sequential star light-up animation"}, {"date": "2026-06-30", "msg": "feat: real nav tabs + dropdowns header (both pages) and advisor filter sidebar (name/type/sort/specialties) with working filters"}, {"date": "2026-06-30", "msg": "scroll: subtle Lenis smoothing (lerp .18, wheelMultiplier 1) — native distance, minimal lag"}, {"date": "2026-06-30", "msg": "fix: remove Lenis smooth-scroll hijack + scroll-behavior smooth + blur/scrub animations — native scrolling"}, {"date": "2026-06-30", "msg": "perf: static nebula bg, drop animated blur/blend + hero pin, content-visibility, fewer stars — 11fps to 120fps"}, {"date": "2026-06-30", "msg": "Psychic Source luxury redesign preview"}];
+
+  // ---- static sections ----
+  var sb=document.getElementById('storyBody');
+  STORY.forEach(function(s,i){
+    var row=E('div','step');row.appendChild(T('div','num',(i+1<10?'0':'')+(i+1)));
+    var c=E('div');c.appendChild(T('div','ph',s.ph));c.appendChild(T('h4',null,s.t));c.appendChild(H('p',null,s.b));
+    row.appendChild(c);sb.appendChild(row);
+  });
+  var pb=document.getElementById('promptsBody');
+  PROMPTS.forEach(function(p){
+    var d=E('details','prompt');
+    d.appendChild(H('summary',null,'<span class="k">'+esc(p.k)+'</span><span>'+esc(p.k)+'</span><span class="plus">+</span>'));
+    d.appendChild(T('div','body',p.t));pb.appendChild(d);
+  });
+  var ab=document.getElementById('assetsBody');
+  ASSETS.forEach(function(a){
+    var link=E('a','dl');link.href=a.href;link.target='_blank';link.rel='noopener';
+    link.appendChild(T('div','t',a.t));link.appendChild(T('div','d',a.d));link.appendChild(T('span','go','Open →'));ab.appendChild(link);
+  });
+  document.getElementById('clogCount').textContent='('+CHANGELOG.length+' changes)';
+  var clist=document.getElementById('clogList');
+  CHANGELOG.forEach(function(c){var row=E('div','ci');row.appendChild(T('div','dt',c.date));row.appendChild(T('div','msg',c.msg));clist.appendChild(row);});
+
+  // ---- review-board data ----
+  var REVIEW=window.REVIEW||null;
+  function scoreCard(lbl,val,suf,d){var s=E('div','score');s.appendChild(T('div','lbl',lbl));s.appendChild(H('div','v',esc(val)+'<small>'+esc(suf)+'</small>'));s.appendChild(T('div','d',d));return s;}
+  function miniList(title,titleColor,items){var m=E('div','mini');var h=T('h4',null,title);if(titleColor)h.style.color=titleColor;m.appendChild(h);var ul=E('ul');(items||[]).forEach(function(x){ul.appendChild(T('li',null,x));});m.appendChild(ul);return m;}
+  function expertPanel(role,sub,d,leftTitle,rightTitle){
+    var p=E('div','panel');var top=E('div','panel-top');
+    top.appendChild(H('div','role',esc(role)+'<small>'+esc(sub)+'</small>'));
+    top.appendChild(H('div','big',esc(d.score)+'<small>/10</small>'));p.appendChild(top);
+    p.appendChild(T('div','head',d.headline));p.appendChild(T('div','summ',d.summary));
+    var cols=E('div','cols');
+    cols.appendChild(miniList(leftTitle,null,d.strengths||d.quick_wins));
+    cols.appendChild(miniList(rightTitle,null,d.risks||d.quick_wins));
+    p.appendChild(cols);
+    if(d.motion_notes){var mn=H('div','summ','<b style="color:var(--gold)">On motion:</b> '+esc(d.motion_notes));mn.style.marginTop='16px';p.appendChild(mn);}
+    if(d.predicted_lift){var pl=H('div','summ','<b style="color:var(--gold)">Predicted impact:</b> '+esc(d.predicted_lift));pl.style.marginTop='16px';p.appendChild(pl);}
+    var find=E('div','find');
+    (d.findings||[]).forEach(function(f){
+      var r=E('div','find-row');var a=E('div','a');a.appendChild(T('span',null,f.area||f.element));
+      if(f.priority)a.appendChild(T('span','prio '+prioClass(f.priority),f.priority));
+      if(f.effort)a.appendChild(T('span','prio p-low','Effort: '+f.effort));
+      var b=H('div','b','<b>'+esc(f.observation||f.issue)+'</b> — '+esc(f.recommendation||f.fix)+(f.impact?' <i>('+esc(f.impact)+')</i>':''));
+      r.appendChild(a);r.appendChild(b);find.appendChild(r);
+    });
+    p.appendChild(find);return p;
+  }
+  function personaCard(p){
+    var c=E('div','pcard');c.appendChild(T('span','conv '+convClass(p.would_convert),p.would_convert));
+    c.appendChild(T('div','nm',p.name));c.appendChild(T('div','arc',(p.archetype||'')+' · '+(p.age||'')));
+    c.appendChild(T('div','ctx',p.context));c.appendChild(T('div','imp',p.first_impression));
+    var wrap=E('div','twowrap');
+    var w=E('div','two works');w.appendChild(T('h5',null,'What works'));var wu=E('ul');(p.what_works||[]).forEach(function(x){wu.appendChild(T('li',null,x));});w.appendChild(wu);
+    var fr=E('div','two fric');fr.appendChild(T('h5',null,'Friction'));var fu=E('ul');(p.friction||[]).forEach(function(x){fu.appendChild(T('li',null,x));});fr.appendChild(fu);
+    wrap.appendChild(w);wrap.appendChild(fr);c.appendChild(wrap);
+    c.appendChild(H('div','tip','<b>Tipping point:</b> '+esc(p.tipping_point)));
+    c.appendChild(T('div','q','“'+(p.quote||'')+'”'));return c;
+  }
+  function ctoPanel(T2){
+    var p=E('div','panel');var top=E('div','panel-top');
+    top.appendChild(H('div','role','CTO Assessment<small>Migration &amp; ongoing operations</small>'));
+    var tg=E('div');tg.style.marginLeft='auto';tg.appendChild(T('span','verdict-tag '+verdictClass(T2.recommendation),T2.recommendation));top.appendChild(tg);p.appendChild(top);
+    p.appendChild(T('div','head',T2.headline));p.appendChild(T('div','summ',T2.summary));
+    var h=E('div','mini');h.style.marginTop='8px';h.appendChild(T('h4',null,'Migration risks'));p.appendChild(h);
+    var risk=E('div','risk');
+    (T2.migration_risks||[]).forEach(function(r){var row=E('div','r');row.appendChild(T('div','t',r.risk));row.appendChild(T('span','sev '+sevClass(r.severity),r.severity));row.appendChild(T('div','m','Mitigation: '+r.mitigation));risk.appendChild(row);});
+    p.appendChild(risk);
+    var cols=E('div','cols');cols.style.marginTop='20px';
+    cols.appendChild(miniList('Ongoing operations',null,T2.ongoing_ops));
+    var m2=E('div','mini');m2.appendChild(T('h4',null,'Is it worth it?'));var b=H('div','summ',esc(T2.cost_effort)+'<br><br><b style="color:var(--gold)">Verdict:</b> '+esc(T2.worth_it));b.style.marginTop='0';m2.appendChild(b);
+    cols.appendChild(m2);p.appendChild(cols);return p;
+  }
+
+  function renderReview(){
+    if(!REVIEW){return;}
+    var B=REVIEW.brand,C=REVIEW.cro,Tc=REVIEW.cto,P=REVIEW.personas||[];
+    var yes=0,maybe=0,no=0;
+    P.forEach(function(x){var v=(x.would_convert||'').toLowerCase();if(v.indexOf('yes')>=0)yes++;else if(v.indexOf('no')>=0)no++;else maybe++;});
+    var ob=document.getElementById('overviewBody');ob.className='';clear(ob);
+    var sc=E('div','scores');
+    sc.appendChild(scoreCard('Brand',B.score,'/10','Luxury execution'));
+    sc.appendChild(scoreCard('Conversion',C.score,'/10','CRO readiness'));
+    sc.appendChild(scoreCard('Open to it',(yes+maybe)+' / '+P.length,'',(yes?yes+' yes · ':'')+maybe+' leaning yes'));
+    var v=E('div','score');v.appendChild(T('div','lbl','CTO verdict'));
+    var tag=E('div');tag.style.marginTop='10px';tag.appendChild(T('span','verdict-tag '+verdictClass(Tc.recommendation),Tc.recommendation));v.appendChild(tag);
+    v.appendChild(T('div','d',(Tc.worth_it||'').slice(0,88)+'…'));sc.appendChild(v);ob.appendChild(sc);
+
+    var eb=document.getElementById('expertsBody');eb.className='';clear(eb);
+    eb.appendChild(expertPanel('Brand Expert','World-class luxury brand & visual design',B,'Strengths','Watch-outs'));
+    eb.appendChild(expertPanel('CRO Strategist','AI-native conversion optimization',C,'Quick wins','What to test'));
+
+    var pb2=document.getElementById('personasBody');pb2.className='';clear(pb2);
+    var tal=H('div','ptally','<span><b style="background:var(--good)"></b>'+yes+' would convert</span><span><b style="background:var(--warn)"></b>'+maybe+' leaning yes</span><span><b style="background:var(--bad)"></b>'+no+' not yet</span>');
+    pb2.appendChild(tal);
+    var grid=E('div','pgrid');P.forEach(function(x){grid.appendChild(personaCard(x));});pb2.appendChild(grid);
+
+    var cb=document.getElementById('ctoBody');cb.className='';clear(cb);cb.appendChild(ctoPanel(Tc));
+  }
+  renderReview();
+})();
+</script>
+</body>
+</html>
