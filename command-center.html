@@ -185,6 +185,20 @@
   .acard .arc2{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);margin:0 12px 9px;min-height:24px;line-height:1.3}
   .acard .meet{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
   .acard:hover .meet{color:var(--gold-bright)}
+  .mkt-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:6px 0 10px}
+  .mkt-h .mkt-t{font-family:var(--serif);font-size:21px;font-weight:600}
+  .mkt-h .mkt-d{font-size:12.5px;color:var(--muted)}
+  .market{position:relative;width:100%;border:1px solid var(--faint);border-radius:14px;overflow:hidden;background:#0b0818}
+  .mtile{position:absolute;background-size:cover;background-position:center 22%;border-radius:9px;overflow:hidden;cursor:pointer;transition:filter .2s,box-shadow .2s;box-shadow:inset 0 0 0 1px rgba(201,168,106,.16)}
+  .mtile:hover{filter:brightness(1.09);z-index:3;box-shadow:inset 0 0 0 1px var(--gold),0 10px 30px -10px #000}
+  .mtile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,14,46,.05) 38%,rgba(9,6,20,.9));pointer-events:none}
+  .mlabel{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;z-index:1}
+  .mpct{font-family:var(--serif);font-weight:600;color:var(--gold-bright);line-height:1;text-shadow:0 2px 6px #000}
+  .mnm{font-family:var(--serif);font-weight:600;color:var(--ivory);margin-top:2px;line-height:1.08;text-shadow:0 1px 5px #000}
+  .mdot{position:absolute;top:10px;right:10px;width:9px;height:9px;border-radius:50%;z-index:2;box-shadow:0 0 0 2px rgba(0,0,0,.35)}
+  .mkt-legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:13px;font-size:12px;color:var(--muted)}
+  .mkt-legend b{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
+  .mkt-legend .est{margin-left:auto;font-style:italic}
   /* ---- lightbox ---- */
   .lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:30px;background:rgba(9,6,20,.88);backdrop-filter:blur(10px)}
   .lb.on{display:flex}
@@ -551,6 +565,61 @@
       var pn=E('p');mdInline(para.join(' '),pn);root.appendChild(pn);
     }
   }
+  // ---- market-composition treemap ----
+  var SHARES={'Heartbroken Hannah':18,'Career-Crossroads Carla':13,'Anxious Dana':11,'Grieving Grace':10,'Night-Owl Wendy':9,'Spiritual Sofia':9,'Budget Bella':9,'Loyal Rosa':8,'Skeptical Sam':7,'Gift-Giver Greg':6};
+  function convColor(v){v=(v||'').toLowerCase();return v.indexOf('yes')>=0&&v.indexOf('no')<0?'var(--good)':(v.indexOf('no')>=0?'var(--bad)':'var(--warn)');}
+  function squarify(data,X,Y,W,H){
+    var result=[];
+    function worst(row,rowSum,short,total,area){
+      var w=0;row.forEach(function(c){var cA=c.v/total*area,rowA=rowSum/total*area,thick=rowA/short,len=cA/thick,r=Math.max(len/thick,thick/len);if(r>w)w=r;});return w;
+    }
+    function layout(children,x,y,w,h){
+      if(!children.length)return;
+      if(children.length===1){result.push({d:children[0].d,x:x,y:y,w:w,h:h});return;}
+      var total=children.reduce(function(s,c){return s+c.v;},0),area=w*h,short=Math.min(w,h);
+      var row=[],rowSum=0,prev=Infinity,split=0;
+      for(var i=0;i<children.length;i++){
+        var test=row.concat([children[i]]),testSum=rowSum+children[i].v,wst=worst(test,testSum,short,total,area);
+        if(wst>prev)break;
+        row=test;rowSum=testSum;prev=wst;split=i+1;
+      }
+      var rowArea=rowSum/total*area;
+      if(w>=h){
+        var cw=rowArea/h,oy=y;
+        row.forEach(function(c){var ch=c.v/rowSum*h;result.push({d:c.d,x:x,y:oy,w:cw,h:ch});oy+=ch;});
+        layout(children.slice(split),x+cw,y,w-cw,h);
+      }else{
+        var rh=rowArea/w,ox=x;
+        row.forEach(function(c){var cw2=c.v/rowSum*w;result.push({d:c.d,x:ox,y:y,w:cw2,h:rh});ox+=cw2;});
+        layout(children.slice(split),x,y+rh,w,h-rh);
+      }
+    }
+    layout(data.slice().sort(function(a,b){return b.v-a.v;}),X,Y,W,H);
+    return result;
+  }
+  var MARKET_P=null;
+  function renderMarket(P,market){
+    var W=market.clientWidth||900,H=Math.round(W<620?W*1.02:W*0.5);
+    market.style.height=H+'px';clear(market);
+    var data=P.map(function(p){return {d:p,v:(SHARES[p.name]||1)};});
+    var rects=squarify(data,0,0,W,H),GAP=3;
+    rects.forEach(function(r){
+      var p=r.d,tile=E('div','mtile');
+      tile.style.left=(r.x+GAP)+'px';tile.style.top=(r.y+GAP)+'px';
+      tile.style.width=Math.max(0,r.w-2*GAP)+'px';tile.style.height=Math.max(0,r.h-2*GAP)+'px';
+      var src=avatarFor(p.name);if(src)tile.style.backgroundImage='url("'+src+'")';
+      var mn=Math.min(r.w,r.h);
+      var dot=E('div','mdot');dot.style.background=convColor(p.would_convert);tile.appendChild(dot);
+      var lab=E('div','mlabel');
+      var pct=E('div','mpct');pct.textContent=(SHARES[p.name]||'')+'%';pct.style.fontSize=Math.max(15,Math.min(42,mn*0.2))+'px';lab.appendChild(pct);
+      if(r.w>=120&&r.h>=70){var nm=E('div','mnm');nm.textContent=p.name;nm.style.fontSize=Math.max(11,Math.min(17,mn*0.085))+'px';lab.appendChild(nm);}
+      tile.appendChild(lab);
+      tile.title=p.name+' — '+shortArc(p.archetype)+' · '+(SHARES[p.name]||'')+'% of target market';
+      tile.onclick=(function(pp){return function(){openAgent(pp);};})(p);
+      market.appendChild(tile);
+    });
+  }
+  var _mktT;window.addEventListener('resize',function(){clearTimeout(_mktT);_mktT=setTimeout(function(){var m=document.querySelector('#researchBody .market');if(m&&MARKET_P)renderMarket(MARKET_P,m);},170);});
   function ctoPanel(T2){
     var p=E('div','panel');var top=E('div','panel-top');
     top.appendChild(H('div','role','CTO Assessment<small>Migration &amp; ongoing operations</small>'));
@@ -594,7 +663,10 @@
      [(yes+maybe)+'/'+P.length,'Open to converting',yes+' yes · '+maybe+' leaning yes · '+no+' not yet.']
     ].forEach(function(m){var s=E('div','mstep');s.appendChild(H('div','mv',m[0]));s.appendChild(T('div','mi',m[1]));s.appendChild(T('div','md',m[2]));method.appendChild(s);});
     rb.appendChild(method);
-    var ag=E('div','agrid');P.forEach(function(x){ag.appendChild(agentCard(x));});rb.appendChild(ag);
+    var mh=E('div','mkt-h');mh.appendChild(T('span','mkt-t','The market, in proportion'));mh.appendChild(T('span','mkt-d','Each tile is one agent; its area is that segment’s estimated share of the target market. Click any agent to meet them.'));rb.appendChild(mh);
+    var market=E('div','market');rb.appendChild(market);
+    MARKET_P=P;renderMarket(P,market);
+    rb.appendChild(H('div','mkt-legend','<span><b style="background:var(--good)"></b>Would convert</span><span><b style="background:var(--warn)"></b>Leaning yes</span><span><b style="background:var(--bad)"></b>Not yet</span><span class="est">Shares are modeled estimates from the ICP research.</span>'));
 
     var cb=document.getElementById('ctoBody');cb.className='';clear(cb);cb.appendChild(ctoPanel(Tc));
   }
