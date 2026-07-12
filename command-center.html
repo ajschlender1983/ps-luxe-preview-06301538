@@ -249,6 +249,39 @@
   .doccard .dmeta b{font-family:var(--serif);font-size:20px;font-weight:600;display:block}
   .doccard .dmeta span{font-size:12.5px;color:var(--muted)}
   .doccard .dgo{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+  /* ---- build tab ---- */
+  .build-card{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid var(--hair);border-radius:18px;overflow:hidden;background:linear-gradient(150deg,rgba(232,207,154,.09),rgba(178,84,220,.06))}
+  .build-card .bc-visual{position:relative;min-height:360px;background:#0b0818}
+  .build-card .bc-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .build-card .bc-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 60%,rgba(20,15,45,.5))}
+  .build-card .bc-body{padding:40px 42px 36px;display:flex;flex-direction:column}
+  .bc-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-bright)}
+  .bc-body h3{font-family:var(--serif);font-size:31px;font-weight:600;margin:9px 0 20px;line-height:1.06}
+  .bc-list{list-style:none;margin:0 0 26px;padding:0}
+  .bc-list li{position:relative;padding-left:26px;margin-bottom:12px;font-size:14px;color:var(--muted);line-height:1.5}
+  .bc-list li::before{content:"✦";position:absolute;left:0;top:1px;color:var(--gold);font-size:11px}
+  .bc-list li b{color:var(--ivory);font-weight:500}
+  .bc-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:auto}
+  .bc-cta .btn{margin-top:0;cursor:pointer;border:0;font-family:inherit}
+  .bc-cta .btn-ghost{cursor:pointer}
+  .bc-lock{display:inline-flex;align-items:center;gap:9px}
+  #buildContents{margin-top:38px}
+  .build-sub{margin-top:40px}
+  .build-sub:first-child{margin-top:0}
+  .build-sub .bs-h{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:6px}
+  .build-sub .bs-d{font-size:14px;color:var(--muted);margin-bottom:22px;max-width:720px;line-height:1.6}
+  .paywall{padding:42px 46px;text-align:center;max-width:470px;margin:0 auto}
+  .paywall .pw-lock{width:58px;height:58px;margin:0 auto 20px;border-radius:50%;border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;color:var(--gold);background:radial-gradient(circle,rgba(232,207,154,.16),transparent 70%)}
+  .paywall .pw-lock svg{width:26px;height:26px}
+  .paywall .pw-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-bright)}
+  .paywall h3{font-family:var(--serif);font-size:29px;font-weight:600;margin:6px 0 10px}
+  .paywall p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:22px}
+  .paywall .pw-price{font-family:var(--serif);font-size:44px;font-weight:600;color:var(--gold-bright);line-height:1}
+  .paywall .pw-price span{font-family:var(--sans);font-size:13px;color:var(--muted);letter-spacing:.06em}
+  .paywall .pw-cta{margin:22px 0 12px;width:100%}
+  .paywall .pw-note{font-size:12px;color:var(--muted)}
+  .paywall .pw-incl{font-size:12.5px;color:var(--muted);border-top:1px solid var(--faint);margin-top:24px;padding-top:16px;line-height:1.7;text-align:left}
+  .paywall .pw-incl b{color:var(--gold-bright);font-weight:500}
   .stripcol,.galcol{margin-bottom:28px}
   .stripcol .sh,.galcol .sh{display:flex;align-items:baseline;gap:12px;margin-bottom:13px;flex-wrap:wrap}
   .stripcol .sh .st,.galcol .sh .st{font-family:var(--serif);font-size:21px;font-weight:600}
@@ -330,7 +363,8 @@
   @media(max-width:820px){.scores{grid-template-columns:1fr 1fr}.cols,.pgrid,.exp,.twowrap{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.find-row{grid-template-columns:1fr}
     .portal-grid{grid-template-columns:1fr 1fr}.portal-hero{padding:30px 24px 28px}.gal{grid-template-columns:repeat(3,1fr)}
     .method{grid-template-columns:1fr 1fr}.agrid{grid-template-columns:repeat(3,1fr)}.aprofile{grid-template-columns:1fr}.aprofile .body2{padding:8px 26px 28px}
-    .xhead{flex-direction:column;align-items:center;text-align:center}.ba-lb .row{grid-template-columns:1fr}.xgrid{grid-template-columns:1fr}}
+    .xhead{flex-direction:column;align-items:center;text-align:center}.ba-lb .row{grid-template-columns:1fr}.xgrid{grid-template-columns:1fr}
+    .build-card{grid-template-columns:1fr}.build-card .bc-visual{min-height:240px}.build-card .bc-body{padding:30px 26px 28px}}
   @media(max-width:520px){.portal-grid{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.gcol>summary{gap:12px}
     .agrid{grid-template-columns:repeat(2,1fr)}.method{grid-template-columns:1fr 1fr}.mdoc{padding:26px 22px}}
 </style>
@@ -364,14 +398,12 @@
     <a class="pnav" href="#experts"><span class="n">03</span><span class="t">Expert Panel</span><span class="d">Go deeper — luxury brand &amp; conversion, with cited sources.</span><span class="go">View →</span></a>
     <a class="pnav" href="#cto"><span class="n">04</span><span class="t">CTO Verdict</span><span class="d">Should this replace the live site? Risk &amp; cost.</span><span class="go">View →</span></a>
     <a class="pnav" href="#story"><span class="n">05</span><span class="t">The Story</span><span class="d">How the redesign was built, step by step.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#prompts"><span class="n">06</span><span class="t">Prompts</span><span class="d">The core prompts, including image generation.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#changelog"><span class="n">07</span><span class="t">Changelog</span><span class="d">Every change, newest first.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#assets"><span class="n">08</span><span class="t">The Assets</span><span class="d">The full image library — as a film strip — plus the build doc.</span><span class="go">Browse →</span></a>
+    <a class="pnav" href="#build"><span class="n">06</span><span class="t">The Build</span><span class="d">The asset library, prompts &amp; changelog, wrapped together — preview or download.</span><span class="go">Open the build →</span></a>
   </div>
 </section></div>
 
 <nav class="sticky"><div class="in">
-  <a href="#overview">Overview</a><a href="#research">Market Research</a><a href="#experts">Expert Panel</a><a href="#cto">CTO Verdict</a><a href="#story">The Story</a><a href="#prompts">Prompts</a><a href="#changelog">Changelog</a><a href="#assets">Assets</a>
+  <a href="#overview">Overview</a><a href="#research">Market Research</a><a href="#experts">Expert Panel</a><a href="#cto">CTO Verdict</a><a href="#story">The Story</a><a href="#build">The Build</a>
 </div></nav>
 
 <div class="wrap">
@@ -380,9 +412,44 @@
   <section id="experts"><div class="sec-h"><span class="n">03</span><h2>Dive deeper — the Expert Panel</h2></div><p class="sec-sub">Where the agents are the market, the panel is the craft: a world-class luxury brand expert and an AI-native conversion strategist. Here is each expert's reading at a glance — open a card for the full report, with cited, verified sources.</p><div id="expertsBody" class="loading">Loading experts…</div></section>
   <section id="cto"><div class="sec-h"><span class="n">04</span><h2>CTO — Should this replace the live site?</h2></div><p class="sec-sub">A pragmatic assessment of the risk and technical expense of adopting this build to replace psychicsource.com — the migration and the ongoing operations — and whether it's worth it.</p><div id="ctoBody" class="loading">Loading assessment…</div></section>
   <section id="story"><div class="sec-h"><span class="n">05</span><h2>The Story</h2></div><p class="sec-sub">A play-by-play of the redesign — from the first concept to this dashboard — built conversationally, one refinement at a time. Each beat is shown before and after: the original psychicsource.com beside the redesign. Click any pair to enlarge.</p><div class="story" id="storyBody"></div></section>
-  <section id="prompts"><div class="sec-h"><span class="n">06</span><h2>The Prompt Library</h2></div><p class="sec-sub">The core prompts that shaped the work — including the image-generation prompts behind the tarot cards, cosmic heroes, quill, and reader scene. Tap to expand.</p><div class="prompts" id="promptsBody"></div></section>
-  <section id="changelog"><div class="sec-h"><span class="n">07</span><h2>Changelog</h2></div><p class="sec-sub">Every change, newest first. Collapsed by default.</p><details class="clog"><summary>Full change history <span class="cnt" id="clogCount"></span><span class="plus">+</span></summary><div class="list" id="clogList"></div></details></section>
-  <section id="assets"><div class="sec-h"><span class="n">08</span><h2>The Asset Library</h2></div><p class="sec-sub">Every image made for this build, grouped by collection. Click any image to preview it full size. The whole library plus the build document is a single download.</p><div id="assetsBody"></div></section>
+  <section id="build"><div class="sec-h"><span class="n">06</span><h2>The Build</h2></div>
+    <p class="sec-sub">Everything that made this redesign, wrapped together like a deck of cards — the full asset library, the prompts behind every image, and the complete change history. Preview it all free, or download the package.</p>
+    <div class="build-card">
+      <div class="bc-visual"><img src="assets/heroes/build-deck.jpg" alt="The Celestial Atelier build, wrapped like a ribboned deck of tarot cards" loading="lazy" /></div>
+      <div class="bc-body">
+        <span class="bc-eyebrow">The Celestial Atelier · complete</span>
+        <h3>Everything, in one deck</h3>
+        <ul class="bc-list">
+          <li><b>150+ generated images</b> across 11 collections</li>
+          <li><b>The build document</b> — the concept &amp; full asset manifest</li>
+          <li><b>7 core prompts</b>, including the image generation</li>
+          <li><b>60+ changelog entries</b>, newest first</li>
+          <li><b>Full source</b> — every HTML, CSS &amp; JS file</li>
+        </ul>
+        <div class="bc-cta">
+          <button class="btn" id="buildPreview" type="button">Preview</button>
+          <button class="btn btn-ghost bc-lock" id="buildDownload" type="button"><span class="lock">🔒</span> Download</button>
+        </div>
+      </div>
+    </div>
+    <div id="buildContents" hidden>
+      <div class="build-sub">
+        <div class="bs-h">The Asset Library</div>
+        <div class="bs-d">Every image made for this build, grouped by collection. Click any image to preview it full size.</div>
+        <div id="assetsBody"></div>
+      </div>
+      <div class="build-sub">
+        <div class="bs-h">The Prompt Library</div>
+        <div class="bs-d">The core prompts that shaped the work, including the image-generation prompts behind the tarot cards, cosmic heroes, quill, and reader scene. Tap to expand.</div>
+        <div class="prompts" id="promptsBody"></div>
+      </div>
+      <div class="build-sub">
+        <div class="bs-h">Changelog</div>
+        <div class="bs-d">Every change, newest first.</div>
+        <details class="clog" open><summary>Full change history <span class="cnt" id="clogCount"></span><span class="plus">+</span></summary><div class="list" id="clogList"></div></details>
+      </div>
+    </div>
+  </section>
 </div>
 
 <div class="lb" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><div class="lb-inner" id="lbInner"></div></div>
@@ -519,14 +586,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     d.appendChild(T('div','body',p.t));pb.appendChild(d);
   });
   var ab=document.getElementById('assetsBody');
-  // download-everything bar
-  var bar=E('div','dlbar');
-  var bt=E('div','dlt');bt.appendChild(H('b',null,'The whole library'));bt.appendChild(T('span',null,'Every generated image plus the build document — one folder, one zip (19 MB, 206 files).'));
-  bar.appendChild(bt);
-  var dz=E('a','btn');dz.href='downloads/celestial-atelier-assets.zip';dz.setAttribute('download','');dz.textContent='Download all assets (.zip)';bar.appendChild(dz);
-  var rz=E('a','btn btn-ghost');rz.href='https://github.com/ajschlender1983/ps-luxe-preview-06301538';rz.target='_blank';rz.rel='noopener';rz.textContent='Full repository';bar.appendChild(rz);
-  ab.appendChild(bar);
-  // build document card (preview + download)
+  // build document card (free preview)
   var dc=E('div','doccard');
   dc.appendChild(T('div','dicon','MD'));
   var dm=E('div','dmeta');dm.appendChild(H('b',null,'The build document'));dm.appendChild(T('span',null,'BUILD.md — the concept, the process, and the full asset manifest. Click to read it here.'));
@@ -550,6 +610,30 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   document.getElementById('clogCount').textContent='('+CHANGELOG.length+' changes)';
   var clist=document.getElementById('clogList');
   CHANGELOG.forEach(function(c){var row=E('div','ci');row.appendChild(T('div','dt',c.date));row.appendChild(T('div','msg',c.msg));clist.appendChild(row);});
+
+  // ---- build tab: preview (reveal contents) + download (paywall) ----
+  (function(){
+    var pv=document.getElementById('buildPreview'), dl=document.getElementById('buildDownload'), contents=document.getElementById('buildContents');
+    if(pv&&contents){
+      pv.addEventListener('click',function(){
+        var open=!contents.hasAttribute('hidden');
+        if(open){contents.setAttribute('hidden','');pv.textContent='Preview';}
+        else{contents.removeAttribute('hidden');pv.textContent='Hide preview';contents.scrollIntoView({behavior:'smooth',block:'start'});}
+      });
+    }
+    if(dl){dl.addEventListener('click',function(){
+      var w=E('div','paywall');
+      w.appendChild(H('div','pw-lock','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor" stroke="none"/></svg>'));
+      w.appendChild(T('div','pw-k','Premium download'));
+      w.appendChild(T('h3',null,'The complete build'));
+      w.appendChild(T('p',null,'Every generated image, the full source, the prompt library, and the build document — the entire Celestial Atelier, packaged as one download.'));
+      w.appendChild(H('div','pw-price','$49 <span>· one-time</span>'));
+      var cta=E('a','btn pw-cta');cta.href='#';cta.textContent='Unlock the download';cta.onclick=function(e){e.preventDefault();};w.appendChild(cta);
+      w.appendChild(T('div','pw-note','Secure checkout · instant access · lifetime updates.'));
+      w.appendChild(H('div','pw-incl','<b>Included:</b> 150+ generated images (19 MB, 200+ files) · BUILD.md manifest · all HTML/CSS/JS source · the 7 core prompts. Everything is free to preview above.'));
+      lbOpen(w);
+    });}
+  })();
 
   // ---- review-board data ----
   var REVIEW=window.REVIEW||null;
