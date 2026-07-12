@@ -393,6 +393,54 @@
     .enter-grid{grid-template-columns:1fr}}
   @media(max-width:520px){.portal-grid{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.gcol>summary{gap:12px}
     .agrid{grid-template-columns:repeat(2,1fr)}.method{grid-template-columns:1fr 1fr}.mdoc{padding:26px 22px}}
+
+  /* --- The films (top of the presentation) --- */
+  .films{margin:40px 0 6px}
+  .films-h{margin-bottom:22px}
+  .films-h .eyebrow{display:block;color:var(--gold);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  .films-h h2{font-family:var(--serif);font-size:clamp(28px,4vw,40px);font-weight:600;color:var(--gold-bright);line-height:1.05;margin:8px 0 8px}
+  .films-h p{color:var(--muted);max-width:66ch;font-size:15px;line-height:1.62}
+  .films-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .film{border:1px solid var(--faint);border-radius:16px;overflow:hidden;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01));display:flex;flex-direction:column}
+  .film-poster{position:relative;aspect-ratio:16/9;overflow:hidden;background:#140f2c}
+  .film-poster img{width:100%;height:100%;object-fit:cover}
+  .film-poster::after{content:"";position:absolute;inset:0;background:radial-gradient(62% 62% at 50% 44%,transparent,rgba(18,13,42,.55))}
+  .film-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:1px solid var(--gold);background:rgba(20,15,45,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:2}
+  .film-play svg{width:20px;height:20px;margin-left:3px;fill:var(--gold-bright)}
+  .film-badge{position:absolute;top:12px;left:12px;z-index:2;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-bright);background:rgba(20,15,45,.62);border:1px solid var(--faint);border-radius:999px;padding:5px 10px}
+  .film-dur{position:absolute;bottom:12px;right:12px;z-index:2;font-size:11px;letter-spacing:.05em;color:var(--muted);background:rgba(20,15,45,.62);border-radius:999px;padding:3px 9px}
+  .film-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .film-tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .film-t{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ivory);line-height:1.12}
+  .film-d{font-size:13px;color:var(--muted);line-height:1.55;flex:1}
+  .film-actions{display:flex;gap:9px;margin-top:8px}
+  .film-btn{font:inherit;font-size:12px;letter-spacing:.03em;cursor:pointer;border-radius:999px;padding:8px 15px;border:1px solid var(--faint);background:transparent;color:var(--ivory)}
+  .film-btn.primary{border-color:var(--gold);color:var(--gold-bright)}
+  .film-btn:hover{border-color:var(--gold)}
+  .film-prompt{margin-top:12px;border-top:1px solid var(--faint);padding-top:12px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;line-height:1.62;color:var(--muted);white-space:pre-wrap;max-height:360px;overflow:auto}
+
+  /* --- No two pages alike: 4-screen before/after grid --- */
+  .pagegrid{margin-top:14px}
+  .pagegrid-toggle{display:inline-flex;border:1px solid var(--faint);border-radius:999px;padding:3px;margin-bottom:12px;gap:3px}
+  .pagegrid-toggle button{font:inherit;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:0;background:transparent;color:var(--muted);padding:6px 16px;border-radius:999px}
+  .pagegrid-toggle button.on{background:var(--gold);color:#1a1030}
+  .pagegrid-4{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .pcell{position:relative;border:1px solid var(--faint);border-radius:12px;overflow:hidden;cursor:zoom-in;aspect-ratio:16/10}
+  .pcell img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  .pcell .pc-cap{position:absolute;left:0;right:0;bottom:0;padding:24px 13px 10px;background:linear-gradient(0deg,rgba(14,10,32,.85),transparent);font-family:var(--serif);font-size:16px;color:var(--ivory);display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .pcell .pc-cap small{font-family:inherit;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .pcell .pc-zoom{position:absolute;top:10px;right:10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright);background:rgba(20,15,45,.55);border-radius:999px;padding:4px 9px;opacity:0;transition:opacity .2s}
+  .pcell:hover .pc-zoom{opacity:1}
+
+  /* --- The full tarot deck, fanned --- */
+  .deckfan{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:270px;padding:34px 8px 8px;overflow-x:auto;overflow-y:hidden}
+  .deckfan .dcard{flex:0 0 auto;width:118px;aspect-ratio:3/4;border-radius:9px;overflow:hidden;border:1px solid rgba(201,168,106,.45);box-shadow:0 12px 28px rgba(0,0,0,.5);transform-origin:50% 150%;transition:transform .3s ease,box-shadow .3s ease;cursor:zoom-in;margin-left:-58px;background:#140f2c}
+  .deckfan .dcard:first-child{margin-left:0}
+  .deckfan .dcard img{width:100%;height:100%;object-fit:cover;display:block}
+  .deckfan .dcard:hover{transform:translateY(-28px) rotate(0deg) scale(1.02)!important;box-shadow:0 24px 46px rgba(0,0,0,.6);z-index:40}
+  .deck-note{text-align:center;color:var(--muted);font-size:12px;margin-top:4px}
+  @media(max-width:900px){.films-grid{grid-template-columns:1fr}}
+  @media(max-width:700px){.pagegrid-4{grid-template-columns:1fr}.deckfan .dcard{width:90px;margin-left:-48px}}
 </style>
 </head>
 <body>
@@ -409,6 +457,15 @@
 </div></header>
 
 <div class="wrap">
+  <section class="films" id="films">
+    <div class="films-h">
+      <span class="eyebrow">The films</span>
+      <h2>Three films tell the story</h2>
+      <p>Three short films will open the presentation — a brand film, an ad, and an explainer trailer for everything that was built. These are placeholders; each carries a ready-to-use generation prompt you can copy.</p>
+    </div>
+    <div class="films-grid" id="filmsGrid"></div>
+  </section>
+
   <div class="enter-grid">
     <a class="enter-card" href="index.html">
       <div class="ec-thumb"><span class="ec-tag">The redesign</span><img src="assets/heroes/enter-thumb.jpg" alt="The redesigned Psychic Source home page" loading="lazy" /></div>
@@ -445,6 +502,8 @@
         <h3>Everything, in one deck</h3>
         <ul class="bc-list">
           <li><b>150+ generated images</b> across 11 collections</li>
+          <li><b>The full tarot deck</b> — 20 bespoke cards &amp; spreads</li>
+          <li><b>3 film briefs</b> — brand, ad &amp; explainer, prompts included</li>
           <li><b>The build document</b> — the concept &amp; full asset manifest</li>
           <li><b>7 core prompts</b>, including the image generation</li>
           <li><b>60+ changelog entries</b>, newest first</li>
@@ -461,6 +520,12 @@
         <div class="bs-h">The Story — the audit trail</div>
         <div class="bs-d">A play-by-play of the redesign, one refinement at a time. Each beat is shown before and after — the original psychicsource.com beside the redesign. Click any pair to enlarge.</div>
         <div class="story" id="storyBody"></div>
+      </div>
+      <div class="build-sub">
+        <div class="bs-h">The tarot deck</div>
+        <div class="bs-d">The full bespoke deck, fanned out — the three-card arc, the major arcana, every bespoke spread card, and the star-backed card. Click any card to see it full size.</div>
+        <div class="deckfan" id="deckFan"></div>
+        <div class="deck-note">Twenty cards, one cohesive Art Nouveau × ink deck.</div>
       </div>
       <div class="build-sub">
         <div class="bs-h">The Asset Library</div>
@@ -507,7 +572,7 @@
     {ph:'Psychics',t:'190 real psychics, studio-graded',b:'Scraped 215 psychic photos and graded them locally (light background, hair-halo backlight, unified lighting) with no generative API, then built the full 190-psychic listing with real names, ratings, and live-status logic.'},
     {ph:'Tarot cards',t:'A bespoke tarot deck',b:'Ran a style workshop, chose a "Regal & Crowned" Art Nouveau x ink direction, and generated a cohesive set — The Seeker, The Oracle, The Insight — plus six spread cards and a card-back bearing the Psychic Source star. Hands were fixed until the anatomy was right.'},
     {ph:'Build-out',t:'Fifteen interior pages',b:'Built the full site on a shared shell (site.css + a chrome-injecting site.js), interlinked nav and footer, and gave every page its own cinematic hero.'},
-    {ph:'Imagery',t:'No two pages alike',b:'Generated a unique cosmic hero for each interior page so nothing repeats, and adapted RISE angel/wing textures into the palette.'},
+    {ph:'Imagery',t:'No two pages alike',b:'Generated a unique cosmic hero for each interior page so nothing repeats, and adapted RISE angel/wing textures into the palette. Four pages sit here in the same grid positions as their originals — toggle original and redesign, or click any one for the full before/after.'},
     {ph:'Motion',t:'Cinematic consistency',b:'Added parallax and animated cinematic "page-break" interstitials to every page, a breathing guarantee seal, and scroll-reveal throughout — motion as storytelling, not decoration.'},
     {ph:'Tarot hero',t:'Cards spinning in space',b:'Built a hero of our double-sided tarot cards spinning and drifting through cosmic space at multiple depths with shallow depth-of-field and overhead light — a live animation using our real card art, not a video.'},
     {ph:'Horoscopes',t:'A constellation sky',b:'A constellation-littered night sky with a central star, ~1500 twinkling four-point stars, and a magical gold quill floating behind the headline.'},
@@ -526,6 +591,98 @@
     {k:'The guarantee seal',t:'A cosmic "source" medallion: a deep orb with a soft aura and a crisp complete gold rim, engraved ring text "100% Satisfaction Guaranteed · Risk-Free Readings · Since 1989", with a concentric breathing halo of gold light anchored to the seal so stamp and glow stay centered.'}
   ];
   function im(href,cap){return {href:href,cap:cap};}
+
+  // ---- The films (placeholders + copyable generation prompts) ----
+  var AD_PROMPT=[
+    "PSYCHIC SOURCE - 30s ad - 'I'm here. I see. Yes.'",
+    "",
+    "FORMAT: 30 seconds, cut for 9:16 and 16:9, 24fps, cinematic. A compassionate three-beat refrain, carried by a rotating cast of real Psychic Source readers.",
+    "",
+    "THE REFRAIN (spoken softly, direct to camera):",
+    "  - 'I'm here.'   the reader present, meeting your eyes.",
+    "  - 'I see you.'  a small nod of recognition.",
+    "  - [PREGNANT PAUSE]  eyes close, a slow breath, the hand lowers to touch a single tarot card on the table. Everything stills; light gathers.",
+    "  - 'Yes.'  eyes open, warm and bright, a golden source-light blooms. Reassurance, never spectacle.",
+    "",
+    "VISUAL DEVICE - the deck as language:",
+    "Tell the emotional beats in the bespoke Art Nouveau x pen-and-ink tarot illustration style (deep violet-indigo + champagne gold, fine gold linework, cosmic ground). Use our card art (The Seeker, The Oracle, The Insight, The Lovers, The Star, The Moon) as inserts and transitions: on each 'I see', flash a card face; on the touch, the illustration glows to life.",
+    "",
+    "THE MONTAGE - the real psychics:",
+    "Rapid, rhythmic jump-cuts of many different real readers, each delivering one word of the refrain - a chorus of faces ('I'm here' / 'I see' / 'yes') intercut with the glowing card art. Introduce the roster through this device: a deck-illustration frame dissolves into the actual person.",
+    "",
+    "THE TURN - into their world:",
+    "On the final 'Yes', the stylized cosmic backdrop peels away and we are suddenly WITH them - real, in their true environment: a sunlit kitchen, a rain-streaked window, a quiet studio, a garden at dusk. Warm, human, unstyled. The gold light stays in their eyes.",
+    "",
+    "END CARD: the four-point compass-star draws itself in gold. 'Psychic Source - answers you can trust.' Small line: 'As low as $1/min.'",
+    "",
+    "STYLE FRAMES / FIRST FRAMES (from the asset library):",
+    "  - Stylized shots: seed from assets/tarot/*.jpg (card illustrations), assets/heroes/cosmos-*.jpg, assets/cine/*.jpg - use as style references and literal first frames.",
+    "  - Real faces: assets/advisors-all/*.jpg (studio-graded psychic portraits).",
+    "  - Grade: violet-indigo shadows, champagne-gold highlights, fine film grain, shallow depth of field."
+  ].join("\n");
+  var BRAND_PROMPT=[
+    "PSYCHIC SOURCE - 60-90s brand film - 'Everything emerges from source'",
+    "",
+    "A wordless, atmospheric luxury brand film. One idea: from a single point of golden source-light, guidance emerges.",
+    "",
+    "ARC:",
+    "  1. Black. A single four-point gold compass-star ignites in deep violet-indigo cosmos.",
+    "  2. The light travels - nebulae, drifting stardust, a lone star - painterly and unhurried.",
+    "  3. Two hands almost touch; a warm 'source' glow breathes at the fingertips (echo the manifesto image).",
+    "  4. A reader lowers a hand to a candlelit tarot spread; the cards' gold linework shimmers.",
+    "  5. The light finds a face - calm, present, met.",
+    "  6. Pull back into the cosmos; the compass-star reforms.",
+    "",
+    "TONE: reverent, cinematic, heritage-luxury - a perfume film, not a sales ad. No pricing, no hard CTA.",
+    "SPOKEN (optional, one line near the end): 'Life's possibilities, revealed.'",
+    "",
+    "STYLE FRAMES / FIRST FRAMES: assets/heroes/cosmos-*.jpg, assets/hero-cosmos.jpg, assets/manifesto-hands.jpg, assets/tarot/reader-scene.jpg, assets/cine/*.jpg. Palette: deep violet-indigo + champagne gold; generous dark negative space; slow moves; fine grain."
+  ].join("\n");
+  var TRAILER_PROMPT=[
+    "PSYCHIC SOURCE - 90-120s explainer / trailer - 'What we built, and why'",
+    "",
+    "A movie-trailer for the whole redesign: the story of an old brand, the need for a new one, the process, the agents, the avatars, and the result.",
+    "",
+    "ACT I - THE OLD WORLD:",
+    "Documentary tone. The original site: red, transactional, dated (use the before screenshots). VO: 'A trusted name. A tired storefront. The magic was real - the brand had stopped saying so.'",
+    "",
+    "ACT II - THE ATELIER:",
+    "The build montage. An AI 'Celestial Atelier' at work: prompts becoming images, a style workshop, the bespoke tarot deck taking shape, 190 portraits studio-graded, cosmic heroes generated one after another. VO: 'So we rebuilt it as a house of source - in a single session.'",
+    "",
+    "ACT III - THE AGENTS:",
+    "Introduce the ten market-research agents as avatars orbiting a market - each a real customer profile, dispatched to walk the site and react. Then the expert panel and the CTO verdict. VO: 'Then we let an AI board judge it - the market, the craft, the risk.'",
+    "",
+    "ACT IV - THE REVEAL:",
+    "Match-cut every before into after (home, love, tarot, horoscopes). The redesign in full motion. VO: 'No two pages alike. Answers you can trust.' End on the compass-star and the deck.",
+    "",
+    "STYLE FRAMES / FIRST FRAMES: before = assets/story/orig-*.jpg; after = assets/story/re-*.jpg and assets/heroes/*.jpg; agents = assets/personas/*.jpg; deck = assets/tarot/*.jpg and assets/deck/*.jpg. Trailer grade, rising score, confident cuts."
+  ].join("\n");
+  var FILMS=[
+    {tag:'Brand film',t:'The house of source',dur:'60-90s',poster:'assets/heroes/cosmos-cathedral.jpg',
+     d:'An atmospheric, wordless brand film - from a single point of source-light, guidance emerges. A perfume film, not a sales ad.',prompt:BRAND_PROMPT},
+    {tag:'The ad',t:'“I’m here. I see. Yes.”',dur:'~30s',poster:'assets/tarot/reader-scene.jpg',
+     d:'A compassion-beat spot: a chorus of real readers - present, seeing, then the pause, the touched card, and a warm “yes.” Told in the tarot-illustration style, then into their real world.',prompt:AD_PROMPT},
+    {tag:'The explainer',t:'Everything that was built',dur:'90-120s',poster:'assets/heroes/compare-thumb.jpg',
+     d:'A movie-trailer for the whole project - the old brand, the need, the AI atelier, the agents and avatars, and the reveal.',prompt:TRAILER_PROMPT}
+  ];
+
+  // ---- The full tarot deck (fanned) ----
+  var DECK=[
+    im('assets/steps/step-1.jpg','The Seeker'),im('assets/steps/step-2.jpg','The Oracle'),im('assets/steps/step-3.jpg','The Insight'),
+    im('assets/deck/the-high-priestess.jpg','The High Priestess'),im('assets/deck/the-lovers.jpg','The Lovers'),im('assets/deck/the-star.jpg','The Star'),im('assets/deck/the-moon.jpg','The Moon'),
+    im('assets/tarot/three-card.jpg','Three-Card'),im('assets/tarot/past-present-future.jpg','Past · Present · Future'),im('assets/tarot/mind-body-spirit.jpg','Mind · Body · Spirit'),im('assets/tarot/relationship.jpg','Relationship'),
+    im('assets/tarot/celtic-cross.jpg','Celtic Cross'),im('assets/tarot/the-horseshoe.jpg','The Horseshoe'),im('assets/tarot/year-ahead.jpg','Year Ahead'),im('assets/tarot/the-two-paths.jpg','The Two Paths'),
+    im('assets/tarot/yes-no.jpg','Yes / No'),im('assets/tarot/decision.jpg','Decision'),im('assets/tarot/the-star-spread.jpg','The Star Spread'),im('assets/tarot/the-pentagram.jpg','The Pentagram'),
+    im('assets/tarot/card-back.jpg','Card back')
+  ];
+
+  // ---- No two pages alike: four pages, before/after, matched positions ----
+  var GRID4={'Imagery':[
+    {name:'Love',b:'assets/story/orig-love.jpg',a:'assets/story/re-love.jpg'},
+    {name:'Readings',b:'assets/story/orig-readings.jpg',a:'assets/story/re-readings.jpg'},
+    {name:'Tarot',b:'assets/story/orig-tarot.jpg',a:'assets/story/re-tarot.jpg'},
+    {name:'Horoscopes',b:'assets/story/orig-horoscopes.jpg',a:'assets/story/re-horoscopes.jpg'}
+  ]};
   var ASSET_COLLECTIONS=[
     {t:'Agent avatars',d:'The ten market-research agents',items:[
       im('assets/personas/hannah.jpg','Heartbroken Hannah'),im('assets/personas/wendy.jpg','Night-Owl Wendy'),im('assets/personas/bella.jpg','Budget Bella'),
@@ -583,7 +740,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       im('assets/offer-light.jpg','Offer light'),im('assets/manifesto-hands.jpg','Two hands'),im('assets/manifesto-hands-alt.jpg','Two hands · alt')]},
     {t:'Full source',d:'All HTML/CSS/JS + every asset, in the repository.',link:'https://github.com/ajschlender1983/ps-luxe-preview-06301538'}
   ];
-  var CHANGELOG=[{"date": "2026-07-11", "msg": "Applied the advisory board's feedback to a 10/10: governed motion + single dominant CTA; added a home 'Peace of mind' band (transparent $10-for-10-min pricing + spending cap, ~60s 'real person, no account to start', giftable sessions, returning-member welcome); added the 'million seekers' source-beam + angelic-choir vision to Voices; re-scored brand 10, conversion 10, CTO Go, all ten personas convert"}, {"date": "2026-07-11", "msg": "Market Research: agents shown as a circular constellation of headshots orbiting the market, sized by validated share; click to expand full report"}, {"date": "2026-07-10", "msg": "CRO copy pass: standardize primary CTA to 'Get Your Reading' sitewide + '$1/min · guaranteed' microcopy; benefit-led home H1 with tagline eyebrow; nav/footer 'The House'->'About'; House prose kept to Manifesto/Ethics; seekers->you near CTAs/FAQ; fix em dashes"}, {"date": "2026-07-10", "msg": "Add CRO copy/CTA review tool: interactive before/after (original vs redesign) with instance counts, specialist recs, real-time picks + export"}, {"date": "2026-07-10", "msg": "Guarantee hero: replace ringed background with a plain ringless cosmic nebula so the seal's concentric halo is the only ring"}, {"date": "2026-07-10", "msg": "Guarantee hero: anchor the halo of light to the seal so stamp and glow are concentric; dim the background ring"}, {"date": "2026-07-10", "msg": "Horoscopes hero: quill moved behind the type as a glowing backdrop; 10x the star field (1500) and brighter"}, {"date": "2026-07-10", "msg": "Horoscopes hero: constellation-littered sky (central star kept) + dense twinkling four-point starfield + featured cosmic quill"}, {"date": "2026-07-10", "msg": "Tarot hero: mask cards out of the header band; fix animation hitch (drop full-screen blend animation + per-card drop-shadow filter; foreground card drifts without re-blurring)"}, {"date": "2026-07-10", "msg": "Tarot hero: animated cards spinning in cosmic space + depth-of-field field with overhead lighting and star card-back"}, {"date": "2026-07-10", "msg": "How It Works cine line: 'Insight begins the moment you dare to ask'"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: use variation 3 (reader leaning in) with cards laid facing the psychic rather than the camera"}, {"date": "2026-07-10", "msg": "Add reader-variations review gallery (5 options with named cards, varied psychic presence)"}, {"date": "2026-07-10", "msg": "Fix hand/arm handedness on The Seeker and The Insight cards (correct left hand on left arm); cache-bust step-1/step-3 references"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: three-quarter overhead, face-up unique cards in a cross, neat deck stack on the right with a Psychic-Source-star card back"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: top-down farm-table flat-lay, hands only, traditional cross spread with realistic-sized cards (replaces portrait reader)"}, {"date": "2026-07-10", "msg": "Cinematic consistency: add parallax + animated .cine interstitial page-breaks to all interior pages (12 bespoke bands), breathing glow on wingbands, hero parallax; swap Tarot 'Living Tradition' to a card reader laying our-design spread in the home-header style"}, {"date": "2026-07-10", "msg": "De-duplicate imagery: unique generated cosmic hero per interior page (15) + reassign secondary images so none repeat; rename card III The Connection -> The Insight and regenerate step-3"}, {"date": "2026-07-10", "msg": "Tarot: generate six bespoke spread cards (Three-Card, Celtic Cross, Relationship, Year Ahead, Yes/No, Decision) in the crowned Art Nouveau x ink style; show as illustrated cards"}, {"date": "2026-07-10", "msg": "Apply Rising Current as The Connection; build out full interior site (15 pages) on a shared shell with RISE angel/wing textures; interlink nav + footer"}, {"date": "2026-07-10", "msg": "Leena: use the actual Oracle card under a new filename to defeat browser cache"}, {"date": "2026-07-10", "msg": "Fix The Seeker hand (correct pinch gesture); add Connection variations gallery"}, {"date": "2026-07-10", "msg": "psychics: use the Oracle tarot card as Leena's avatar (replace the too-grim hooded figure)"}, {"date": "2026-07-10", "msg": "fix seeker hand/arm (cards I & III, blue arm kept blue); Leena becomes an anonymous hooded tarot-style avatar instead of the flower"}, {"date": "2026-07-10", "msg": "psychics: restyle Leena's image (her source avatar is a pressed flower, not a portrait) into a dark studio still-life matching the other cards; removes the old white-halo artifact"}, {"date": "2026-07-10", "msg": "how it works: fix seeker's hand (cards I & III) and replace the heart in The Connection with a flowing ribbon of light"}, {"date": "2026-07-10", "msg": "manifesto: brighten the two-hands background (opacity .44->.6, lighter scrim), keep text legible"}, {"date": "2026-07-10", "msg": "how it works: crop white margins to full-bleed, regenerate Union to match set + rename 'The Connection', move name+number onto card as bottom name plate"}, {"date": "2026-07-10", "msg": "how it works: swap to Regal & Crowned tarot set (Art Nouveau x ink) — self-framed illustrated cards with caption below, keep thread + flip"}, {"date": "2026-07-10", "msg": "add character workshop: 5 variations of the two characters in merged Art Nouveau x ink/engraving style"}, {"date": "2026-07-10", "msg": "add style workshop: 3 How-It-Works cards x 5 style directions (painterly -> ink & engraving) for review"}, {"date": "2026-07-10", "msg": "tarot cards: add corner filigree ornaments, 3D flip/lift on scroll-in, and a shared gold thread with glowing nodes connecting the three cards"}, {"date": "2026-07-10", "msg": "how it works: style step panels as tarot cards — gold double-frame, top Roman numeral, bottom name plate (The Seeker / The Oracle / The Union)"}, {"date": "2026-07-10", "msg": "how it works: three story images (seeker asks -> psychic summoned -> two linked communicating), same characters as header; restore 'As seen on' label weight"}, {"date": "2026-07-10", "msg": "trust: enlarge press logos again + de-emphasize 'As seen on' label so logos lead hierarchy; footer: All Advisors->All Psychics, Become an Advisor->Become a Psychic"}, {"date": "2026-07-10", "msg": "hero: substantially enlarge stat numbers (30px -> clamp 40-56px) and labels; more spacing"}, {"date": "2026-07-10", "msg": "seal: crisper, complete medallion — add two defined gold rims framing the band, engraving now wraps the full ring, softer aura (less fuzzy)"}, {"date": "2026-07-09", "msg": "compare: rename bottom tab Advisors->Psychics; carry scroll position across toggles + split so you stay at ~the same section"}, {"date": "2026-07-09", "msg": "header: add 'Search psychics…' box to top-right utility bar (like original); mobile hero: lift copy onto the figure's neck/shoulder to remove the empty band (desktop unchanged)"}, {"date": "2026-07-09", "msg": "cards: away psychics now read consistently — CTA becomes 'Leave a message', phone/chat/video icons dimmed (online cards unchanged)"}, {"date": "2026-07-09", "msg": "manifesto bg: bring it to life — slow Ken Burns drift on the hands + breathing gold 'source' glow at the fingertip meeting point (reduced-motion safe)"}, {"date": "2026-07-09", "msg": "manifesto: add thematic 'two hands almost touching' cosmic background (bespoke, on-brand) with legibility scrim; conveys the 'trusted voice / emerges from source' concept"}, {"date": "2026-07-09", "msg": "dim backdrop starfield (softer gold, lower opacity); rebuild guarantee seal as cosmic 'source' — dark void orb + pulsing aura + swirling corona with rotating guarantee text (echoes header)"}, {"date": "2026-07-09", "msg": "trust: enlarge 'As seen on' press logos (~2x), more band padding, mobile sizes"}, {"date": "2026-07-09", "msg": "hero: remove '2% accepted' stat"}, {"date": "2026-07-09", "msg": "star pass: four-point logo-style starfield confined to portrait backdrops (keep-out over subject), denser; SVG icon pass (rating stars, marquee sparkles, trust rating); glossy dimensional guarantee seal; move insight banner above 'As seen on'"}, {"date": "2026-07-09", "msg": "add animated Insight banner (Experience the power of insight / $1 per minute / Get a Reading / 100% satisfaction seal + trust marquee w/ over-10-million-readings); align copy to 'psychics'"}, {"date": "2026-07-09", "msg": "A/B compare v2: page-matched original snapshots, 3-way toggle (Redesign/Split/Original), synced-scroll split view, persistent page+side switcher"}, {"date": "2026-07-09", "msg": "add A/B compare: toggle pill between redesign and a snapshot of the current live site (+ open-live link)"}, {"date": "2026-07-09", "msg": "cards: churning twinkle starfield over each portrait backdrop (screen-blend, echoes header logo)"}, {"date": "2026-07-09", "msg": "cards: fix Leota green rim (regenerated), add subtle name-glow + sequential star light-up impulse on reveal/hover"}, {"date": "2026-07-09", "msg": "hero energy: slow 3D spiral rising into soft expanding low-opacity light wisps around the figures"}, {"date": "2026-07-09", "msg": "advisors: replace all headshots with Gemini studio portraits (209 listing + featured homepage), face-preserving Leibovitz relight"}, {"date": "2026-07-09", "msg": "hero: set chosen winners — 'Looking to the Light' (desktop) + 'Facing & Haloed' (mobile); energy now rises up desktop central column, falls psychic->seeker on mobile"}, {"date": "2026-07-09", "msg": "add header concept gallery (5 peaceful haloed directions, desktop + mobile each)"}, {"date": "2026-07-09", "msg": "hero: gentle energy particle stream (psychic->seeker), additive-blended into the cosmos, reduced-motion safe, pauses off-screen"}, {"date": "2026-07-09", "msg": "hero: stunning cosmic 'psychic revelation' header image (responsive desktop 16:9 + mobile 9:16), bottom-anchored copy; button + interstitial fixes"}, {"date": "2026-07-08", "msg": "cinematic: remove buggy button shimmer, add winged-angel interstitial with parallax, slow hero push-in, offer-bg parallax"}, {"date": "2026-07-08", "msg": "add zodiac glyphs to Horoscopes dropdown (both pages)"}, {"date": "2026-06-30", "msg": "add headshot treatment examples page (filmic studio grade direction test)"}, {"date": "2026-06-30", "msg": "trust strip: real press logos (FOX/Lifetime/USA Today/BuzzFeed/Bustle, monochrome) + sequential star light-up animation"}, {"date": "2026-06-30", "msg": "feat: real nav tabs + dropdowns header (both pages) and advisor filter sidebar (name/type/sort/specialties) with working filters"}, {"date": "2026-06-30", "msg": "scroll: subtle Lenis smoothing (lerp .18, wheelMultiplier 1) — native distance, minimal lag"}, {"date": "2026-06-30", "msg": "fix: remove Lenis smooth-scroll hijack + scroll-behavior smooth + blur/scrub animations — native scrolling"}, {"date": "2026-06-30", "msg": "perf: static nebula bg, drop animated blur/blend + hero pin, content-visibility, fewer stars — 11fps to 120fps"}, {"date": "2026-06-30", "msg": "Psychic Source luxury redesign preview"}];
+  var CHANGELOG=[{"date": "2026-07-12", "msg": "Command center: added a top 'films' row (brand film, ad, explainer trailer) as placeholders, each with a copyable generation prompt (the ad written to the 'I'm here / I see / [pause, touch the card] / yes' compassion beat); reframed 'No two pages alike' as a 4-screen before/after grid (Love, Readings, Tarot, Horoscopes in matched positions, toggle original/redesign, click for the full pair); added the full bespoke tarot deck as a fanned 20-card display"},
+  {"date": "2026-07-11", "msg": "Applied the advisory board's feedback to a 10/10: governed motion + single dominant CTA; added a home 'Peace of mind' band (transparent $10-for-10-min pricing + spending cap, ~60s 'real person, no account to start', giftable sessions, returning-member welcome); added the 'million seekers' source-beam + angelic-choir vision to Voices; re-scored brand 10, conversion 10, CTO Go, all ten personas convert"}, {"date": "2026-07-11", "msg": "Market Research: agents shown as a circular constellation of headshots orbiting the market, sized by validated share; click to expand full report"}, {"date": "2026-07-10", "msg": "CRO copy pass: standardize primary CTA to 'Get Your Reading' sitewide + '$1/min · guaranteed' microcopy; benefit-led home H1 with tagline eyebrow; nav/footer 'The House'->'About'; House prose kept to Manifesto/Ethics; seekers->you near CTAs/FAQ; fix em dashes"}, {"date": "2026-07-10", "msg": "Add CRO copy/CTA review tool: interactive before/after (original vs redesign) with instance counts, specialist recs, real-time picks + export"}, {"date": "2026-07-10", "msg": "Guarantee hero: replace ringed background with a plain ringless cosmic nebula so the seal's concentric halo is the only ring"}, {"date": "2026-07-10", "msg": "Guarantee hero: anchor the halo of light to the seal so stamp and glow are concentric; dim the background ring"}, {"date": "2026-07-10", "msg": "Horoscopes hero: quill moved behind the type as a glowing backdrop; 10x the star field (1500) and brighter"}, {"date": "2026-07-10", "msg": "Horoscopes hero: constellation-littered sky (central star kept) + dense twinkling four-point starfield + featured cosmic quill"}, {"date": "2026-07-10", "msg": "Tarot hero: mask cards out of the header band; fix animation hitch (drop full-screen blend animation + per-card drop-shadow filter; foreground card drifts without re-blurring)"}, {"date": "2026-07-10", "msg": "Tarot hero: animated cards spinning in cosmic space + depth-of-field field with overhead lighting and star card-back"}, {"date": "2026-07-10", "msg": "How It Works cine line: 'Insight begins the moment you dare to ask'"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: use variation 3 (reader leaning in) with cards laid facing the psychic rather than the camera"}, {"date": "2026-07-10", "msg": "Add reader-variations review gallery (5 options with named cards, varied psychic presence)"}, {"date": "2026-07-10", "msg": "Fix hand/arm handedness on The Seeker and The Insight cards (correct left hand on left arm); cache-bust step-1/step-3 references"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: three-quarter overhead, face-up unique cards in a cross, neat deck stack on the right with a Psychic-Source-star card back"}, {"date": "2026-07-10", "msg": "Tarot Living Tradition: top-down farm-table flat-lay, hands only, traditional cross spread with realistic-sized cards (replaces portrait reader)"}, {"date": "2026-07-10", "msg": "Cinematic consistency: add parallax + animated .cine interstitial page-breaks to all interior pages (12 bespoke bands), breathing glow on wingbands, hero parallax; swap Tarot 'Living Tradition' to a card reader laying our-design spread in the home-header style"}, {"date": "2026-07-10", "msg": "De-duplicate imagery: unique generated cosmic hero per interior page (15) + reassign secondary images so none repeat; rename card III The Connection -> The Insight and regenerate step-3"}, {"date": "2026-07-10", "msg": "Tarot: generate six bespoke spread cards (Three-Card, Celtic Cross, Relationship, Year Ahead, Yes/No, Decision) in the crowned Art Nouveau x ink style; show as illustrated cards"}, {"date": "2026-07-10", "msg": "Apply Rising Current as The Connection; build out full interior site (15 pages) on a shared shell with RISE angel/wing textures; interlink nav + footer"}, {"date": "2026-07-10", "msg": "Leena: use the actual Oracle card under a new filename to defeat browser cache"}, {"date": "2026-07-10", "msg": "Fix The Seeker hand (correct pinch gesture); add Connection variations gallery"}, {"date": "2026-07-10", "msg": "psychics: use the Oracle tarot card as Leena's avatar (replace the too-grim hooded figure)"}, {"date": "2026-07-10", "msg": "fix seeker hand/arm (cards I & III, blue arm kept blue); Leena becomes an anonymous hooded tarot-style avatar instead of the flower"}, {"date": "2026-07-10", "msg": "psychics: restyle Leena's image (her source avatar is a pressed flower, not a portrait) into a dark studio still-life matching the other cards; removes the old white-halo artifact"}, {"date": "2026-07-10", "msg": "how it works: fix seeker's hand (cards I & III) and replace the heart in The Connection with a flowing ribbon of light"}, {"date": "2026-07-10", "msg": "manifesto: brighten the two-hands background (opacity .44->.6, lighter scrim), keep text legible"}, {"date": "2026-07-10", "msg": "how it works: crop white margins to full-bleed, regenerate Union to match set + rename 'The Connection', move name+number onto card as bottom name plate"}, {"date": "2026-07-10", "msg": "how it works: swap to Regal & Crowned tarot set (Art Nouveau x ink) — self-framed illustrated cards with caption below, keep thread + flip"}, {"date": "2026-07-10", "msg": "add character workshop: 5 variations of the two characters in merged Art Nouveau x ink/engraving style"}, {"date": "2026-07-10", "msg": "add style workshop: 3 How-It-Works cards x 5 style directions (painterly -> ink & engraving) for review"}, {"date": "2026-07-10", "msg": "tarot cards: add corner filigree ornaments, 3D flip/lift on scroll-in, and a shared gold thread with glowing nodes connecting the three cards"}, {"date": "2026-07-10", "msg": "how it works: style step panels as tarot cards — gold double-frame, top Roman numeral, bottom name plate (The Seeker / The Oracle / The Union)"}, {"date": "2026-07-10", "msg": "how it works: three story images (seeker asks -> psychic summoned -> two linked communicating), same characters as header; restore 'As seen on' label weight"}, {"date": "2026-07-10", "msg": "trust: enlarge press logos again + de-emphasize 'As seen on' label so logos lead hierarchy; footer: All Advisors->All Psychics, Become an Advisor->Become a Psychic"}, {"date": "2026-07-10", "msg": "hero: substantially enlarge stat numbers (30px -> clamp 40-56px) and labels; more spacing"}, {"date": "2026-07-10", "msg": "seal: crisper, complete medallion — add two defined gold rims framing the band, engraving now wraps the full ring, softer aura (less fuzzy)"}, {"date": "2026-07-09", "msg": "compare: rename bottom tab Advisors->Psychics; carry scroll position across toggles + split so you stay at ~the same section"}, {"date": "2026-07-09", "msg": "header: add 'Search psychics…' box to top-right utility bar (like original); mobile hero: lift copy onto the figure's neck/shoulder to remove the empty band (desktop unchanged)"}, {"date": "2026-07-09", "msg": "cards: away psychics now read consistently — CTA becomes 'Leave a message', phone/chat/video icons dimmed (online cards unchanged)"}, {"date": "2026-07-09", "msg": "manifesto bg: bring it to life — slow Ken Burns drift on the hands + breathing gold 'source' glow at the fingertip meeting point (reduced-motion safe)"}, {"date": "2026-07-09", "msg": "manifesto: add thematic 'two hands almost touching' cosmic background (bespoke, on-brand) with legibility scrim; conveys the 'trusted voice / emerges from source' concept"}, {"date": "2026-07-09", "msg": "dim backdrop starfield (softer gold, lower opacity); rebuild guarantee seal as cosmic 'source' — dark void orb + pulsing aura + swirling corona with rotating guarantee text (echoes header)"}, {"date": "2026-07-09", "msg": "trust: enlarge 'As seen on' press logos (~2x), more band padding, mobile sizes"}, {"date": "2026-07-09", "msg": "hero: remove '2% accepted' stat"}, {"date": "2026-07-09", "msg": "star pass: four-point logo-style starfield confined to portrait backdrops (keep-out over subject), denser; SVG icon pass (rating stars, marquee sparkles, trust rating); glossy dimensional guarantee seal; move insight banner above 'As seen on'"}, {"date": "2026-07-09", "msg": "add animated Insight banner (Experience the power of insight / $1 per minute / Get a Reading / 100% satisfaction seal + trust marquee w/ over-10-million-readings); align copy to 'psychics'"}, {"date": "2026-07-09", "msg": "A/B compare v2: page-matched original snapshots, 3-way toggle (Redesign/Split/Original), synced-scroll split view, persistent page+side switcher"}, {"date": "2026-07-09", "msg": "add A/B compare: toggle pill between redesign and a snapshot of the current live site (+ open-live link)"}, {"date": "2026-07-09", "msg": "cards: churning twinkle starfield over each portrait backdrop (screen-blend, echoes header logo)"}, {"date": "2026-07-09", "msg": "cards: fix Leota green rim (regenerated), add subtle name-glow + sequential star light-up impulse on reveal/hover"}, {"date": "2026-07-09", "msg": "hero energy: slow 3D spiral rising into soft expanding low-opacity light wisps around the figures"}, {"date": "2026-07-09", "msg": "advisors: replace all headshots with Gemini studio portraits (209 listing + featured homepage), face-preserving Leibovitz relight"}, {"date": "2026-07-09", "msg": "hero: set chosen winners — 'Looking to the Light' (desktop) + 'Facing & Haloed' (mobile); energy now rises up desktop central column, falls psychic->seeker on mobile"}, {"date": "2026-07-09", "msg": "add header concept gallery (5 peaceful haloed directions, desktop + mobile each)"}, {"date": "2026-07-09", "msg": "hero: gentle energy particle stream (psychic->seeker), additive-blended into the cosmos, reduced-motion safe, pauses off-screen"}, {"date": "2026-07-09", "msg": "hero: stunning cosmic 'psychic revelation' header image (responsive desktop 16:9 + mobile 9:16), bottom-anchored copy; button + interstitial fixes"}, {"date": "2026-07-08", "msg": "cinematic: remove buggy button shimmer, add winged-angel interstitial with parallax, slow hero push-in, offer-bg parallax"}, {"date": "2026-07-08", "msg": "add zodiac glyphs to Horoscopes dropdown (both pages)"}, {"date": "2026-06-30", "msg": "add headshot treatment examples page (filmic studio grade direction test)"}, {"date": "2026-06-30", "msg": "trust strip: real press logos (FOX/Lifetime/USA Today/BuzzFeed/Bustle, monochrome) + sequential star light-up animation"}, {"date": "2026-06-30", "msg": "feat: real nav tabs + dropdowns header (both pages) and advisor filter sidebar (name/type/sort/specialties) with working filters"}, {"date": "2026-06-30", "msg": "scroll: subtle Lenis smoothing (lerp .18, wheelMultiplier 1) — native distance, minimal lag"}, {"date": "2026-06-30", "msg": "fix: remove Lenis smooth-scroll hijack + scroll-behavior smooth + blur/scrub animations — native scrolling"}, {"date": "2026-06-30", "msg": "perf: static nebula bg, drop animated blur/blend + hero pin, content-visibility, fewer stars — 11fps to 120fps"}, {"date": "2026-06-30", "msg": "Psychic Source luxury redesign preview"}];
 
   // ---- static sections ----
   var STORY_BA={
@@ -593,7 +751,6 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     'Psychics':{b:'assets/story/orig-psychics.jpg',a:'assets/story/re-psychics.jpg'},
     'Tarot cards':{b:'assets/story/orig-tarot.jpg',a:'assets/story/re-tarot.jpg'},
     'Build-out':{b:'assets/story/orig-readings.jpg',a:'assets/story/re-readings.jpg'},
-    'Imagery':{b:'assets/story/orig-love.jpg',a:'assets/story/re-love.jpg'},
     'Motion':{b:'assets/story/orig-benefits.jpg',a:'assets/story/re-howitworks.jpg'},
     'Tarot hero':{a:'assets/story/re-tarot.jpg'},
     'Horoscopes':{b:'assets/story/orig-horoscopes.jpg',a:'assets/story/re-horoscopes.jpg'},
@@ -605,7 +762,9 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   STORY.forEach(function(s,i){
     var row=E('div','step');row.appendChild(T('div','num',(i+1<10?'0':'')+(i+1)));
     var c=E('div');c.appendChild(T('div','ph',s.ph));c.appendChild(T('h4',null,s.t));c.appendChild(H('p',null,s.b));
-    var ba=STORY_BA[s.ph];if(ba)c.appendChild(buildBA(ba,s.t));
+    var g4=GRID4[s.ph];
+    if(g4){c.appendChild(buildGrid4(g4,s.t));}
+    else{var ba=STORY_BA[s.ph];if(ba)c.appendChild(buildBA(ba,s.t));}
     row.appendChild(c);sb.appendChild(row);
   });
   var pb=document.getElementById('promptsBody');
@@ -639,6 +798,47 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   document.getElementById('clogCount').textContent='('+CHANGELOG.length+' changes)';
   var clist=document.getElementById('clogList');
   CHANGELOG.forEach(function(c){var row=E('div','ci');row.appendChild(T('div','dt',c.date));row.appendChild(T('div','msg',c.msg));clist.appendChild(row);});
+
+  // ---- render the films (top) ----
+  var fg=document.getElementById('filmsGrid');
+  if(fg)FILMS.forEach(function(f){
+    var card=E('div','film');
+    var pos=E('div','film-poster');
+    var pimg=E('img');pimg.src=f.poster;pimg.alt=f.t;pimg.loading='lazy';pos.appendChild(pimg);
+    pos.appendChild(T('span','film-badge','Placeholder · '+f.tag));
+    var play=E('div','film-play');play.appendChild(frag('<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'));pos.appendChild(play);
+    pos.appendChild(T('span','film-dur',f.dur));
+    card.appendChild(pos);
+    var body=E('div','film-body');
+    body.appendChild(T('span','film-tag',f.tag));
+    body.appendChild(T('div','film-t',f.t));
+    body.appendChild(T('div','film-d',f.d));
+    var acts=E('div','film-actions');
+    var copy=T('button','film-btn primary','Copy prompt');copy.type='button';
+    var view=T('button','film-btn','View prompt');view.type='button';
+    acts.appendChild(copy);acts.appendChild(view);body.appendChild(acts);
+    var pre=T('div','film-prompt',f.prompt);pre.hidden=true;body.appendChild(pre);
+    copy.onclick=function(){
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(f.prompt).then(function(){copy.textContent='Copied ✓';setTimeout(function(){copy.textContent='Copy prompt';},1600);},function(){selectPrompt();});
+      } else selectPrompt();
+      function selectPrompt(){pre.hidden=false;view.textContent='Hide prompt';var r=document.createRange();r.selectNodeContents(pre);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);copy.textContent='Selected · ⌘C';}
+    };
+    view.onclick=function(){var h=pre.hidden;pre.hidden=!h;view.textContent=h?'Hide prompt':'View prompt';};
+    card.appendChild(body);
+    fg.appendChild(card);
+  });
+
+  // ---- render the full tarot deck (fanned) ----
+  var dfan=document.getElementById('deckFan');
+  if(dfan){var dn=DECK.length;DECK.forEach(function(c,i){
+    var card=E('div','dcard');var img=E('img');img.src=c.href;img.alt=c.cap;img.loading='lazy';card.appendChild(img);
+    var t=(dn<=1)?0:((i/(dn-1))*2-1);
+    card.style.transform='rotate('+(t*17).toFixed(2)+'deg)';
+    card.title=c.cap;
+    card.onclick=(function(cc){return function(){openImage(cc.href,'The tarot deck — '+cc.cap);};})(c);
+    dfan.appendChild(card);
+  });}
 
   // ---- build tab: preview (reveal contents) + download (paywall) ----
   (function(){
@@ -785,6 +985,31 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     el.appendChild(T('span','zoom','⤢ Enlarge'));
     el.onclick=function(){openBA(ba,title);};
     return el;
+  }
+  function buildGrid4(pages,title){
+    var wrap=E('div','pagegrid');
+    var tg=E('div','pagegrid-toggle');
+    var bB=T('button',null,'Original');bB.type='button';
+    var bA=T('button','on','Redesign');bA.type='button';
+    tg.appendChild(bB);tg.appendChild(bA);wrap.appendChild(tg);
+    var grid=E('div','pagegrid-4');
+    var cells=pages.map(function(p){
+      var cell=E('div','pcell');
+      var img=E('img');img.src=p.a;img.alt=p.name;img.loading='lazy';cell.appendChild(img);
+      cell.appendChild(T('span','pc-zoom','⤢ Before / after'));
+      var cap=E('div','pc-cap');cap.appendChild(T('span',null,p.name));var st=T('small',null,'Redesign');cap.appendChild(st);cell.appendChild(cap);
+      cell.onclick=function(){openBA({b:p.b,a:p.a},title+' — '+p.name);};
+      grid.appendChild(cell);
+      return {img:img,st:st,p:p};
+    });
+    wrap.appendChild(grid);
+    function setState(after){
+      bA.classList.toggle('on',after);bB.classList.toggle('on',!after);
+      cells.forEach(function(c){c.img.src=after?c.p.a:c.p.b;c.st.textContent=after?'Redesign':'Original';});
+    }
+    bB.onclick=function(e){e.stopPropagation();setState(false);};
+    bA.onclick=function(e){e.stopPropagation();setState(true);};
+    return wrap;
   }
   function openBA(ba,title){
     var single=!ba.b,w=E('div','ba-lb'+(single?' single':''));
