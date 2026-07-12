@@ -213,6 +213,7 @@
   .odot{position:absolute;top:7%;right:7%;width:9px;height:9px;border-radius:50%;z-index:2;box-shadow:0 0 0 2px rgba(0,0,0,.4)}
   .opct{position:absolute;bottom:7%;left:0;right:0;text-align:center;font-family:var(--serif);font-weight:600;color:var(--gold-bright);z-index:2;text-shadow:0 1px 6px #000;line-height:1}
   .ocap{margin-top:7px;font-family:var(--serif);font-size:13.5px;color:var(--ivory);white-space:nowrap;line-height:1}
+  .odol{margin-top:3px;font-size:10.5px;letter-spacing:.05em;color:var(--gold);white-space:nowrap;line-height:1}
   .mkt-legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:13px;font-size:12px;color:var(--muted)}
   .mkt-legend b{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
   .mkt-legend .est{margin-left:auto;font-style:italic}
@@ -231,6 +232,8 @@
   .aprofile .body2{padding:30px 32px 32px 8px}
   .aprofile .pnm{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.05}
   .aprofile .parc{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:6px 0 10px}
+  .aprofile .pshare{display:inline-block;font-size:12px;color:var(--muted);margin:0 0 12px;padding:5px 11px;border:1px solid var(--faint);border-radius:999px;background:linear-gradient(165deg,rgba(201,168,106,.09),rgba(201,168,106,.02))}
+  .aprofile .pshare b{color:var(--gold-bright);font-weight:500}
   .aprofile .pgoal{font-size:13px;color:var(--muted);margin-bottom:6px}
   .aprofile .pgoal b{color:var(--gold-bright);font-weight:500}
   .aprofile .imp{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ivory);border-left:2px solid var(--gold);padding-left:14px;margin:14px 0 16px;line-height:1.42}
@@ -752,6 +755,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     var b=E('div','body2');
     b.appendChild(T('div','pnm',p.name));
     b.appendChild(T('div','parc',(p.archetype||'')+' · age '+(p.age||'')));
+    var _sh=SHARES[p.name];if(_sh)b.appendChild(H('div','pshare','<b>'+_sh+'%</b> of the target market · ≈ <b>'+shareDollars(_sh)+'</b> of the $2.3B U.S. category'));
     b.appendChild(H('div','pgoal','<b>Context:</b> '+esc(p.context)));
     if(p.goal)b.appendChild(H('div','pgoal','<b>Goal:</b> '+esc(p.goal)));
     b.appendChild(T('div','imp',p.first_impression));
@@ -832,6 +836,9 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   }
   // ---- market-composition treemap ----
   var SHARES={'Heartbroken Hannah':18,'Career-Crossroads Carla':13,'Anxious Dana':11,'Grieving Grace':10,'Night-Owl Wendy':9,'Spiritual Sofia':9,'Budget Bella':9,'Loyal Rosa':8,'Skeptical Sam':7,'Gift-Giver Greg':6};
+  // Each segment's share of the $2.3B U.S. psychic-services market (IBISWorld, 2025). share% x $2.3B, rounded to $M.
+  var TAM_USD=2300; // $M
+  function shareDollars(s){var m=Math.round((s/100)*TAM_USD);return m>=1000?('$'+(m/1000).toFixed(1)+'B'):('$'+m+'M');}
   function convColor(v){v=(v||'').toLowerCase();return v.indexOf('yes')>=0&&v.indexOf('no')<0?'var(--good)':(v.indexOf('no')>=0?'var(--bad)':'var(--warn)');}
   function squarify(data,X,Y,W,H){
     var result=[];
@@ -892,7 +899,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       var pct=E('span','opct');pct.textContent=(SHARES[p.name]||'')+'%';pct.style.fontSize=Math.max(12,Math.min(26,d*0.2))+'px';av.appendChild(pct);
       node.appendChild(av);
       node.appendChild(T('div','ocap',p.name.split(' ').pop()));
-      node.title=p.name+' — '+shortArc(p.archetype)+' · '+(SHARES[p.name]||'')+'% of target market';
+      node.appendChild(T('div','odol',shareDollars(SHARES[p.name]||0)));
+      node.title=p.name+' — '+shortArc(p.archetype)+' · '+(SHARES[p.name]||'')+'% of target market ≈ '+shareDollars(SHARES[p.name]||0);
       node.onclick=(function(pp){return function(){openAgent(pp);};})(p);
       market.appendChild(node);
     });
@@ -954,7 +962,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     rb.appendChild(H('div','mkt-legend','<span><b style="background:var(--good)"></b>Would convert</span><span><b style="background:var(--warn)"></b>Leaning yes</span><span><b style="background:var(--bad)"></b>Not yet</span>'));
     rb.appendChild(H('div','mkt-cite',
       '<span class="ct-h">How the numbers are grounded</span>'+
-      '<span><b>Total market:</b> U.S. psychic services reached <b>$2.3B in 2025</b> (5.5% CAGR since 2020, 103,340 businesses) per <a href="https://www.ibisworld.com/united-states/market-size/psychic-services/4413/" target="_blank" rel="noopener">IBISWorld</a>. The global online-readings market runs roughly <b>$3.7B</b> (~6.4% CAGR) per <a href="https://www.marketresearchfuture.com/reports/online-psychic-reading-service-market-24253" target="_blank" rel="noopener">Market Research Future</a>.</span>'+
+      '<span><b>Total market ($2.3B):</b> U.S. psychic services reached <b>$2.3B in 2025</b> (5.5% CAGR since 2020, 103,340 businesses) per <a href="https://www.ibisworld.com/united-states/market-size/psychic-services/4413/" target="_blank" rel="noopener">IBISWorld</a>. The same <b>~$2.3B</b> U.S. figure is carried by <a href="https://www.statista.com/statistics/1224176/psychic-services-market-size-us/" target="_blank" rel="noopener">Statista</a>. Wider online-readings estimates bracket it — roughly <b>$3.7B</b> global (~6.4% CAGR) per <a href="https://www.marketresearchfuture.com/reports/online-psychic-reading-service-market-24253" target="_blank" rel="noopener">Market Research Future</a>, and <b>$2.29B</b> (2024, 8.8% CAGR) per <a href="https://www.verifiedmarketresearch.com/product/online-psychic-reading-service-market/" target="_blank" rel="noopener">Verified Market Research</a>. We anchor on the conservative <b>$2.3B U.S. base</b>.</span>'+
+      '<span><b>What each agent is worth:</b> every segment&rsquo;s share is applied to that $2.3B base — a persona at <b>18%</b> represents ≈ <b>$414M</b> of annual U.S. demand, one at <b>6%</b> ≈ <b>$138M</b>. The ten shares sum to 100% (the full $2.3B). Open any agent to see its dollar segment.</span>'+
       '<span><b>Segment shares</b> are modeled from category research, not survey data: <b>love &amp; relationships</b> is the #1 reason for a reading — over half of clients (<a href="https://www.mysticmag.com/psychic-reading/psychic-mediumship-tarot-statistics/" target="_blank" rel="noopener">MysticMag</a>) — with career and major life decisions next; general-practice readings (romantic, personal, business) hold ~45% of the industry. The ten agents apportion that mix into researched ICPs.</span>'));
 
     var cb=document.getElementById('ctoBody');cb.className='';clear(cb);
