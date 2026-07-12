@@ -285,6 +285,62 @@
   .paywall .pw-note{font-size:12px;color:var(--muted)}
   .paywall .pw-incl{font-size:12.5px;color:var(--muted);border-top:1px solid var(--faint);margin-top:24px;padding-top:16px;line-height:1.7;text-align:left}
   .paywall .pw-incl b{color:var(--gold-bright);font-weight:500}
+  /* ---- checkout ---- */
+  .checkout{padding:38px 44px 40px;max-width:560px;margin:0 auto}
+  .checkout .co-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-bright);text-align:center}
+  .checkout h3{font-family:var(--serif);font-size:31px;font-weight:600;margin:7px 0 4px;text-align:center}
+  .checkout .co-sub{font-size:13.5px;color:var(--muted);line-height:1.6;text-align:center;margin-bottom:22px}
+  .co-timer{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto 22px;padding:11px 16px;max-width:360px;border:1px solid var(--hair);border-radius:12px;background:radial-gradient(circle at 50% 0,rgba(232,207,154,.12),transparent 72%)}
+  .co-timer .ct-lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .co-timer .ct-clock{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--gold-bright);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .co-timer.ct-urgent .ct-clock{color:#F2B8B8}
+  .co-scar{display:flex;align-items:center;justify-content:center;gap:8px;font-size:11.5px;color:var(--moon);text-align:center;margin:-12px 0 20px}
+  .co-scar .dot{width:7px;height:7px;border-radius:50%;background:#8FE0A6;box-shadow:0 0 8px #8FE0A6;animation:copulse 1.8s ease-in-out infinite}
+  @keyframes copulse{50%{opacity:.35}}
+  .co-stack{border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);padding:6px 0;margin-bottom:18px}
+  .co-row{display:flex;gap:14px;align-items:flex-start;padding:11px 2px;border-bottom:1px solid rgba(247,242,232,.06)}
+  .co-row:last-child{border-bottom:0}
+  .co-row .co-chk{flex:0 0 auto;color:var(--gold-bright);margin-top:1px}
+  .co-row .co-chk svg{width:16px;height:16px;display:block}
+  .co-row .co-txt{flex:1 1 auto}
+  .co-row .co-name{font-size:14px;color:var(--ivory);font-weight:500;line-height:1.35}
+  .co-row .co-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-top:2px}
+  .co-row .co-val{flex:0 0 auto;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:1px}
+  .co-row.co-star{background:linear-gradient(90deg,rgba(232,207,154,.08),transparent)}
+  .co-row.co-star .co-name{color:var(--gold-bright)}
+  .co-row .co-tag{display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--gold-bright);border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:middle;font-weight:600}
+  .co-total{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .co-total b{font-family:var(--serif);font-size:20px;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(242,184,184,.7);font-weight:500;letter-spacing:0}
+  .co-price{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
+  .co-price .cp-l{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-bright)}
+  .co-price .cp-v{font-family:var(--serif);font-size:46px;font-weight:600;color:var(--gold-bright);line-height:1;font-variant-numeric:tabular-nums}
+  .co-save{text-align:right;font-size:12px;color:#8FE0A6;margin-bottom:2px}
+  .co-pay{text-align:right;font-size:12px;color:var(--muted);margin-bottom:20px}
+  .co-cta{width:100%;text-align:center;font-size:15px;padding:16px;margin-bottom:11px}
+  .co-cta .cc-sub{display:block;font-size:11px;letter-spacing:.06em;opacity:.85;margin-top:3px;font-weight:400}
+  .co-guar{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:var(--muted);text-align:center}
+  .co-guar svg{width:15px;height:15px;color:var(--gold)}
+  .co-fine{font-size:11px;color:rgba(247,242,232,.5);text-align:center;margin-top:14px;line-height:1.6}
+  .co-done{text-align:center;padding:14px 0 2px;max-width:480px;margin:0 auto}
+  .co-done .cd-ic{width:52px;height:52px;margin:0 auto 14px;border-radius:50%;border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;color:var(--gold-bright);background:radial-gradient(circle,rgba(232,207,154,.16),transparent 70%)}
+  .co-done .cd-ic svg{width:24px;height:24px}
+  .co-done .cd-t{font-family:var(--serif);font-size:22px;color:var(--gold-bright);margin-bottom:6px}
+  .co-done .cd-d{font-size:13px;color:var(--muted);line-height:1.6;padding:0 18px}
+  .co-done .cd-d a{color:var(--gold-bright)}
+  /* ---- exit-intent retention ---- */
+  .retain{padding:44px 46px 40px;max-width:500px;margin:0 auto;text-align:center}
+  .retain .rt-k{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-bright)}
+  .retain h3{font-family:var(--serif);font-size:33px;font-weight:600;margin:9px 0 12px;line-height:1.15}
+  .retain h3 em{font-style:italic;color:var(--gold-bright)}
+  .retain p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+  .retain .rt-gift{border:1px solid var(--hair);border-radius:14px;padding:18px 20px;margin:20px 0;background:radial-gradient(circle at 50% 0,rgba(232,207,154,.1),transparent 74%)}
+  .retain .rt-gift .rg-t{font-family:var(--serif);font-size:19px;color:var(--gold-bright);margin-bottom:5px}
+  .retain .rt-gift .rg-d{font-size:12.5px;color:var(--muted);line-height:1.55}
+  .retain .rt-gift .rg-code{display:inline-block;margin-top:10px;font-family:var(--sans);font-size:12px;letter-spacing:.16em;color:var(--ink);background:var(--gold-bright);border-radius:999px;padding:5px 14px;font-weight:600}
+  .retain .rt-cta{width:100%;margin-bottom:12px;padding:15px}
+  .retain .rt-no{background:none;border:0;color:var(--muted);font-family:var(--sans);font-size:12.5px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .retain .rt-no:hover{color:var(--ivory)}
+  @media(max-width:560px){.checkout,.retain{padding-left:22px;padding-right:22px}.co-row .co-desc{display:none}.co-price .cp-v{font-size:38px}}
   .stripcol,.galcol{margin-bottom:28px}
   .stripcol .sh,.galcol .sh{display:flex;align-items:baseline;gap:12px;margin-bottom:13px;flex-wrap:wrap}
   .stripcol .sh .st,.galcol .sh .st{font-family:var(--serif);font-size:21px;font-weight:600}
@@ -500,14 +556,13 @@
       <div class="bc-body">
         <span class="bc-eyebrow">The Celestial Atelier · complete</span>
         <h3>Everything, in one deck</h3>
-        <ul class="bc-list">
-          <li><b>150+ generated images</b> across 11 collections</li>
-          <li><b>The full tarot deck</b> — 20 bespoke cards &amp; spreads</li>
-          <li><b>3 film briefs</b> — brand, ad &amp; explainer, prompts included</li>
-          <li><b>The build document</b> — the concept &amp; full asset manifest</li>
-          <li><b>7 core prompts</b>, including the image generation</li>
-          <li><b>60+ changelog entries</b>, newest first</li>
-          <li><b>Full source</b> — every HTML, CSS &amp; JS file</li>
+                <ul class="bc-list">
+          <li><b>17-page production site</b>, every HTML, CSS and JS file</li>
+          <li><b>150+ bespoke generated images</b> across 11 collections</li>
+          <li><b>The full tarot deck</b>, 20 bespoke cards and spreads</li>
+          <li><b>The design system + a Claude brand skill</b> to keep building on-brand</li>
+          <li><b>Deployment support</b> plus 8 hours of design revision time</li>
+          <li><b>The build document</b>, 3 film briefs and the 7 core prompts</li>
         </ul>
         <div class="bc-cta">
           <button class="btn" id="buildPreview" type="button">Preview</button>
@@ -850,18 +905,115 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         else{contents.removeAttribute('hidden');pv.textContent='Hide preview';contents.scrollIntoView({behavior:'smooth',block:'start'});}
       });
     }
-    if(dl){dl.addEventListener('click',function(){
-      var w=E('div','paywall');
-      w.appendChild(H('div','pw-lock','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor" stroke="none"/></svg>'));
-      w.appendChild(T('div','pw-k','Premium download'));
-      w.appendChild(T('h3',null,'The complete build'));
-      w.appendChild(T('p',null,'Every generated image, the full source, the prompt library, and the build document — the entire Celestial Atelier, packaged as one download.'));
-      w.appendChild(H('div','pw-price','$49 <span>· one-time</span>'));
-      var cta=E('a','btn pw-cta');cta.href='#';cta.textContent='Unlock the download';cta.onclick=function(e){e.preventDefault();};w.appendChild(cta);
-      w.appendChild(T('div','pw-note','Secure checkout · instant access · lifetime updates.'));
-      w.appendChild(H('div','pw-incl','<b>Included:</b> 150+ generated images (19 MB, 200+ files) · BUILD.md manifest · all HTML/CSS/JS source · the 7 core prompts. Everything is free to preview above.'));
-      lbOpen(w);
-    });}
+    if(dl){
+      var ZIP='downloads/celestial-atelier-build.zip';
+      var CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+      var STACK=[
+        {n:'The complete 17-page redesign',d:'Every production page: all HTML, CSS and JS.',v:'$14,000'},
+        {n:'150+ bespoke brand assets',d:'The full generated image library, 200+ files.',v:'$6,000'},
+        {n:'Design system + Claude brand skill',d:'Tokens, components and a skill so it keeps building on-brand.',v:'$3,500',star:1,tag:'Skill'},
+        {n:'Deployment support',d:'We get it live on your host.',v:'$2,500',star:1},
+        {n:'8 hours of design revision time',d:'Tuned to your brand, hands-on with our team.',v:'$2,000',star:1},
+        {n:'Prompt library + build documentation',d:'The 7 core prompts and the full build manifest.',v:'$1,200'}
+      ];
+      var TOTAL='$29,200';
+      var timer=null, checkoutActive=false, leaving=false, allowClose=false;
+
+      function fmtT(s){var m=Math.floor(s/60),ss=s%60;return m+':'+(ss<10?'0':'')+ss;}
+      function deadline(){var k='ca_co_deadline',now=Date.now(),d=+sessionStorage.getItem(k);if(!d||d<now||d>now+15*60*1000){d=now+15*60*1000;try{sessionStorage.setItem(k,d);}catch(e){}}return d;}
+      function startTimer(box){
+        var end=deadline();
+        function tick(){
+          var left=Math.max(0,Math.round((end-Date.now())/1000));
+          var clk=box.querySelector('.ct-clock');if(!clk){clearInterval(timer);return;}
+          clk.textContent=fmtT(left);
+          if(left<=120)box.classList.add('ct-urgent');
+          if(left<=0){var l=box.querySelector('.ct-lbl');if(l)l.textContent='This bundle price has expired';clearInterval(timer);}
+        }
+        clearInterval(timer);tick();timer=setInterval(tick,1000);
+      }
+      function doDownload(){var a=E('a');a.href=ZIP;a.setAttribute('download','');document.body.appendChild(a);a.click();document.body.removeChild(a);}
+
+      function successNode(){
+        var w=E('div','co-done');
+        w.appendChild(H('div','cd-ic',CHK));
+        w.appendChild(T('div','cd-t','Your build is on its way'));
+        w.appendChild(H('div','cd-d','The complete Celestial Atelier package is downloading now. If it did not start, <a href="'+ZIP+'" download>tap here</a>. Your deployment support and 8 revision hours are included, and we will be in touch to schedule them.'));
+        return w;
+      }
+      function retentionNode(){
+        var w=E('div','retain');
+        w.appendChild(T('div','rt-k','Wait'));
+        w.appendChild(H('h3',null,'Don\'t leave the <em>light</em>'));
+        w.appendChild(T('p',null,'Your Celestial Atelier bundle is still reserved at $9,997. Close this and the timer keeps running, and the bundle price goes with it.'));
+        var g=E('div','rt-gift');
+        g.appendChild(T('div','rg-t','Stay, and it gets better'));
+        g.appendChild(H('div','rg-d','Check out in the next 10 minutes and we will add <b>2 extra hours of design revision</b> at no cost, plus $500 off.'));
+        g.appendChild(T('div','rg-code','CODE: STAY500'));
+        w.appendChild(g);
+        var keep=T('button','btn rt-cta','Keep my bundle');
+        keep.onclick=function(){openCheckout(true);};
+        w.appendChild(keep);
+        var no=T('button','rt-no','No thanks, I will pass on this');
+        no.onclick=function(){allowClose=true;lbClose();};
+        w.appendChild(no);
+        return w;
+      }
+      function showRetention(){if(leaving)return;leaving=true;lbOpen(retentionNode());}
+
+      function checkoutNode(applied){
+        var price=applied?'$9,497':'$9,997';
+        var w=E('div','checkout');
+        w.appendChild(T('div','co-k','Premium build license'));
+        w.appendChild(T('h3',null,'The complete Celestial Atelier'));
+        w.appendChild(T('p','co-sub','Own the entire redesign: the site, the asset library, the design system, and the hands-on support to make it yours.'));
+        var tm=E('div','co-timer');
+        tm.appendChild(T('span','ct-lbl','This bundle price expires in'));
+        tm.appendChild(T('span','ct-clock','15:00'));
+        w.appendChild(tm);
+        var sc=E('div','co-scar');sc.appendChild(E('span','dot'));sc.appendChild(T('span',null,'Only 3 build licenses released this month · 1 remaining'));w.appendChild(sc);
+        var stack=E('div','co-stack');
+        STACK.forEach(function(it){
+          var r=E('div','co-row'+(it.star?' co-star':''));
+          r.appendChild(H('span','co-chk',CHK));
+          var tx=E('div','co-txt');
+          var nm=E('div','co-name');nm.appendChild(document.createTextNode(it.n));if(it.tag)nm.appendChild(T('span','co-tag',it.tag));tx.appendChild(nm);
+          tx.appendChild(T('div','co-desc',it.d));
+          r.appendChild(tx);
+          r.appendChild(T('span','co-val',it.v));
+          stack.appendChild(r);
+        });
+        w.appendChild(stack);
+        var tot=E('div','co-total');tot.appendChild(T('span',null,'Total value'));tot.appendChild(T('b',null,TOTAL));w.appendChild(tot);
+        var pr=E('div','co-price');pr.appendChild(T('span','cp-l','Your price today'));pr.appendChild(T('span','cp-v',price));w.appendChild(pr);
+        w.appendChild(T('div','co-save',applied?'You save $19,703 · 67% off · STAY500 applied':'You save $19,203 · 66% off'));
+        w.appendChild(T('div','co-pay','or 3 interest-free payments of '+(applied?'$3,166':'$3,332')));
+        var cta=E('button','btn co-cta');
+        cta.appendChild(T('span',null,'Secure my build · '+price));
+        cta.appendChild(T('span','cc-sub','Instant access to the full source, assets and skill'));
+        cta.onclick=function(){allowClose=true;checkoutActive=false;clearInterval(timer);doDownload();lbOpen(successNode());};
+        w.appendChild(cta);
+        var guar=E('div','co-guar');
+        guar.appendChild(H('span',null,'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.4-3 7.4-7 9-4-1.6-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>'));
+        guar.appendChild(T('span',null,'14-day money-back guarantee · secure checkout'));
+        w.appendChild(guar);
+        w.appendChild(T('div','co-fine','Prototype checkout for demonstration. Your download begins instantly and includes everything above.'));
+        return w;
+      }
+      function openCheckout(applied){checkoutActive=true;allowClose=false;var node=checkoutNode(applied);lbOpen(node);var tm=node.querySelector('.co-timer');if(tm)startTimer(tm);}
+
+      window.__coBeforeClose=function(){
+        if(!checkoutActive)return false;
+        if(!leaving&&!allowClose){showRetention();return true;}
+        checkoutActive=false;leaving=false;allowClose=false;clearInterval(timer);return false;
+      };
+      document.addEventListener('mouseout',function(e){
+        if(!checkoutActive||leaving||allowClose)return;
+        if((e.clientY<=0)&&!e.relatedTarget)showRetention();
+      });
+
+      dl.addEventListener('click',function(){leaving=false;openCheckout(false);});
+    }
   })();
 
   // ---- review-board data ----
@@ -971,7 +1123,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   // ---- lightbox + preview ----
   var LB=document.getElementById('lightbox'),LBI=document.getElementById('lbInner');
   function lbOpen(node){clear(LBI);LBI.appendChild(node);LB.classList.add('on');document.body.style.overflow='hidden';LBI.scrollTop=0;}
-  function lbClose(){LB.classList.remove('on');clear(LBI);document.body.style.overflow='';}
+  function lbClose(){if(window.__coBeforeClose&&window.__coBeforeClose()){return;}LB.classList.remove('on');clear(LBI);document.body.style.overflow='';}
   document.getElementById('lbClose').onclick=lbClose;
   LB.addEventListener('click',function(e){if(e.target===LB)lbClose();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')lbClose();});
