@@ -359,21 +359,44 @@
   .ba-lb img{width:100%;border-radius:10px;border:1px solid var(--hair);display:block}
   .ba-lb figcaption{font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-top:9px;text-align:center}
   .ba-lb .bcap{color:var(--muted)}.ba-lb .acap{color:var(--gold-bright)}
+  /* ---- experience entry: two visual thumbnails ---- */
+  .enter-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+  .enter-card{position:relative;display:block;border:1px solid var(--hair);border-radius:16px;overflow:hidden;text-decoration:none;background:#0b0818;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+  .enter-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 26px 60px -30px #000}
+  .enter-card .ec-thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+  .enter-card .ec-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s}
+  .enter-card:hover .ec-thumb img{transform:scale(1.04)}
+  .enter-card .ec-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(9,6,20,.9))}
+  .enter-card .ec-tag{position:absolute;top:13px;left:13px;z-index:2;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);background:rgba(9,6,20,.6);backdrop-filter:blur(4px);padding:5px 12px;border-radius:999px}
+  .enter-card .ec-body{position:absolute;left:0;right:0;bottom:0;padding:20px 24px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+  .enter-card .ec-t{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.08}
+  .enter-card .ec-d{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .enter-card .ec-go{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);white-space:nowrap;flex-shrink:0}
+  /* ---- pillars ---- */
+  .pillar{border-top:1px solid var(--faint);margin-top:26px;padding-top:46px;scroll-margin-top:64px}
+  .pillar-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+  .pillar-h .pn{font-family:var(--serif);font-size:18px;color:var(--gold)}
+  .pillar-h h2{font-family:var(--serif);font-size:clamp(30px,4vw,46px);font-weight:600}
+  .pillar-sub{color:var(--muted);font-size:15px;max-width:770px;margin-bottom:6px;line-height:1.6}
+  .pillar > section{border-top:0;padding:40px 0 0}
+  .pillar > section .sec-h .n{display:none}
+  .pillar > section .sec-h h2{font-size:clamp(23px,3vw,32px)}
   footer.end{padding:50px 0 80px;text-align:center;color:var(--muted);font-size:12.5px;border-top:1px solid var(--faint)}
   @media(max-width:820px){.scores{grid-template-columns:1fr 1fr}.cols,.pgrid,.exp,.twowrap{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.find-row{grid-template-columns:1fr}
     .portal-grid{grid-template-columns:1fr 1fr}.portal-hero{padding:30px 24px 28px}.gal{grid-template-columns:repeat(3,1fr)}
     .method{grid-template-columns:1fr 1fr}.agrid{grid-template-columns:repeat(3,1fr)}.aprofile{grid-template-columns:1fr}.aprofile .body2{padding:8px 26px 28px}
     .xhead{flex-direction:column;align-items:center;text-align:center}.ba-lb .row{grid-template-columns:1fr}.xgrid{grid-template-columns:1fr}
-    .build-card{grid-template-columns:1fr}.build-card .bc-visual{min-height:240px}.build-card .bc-body{padding:30px 26px 28px}}
+    .build-card{grid-template-columns:1fr}.build-card .bc-visual{min-height:240px}.build-card .bc-body{padding:30px 26px 28px}
+    .enter-grid{grid-template-columns:1fr}}
   @media(max-width:520px){.portal-grid{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.gcol>summary{gap:12px}
     .agrid{grid-template-columns:repeat(2,1fr)}.method{grid-template-columns:1fr 1fr}.mdoc{padding:26px 22px}}
 </style>
 </head>
 <body>
 <header class="top"><span class="star"></span><div class="wrap">
-  <span class="eyebrow">Psychic Source · The Celestial Atelier Redesign</span>
-  <h1>Redesign <em>Command Center</em></h1>
-  <p>An AI-native review board — a luxury brand expert, a conversion strategist, a CTO migration assessment, and ten market-researched customer personas — evaluating the redesign, plus the full story of how it was built.</p>
+  <span class="eyebrow">Psychic Source · The Celestial Atelier</span>
+  <h1>A website redesign, <em>presented</em></h1>
+  <p>A luxury reimagining of psychicsource.com — step inside, or set it beside the original. Below, an AI-native review board evaluates it, and the full build is yours to explore.</p>
   <div class="meta-row">
     <span class="pill"><b>17</b> pages redesigned</span>
     <span class="pill"><b>150+</b> AI-generated assets</span>
@@ -382,38 +405,36 @@
   </div>
 </div></header>
 
-<div class="wrap"><section class="portal">
-  <div class="portal-hero">
-    <span class="phe">Start here · walk the redesign</span>
-    <h2>Experience it first</h2>
-    <p>Step into the full Celestial Atelier build, or set it side by side against the live psychicsource.com. Everything below is the review board's read on what you'll see.</p>
-    <div class="btns">
-      <a class="btn" href="index.html">Enter the redesign →</a>
-      <a class="btn btn-ghost" href="compare.html?p=home">Side-by-side compare</a>
-    </div>
+<div class="wrap">
+  <div class="enter-grid">
+    <a class="enter-card" href="index.html">
+      <div class="ec-thumb"><span class="ec-tag">The redesign</span><img src="assets/heroes/enter-thumb.jpg" alt="The redesigned Psychic Source home page" loading="lazy" /></div>
+      <div class="ec-body"><div><div class="ec-t">Enter the redesign</div><div class="ec-d">Walk the full Celestial Atelier build</div></div><span class="ec-go">Open →</span></div>
+    </a>
+    <a class="enter-card" href="compare.html?p=home">
+      <div class="ec-thumb"><span class="ec-tag">Before / after</span><img src="assets/heroes/compare-thumb.jpg" alt="The original psychicsource.com beside the redesign" loading="lazy" /></div>
+      <div class="ec-body"><div><div class="ec-t">See it side by side</div><div class="ec-d">The original psychicsource.com vs the redesign</div></div><span class="ec-go">Compare →</span></div>
+    </a>
   </div>
-  <div class="portal-grid">
-    <a class="pnav" href="#overview"><span class="n">01</span><span class="t">Overview</span><span class="d">The verdict at a glance, scored by the board.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#research"><span class="n">02</span><span class="t">Market Research</span><span class="d">Ten AI agents, each a researched customer — meet them.</span><span class="go">Meet the agents →</span></a>
-    <a class="pnav" href="#experts"><span class="n">03</span><span class="t">Expert Panel</span><span class="d">Go deeper — luxury brand &amp; conversion, with cited sources.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#cto"><span class="n">04</span><span class="t">CTO Verdict</span><span class="d">Should this replace the live site? Risk &amp; cost.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#story"><span class="n">05</span><span class="t">The Story</span><span class="d">How the redesign was built, step by step.</span><span class="go">View →</span></a>
-    <a class="pnav" href="#build"><span class="n">06</span><span class="t">The Build</span><span class="d">The asset library, prompts &amp; changelog, wrapped together — preview or download.</span><span class="go">Open the build →</span></a>
-  </div>
-</section></div>
+</div>
 
 <nav class="sticky"><div class="in">
-  <a href="#overview">Overview</a><a href="#research">Market Research</a><a href="#experts">Expert Panel</a><a href="#cto">CTO Verdict</a><a href="#story">The Story</a><a href="#build">The Build</a>
+  <a href="#panel">The Expert Panel</a><a href="#build">The Build</a>
 </div></nav>
 
 <div class="wrap">
-  <section id="overview"><div class="sec-h"><span class="n">01</span><h2>Overview</h2></div><p class="sec-sub">The verdict at a glance, scored by the review board.</p><div id="overviewBody" class="loading">Loading the review board…</div></section>
+  <div class="pillar" id="panel">
+    <div class="pillar-h"><span class="pn">01</span><h2>The Expert Panel</h2></div>
+    <p class="pillar-sub">An AI-native review board evaluating the redesign — the market it serves, the craft behind it, and whether it is ready to replace the live site.</p>
+    <section id="overview"><div class="sec-h"><span class="n">01</span><h2>Overview</h2></div><p class="sec-sub">The verdict at a glance, scored by the review board.</p><div id="overviewBody" class="loading">Loading the review board…</div></section>
   <section id="research"><div class="sec-h"><span class="n">02</span><h2>Agentic Market Research</h2></div><p class="sec-sub">Before asking any expert, we did the market research — the agentic way. Ten autonomous AI agents, each built from a real customer profile, were dispatched in parallel to walk the live redesign and react honestly, in character. This is who they are, and what they told us. Meet any agent to sit with their full read.</p><div id="researchBody" class="loading">Loading the research agents…</div></section>
-  <section id="experts"><div class="sec-h"><span class="n">03</span><h2>Dive deeper — the Expert Panel</h2></div><p class="sec-sub">Where the agents are the market, the panel is the craft: a world-class luxury brand expert and an AI-native conversion strategist. Here is each expert's reading at a glance — open a card for the full report, with cited, verified sources.</p><div id="expertsBody" class="loading">Loading experts…</div></section>
+  <section id="experts"><div class="sec-h"><span class="n">03</span><h2>Expert readings — Brand &amp; Conversion</h2></div><p class="sec-sub">Where the agents are the market, the panel is the craft: a world-class luxury brand expert and an AI-native conversion strategist. Here is each expert's reading at a glance — open a card for the full report, with cited, verified sources.</p><div id="expertsBody" class="loading">Loading experts…</div></section>
   <section id="cto"><div class="sec-h"><span class="n">04</span><h2>CTO — Should this replace the live site?</h2></div><p class="sec-sub">A pragmatic assessment of the risk and technical expense of adopting this build to replace psychicsource.com — the migration and the ongoing operations — and whether it's worth it.</p><div id="ctoBody" class="loading">Loading assessment…</div></section>
-  <section id="story"><div class="sec-h"><span class="n">05</span><h2>The Story</h2></div><p class="sec-sub">A play-by-play of the redesign — from the first concept to this dashboard — built conversationally, one refinement at a time. Each beat is shown before and after: the original psychicsource.com beside the redesign. Click any pair to enlarge.</p><div class="story" id="storyBody"></div></section>
-  <section id="build"><div class="sec-h"><span class="n">06</span><h2>The Build</h2></div>
-    <p class="sec-sub">Everything that made this redesign, wrapped together like a deck of cards — the full asset library, the prompts behind every image, and the complete change history. Preview it all free, or download the package.</p>
+  </div>
+
+  <div class="pillar" id="build">
+    <div class="pillar-h"><span class="pn">02</span><h2>The Build</h2></div>
+    <p class="pillar-sub">Everything that made the redesign, wrapped together like a deck of cards — the audit trail of how it was built, the prompts behind every image, the full change history, and every generated asset. Preview it all free, or download the package.</p>
     <div class="build-card">
       <div class="bc-visual"><img src="assets/heroes/build-deck.jpg" alt="The Celestial Atelier build, wrapped like a ribboned deck of tarot cards" loading="lazy" /></div>
       <div class="bc-body">
@@ -434,6 +455,11 @@
     </div>
     <div id="buildContents" hidden>
       <div class="build-sub">
+        <div class="bs-h">The Story — the audit trail</div>
+        <div class="bs-d">A play-by-play of the redesign, one refinement at a time. Each beat is shown before and after — the original psychicsource.com beside the redesign. Click any pair to enlarge.</div>
+        <div class="story" id="storyBody"></div>
+      </div>
+      <div class="build-sub">
         <div class="bs-h">The Asset Library</div>
         <div class="bs-d">Every image made for this build, grouped by collection. Click any image to preview it full size.</div>
         <div id="assetsBody"></div>
@@ -449,7 +475,7 @@
         <details class="clog" open><summary>Full change history <span class="cnt" id="clogCount"></span><span class="plus">+</span></summary><div class="list" id="clogList"></div></details>
       </div>
     </div>
-  </section>
+  </div>
 </div>
 
 <div class="lb" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><div class="lb-inner" id="lbInner"></div></div>
