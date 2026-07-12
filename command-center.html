@@ -492,6 +492,15 @@
   .pc-grp li{font-size:12.5px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative;margin-bottom:6px}
   .pc-grp li:before{content:"·";position:absolute;left:3px;color:var(--gold);font-weight:700}
   @media(max-width:880px){.gmini-row,.gfunnel,.gplan{grid-template-columns:1fr}}
+  .fs-head{display:flex;align-items:center;gap:9px}
+  .fs-ic{width:26px;height:26px;flex:0 0 auto;color:var(--gold-bright)}
+  .fs-ic svg{width:26px;height:26px;display:block}
+  .fs-ht{display:flex;flex-direction:column}
+  .pchips{display:flex;flex-wrap:wrap;gap:7px}
+  .pchip{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ivory);border:1px solid var(--faint);border-radius:999px;padding:3px 10px 3px 3px;background:rgba(28,20,70,.4)}
+  .pchip img{width:22px;height:22px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:#1a1440}
+  .pchip.link{cursor:pointer}
+  .pchip.link:hover{border-color:var(--hair);color:var(--gold-bright)}
   .film-badge{position:absolute;top:12px;left:12px;z-index:2;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-bright);background:rgba(20,15,45,.62);border:1px solid var(--faint);border-radius:999px;padding:5px 10px}
   .film-dur{position:absolute;bottom:12px;right:12px;z-index:2;font-size:11px;letter-spacing:.05em;color:var(--muted);background:rgba(20,15,45,.62);border-radius:999px;padding:3px 9px}
   .film-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
@@ -1385,9 +1394,17 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       lifecycle:'<svg viewBox="0 0 100 100" fill="none" stroke="#E8CF9A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M74 34 A28 28 0 1 0 78 58"/><path d="M74 20 V36 H58"/></svg>',
       brand:'<svg viewBox="0 0 100 100" fill="none" stroke="#E8CF9A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M30 42 H46 L70 26 V74 L46 58 H30 Z"/><path d="M38 58 V72 H50"/></svg>'
     };
-    function gav(key,big){var d=E('div','gav'+(big?' big':''));d.appendChild(frag(EMB[key]||EMB.growth));return d;}
+    var GPHOTO={growth:'assets/experts/the-prospector.jpg',lifecycle:'assets/experts/the-shepherd.jpg',brand:'assets/experts/the-herald.jpg'};
+    var GNAME={growth:'The Prospector',lifecycle:'The Shepherd',brand:'The Herald'};
+    function gav(key,cls,zoomable){var box=E('span','xavbox');var emb=E('div','xav');emb.appendChild(frag(EMB[key]||EMB.growth));box.appendChild(emb);var img=E('img',cls||'xthumb');img.alt=GNAME[key]||'';img.onload=function(){clear(box);box.appendChild(img);if(zoomable){box.style.cursor='zoom-in';img.onclick=function(e){e.stopPropagation();openImage(GPHOTO[key],GNAME[key]);};}};img.src=GPHOTO[key];return box;}
+    var PSLUG={hannah:1,wendy:1,bella:1,greg:1,dana:1,grace:1,sofia:1,sam:1,rosa:1,carla:1};
+    function pShort(n){return (n||'').trim().split(/\s+/).pop();}
+    function personaImg(n){var w=pShort(n).toLowerCase();return PSLUG[w]?('assets/personas/'+w+'.jpg'):null;}
+    function findPersona(n){var w=pShort(n).toLowerCase();var arr=(window.REVIEW&&REVIEW.personas)||[];for(var i=0;i<arr.length;i++){if(pShort(arr[i].name).toLowerCase()===w)return arr[i];}return null;}
+    function personaChips(names){var wrap=E('div','pchips');(names||[]).forEach(function(n){var c=E('div','pchip');var src=personaImg(n);if(src){var img=E('img');img.src=src;img.loading='lazy';img.alt=n;c.appendChild(img);}c.appendChild(T('span',null,pShort(n)));c.title=n;var pm=findPersona(n);if(pm){c.className='pchip link';c.onclick=function(){openAgent(pm);};}wrap.appendChild(c);});return wrap;}
+    var STAGEICON=['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="2.6"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 4v5h-5"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3l4 1 2 5h2l-1-5 9 2V6l-9 2-7 1z"/></svg>'];
     function gtmReport(x){
-      var p=E('div','panel');var xh=E('div','xhead');xh.appendChild(gav(x.key,true));
+      var p=E('div','panel');var xh=E('div','xhead');xh.appendChild(gav(x.key,'xcard',true));
       var xm=E('div','xmeta');xm.appendChild(H('div','role',esc(x.role)+'<small>'+esc(x.name)+'</small>'));xm.appendChild(T('div','head',x.headline));xh.appendChild(xm);
       xh.appendChild(H('div','big',esc(x.score)+'<small>/10</small>'));p.appendChild(xh);
       p.appendChild(T('div','summ',x.summary));
@@ -1395,9 +1412,9 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       var find=E('div','find');(x.findings||[]).forEach(function(f){var r=E('div','find-row');var a=E('div','a');a.appendChild(T('span',null,f.area));if(f.priority)a.appendChild(T('span','prio '+prioClass(f.priority),f.priority));if(f.effort)a.appendChild(T('span','prio p-low','Effort: '+f.effort));var b=H('div','b','<b>'+esc(f.observation)+'</b> — '+esc(f.recommendation)+(f.impact?' <i>('+esc(f.impact)+')</i>':''));r.appendChild(a);r.appendChild(b);find.appendChild(r);});p.appendChild(find);
       var sb=sourcesBlock(x.sources);if(sb)p.appendChild(sb);return p;
     }
-    function gtmMini(x){var c=E('div','xmini');c.appendChild(gav(x.key));var info=E('div','xinfo');info.appendChild(T('div','xrole',x.role));info.appendChild(T('div','xsub',x.name+' · '+x.score+'/10'));info.appendChild(T('div','xline',x.headline));var foot=E('div','xfoot');foot.appendChild(T('span','xexpand','Read full report →'));info.appendChild(foot);c.appendChild(info);c.onclick=function(){openReport(gtmReport(x));};return c;}
+    function gtmMini(x){var c=E('div','xmini');c.appendChild(gav(x.key,'xthumb',false));var info=E('div','xinfo');info.appendChild(T('div','xrole',x.role));info.appendChild(T('div','xsub',x.name+' · '+x.score+'/10'));info.appendChild(T('div','xline',x.headline));var foot=E('div','xfoot');foot.appendChild(T('span','xexpand','Read full report →'));info.appendChild(foot);c.appendChild(info);c.onclick=function(){openReport(gtmReport(x));};return c;}
     function chips(arr,cls){var w=E('div','chips');(arr||[]).forEach(function(t){w.appendChild(T('span','chip'+(cls?' '+cls:''),t));});return w;}
-    function fstage(s,i){var c=E('div','fstage');c.appendChild(T('div','fs-n','Stage '+(i+1)));c.appendChild(T('div','fs-t',s.stage));c.appendChild(T('div','fs-goal',s.goal));c.appendChild(chips(s.personas,'who'));c.appendChild(chips(s.channels));c.appendChild(T('div','fs-play',s.play));c.appendChild(T('div','fs-metric','KPI: '+s.metric));return c;}
+    function fstage(s,i){var c=E('div','fstage');var head=E('div','fs-head');var ic=E('span','fs-ic');ic.appendChild(frag(STAGEICON[i]||STAGEICON[0]));head.appendChild(ic);var ht=E('div','fs-ht');ht.appendChild(T('div','fs-n','Stage '+(i+1)));ht.appendChild(T('div','fs-t',s.stage));head.appendChild(ht);c.appendChild(head);c.appendChild(T('div','fs-goal',s.goal));c.appendChild(personaChips(s.personas));c.appendChild(chips(s.channels));c.appendChild(T('div','fs-play',s.play));c.appendChild(T('div','fs-metric','KPI: '+s.metric));return c;}
     function grp(title,items){var g=E('div','pc-grp');g.appendChild(T('h5',null,title));var ul=E('ul');(items||[]).forEach(function(t){ul.appendChild(T('li',null,t));});g.appendChild(ul);return g;}
     function pcol(w){var c=E('div','pcol');c.appendChild(T('div','pc-w',w.window));c.appendChild(T('div','pc-th',w.theme));c.appendChild(grp('Tests',w.tests));c.appendChild(grp('Campaigns',w.campaigns));c.appendChild(grp('Targets',w.targets));return c;}
     function renderGTM(){var gb=document.getElementById('gtmBody');if(!gb||!window.GTM)return;gb.className='';clear(gb);
