@@ -1393,7 +1393,6 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       node.style.left=(nx-d/2)+'px';node.style.top=(ny-d/2)+'px';node.style.width=d+'px';
       var av=E('div','oav');av.style.height=d+'px';
       var img=E('img');var src=avatarFor(p.name);if(src)img.src=src;img.alt=p.name;av.appendChild(img);
-      var dot=E('span','odot');dot.style.background=convColor(p.would_convert);av.appendChild(dot);
       var pct=E('span','opct');pct.textContent=(SHARES[p.name]||'')+'%';pct.style.fontSize=Math.max(12,Math.min(26,d*0.2))+'px';av.appendChild(pct);
       node.appendChild(av);
       node.appendChild(T('div','ocap',p.name.split(' ').pop()));
