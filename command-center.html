@@ -26,8 +26,10 @@
   .pill b{color:var(--gold-bright);font-weight:500}
   nav.sticky{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,#160f33f2,#160f33d0 70%,transparent);backdrop-filter:blur(8px);padding:12px 0;margin-top:22px}
   nav.sticky .in{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-  nav.sticky a{font-size:12.5px;letter-spacing:.04em;color:var(--muted);padding:8px 14px;border-radius:999px;text-decoration:none;transition:all .2s;white-space:nowrap;border:1px solid transparent}
-  nav.sticky a:hover{color:var(--ivory);border-color:var(--hair)}
+  nav.sticky a{font-size:12.5px;letter-spacing:.04em;color:var(--gold);padding:8px 14px;border-radius:999px;text-decoration:none;transition:all .2s;white-space:nowrap;border:1px solid transparent}
+  nav.sticky a:hover{color:var(--gold-bright);border-color:rgba(201,168,106,.5);background:rgba(201,168,106,.09)}
+  nav.sticky a.redesign{color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));font-weight:600;border-color:transparent}
+  nav.sticky a.redesign:hover{filter:brightness(1.06);color:var(--ink)}
   section{padding:52px 0;border-top:1px solid var(--faint);scroll-margin-top:64px}
   .sec-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
   .sec-h h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.6vw,40px)}
@@ -600,7 +602,7 @@
 </div>
 
 <nav class="sticky"><div class="in">
-  <a href="#panel">The Expert Panel</a><a href="#gtmCard">Go-To-Market</a><a href="#build">The Build</a>
+  <a href="index.html" class="redesign">The Redesign ↗</a><a href="#panel">The Expert Panel</a><a href="#gtmCard">Go-To-Market</a><a href="#build">The Build</a>
 </div></nav>
 
 <div class="wrap">
@@ -821,9 +823,9 @@
     "STYLE FRAMES / FIRST FRAMES: before = assets/story/orig-*.jpg; after = assets/story/re-*.jpg and assets/heroes/*.jpg; agents = assets/personas/*.jpg; deck = assets/tarot/*.jpg and assets/deck/*.jpg. Trailer grade, rising score, confident cuts."
   ].join("\n");
   var FILMS=[
-    {tag:'Brand film',t:'The house of source',dur:'60-90s',poster:'assets/heroes/cosmos-cathedral.jpg',
+    {tag:'Brand film',t:'The house of source',dur:'60-90s',poster:'assets/heroes/house-of-source.jpg',
      d:'An atmospheric, wordless brand film - from a single point of source-light, guidance emerges. A perfume film, not a sales ad.',prompt:BRAND_PROMPT},
-    {tag:'The ad',t:'“I’m here. I see. Yes.”',dur:'~18s · vertical 9:16',poster:'assets/tarot/reader-scene.jpg',video:'assets/films/ad.mp4',
+    {tag:'The ad',t:'I’m here. I see.',dur:'~18s · vertical 9:16',poster:'assets/tarot/reader-scene.jpg',video:'assets/films/ad.mp4',
      d:'A compassion-beat spot: a chorus of real readers - present, seeing, then the pause, the touched card, and a warm “yes.” Told in the tarot-illustration style, then into their real world.',prompt:AD_PROMPT},
     {tag:'The explainer',t:'Everything that was built',dur:'1:30 · narrated',poster:'assets/heroes/compare-thumb.jpg',video:'assets/films/explainer.mp4',
      d:'A movie-trailer for the whole project - the old brand, the need, the AI atelier, the agents and avatars, and the reveal.',prompt:TRAILER_PROMPT}
@@ -970,7 +972,14 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     var pimg=E('img');pimg.src=f.poster;pimg.alt=f.t;pimg.loading='lazy';pos.appendChild(pimg);
     pos.appendChild(T('span','film-badge',(f.video?'Film · ':'Placeholder · ')+f.tag));
     var play=E('div','film-play');play.appendChild(frag('<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'));pos.appendChild(play);
-    if(f.video){pos.style.cursor='pointer';pos.title='Play '+f.t;pos.onclick=function(){var play=function(){var v=E('video','lb-video');v.src=f.video;v.controls=true;v.autoplay=true;v.setAttribute('playsinline','');lbOpen(v);};if(window.requestFilmAccess)window.requestFilmAccess(play);else play();};}
+    pos.style.cursor='pointer';pos.title=(f.video?'Play ':'View ')+f.t;
+    pos.onclick=function(){
+      var open=function(){
+        if(f.video){var v=E('video','lb-video');v.src=f.video;v.controls=true;v.autoplay=true;v.setAttribute('playsinline','');lbOpen(v);}
+        else{openImage(f.poster,f.t);}
+      };
+      if(window.requestFilmAccess)window.requestFilmAccess(open);else open();
+    };
     pos.appendChild(T('span','film-dur',f.dur));
     card.appendChild(pos);
     var body=E('div','film-body');
