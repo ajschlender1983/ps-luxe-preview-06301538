@@ -556,9 +556,8 @@
   @media(max-width:620px){.cc-head[aria-expanded="false"]::after{display:none}}
   .cc-body{padding:2px 26px 14px;animation:ccfade .5s ease both}
   .cc-body[hidden]{display:none}
-  .cc-closebar{position:sticky;top:58px;z-index:6;display:flex;justify-content:flex-end;height:0;overflow:visible;pointer-events:none}
-  .cc-close{pointer-events:auto;font-family:var(--sans);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border:0;border-radius:999px;padding:8px 16px;cursor:pointer;box-shadow:0 8px 22px -6px rgba(0,0,0,.7);transform:translateY(-6px);transition:filter .2s}
-  .cc-close:hover{filter:brightness(1.07)}
+  .cc-floatclose{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:60;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border:0;border-radius:999px;padding:11px 22px;cursor:pointer;box-shadow:0 12px 34px -8px rgba(0,0,0,.75);transition:filter .2s}
+  .cc-floatclose:hover{filter:brightness(1.07)}
   @keyframes ccfade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
   @media(max-width:640px){.cc-head{flex-wrap:wrap;gap:14px}.cc-avatars img{width:40px;height:40px}.cc-body{padding-left:16px;padding-right:16px}}
 
@@ -1528,21 +1527,45 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       if(open){ body.removeAttribute('hidden'); head.setAttribute('aria-expanded','true'); }
       else { body.setAttribute('hidden',''); head.setAttribute('aria-expanded','false'); }
     });
-    // floating "close" control so an open section can be collapsed without scrolling back up
-    var body = document.getElementById(head.getAttribute('aria-controls'));
-    if(body){
-      var bar = document.createElement('div'); bar.className = 'cc-closebar';
-      var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'cc-close';
-      btn.textContent = 'Close ▲';
-      btn.setAttribute('aria-label','Close this section');
-      btn.addEventListener('click', function(){
-        body.setAttribute('hidden',''); head.setAttribute('aria-expanded','false');
-        head.scrollIntoView({block:'start'});
-      });
-      bar.appendChild(btn);
-      body.insertBefore(bar, body.firstChild);
-    }
   });
+
+  /* floating "Close" button: shows while an open section is scrolled into view, so it can be
+     collapsed without scrolling back to its header (position:fixed — the cards use overflow:hidden,
+     which would break position:sticky) */
+  (function(){
+    var fc = document.createElement('button');
+    fc.type = 'button'; fc.className = 'cc-floatclose'; fc.textContent = 'Close ▲';
+    fc.setAttribute('aria-label','Close the open section'); fc.style.display = 'none';
+    document.body.appendChild(fc);
+    var target = null;
+    fc.addEventListener('click', function(){
+      if(!target) return;
+      var b = document.getElementById(target.getAttribute('aria-controls'));
+      if(b){ b.setAttribute('hidden',''); target.setAttribute('aria-expanded','false'); }
+      target.scrollIntoView({block:'start'});
+      fc.style.display = 'none'; target = null;
+    });
+    function update(){
+      var best = null;
+      document.querySelectorAll('[data-collapse]').forEach(function(head){
+        if(head.getAttribute('aria-expanded') !== 'true') return;
+        var b = document.getElementById(head.getAttribute('aria-controls'));
+        if(!b) return;
+        var r = b.getBoundingClientRect();
+        if(r.top < window.innerHeight * 0.55 && r.bottom > 140) best = head;
+      });
+      target = best;
+      fc.style.display = best ? '' : 'none';
+    }
+    var queued = false;
+    window.addEventListener('scroll', function(){
+      if(queued) return; queued = true;
+      requestAnimationFrame(function(){ update(); queued = false; });
+    }, {passive:true});
+    document.querySelectorAll('[data-collapse]').forEach(function(h){
+      h.addEventListener('click', function(){ setTimeout(update, 0); });
+    });
+  })();
   // if the page loads with a hash pointing at a collapsed card, open it
   function openFromHash(){
     var id = location.hash.slice(1); if(!id) return;
