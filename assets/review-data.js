@@ -313,7 +313,7 @@ window.REVIEW = {
       "age": "52",
       "context": "An accountant looking to buy a legitimate, premium-feeling reading as a gift for his spiritually-inclined sister.",
       "goal": "Purchase a psychic reading as a gift and hand it to my sister without it feeling cheap or embarrassing.",
-      "first_impression": "Honestly, relief. I braced for a tacky 1-900 carnival vibe and instead got something that looks like a heritage brand — deep violet, gold, real typography, restrained. The \"Answers you can trust,\" 35 years, 10M+ readings, and 270K five-star reviews immediately told my accountant brain this is an established outfit, not a fly-by-night. It reads legitimate. My problem is that everything is aimed at a person buying for themselves, and I'm not that person.",
+      "first_impression": "Honestly, relief. I braced for a tacky 1-900 carnival vibe and instead got something that looks like a heritage brand — deep violet, gold, real typography, restrained. The \"Insight you can feel,\" 35 years, 10M+ readings, and 270K five-star reviews immediately told my accountant brain this is an established outfit, not a fly-by-night. It reads legitimate. My problem is that everything is aimed at a person buying for themselves, and I'm not that person.",
       "what_works": [
         "The premium design does the heavy lifting on my #1 fear — it doesn't look embarrassing to associate with, which matters when it's a gift for my sister",
         "Concrete trust numbers: 35 years, 10M+ readings, 270K 5-star reviews, 4.9 rating, 'only 2% of psychics accepted' — that vetting language reassures me the readers aren't frauds",
@@ -334,7 +334,7 @@ window.REVIEW = {
       "age": "38",
       "context": "A nurse deciding whether to uproot her whole life and move across the country for her partner, and terrified of getting it wrong.",
       "goal": "To talk to someone warm who will actually hear me out about the move, help me sort my own gut from my fear, and not make me feel foolish or push me to spend.",
-      "first_impression": "Honestly my shoulders dropped a little. It doesn't look like the flashing, cheap \"1-800-PSYCHIC\" sites I was bracing for. It feels calm and expensive, like a place that takes itself seriously, and \"Answers you can trust\" is exactly the word my brain has been chewing on. The dark cosmic look is pretty, though a tiny part of me worried \"expensive-looking = expensive.\"",
+      "first_impression": "Honestly my shoulders dropped a little. It doesn't look like the flashing, cheap \"1-800-PSYCHIC\" sites I was bracing for. It feels calm and expensive, like a place that takes itself seriously, and \"Insight you can feel\" is exactly the word my brain has been chewing on. The dark cosmic look is pretty, though a tiny part of me worried \"expensive-looking = expensive.\"",
       "what_works": [
         "The love page copy stopped me cold: 'to tell you what is real, gently enough that you can hold it.' That is the exact thing I'm scared to hear and want to hear.",
         "'Will meet it without judgment' and 'sat with every shape of love' made me feel like I could actually say the messy true thing out loud.",
@@ -439,7 +439,7 @@ window.REVIEW = {
       "age": "41",
       "context": "Mid-level manager weighing whether to leave a stable job for a risky startup offer; wants direction and confidence, distrusts vagueness.",
       "goal": "Get a clear-eyed outside read on a high-stakes career decision — something that helps me commit or walk away, not a horoscope-flavored pep talk.",
-      "first_impression": "Honestly? It doesn't look like the cheap psychic sites I braced myself for. The deep violet, the gold, the serif type — it reads like a boutique advisory or a wellness brand, and that alone bought it thirty extra seconds of my attention. \"Answers you can trust\" over \"Life's possibilities, revealed\" is aimed right at me. My guard is still up — pretty design can be a mask for the same $1/min upsell machine — but the premium feel made me curious instead of dismissive, which is not where I usually land with this category.",
+      "first_impression": "Honestly? It doesn't look like the cheap psychic sites I braced myself for. The deep violet, the gold, the serif type — it reads like a boutique advisory or a wellness brand, and that alone bought it thirty extra seconds of my attention. \"Insight you can feel\" over \"Life's possibilities, revealed\" is aimed right at me. My guard is still up — pretty design can be a mask for the same $1/min upsell machine — but the premium feel made me curious instead of dismissive, which is not where I usually land with this category.",
       "what_works": [
         "The satisfaction guarantee stated plainly near the CTA — 'If your first reading isn't right, we'll make it right.' For someone risk-averse who's never done this, a money-back promise is the single thing that lowers the cost of trying.",
         "Concrete, stacked social proof: 35 years, 10M+ readings, 270,000 five-star reviews, 4.9 rating. The longevity since 1989 matters more to me than the star count — a scam doesn't last 35 years.",
