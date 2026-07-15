@@ -556,6 +556,9 @@
   @media(max-width:620px){.cc-head[aria-expanded="false"]::after{display:none}}
   .cc-body{padding:2px 26px 14px;animation:ccfade .5s ease both}
   .cc-body[hidden]{display:none}
+  .cc-closebar{position:sticky;top:58px;z-index:6;display:flex;justify-content:flex-end;height:0;overflow:visible;pointer-events:none}
+  .cc-close{pointer-events:auto;font-family:var(--sans);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border:0;border-radius:999px;padding:8px 16px;cursor:pointer;box-shadow:0 8px 22px -6px rgba(0,0,0,.7);transform:translateY(-6px);transition:filter .2s}
+  .cc-close:hover{filter:brightness(1.07)}
   @keyframes ccfade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
   @media(max-width:640px){.cc-head{flex-wrap:wrap;gap:14px}.cc-avatars img{width:40px;height:40px}.cc-body{padding-left:16px;padding-right:16px}}
 
@@ -595,9 +598,9 @@
       <div class="ec-thumb"><span class="ec-tag">The redesign</span><img src="assets/heroes/enter-thumb.jpg" alt="The redesigned Psychic Source home page" loading="lazy" /></div>
       <div class="ec-body"><div><div class="ec-t">Enter the redesign</div><div class="ec-d">Walk the full Celestial Atelier build</div></div><span class="ec-go">Open →</span></div>
     </a>
-    <a class="enter-card" href="original.html?p=home">
-      <div class="ec-thumb"><span class="ec-tag">Before / after</span><img src="assets/heroes/compare-thumb.jpg" alt="The original psychicsource.com beside the redesign" loading="lazy" /></div>
-      <div class="ec-body"><div><div class="ec-t">See the original</div><div class="ec-d">The live psychicsource.com, with a toggle back to the redesign</div></div><span class="ec-go">View →</span></div>
+    <a class="enter-card" href="https://www.psychicsource.com/" target="_blank" rel="noopener">
+      <div class="ec-thumb"><span class="ec-tag">The original</span><img src="assets/heroes/compare-thumb.jpg" alt="The original psychicsource.com beside the redesign" loading="lazy" /></div>
+      <div class="ec-body"><div><div class="ec-t">See the original</div><div class="ec-d">Open the live psychicsource.com in a new tab</div></div><span class="ec-go">Open ↗</span></div>
     </a>
   </div>
 </div>
@@ -1525,6 +1528,20 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       if(open){ body.removeAttribute('hidden'); head.setAttribute('aria-expanded','true'); }
       else { body.setAttribute('hidden',''); head.setAttribute('aria-expanded','false'); }
     });
+    // floating "close" control so an open section can be collapsed without scrolling back up
+    var body = document.getElementById(head.getAttribute('aria-controls'));
+    if(body){
+      var bar = document.createElement('div'); bar.className = 'cc-closebar';
+      var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'cc-close';
+      btn.textContent = 'Close ▲';
+      btn.setAttribute('aria-label','Close this section');
+      btn.addEventListener('click', function(){
+        body.setAttribute('hidden',''); head.setAttribute('aria-expanded','false');
+        head.scrollIntoView({block:'start'});
+      });
+      bar.appendChild(btn);
+      body.insertBefore(bar, body.firstChild);
+    }
   });
   // if the page loads with a hash pointing at a collapsed card, open it
   function openFromHash(){
