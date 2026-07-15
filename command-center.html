@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
-<title>Psychic Source — Redesign Command Center</title>
+<title>PsychicSource.com Rebrand — Command Center</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -534,14 +534,50 @@
   .deckfan .dcard:hover{transform:translateY(-28px) rotate(0deg) scale(1.02)!important;box-shadow:0 24px 46px rgba(0,0,0,.6);z-index:40}
   .deck-note{text-align:center;color:var(--muted);font-size:12px;margin-top:4px}
   @media(max-width:900px){.films-grid{grid-template-columns:1fr}}
+
+  /* ---- collapsible section cards ---- */
+  .collapse-card{border:1px solid var(--faint);border-radius:18px;overflow:hidden;margin:34px 0;background:linear-gradient(165deg,rgba(245,240,230,.045),rgba(245,240,230,.01))}
+  .cc-head{width:100%;display:flex;align-items:center;gap:22px;padding:24px 26px;background:transparent;border:0;cursor:pointer;text-align:left;color:inherit;transition:background .3s}
+  .cc-head:hover{background:rgba(245,240,230,.035)}
+  .cc-avatars{display:flex;flex:none}
+  .cc-avatars img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 24%;border:2px solid #191330;margin-left:-15px;box-shadow:0 2px 10px rgba(0,0,0,.45)}
+  .cc-avatars img:first-child{margin-left:0}
+  .cc-text{flex:1;min-width:0}
+  .cc-text .cc-n{font-family:var(--serif);font-size:15px;color:var(--gold)}
+  .cc-text h2{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--gold-bright);line-height:1.1;margin:2px 0 5px}
+  .cc-text p{font-size:13px;color:var(--muted);line-height:1.5;max-width:72ch}
+  .cc-chev{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:17px;line-height:1;transition:transform .4s cubic-bezier(.22,.61,.36,1),background .3s,border-color .3s}
+  .cc-head:hover .cc-chev{background:rgba(232,207,154,.12);border-color:var(--gold)}
+  .cc-head[aria-expanded="true"] .cc-chev{transform:rotate(180deg)}
+  .cc-head[aria-expanded="false"]{position:relative}
+  .cc-head[aria-expanded="false"]::after{content:"Collapsed · tap to open";position:absolute;top:14px;right:78px;font-family:var(--sans);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:.6}
+  @media(max-width:620px){.cc-head[aria-expanded="false"]::after{display:none}}
+  .cc-body{padding:2px 26px 14px;animation:ccfade .5s ease both}
+  .cc-body[hidden]{display:none}
+  @keyframes ccfade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  @media(max-width:640px){.cc-head{flex-wrap:wrap;gap:14px}.cc-avatars img{width:40px;height:40px}.cc-body{padding-left:16px;padding-right:16px}}
+
+  /* ---- film password gate ---- */
+  .gate{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(8,6,18,.86);backdrop-filter:blur(6px)}
+  .gate.on{display:flex}
+  .gate-card{max-width:420px;width:100%;background:radial-gradient(120% 90% at 50% 0%,#241a45,#160f33);border:1px solid var(--hair);border-radius:18px;padding:36px 34px;text-align:center}
+  .gate-card .lockico{font-size:26px;color:var(--gold-bright);margin-bottom:12px}
+  .gate-card h3{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--ivory);margin-bottom:8px}
+  .gate-card p{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+  .gate-card input{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--hair);border-radius:999px;padding:13px 20px;color:var(--ivory);font-size:15px;text-align:center;letter-spacing:.08em}
+  .gate-card input:focus{outline:none;border-color:var(--gold)}
+  .gate-row{display:flex;gap:10px;margin-top:14px}
+  .gate-btn{flex:1;border-radius:999px;padding:12px;font-size:13px;letter-spacing:.05em;cursor:pointer;border:1px solid var(--hair);background:transparent;color:var(--muted)}
+  .gate-btn.primary{background:linear-gradient(120deg,var(--gold-bright),var(--gold));border:0;color:#140f38;font-weight:600}
+  .gate-err{color:#e0736b;font-size:12px;margin-top:10px;min-height:1em}
   @media(max-width:700px){.pagegrid-4{grid-template-columns:1fr}.deckfan .dcard{width:90px;margin-left:-48px}}
 </style>
 </head>
 <body>
 <header class="top"><span class="star"></span><div class="wrap">
   <span class="eyebrow">Psychic Source · The Celestial Atelier</span>
-  <h1>A website redesign, <em>presented</em></h1>
-  <p>A luxury reimagining of psychicsource.com — step inside, or set it beside the original. Below, an AI-native review board evaluates it, and the full build is yours to explore.</p>
+  <h1>PsychicSource.com <em>rebrand</em></h1>
+  <p>A luxury reimagining of psychicsource.com. Step inside, or set it beside the original. Below, a board of AI agents modeled on leading experts in brand marketing evaluate it, an agentic CTO weighs in on the technical reality of deploying it, and the full build is yours to explore.</p>
   <div class="meta-row">
     <span class="pill"><b>17</b> pages redesigned</span>
     <span class="pill"><b>150+</b> AI-generated assets</span>
@@ -551,40 +587,50 @@
 </div></header>
 
 <div class="wrap">
-  <section class="films" id="films">
-    <div class="films-h">
-      <span class="eyebrow">The films</span>
-      <h2>Three films tell the story</h2>
-      <p>Three short films will open the presentation — a brand film, an ad, and an explainer trailer for everything that was built. These are placeholders; each carries a ready-to-use generation prompt you can copy.</p>
-    </div>
-    <div class="films-grid" id="filmsGrid"></div>
-  </section>
-
   <div class="enter-grid">
     <a class="enter-card" href="index.html">
       <div class="ec-thumb"><span class="ec-tag">The redesign</span><img src="assets/heroes/enter-thumb.jpg" alt="The redesigned Psychic Source home page" loading="lazy" /></div>
       <div class="ec-body"><div><div class="ec-t">Enter the redesign</div><div class="ec-d">Walk the full Celestial Atelier build</div></div><span class="ec-go">Open →</span></div>
     </a>
-    <a class="enter-card" href="compare.html?p=home">
+    <a class="enter-card" href="original.html?p=home">
       <div class="ec-thumb"><span class="ec-tag">Before / after</span><img src="assets/heroes/compare-thumb.jpg" alt="The original psychicsource.com beside the redesign" loading="lazy" /></div>
-      <div class="ec-body"><div><div class="ec-t">See it side by side</div><div class="ec-d">The original psychicsource.com vs the redesign</div></div><span class="ec-go">Compare →</span></div>
+      <div class="ec-body"><div><div class="ec-t">See the original</div><div class="ec-d">The live psychicsource.com, with a toggle back to the redesign</div></div><span class="ec-go">View →</span></div>
     </a>
   </div>
 </div>
 
 <nav class="sticky"><div class="in">
-  <a href="#panel">The Expert Panel</a><a href="#build">The Build</a>
+  <a href="#panel">The Expert Panel</a><a href="#gtmCard">Go-To-Market</a><a href="#build">The Build</a>
 </div></nav>
 
 <div class="wrap">
-  <div class="pillar" id="panel">
-    <div class="pillar-h"><span class="pn">01</span><h2>The Expert Panel</h2></div>
-    <p class="pillar-sub">An AI-native review board evaluating the redesign — the market it serves, the craft behind it, and whether it is ready to replace the live site.</p>
+  <div class="collapse-card" id="panel">
+    <button class="cc-head" type="button" aria-expanded="false" aria-controls="panelBody" data-collapse>
+      <div class="cc-avatars">
+        <img src="assets/experts/the-aesthete.jpg" alt="" loading="lazy" /><img src="assets/experts/the-alchemist.jpg" alt="" loading="lazy" /><img src="assets/experts/the-architect.jpg" alt="" loading="lazy" /><img src="assets/experts/the-herald.jpg" alt="" loading="lazy" /><img src="assets/experts/the-prospector.jpg" alt="" loading="lazy" /><img src="assets/experts/the-shepherd.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="cc-text"><span class="cc-n">01</span><h2>The Expert Panel</h2><p>An AI-native review board evaluating the redesign — the market it serves, the craft behind it, and whether it is ready to replace the live site. Tap to open.</p></div>
+      <span class="cc-chev" aria-hidden="true">▾</span>
+    </button>
+    <div class="cc-body" id="panelBody" hidden>
     <section id="overview"><div class="sec-h"><span class="n">01</span><h2>Overview</h2></div><p class="sec-sub">The verdict at a glance, scored by the review board.</p><div id="overviewBody" class="loading">Loading the review board…</div></section>
   <section id="research"><div class="sec-h"><span class="n">02</span><h2>Market Research &amp; User Personas</h2></div><p class="sec-sub">We started with who this is for. We sized the U.S. psychic-services market and broke it into the ten segments that actually drive it, the reasons people reach out. For each segment we built a researched user persona, then ran that persona as an autonomous agent that walked the redesign in character and reacted honestly: what drew it in, what gave it pause, what would make it pick up the phone. We refined the work against those reactions until all ten would convert. The market told us who to build for. The personas told us when we had earned them.</p><div id="researchBody" class="loading">Loading the research agents…</div></section>
-  <section id="gtm"><div class="sec-h"><span class="n">03</span><h2>Go-To-Market</h2></div><p class="sec-sub">The same market and the same personas, turned into a plan to win them. This is a generated go-to-market strategy: the funnel, a 30/60/90-day sequence of tests and campaigns, and a panel of GTM experts. Open any expert for the full playbook.</p><div id="gtmBody" class="loading">Loading the plan…</div></section>
-  <section id="experts"><div class="sec-h"><span class="n">04</span><h2>Expert readings — Brand &amp; Conversion</h2></div><p class="sec-sub">Where the personas are the market, the panel is the craft: a world-class luxury brand expert and an AI-native conversion strategist. Here is each expert's reading at a glance — open a card for the full report, with cited, verified sources.</p><div id="expertsBody" class="loading">Loading experts…</div></section>
-  <section id="cto"><div class="sec-h"><span class="n">05</span><h2>CTO — Should this replace the live site?</h2></div><p class="sec-sub">A pragmatic assessment of the risk and technical expense of adopting this build to replace psychicsource.com — the migration and the ongoing operations — and whether it's worth it.</p><div id="ctoBody" class="loading">Loading assessment…</div></section>
+  <section id="experts"><div class="sec-h"><span class="n">03</span><h2>Expert readings — Brand &amp; Conversion</h2></div><p class="sec-sub">Where the personas are the market, the panel is the craft: a world-class luxury brand expert and an AI-native conversion strategist. Here is each expert's reading at a glance — open a card for the full report, with cited, verified sources.</p><div id="expertsBody" class="loading">Loading experts…</div></section>
+  <section id="cto"><div class="sec-h"><span class="n">04</span><h2>CTO — Should this replace the live site?</h2></div><p class="sec-sub">A pragmatic assessment of the risk and technical expense of adopting this build to replace psychicsource.com — the migration and the ongoing operations — and whether it's worth it.</p><div id="ctoBody" class="loading">Loading assessment…</div></section>
+    </div>
+  </div>
+
+  <div class="collapse-card" id="gtmCard">
+    <button class="cc-head" type="button" aria-expanded="false" aria-controls="gtmBodyWrap" data-collapse>
+      <div class="cc-avatars">
+        <img src="assets/personas/grace.jpg" alt="" loading="lazy" /><img src="assets/personas/hannah.jpg" alt="" loading="lazy" /><img src="assets/personas/dana.jpg" alt="" loading="lazy" /><img src="assets/personas/wendy.jpg" alt="" loading="lazy" /><img src="assets/personas/sofia.jpg" alt="" loading="lazy" /><img src="assets/personas/carla.jpg" alt="" loading="lazy" /><img src="assets/personas/sam.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="cc-text"><span class="cc-n">02</span><h2>Go-To-Market</h2><p>The same market and the same customer personas, turned into a plan to win them: the funnel, a 30/60/90-day sequence, and a panel of GTM experts. Tap to open.</p></div>
+      <span class="cc-chev" aria-hidden="true">▾</span>
+    </button>
+    <div class="cc-body" id="gtmBodyWrap" hidden>
+      <section id="gtm"><div class="sec-h"><span class="n">01</span><h2>Go-To-Market</h2></div><p class="sec-sub">The same market and the same personas, turned into a plan to win them. This is a generated go-to-market strategy: the funnel, a 30/60/90-day sequence of tests and campaigns, and a panel of GTM experts. Open any expert for the full playbook.</p><div id="gtmBody" class="loading">Loading the plan…</div></section>
+    </div>
   </div>
 
   <div class="pillar" id="build">
@@ -638,9 +684,32 @@
       </div>
     </div>
   </div>
+
+  <section class="films" id="films">
+    <div class="films-h">
+      <span class="eyebrow">The films</span>
+      <h2>Three films tell the story</h2>
+      <p>Three short films open the presentation — a brand film, an ad, and an explainer trailer for everything that was built. These are placeholders; each carries a ready-to-use generation prompt you can copy. <span style="color:var(--gold-bright)">The films are password protected.</span></p>
+    </div>
+    <div class="films-grid" id="filmsGrid"></div>
+  </section>
 </div>
 
 <div class="lb" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><div class="lb-inner" id="lbInner"></div></div>
+
+<div class="gate" id="filmGate">
+  <div class="gate-card">
+    <div class="lockico">🔒</div>
+    <h3>The films are protected</h3>
+    <p>These films are held behind a passphrase for now. Enter it to watch.</p>
+    <input id="gatePw" type="password" placeholder="Passphrase" autocomplete="off" aria-label="Film passphrase" />
+    <div class="gate-err" id="gateErr"></div>
+    <div class="gate-row">
+      <button class="gate-btn" id="gateCancel" type="button">Cancel</button>
+      <button class="gate-btn primary" id="gateOk" type="button">Unlock</button>
+    </div>
+  </div>
+</div>
 
 <footer class="end"><div class="wrap">Psychic Source — Celestial Atelier redesign · Internal review dashboard · Prototype, not affiliated with the live site's production systems.</div></footer>
 
@@ -901,7 +970,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     var pimg=E('img');pimg.src=f.poster;pimg.alt=f.t;pimg.loading='lazy';pos.appendChild(pimg);
     pos.appendChild(T('span','film-badge',(f.video?'Film · ':'Placeholder · ')+f.tag));
     var play=E('div','film-play');play.appendChild(frag('<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'));pos.appendChild(play);
-    if(f.video){pos.style.cursor='pointer';pos.title='Play '+f.t;pos.onclick=function(){var v=E('video','lb-video');v.src=f.video;v.controls=true;v.autoplay=true;v.setAttribute('playsinline','');lbOpen(v);};}
+    if(f.video){pos.style.cursor='pointer';pos.title='Play '+f.t;pos.onclick=function(){var play=function(){var v=E('video','lb-video');v.src=f.video;v.controls=true;v.autoplay=true;v.setAttribute('playsinline','');lbOpen(v);};if(window.requestFilmAccess)window.requestFilmAccess(play);else play();};}
     pos.appendChild(T('span','film-dur',f.dur));
     card.appendChild(pos);
     var body=E('div','film-body');
@@ -1432,6 +1501,61 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
 
   renderReview();
   if(window.__renderGTM)window.__renderGTM();
+})();
+</script>
+
+<script>
+(function(){
+  /* ---- collapsible section cards ---- */
+  document.querySelectorAll('[data-collapse]').forEach(function(head){
+    head.addEventListener('click', function(){
+      var body = document.getElementById(head.getAttribute('aria-controls'));
+      if(!body) return;
+      var open = body.hasAttribute('hidden');
+      if(open){ body.removeAttribute('hidden'); head.setAttribute('aria-expanded','true'); }
+      else { body.setAttribute('hidden',''); head.setAttribute('aria-expanded','false'); }
+    });
+  });
+  // if the page loads with a hash pointing at a collapsed card, open it
+  function openFromHash(){
+    var id = location.hash.slice(1); if(!id) return;
+    var head = document.querySelector('#'+CSS.escape(id)+' .cc-head[data-collapse]');
+    if(head && head.getAttribute('aria-expanded') !== 'true') head.click();
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+
+  /* ---- film password gate (soft block) ---- */
+  var FILM_PW = 'source';   // placeholder passphrase; not real security
+  var gate = document.getElementById('filmGate');
+  var pw = document.getElementById('gatePw');
+  var err = document.getElementById('gateErr');
+  var pendingPlay = null;
+  function unlocked(){ try{ return sessionStorage.getItem('ps_films_unlocked')==='1'; }catch(e){ return false; } }
+  window.requestFilmAccess = function(onOk){
+    if(unlocked()){ onOk(); return; }
+    pendingPlay = onOk;
+    err.textContent=''; pw.value='';
+    gate.classList.add('on');
+    setTimeout(function(){ pw.focus(); }, 60);
+  };
+  function tryUnlock(){
+    if(pw.value.trim().toLowerCase() === FILM_PW){
+      try{ sessionStorage.setItem('ps_films_unlocked','1'); }catch(e){}
+      gate.classList.remove('on');
+      var p = pendingPlay; pendingPlay = null;
+      if(p) p();
+    } else {
+      err.textContent = 'That passphrase is not right.';
+      pw.focus(); pw.select();
+    }
+  }
+  function closeGate(){ gate.classList.remove('on'); pendingPlay = null; }
+  document.getElementById('gateOk').addEventListener('click', tryUnlock);
+  document.getElementById('gateCancel').addEventListener('click', closeGate);
+  pw.addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); });
+  gate.addEventListener('click', function(e){ if(e.target===gate) closeGate(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && gate.classList.contains('on')) closeGate(); });
 })();
 </script>
 </body>
