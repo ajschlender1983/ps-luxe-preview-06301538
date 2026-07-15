@@ -558,6 +558,17 @@
   .cc-body[hidden]{display:none}
   .cc-floatclose{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:60;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border:0;border-radius:999px;padding:11px 22px;cursor:pointer;box-shadow:0 12px 34px -8px rgba(0,0,0,.75);transition:filter .2s}
   .cc-floatclose:hover{filter:brightness(1.07)}
+  /* live-original iframe modal */
+  .origmodal{position:fixed;inset:0;z-index:200;background:rgba(9,6,20,.94);display:flex;flex-direction:column}
+  .origmodal[hidden]{display:none}
+  .om-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 16px;background:#140f2c;border-bottom:1px solid var(--hair)}
+  .om-title{font-family:var(--serif);font-size:15px;color:var(--gold-bright);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .om-actions{display:flex;align-items:center;gap:10px;flex:none}
+  .om-open{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:8px 14px;border:1px solid var(--hair);border-radius:999px;white-space:nowrap}
+  .om-open:hover{color:var(--gold-bright);border-color:var(--gold)}
+  .om-close{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border:0;border-radius:999px;padding:9px 16px;cursor:pointer;white-space:nowrap}
+  .om-close:hover{filter:brightness(1.06)}
+  .om-frame{flex:1;width:100%;border:0;background:#fff}
   @keyframes ccfade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
   @media(max-width:640px){.cc-head{flex-wrap:wrap;gap:14px}.cc-avatars img{width:40px;height:40px}.cc-body{padding-left:16px;padding-right:16px}}
 
@@ -597,9 +608,9 @@
       <div class="ec-thumb"><span class="ec-tag">The redesign</span><img src="assets/heroes/enter-thumb.jpg" alt="The redesigned Psychic Source home page" loading="lazy" /></div>
       <div class="ec-body"><div><div class="ec-t">Enter the redesign</div><div class="ec-d">Walk the full Celestial Atelier build</div></div><span class="ec-go">Open →</span></div>
     </a>
-    <a class="enter-card" href="https://www.psychicsource.com/" target="_blank" rel="noopener">
+    <a class="enter-card" id="origCard" href="https://www.psychicsource.com/" rel="noopener">
       <div class="ec-thumb"><span class="ec-tag">The original</span><img src="assets/heroes/compare-thumb.jpg" alt="The original psychicsource.com beside the redesign" loading="lazy" /></div>
-      <div class="ec-body"><div><div class="ec-t">See the original</div><div class="ec-d">Open the live psychicsource.com in a new tab</div></div><span class="ec-go">Open ↗</span></div>
+      <div class="ec-body"><div><div class="ec-t">See the original</div><div class="ec-d">The live psychicsource.com, right here in a frame</div></div><span class="ec-go">Open →</span></div>
     </a>
   </div>
 </div>
@@ -701,6 +712,17 @@
 </div>
 
 <div class="lb" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><div class="lb-inner" id="lbInner"></div></div>
+
+<div class="origmodal" id="origModal" hidden>
+  <div class="om-bar">
+    <span class="om-title">The live psychicsource.com</span>
+    <div class="om-actions">
+      <a class="om-open" href="https://www.psychicsource.com/" target="_blank" rel="noopener">Open in new tab ↗</a>
+      <button class="om-close" id="omClose" type="button">✕ Close</button>
+    </div>
+  </div>
+  <iframe class="om-frame" id="omFrame" title="The live psychicsource.com" src="about:blank"></iframe>
+</div>
 
 <div class="gate" id="filmGate">
   <div class="gate-card">
@@ -1573,6 +1595,23 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   }
   window.addEventListener('hashchange', openFromHash);
   openFromHash();
+
+  /* ---- "See the original" opens the live site in an iframe (stay in the command center) ---- */
+  (function(){
+    var card = document.getElementById('origCard');
+    var modal = document.getElementById('origModal');
+    var frame = document.getElementById('omFrame');
+    if(!card || !modal || !frame) return;
+    var LIVE = 'https://www.psychicsource.com/';
+    function openLive(){ if(frame.src !== LIVE) frame.src = LIVE; modal.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; }
+    function closeLive(){ modal.setAttribute('hidden',''); document.body.style.overflow = ''; }
+    card.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return; // let modifier/middle clicks open the new tab
+      e.preventDefault(); openLive();
+    });
+    var oc = document.getElementById('omClose'); if(oc) oc.addEventListener('click', closeLive);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !modal.hasAttribute('hidden')) closeLive(); });
+  })();
 
   /* ---- film password gate (soft block) ---- */
   var FILM_PW = 'source';   // placeholder passphrase; not real security
