@@ -534,6 +534,51 @@
   .gtmx-cta:hover .gx-chev{background:rgba(232,207,154,.14)}
   .gtmx-cta[aria-expanded="true"] .gx-chev{transform:rotate(180deg)}
   .gtmx-cta .gx-sub{display:block;font-size:13.5px;color:var(--muted);line-height:1.6;margin-top:9px;max-width:80ch}
+  .gtmx-cta.subx{border-color:rgba(138,87,224,.45);background:linear-gradient(135deg,rgba(138,87,224,.14),rgba(64,180,170,.05) 60%,rgba(20,15,45,.2))}
+  .gtmx-cta.subx::after{background:radial-gradient(120% 100% at 100% 0,rgba(138,87,224,.2),transparent 60%)}
+  .gtmx-cta.subx:hover{border-color:rgba(160,110,240,.8)}
+  .sub-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  .sub-p{border:1px solid var(--faint);border-radius:14px;padding:20px;background:linear-gradient(165deg,rgba(245,240,230,.045),rgba(245,240,230,.01))}
+  .sub-p-n{font-family:var(--serif);font-size:13px;color:var(--gold)}
+  .sub-p-t{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--gold-bright);margin:2px 0 1px}
+  .sub-p-k{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+  .sub-p-d{font-size:12.5px;color:var(--muted);line-height:1.6}
+  .sub-flow{display:flex;align-items:stretch;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .sub-node{flex:1;min-width:130px;border:1px solid rgba(232,207,154,.3);border-radius:12px;padding:13px 14px;background:linear-gradient(165deg,rgba(232,207,154,.07),rgba(232,207,154,.015))}
+  .sub-n-t{font-family:var(--serif);font-size:15.5px;font-weight:600;color:var(--ivory)}
+  .sub-n-d{font-size:11px;color:var(--muted);line-height:1.45;margin-top:3px}
+  .sub-arrow{align-self:center;color:var(--gold);font-size:16px;flex:none}
+  .ch-stage{position:relative;border-radius:12px;overflow:hidden;background:#0a0716}
+  .ch-tile.main{position:relative;aspect-ratio:16/9}
+  .ch-tile.main img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;filter:saturate(.95)}
+  .ch-tile.main::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,6,20,.15),transparent 30%,rgba(9,6,20,.6));pointer-events:none}
+  .ch-name{position:absolute;left:14px;bottom:12px;font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ivory);text-shadow:0 1px 8px #000;z-index:2}
+  .ch-live{position:absolute;top:12px;left:14px;z-index:2;display:inline-flex;align-items:center;gap:6px;font-size:8.5px;letter-spacing:.16em;color:#a9e0cd;background:rgba(9,6,20,.55);border-radius:999px;padding:4px 10px}
+  .ch-live i{width:6px;height:6px;border-radius:50%;background:#7BD389;box-shadow:0 0 8px rgba(123,211,137,.8)}
+  .ch-tile.you{position:absolute;right:12px;bottom:12px;width:26%;aspect-ratio:16/10;border-radius:9px;border:1px solid rgba(232,207,154,.4);background:radial-gradient(circle at 50% 40%,rgba(138,87,224,.3),rgba(9,6,20,.85));display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);z-index:2}
+  .ch-bar{display:flex;align-items:center;gap:14px;margin-top:12px;border:1px solid var(--faint);border-radius:999px;padding:9px 16px}
+  .ch-time{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--gold-bright);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ch-cap{flex:1;font-size:10.5px;color:var(--muted);line-height:1.4}
+  .ch-acts{display:inline-flex;gap:7px;flex:none}
+  .ch-acts i{width:26px;height:26px;border-radius:50%;background:rgba(247,242,232,.12)}
+  .ch-acts i.end{background:rgba(224,115,107,.65)}
+  .ch-acts-note{font-size:10.5px;color:var(--muted);font-style:italic;margin-top:10px}
+  .or-ask{display:flex;gap:13px;align-items:flex-start;margin-bottom:14px}
+  .or-mic{flex:none;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));box-shadow:0 0 0 6px rgba(232,207,154,.12)}
+  .or-mic svg{width:20px;height:20px}
+  .or-q{font-family:var(--serif);font-size:16.5px;font-style:italic;color:var(--ivory);line-height:1.35}
+  .or-hint{font-size:10.5px;color:var(--muted);margin-top:3px}
+  .or-draw{display:flex;gap:14px;align-items:flex-start}
+  .or-card{width:74px;border-radius:8px;border:1px solid var(--hair);display:block}
+  .or-card.back{opacity:.45;transform:rotate(-6deg)}
+  .or-card.face{box-shadow:0 0 26px rgba(232,207,154,.35);transform:rotate(3deg);margin-left:-30px}
+  .or-scroll{flex:1;min-width:0}
+  .or-s-t{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--gold-bright)}
+  .or-s-x{font-size:12px;color:var(--muted);line-height:1.55;margin:4px 0 10px}
+  .or-keep{display:inline-block;font-size:11px;letter-spacing:.08em;color:var(--gold-bright);border:1px dashed rgba(232,207,154,.45);border-radius:999px;padding:7px 14px}
+  .or-keep span{color:var(--muted);letter-spacing:0}
+  .or-honest{font-size:10.5px;color:var(--muted);font-style:italic;margin-top:12px}
+  @media(max-width:820px){.sub-trio{grid-template-columns:1fr}.sub-flow{flex-direction:column}.sub-arrow{transform:rotate(90deg);align-self:flex-start;margin-left:18px}}
   .gtmx-body{padding:6px 2px 4px;animation:ccfade .5s ease both}
   .gtmx-body[hidden]{display:none}
   .gtmx-body .gx-lead{font-size:15px;color:var(--ivory);line-height:1.7;max-width:82ch;margin:18px 0 4px}
@@ -891,6 +936,14 @@
           <span class="gx-sub">This is the team that runs it. Roles, timeline, dependencies, requirements, and cadence for handing the work to the Atelier Engine.</span>
         </button>
         <div class="gtmx-body" id="gtmxBody" hidden></div>
+      </div>
+      <div class="gtmx-wrap">
+        <button class="gtmx-cta subx" id="subxToggle" type="button" aria-expanded="false" aria-controls="subxBody">
+          <span class="gx-eyebrow">The add-on</span>
+          <span class="gx-title">Go-To-Market: <em>The Subscription</em><span class="gx-chev" aria-hidden="true">▾</span></span>
+          <span class="gx-sub">Agentic readings, a session experience worth staying for, and an automated funnel that turns readings into members. The Oracle, the Channel, the Circle.</span>
+        </button>
+        <div class="gtmx-body" id="subxBody" hidden></div>
       </div></section>
     </div>
   </div>
@@ -2196,13 +2249,92 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       gx.appendChild(cm);
     }
     window.__renderGTMX=renderGTMX;
+
+    // ---- Go-To-Market: The Subscription (the add-on) ----
+    function renderSUBX(){
+      var sx=document.getElementById('subxBody'); if(!sx)return; clear(sx);
+      sx.appendChild(T('p','gx-lead','Readings are a transaction. Members are a business. This add-on turns the redesign into a subscription machine: an agentic reading that never sleeps, a session room worth staying for, and a membership that makes the second reading a habit instead of a decision.'));
+      // The three pieces
+      sx.appendChild(T('div','gx-h','Three pieces, one funnel'));
+      var trio=E('div','sub-trio');
+      [
+        {n:'The Oracle',k:'Agentic readings',d:'Speak your question and a card rises from our own deck. A written scroll follows, honest about what it is: an AI presence, a bridge, never a substitute. Free, always awake, and it costs pennies to run.'},
+        {n:'The Channel',k:'The session, skinned',d:'Our version of the video room. A threshold to breathe in, the reading itself in the brand world, the spend cap as a soft golden arc instead of a taxi meter. Insight you can feel, inside the product.'},
+        {n:'The Circle',k:'The membership',d:'Minutes that roll over, a member rate, first access to your reader. The Record ends every session with one door: come back as a member.'}
+      ].forEach(function(p,i){
+        var c=E('div','sub-p');
+        c.appendChild(T('div','sub-p-n','0'+(i+1)));
+        c.appendChild(T('div','sub-p-t',p.n));
+        c.appendChild(T('div','sub-p-k',p.k));
+        c.appendChild(T('div','sub-p-d',p.d));
+        trio.appendChild(c);
+      });
+      sx.appendChild(trio);
+      // The automated funnel
+      sx.appendChild(T('div','gx-h','The automated funnel'));
+      sx.appendChild(T('p','gx-lead2','No hands between steps. Shepherd runs the sends, Ledger watches the numbers, a human gates anything that touches a raw moment.'));
+      var flow=E('div','sub-flow');
+      [
+        {t:'The Oracle',d:'a free agentic reading, any hour'},
+        {t:'The Invitation',d:'the scroll arrives by email, nurture begins'},
+        {t:'First Reading',d:'$1/min with a human, inside the Channel'},
+        {t:'The Record',d:'a keepsake, and the 48-hour rebooking'},
+        {t:'The Circle',d:'membership, and the habit is formed'}
+      ].forEach(function(n,i,arr){
+        var c=E('div','sub-node');
+        c.appendChild(T('div','sub-n-t',n.t));
+        c.appendChild(T('div','sub-n-d',n.d));
+        flow.appendChild(c);
+        if(i<arr.length-1)flow.appendChild(T('div','sub-arrow','→'));
+      });
+      sx.appendChild(flow);
+      // The two experiences, on screen
+      sx.appendChild(T('div','gx-h','The experiences, on screen'));
+      var duo=E('div','sys-duo');
+      var ch=E('div','sys-win');
+      ch.appendChild(H('div','sw-bar','<span class="sw-dots"><i></i><i></i><i></i></span><span class="sw-title">Enter the Channel · a live reading, in the brand world</span><span class="sw-ill">CONCEPT</span>'));
+      ch.appendChild(H('div','sw-body ch-body',
+        '<div class="ch-stage">'+
+        '<div class="ch-tile main"><img src="assets/advisors/Angela-9978.jpg" alt="Angela, live in the Channel"/><span class="ch-name">Angela · Clairvoyant</span><span class="ch-live"><i></i>IN THE CHANNEL</span></div>'+
+        '<div class="ch-tile you"><span>You</span></div>'+
+        '</div>'+
+        '<div class="ch-bar"><span class="ch-time">14:22 remaining</span><span class="ch-cap">Cap $30, set by you. We tell you before it ever changes.</span><span class="ch-acts"><i></i><i></i><i class="end"></i></span></div>'+
+        '<div class="ch-acts-note">Threshold to breathe in before, the Record to keep after. The reading never feels like a call.</div>'));
+      duo.appendChild(ch);
+      var orc=E('div','sys-win');
+      orc.appendChild(H('div','sw-bar','<span class="sw-dots"><i></i><i></i><i></i></span><span class="sw-title">The Oracle · an agentic reading</span><span class="sw-ill">CONCEPT</span>'));
+      orc.appendChild(H('div','sw-body or-body',
+        '<div class="or-ask"><span class="or-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><div><div class="or-q">“Should I take the offer, or wait for the one I want?”</div><div class="or-hint">Spoken, not typed. The asking is part of the reading.</div></div></div>'+
+        '<div class="or-draw"><img class="or-card back" src="assets/tarot/card-back.jpg" alt=""/><img class="or-card face" src="assets/deck/the-star.jpg" alt="The Star, drawn"/><div class="or-scroll"><div class="or-s-t">The Star, upright</div><div class="or-s-x">Hope after a hard season. The offer is real, and so is the one you are waiting for. Your scroll reads the difference…</div><div class="or-keep">Keep your scroll → <span>your email, and it travels with you</span></div></div></div>'+
+        '<div class="or-honest">The Oracle is an AI presence and says so. Every reading ends at a human door.</div>'));
+      duo.appendChild(orc);
+      sx.appendChild(duo);
+      // The math
+      sx.appendChild(T('div','gx-h','The subscription math'));
+      var ob=E('div','opp-band');
+      [
+        {l:'The recurring prize',v:'$348K ARR',d:'If 8% of first readers join the Circle at $29 a month, the first 1,000 members are $348,000 a year in revenue you acquired once and keep. Membership compounds while CAC is paid a single time.'},
+        {l:'Cost per agentic reading',v:'≈ $0.04',d:'An Oracle reading runs a few thousand tokens plus a card render: pennies. The free top of funnel costs less than a stamp, and Ledger meters it like everything else.'},
+        {l:'The add-on scope',v:'+$12,500',d:'Proposed: a one-time build for the Oracle, the Channel, and the funnel automation, then $5,000 a month added to the retainer once it is live. The numbers land in your Charter, graded by the same referee.'}
+      ].forEach(function(t){
+        var c=E('div','opp');
+        c.appendChild(T('div','opp-l',t.l));
+        c.appendChild(T('div','opp-v',t.v));
+        c.appendChild(T('div','opp-d',t.d));
+        ob.appendChild(c);
+      });
+      sx.appendChild(ob);
+      sx.appendChild(T('p','gx-owned','The rule that holds it together: the Oracle is a bridge, never a replacement. Every agentic reading ends by opening a door to a human, grief and crisis route to the care path, and the Editor gates anything that touches a raw moment.'));
+    }
+    window.__renderSUBX=renderSUBX;
   })();
 
   renderReview();
   if(window.__renderGTM)window.__renderGTM();
   if(window.__renderGTMX)window.__renderGTMX();
-  (function(){
-    var t=document.getElementById('gtmxToggle'), b=document.getElementById('gtmxBody');
+  if(window.__renderSUBX)window.__renderSUBX();
+  [['gtmxToggle','gtmxBody'],['subxToggle','subxBody']].forEach(function(pair){
+    var t=document.getElementById(pair[0]), b=document.getElementById(pair[1]);
     if(!t||!b)return;
     t.addEventListener('click',function(){
       var open=b.hasAttribute('hidden');
@@ -2210,7 +2342,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       t.setAttribute('aria-expanded', open?'true':'false');
       if(open) t.scrollIntoView({block:'start'});
     });
-  })();
+  });
 })();
 </script>
 
