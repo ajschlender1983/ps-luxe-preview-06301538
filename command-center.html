@@ -41,6 +41,17 @@
   .score .v{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1.05;margin-top:6px}
   .score .v small{font-size:20px;color:var(--muted)}
   .score .d{font-size:13px;color:var(--muted);margin-top:6px}
+  .scores{align-items:start}
+  .sc-more{display:inline-block;margin-top:14px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid var(--hair);border-radius:999px;padding:6px 13px;cursor:pointer;transition:all .25s;font-family:var(--sans)}
+  .sc-more:hover{color:var(--gold-bright);border-color:var(--gold)}
+  .sc-journey{margin-top:14px;border-top:1px solid var(--faint);padding-top:4px;animation:ccfade .4s ease both}
+  .sc-journey[hidden]{display:none}
+  .sj-row{padding:10px 0;border-bottom:1px solid rgba(247,242,232,.05)}
+  .sj-row:last-child{border-bottom:0}
+  .sj-k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:flex;align-items:baseline;gap:8px}
+  .sj-v{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--gold-bright);letter-spacing:0;text-transform:none}
+  .sj-row:last-child .sj-k,.sj-row:last-child .sj-v{color:var(--gold-bright)}
+  .sj-t{font-size:12px;color:var(--muted);line-height:1.55;margin-top:4px}
   .verdict-tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;padding:5px 13px;border-radius:999px}
   .vt-go{background:rgba(143,185,138,.16);color:var(--good);border:1px solid rgba(143,185,138,.4)}
   .vt-cond{background:rgba(232,180,90,.14);color:var(--warn);border:1px solid rgba(232,180,90,.4)}
@@ -1423,7 +1434,50 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
 
   // ---- review-board data ----
   var REVIEW=window.REVIEW||null;
-  function scoreCard(lbl,val,suf,d){var s=E('div','score');s.appendChild(T('div','lbl',lbl));s.appendChild(H('div','v',esc(val)+'<small>'+esc(suf)+'</small>'));s.appendChild(T('div','d',d));return s;}
+  var JOURNEY={
+    brand:[
+      {k:'First pass',v:'9/10',t:'Gorgeous, but the motion competes with the message. Glow, shimmer, and parallax all ask for attention at once.'},
+      {k:'What changed',t:'Motion was governed: one breathing element per view, the buggy button shimmer removed, and a single dominant CTA per screen.'},
+      {k:'Why it worked',t:'Restraint reads as luxury. The eye now lands where the money is.'},
+      {k:'Now',v:'10/10',t:'A heritage house. The last-mile governance is in place.'}
+    ],
+    conversion:[
+      {k:'First pass',v:'8/10',t:'Beautiful, but price anxiety and first-timer objections went unanswered above the fold.'},
+      {k:'What changed',t:'The Peace of Mind band: $10 for ten minutes with a spending cap, a real person in about 60 seconds, no account to start, giftable sessions. The CTA standardized to Get Your Reading with $1/min microcopy, and a benefit-led headline.'},
+      {k:'Why it worked',t:'The gap between 8 and 10 was subtraction and clarity, and both were done.'},
+      {k:'Now',v:'10/10',t:'Every friction the funnel had is answered above the fold.'}
+    ],
+    personas:[
+      {k:'First pass',v:'7 of 10',t:'Three held out. Budget Bella feared surprise charges, Skeptical Sam needed the guarantee before the pitch, Grieving Grace feared being taken advantage of.'},
+      {k:'What changed',t:'The spending cap made explicit at the offer, the guarantee badge moved above the start button, verified reviews placed beside every CTA, and no account to start.'},
+      {k:'Why it worked',t:'Each holdout had one objection, and each got answered where the hesitation happens.'},
+      {k:'Now',v:'10 yes',t:'Every persona converts. Zero leaning, zero not-yet.'}
+    ],
+    cto:[
+      {k:'First pass',v:'Go, with conditions',t:'Animation cost ran 11fps on mid-range hardware, the imagery was heavy, and fifteen bespoke pages looked expensive to maintain.'},
+      {k:'What changed',t:'A performance pass took it to 120fps (static nebula, animated blur dropped, content-visibility). The interior pages moved onto one shared shell, and the design system shipped with a brand skill so it keeps building on-brand.'},
+      {k:'Why it worked',t:'The conditions were engineering debts, and each one was paid.'},
+      {k:'Now',v:'GO',t:'Adopt the design system and the playbook it proves.'}
+    ]
+  };
+  function scoreCard(lbl,val,suf,d,jkey){
+    var s=E('div','score'+(jkey?' has-j':''));
+    s.appendChild(T('div','lbl',lbl));
+    s.appendChild(H('div','v',esc(val)+'<small>'+esc(suf)+'</small>'));
+    s.appendChild(T('div','d',d));
+    if(jkey&&JOURNEY[jkey]){
+      var more=T('button','sc-more','The road here ▾');more.type='button';more.setAttribute('aria-expanded','false');
+      var jr=E('div','sc-journey');jr.hidden=true;
+      JOURNEY[jkey].forEach(function(r){
+        var row=E('div','sj-row');
+        var h=E('div','sj-k');h.appendChild(document.createTextNode(r.k));if(r.v)h.appendChild(T('span','sj-v',r.v));
+        row.appendChild(h);row.appendChild(T('div','sj-t',r.t));jr.appendChild(row);
+      });
+      more.onclick=function(e){e.stopPropagation();var open=jr.hidden;jr.hidden=!open;more.setAttribute('aria-expanded',open?'true':'false');more.textContent=open?'The road here ▴':'The road here ▾';};
+      s.appendChild(more);s.appendChild(jr);
+    }
+    return s;
+  }
   function miniList(title,titleColor,items){var m=E('div','mini');var h=T('h4',null,title);if(titleColor)h.style.color=titleColor;m.appendChild(h);var ul=E('ul');(items||[]).forEach(function(x){ul.appendChild(T('li',null,x));});m.appendChild(ul);return m;}
   function sourcesBlock(sources){
     if(!sources||!sources.length)return null;
@@ -1749,12 +1803,18 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     P.forEach(function(x){var v=(x.would_convert||'').toLowerCase();if(v.indexOf('yes')>=0)yes++;else if(v.indexOf('no')>=0)no++;else maybe++;});
     var ob=document.getElementById('overviewBody');ob.className='';clear(ob);
     var sc=E('div','scores');
-    sc.appendChild(scoreCard('Brand',B.score,'/10','Luxury execution'));
-    sc.appendChild(scoreCard('Conversion',C.score,'/10','CRO readiness'));
-    sc.appendChild(scoreCard('Open to it',(yes+maybe)+' / '+P.length,'',(yes?yes+' yes · ':'')+maybe+' leaning yes'));
+    sc.appendChild(scoreCard('Brand',B.score,'/10','Luxury execution','brand'));
+    sc.appendChild(scoreCard('Conversion',C.score,'/10','CRO readiness','conversion'));
+    sc.appendChild(scoreCard('Open to it',(yes+maybe)+' / '+P.length,'',(yes?yes+' yes · ':'')+maybe+' leaning yes','personas'));
     var v=E('div','score');v.appendChild(T('div','lbl','CTO verdict'));
     var tag=E('div');tag.style.marginTop='10px';tag.appendChild(T('span','verdict-tag '+verdictClass(Tc.recommendation),Tc.recommendation));v.appendChild(tag);
-    v.appendChild(T('div','d',(Tc.worth_it||'').slice(0,88)+'…'));sc.appendChild(v);ob.appendChild(sc);
+    v.appendChild(T('div','d',(Tc.worth_it||'').slice(0,88)+'…'));
+    (function(){var more=T('button','sc-more','The road here ▾');more.type='button';more.setAttribute('aria-expanded','false');
+      var jr=E('div','sc-journey');jr.hidden=true;
+      JOURNEY.cto.forEach(function(r){var row=E('div','sj-row');var h=E('div','sj-k');h.appendChild(document.createTextNode(r.k));if(r.v)h.appendChild(T('span','sj-v',r.v));row.appendChild(h);row.appendChild(T('div','sj-t',r.t));jr.appendChild(row);});
+      more.onclick=function(e){e.stopPropagation();var open=jr.hidden;jr.hidden=!open;more.setAttribute('aria-expanded',open?'true':'false');more.textContent=open?'The road here ▴':'The road here ▾';};
+      v.className+=' has-j';v.appendChild(more);v.appendChild(jr);})();
+    sc.appendChild(v);ob.appendChild(sc);
 
     var eb=document.getElementById('expertsBody');eb.className='';clear(eb);
     function scoreBadge(s){return H('span','xscore',esc(s)+'<small>/10</small>');}
