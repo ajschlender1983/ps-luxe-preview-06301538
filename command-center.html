@@ -233,7 +233,13 @@
   .aprofile .side img{width:100%;border-radius:12px;border:1px solid var(--hair);display:block}
   .aprofile .side .conv{position:static;display:inline-block;margin-top:14px}
   .aprofile .body2{padding:30px 32px 32px 8px}
-  .aprofile .pwant{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);font-weight:600;margin-bottom:8px}
+  .aprofile .pintent{margin-bottom:10px;display:flex;flex-direction:column;gap:4px}
+  .aprofile .pi-line{display:flex;gap:9px;align-items:baseline;font-size:13px;line-height:1.35}
+  .aprofile .pi-lbl{flex:none;width:58px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding-top:2px}
+  .aprofile .pi-line .pi-lbl{color:var(--gold-bright)}
+  .aprofile .pi-line.bar .pi-lbl{color:#d98f86}
+  .aprofile .pi-val{color:var(--ivory)}
+  .aprofile .pi-line.bar .pi-val{color:var(--muted)}
   .aprofile .pnm{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.05}
   .aprofile .parc{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:6px 0 10px}
   .aprofile .pshare{display:inline-block;font-size:12px;color:var(--muted);margin:0 0 12px;padding:5px 11px;border:1px solid var(--faint);border-radius:999px;background:linear-gradient(165deg,rgba(201,168,106,.09),rgba(201,168,106,.02))}
@@ -1242,18 +1248,30 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     c.onclick=function(){openAgent(p);};
     return c;
   }
-  // one-line "what they want from the service" eyebrow per persona
+  // what each persona wants from the service, and the barrier that holds them back
   var WANTS={
-    'Heartbroken Hannah':'Wants reassurance, tonight',
-    'Night-Owl Wendy':'Wants a real person, right now',
-    'Budget Bella':'Wants one reading, no surprise charges',
-    'Gift-Giver Greg':'Wants a gift that feels special',
-    'Anxious Dana':'Wants to be heard, not upsold',
-    'Grieving Grace':'Wants connection she can trust',
-    'Spiritual Sofia':'Wants a genuine reader, not a fortune-teller',
-    'Skeptical Sam':'Wants to try it once, risk-free',
-    'Loyal Rosa':'Wants her regular reader, same perks',
-    'Career-Crossroads Carla':'Wants a clear-eyed read on a big decision'
+    'Heartbroken Hannah':'Reassurance that it will be okay, tonight',
+    'Night-Owl Wendy':'A real person, right now — no hoops',
+    'Budget Bella':'One reading for a tiny, fixed amount',
+    'Gift-Giver Greg':'A gift that feels thoughtful, not cheap',
+    'Anxious Dana':'To be heard, not judged or upsold',
+    'Grieving Grace':'A moment of real connection she can trust',
+    'Spiritual Sofia':'A genuine reader, not a fortune-teller',
+    'Skeptical Sam':'To try it once, for basically nothing',
+    'Loyal Rosa':'Her regular reader, same pricing and perks',
+    'Career-Crossroads Carla':'A clear-eyed read on a high-stakes decision'
+  };
+  var BARRIER={
+    'Heartbroken Hannah':'A scripted upsell while she is raw',
+    'Night-Owl Wendy':'That no one real is actually awake',
+    'Budget Bella':'A surprise charge running up $50+',
+    'Gift-Giver Greg':'It feeling gimmicky or embarrassing',
+    'Anxious Dana':'Being pushed to spend or made to feel foolish',
+    'Grieving Grace':'Being taken advantage of in her grief',
+    'Spiritual Sofia':'A fortune-teller who sells fear by the minute',
+    'Skeptical Sam':'Feeling like a gullible mark',
+    'Loyal Rosa':'Her pricing or perks quietly changing',
+    'Career-Crossroads Carla':'A vague, horoscope-flavored pep talk'
   };
   function agentProfile(p){
     var wrap=E('div','aprofile');
@@ -1262,7 +1280,13 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     side.appendChild(T('span','conv '+convClass(p.would_convert),'Would convert: '+p.would_convert));
     wrap.appendChild(side);
     var b=E('div','body2');
-    var _want=WANTS[p.name];if(_want)b.appendChild(T('div','pwant',_want));
+    var _want=WANTS[p.name], _bar=BARRIER[p.name];
+    if(_want||_bar){
+      var intent=E('div','pintent');
+      if(_want){var iw=E('div','pi-line');iw.appendChild(T('span','pi-lbl','Wants'));iw.appendChild(T('span','pi-val',_want));intent.appendChild(iw);}
+      if(_bar){var ib=E('div','pi-line bar');ib.appendChild(T('span','pi-lbl','Wary of'));ib.appendChild(T('span','pi-val',_bar));intent.appendChild(ib);}
+      b.appendChild(intent);
+    }
     b.appendChild(T('div','pnm',p.name));
     b.appendChild(T('div','parc',(p.archetype||'')+' · age '+(p.age||'')));
     var _sh=SHARES[p.name];if(_sh)b.appendChild(H('div','pshare','<b>'+_sh+'%</b> of the target market · ≈ <b>'+shareDollars(_sh)+'</b> of the $2.3B U.S. category'));
