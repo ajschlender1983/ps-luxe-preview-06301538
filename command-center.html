@@ -38,6 +38,11 @@
   .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:8px}
   .score{border:1px solid var(--faint);border-radius:12px;padding:22px;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01))}
   .score .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .sc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:36px}
+  .sc-avs{display:flex;flex:none}
+  .sc-avs img{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center 22%;border:1.5px solid #191330;margin-left:-11px;box-shadow:0 2px 8px rgba(0,0,0,.45)}
+  .sc-avs img:first-child{margin-left:0}
+  .sc-avs.many img{width:26px;height:26px;margin-left:-9px}
   .score .v{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1.05;margin-top:6px}
   .score .v small{font-size:20px;color:var(--muted)}
   .score .d{font-size:13px;color:var(--muted);margin-top:6px}
@@ -1472,9 +1477,16 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       {k:'Now',v:'GO',t:'Adopt the design system and the playbook it proves.'}
     ]
   };
-  function scoreCard(lbl,val,suf,d,jkey){
+  function scoreCard(lbl,val,suf,d,jkey,avs){
     var s=E('div','score'+(jkey?' has-j':''));
-    s.appendChild(T('div','lbl',lbl));
+    var hd=E('div','sc-head');
+    hd.appendChild(T('div','lbl',lbl));
+    if(avs&&avs.length){
+      var st=E('div','sc-avs'+(avs.length>3?' many':''));
+      avs.forEach(function(src){var im=E('img');im.src=src;im.alt='';im.loading='lazy';st.appendChild(im);});
+      hd.appendChild(st);
+    }
+    s.appendChild(hd);
     s.appendChild(H('div','v',esc(val)+'<small>'+esc(suf)+'</small>'));
     s.appendChild(T('div','d',d));
     if(jkey&&JOURNEY[jkey]){
@@ -1815,10 +1827,11 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     P.forEach(function(x){var v=(x.would_convert||'').toLowerCase();if(v.indexOf('yes')>=0)yes++;else if(v.indexOf('no')>=0)no++;else maybe++;});
     var ob=document.getElementById('overviewBody');ob.className='';clear(ob);
     var sc=E('div','scores');
-    sc.appendChild(scoreCard('Brand',B.score,'/10','Luxury execution','brand'));
-    sc.appendChild(scoreCard('Conversion',C.score,'/10','CRO readiness','conversion'));
-    sc.appendChild(scoreCard('Open to it',(yes+maybe)+' / '+P.length,'',(yes?yes+' yes · ':'')+maybe+' leaning yes','personas'));
-    var v=E('div','score');v.appendChild(T('div','lbl','CTO verdict'));
+    sc.appendChild(scoreCard('Brand',B.score,'/10','Luxury execution','brand',['assets/experts/the-aesthete.jpg']));
+    sc.appendChild(scoreCard('Conversion',C.score,'/10','CRO readiness','conversion',['assets/experts/the-alchemist.jpg']));
+    sc.appendChild(scoreCard('Agent focus group',(yes+maybe)+' / '+P.length,'',P.length+' agent ICPs, ideal customer personas · '+(yes?yes+' yes · ':'')+maybe+' leaning yes','personas',P.map(function(p){return avatarFor(p.name);}).filter(Boolean)));
+    var v=E('div','score');
+    (function(){var hd=E('div','sc-head');hd.appendChild(T('div','lbl','CTO verdict'));var st=E('div','sc-avs');var im=E('img');im.src='assets/experts/the-architect.jpg';im.alt='';im.loading='lazy';st.appendChild(im);hd.appendChild(st);v.appendChild(hd);})();
     var tag=E('div');tag.style.marginTop='10px';tag.appendChild(T('span','verdict-tag '+verdictClass(Tc.recommendation),Tc.recommendation));v.appendChild(tag);
     v.appendChild(T('div','d',(Tc.worth_it||'').slice(0,88)+'…'));
     (function(){var more=T('button','sc-more','The road here ▾');more.type='button';more.setAttribute('aria-expanded','false');
