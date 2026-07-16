@@ -524,15 +524,60 @@
   .gtmx-body .gx-h{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold-bright);margin:34px 0 4px;padding-top:20px;border-top:1px solid var(--faint)}
   .gtmx-body .gx-sub2{font-size:12px;letter-spacing:.02em;color:var(--muted);margin:14px 0 12px}
   .gx-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:6px}
-  .gx-role{border:1px solid var(--faint);border-radius:12px;padding:15px 16px;background:linear-gradient(165deg,rgba(245,240,230,.04),rgba(245,240,230,.01))}
+  .gx-role{display:flex;gap:13px;align-items:flex-start;border:1px solid var(--faint);border-radius:12px;padding:15px 16px;background:linear-gradient(165deg,rgba(245,240,230,.04),rgba(245,240,230,.01))}
   .gx-role.human{border-color:rgba(232,207,154,.32);background:linear-gradient(165deg,rgba(232,207,154,.09),rgba(232,207,154,.02))}
+  .gx-av{flex:none;width:46px;height:46px;border-radius:50%;overflow:hidden;border:1px solid var(--hair)}
+  .gx-av img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+  .gx-av.sigil{display:flex;align-items:center;justify-content:center;color:var(--gold-bright);border-color:rgba(232,207,154,.35);background:radial-gradient(circle at 50% 40%,rgba(138,87,224,.25),rgba(20,15,45,.6))}
+  .gx-av.sigil svg{width:22px;height:22px}
+  .gx-role.human .gx-av{border-color:rgba(232,207,154,.5);width:52px;height:52px}
+  .gx-r-meta{flex:1;min-width:0}
   .gx-r-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px}
   .gx-r-name{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ivory)}
   .gx-r-kind{flex:none;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:3px 7px}
   .gx-role.human .gx-r-kind{color:var(--ink);background:var(--gold-bright);border-color:transparent;font-weight:600}
   .gx-r-owns{font-size:12.5px;color:var(--muted);line-height:1.55}
   .gx-owned{font-size:13.5px;color:var(--ivory);line-height:1.6;margin:14px 0 2px;padding:14px 16px;border-left:2px solid var(--gold);background:linear-gradient(90deg,rgba(232,207,154,.07),transparent);border-radius:0 10px 10px 0}
+  .gx-side-lbl{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin:26px 0 2px;padding:6px 14px;border-radius:999px}
+  .gx-side-lbl.our{color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold))}
+  .gx-side-lbl.yours{color:var(--gold-bright);border:1px solid rgba(232,207,154,.4);background:rgba(232,207,154,.06)}
+  .gx-client{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .gx-cl{display:flex;gap:12px;align-items:flex-start;border:1px dashed var(--hair);border-radius:12px;padding:14px 15px;background:rgba(9,6,20,.25)}
+  .gx-cl-ic{flex:none;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);border:1px solid rgba(232,207,154,.3);background:rgba(232,207,154,.05)}
+  .gx-cl-ic svg{width:19px;height:19px}
+  .gx-cl-m{flex:1;min-width:0}
+  .gx-cl-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px}
+  .gx-cl-role{font-size:13.5px;color:var(--ivory);font-weight:500;line-height:1.3}
+  .gx-cl-when{flex:none;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+  .gx-cl-does{font-size:12px;color:var(--muted);line-height:1.5}
+  @media(max-width:640px){.gx-client{grid-template-columns:1fr}}
   .gx-p-note{margin-top:12px;padding-top:10px;border-top:1px dashed var(--faint);font-size:11.5px;color:var(--gold);line-height:1.5}
+  /* The Proof: KPI bar chart + payoff */
+  .gx-lead2{font-size:14px;color:var(--muted);line-height:1.65;margin:14px 0 20px;max-width:80ch}
+  .pf-chart{display:flex;gap:16px;align-items:flex-end;max-width:640px}
+  .pf-bar{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .pf-bv{font-family:var(--serif);font-size:clamp(15px,2.1vw,22px);font-weight:600;color:var(--gold-bright);margin-bottom:10px;min-height:1.1em}
+  .pf-track{width:100%;max-width:118px;height:150px;display:flex;align-items:flex-end;border-bottom:1px solid var(--faint)}
+  .pf-col{width:100%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--gold-bright),var(--gold-deep));box-shadow:0 -6px 20px -8px rgba(232,207,154,.5);transition:height .7s var(--ease)}
+  .pf-bar.t0 .pf-col{opacity:.5}
+  .pf-bar.t2 .pf-col{background:linear-gradient(180deg,#fff3d6,var(--gold))}
+  .pf-bl{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ivory);margin-top:12px}
+  .pf-bs{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+  .pf-bn{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.4}
+  .pf-cap{font-size:11px;color:var(--muted);margin-top:12px;font-style:italic;max-width:640px;text-align:center}
+  .pf-payoff{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+  .pf-out{border:1px solid var(--faint);border-radius:14px;padding:18px;background:linear-gradient(165deg,rgba(245,240,230,.04),rgba(245,240,230,.01))}
+  .pf-out.riskfree{border-color:rgba(120,190,170,.42);background:linear-gradient(165deg,rgba(120,190,170,.1),transparent)}
+  .pf-out.target{border-color:rgba(232,207,154,.45);background:linear-gradient(165deg,rgba(232,207,154,.1),transparent)}
+  .pf-out.stretch{border-color:var(--gold);background:linear-gradient(165deg,rgba(232,207,154,.17),transparent);box-shadow:0 18px 44px -30px #000}
+  .pf-o-zone{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .pf-out.riskfree .pf-o-zone{color:#8fcdb8}
+  .pf-o-pay{font-family:var(--serif);font-size:clamp(22px,3vw,32px);font-weight:600;color:var(--gold-bright);line-height:1;display:flex;align-items:baseline;gap:3px;flex-wrap:wrap}
+  .pf-out.riskfree .pf-o-pay{color:#a9e0cd}
+  .pf-o-per{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400}
+  .pf-o-cap{font-family:var(--sans);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .pf-o-desc{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+  @media(max-width:640px){.pf-payoff{grid-template-columns:1fr}.pf-track{height:112px}}
   .gx-timeline{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
   .gx-phase{border:1px solid var(--faint);border-radius:12px;padding:18px 18px;background:linear-gradient(165deg,rgba(245,240,230,.04),rgba(245,240,230,.01))}
   .gx-p-win{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
@@ -1179,7 +1224,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         w.appendChild(T('div','cd-t','Your build is on its way'));
         w.appendChild(H('div','cd-d','The complete Celestial Atelier package is downloading now. If it did not start, <a href="'+ZIP+'" download>tap here</a>. Your deployment support and 8 revision hours are included, and we will be in touch to schedule them.'));
         if(engineOn){
-          w.appendChild(H('div','cd-seat','<b>Founding seat reserved.</b> Your $1,000 is credited to your first invoice and refundable until Week 0. We will reach out to begin your Growth Diagnostic and book onboarding for the Atelier Engine. You keep the Diagnostic whether or not you continue.'));
+          w.appendChild(H('div','cd-seat','<b>Your 90-Day Proof Sprint is reserved.</b> The $5,000 is refundable until Week 0. We will reach out to lock your baseline and begin the Sprint. Miss your number and that $5,000 is all you pay, and you keep everything we build.'));
         }
         return w;
       }
@@ -1241,8 +1286,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         eng.appendChild(eul);
         var tog=E('button','ce-toggle');tog.type='button';tog.setAttribute('aria-pressed','false');
         tog.appendChild(E('span','ce-sw'));
-        var tgTx=E('span','ce-tg-tx');tgTx.appendChild(T('b',null,'Reserve your founding seat · $1,000'));
-        tgTx.appendChild(T('span','ce-tg-sub','Your $1,000 does two things. It holds one of the founding seats, and it commissions your Growth Diagnostic: a written read of your current cost per first reading, your three largest leak points, and a 90-day forecast with the exact numbers we would then hold ourselves to. You keep the Diagnostic whether or not you continue. Fully credited to your first invoice, refundable until Week 0.'));
+        var tgTx=E('span','ce-tg-tx');tgTx.appendChild(T('b',null,'Reserve your 90-Day Proof Sprint · $5,000'));
+        tgTx.appendChild(T('span','ce-tg-sub','$5,000 commissions the full 90-Day Proof Sprint: the whole funnel run against one number, cost per first reading. Miss your Week-0 baseline and that $5,000 is all you ever pay, and you keep every asset we built. Hit the target and you graduate to the $15,000 a month retainer, your $5,000 credited in. Beat the stretch and a success fee applies. Media runs on your own card throughout. Refundable until Week 0.'));
         tog.appendChild(tgTx);
         eng.appendChild(tog);
         eng.appendChild(T('div','ce-charter',EN.charter||''));
@@ -1258,11 +1303,11 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         cta.appendChild(ctaMain);cta.appendChild(ctaSub);
         function fmtD(n){return '$'+n.toLocaleString('en-US');}
         function updatePrice(){
-          var total=basePrice+(engineOn?1000:0);
+          var total=basePrice+(engineOn?5000:0);
           cpV.textContent=fmtD(total);
           if(engineOn){
-            ctaMain.textContent='Secure my build + founding seat · '+fmtD(total);
-            ctaSub.textContent='Full build now, plus a refundable $1,000 seat for the Atelier Engine';
+            ctaMain.textContent='Secure my build + Proof Sprint · '+fmtD(total);
+            ctaSub.textContent='Full build now, plus your refundable $5,000 90-Day Proof Sprint';
             pay.style.display='none';save.style.display='none';
           } else {
             ctaMain.textContent='Secure my build · '+price;
@@ -1690,7 +1735,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     function grp(title,items){var g=E('div','pc-grp');g.appendChild(T('h5',null,title));var ul=E('ul');(items||[]).forEach(function(t){ul.appendChild(T('li',null,t));});g.appendChild(ul);return g;}
     function pcol(w){var c=E('div','pcol');c.appendChild(T('div','pc-w',w.window));c.appendChild(T('div','pc-th',w.theme));c.appendChild(grp('Tests',w.tests));c.appendChild(grp('Campaigns',w.campaigns));c.appendChild(grp('Targets',w.targets));return c;}
   window.GTMX = {"title": "Go-To-Market Plan, Executed", "subtitle": "Meet the Atelier Engine, the only growth team built for the psychic and spiritual category. This is who runs the plan you just read. A named human owns every gate and signs your Friday brief, the agents carry the volume, the human carries the outcome.", "roles": [{"name": "The Conductor", "kind": "Human", "owns": "Senior growth strategist and final approver. Owns the outcome, the budget authority, and the required human signature on every consequential move: new campaigns, spend beyond the agreed ceiling, list-wide sends, offers, and any policy dispute. If a platform ever suspends an account, the Conductor owns recovery inside the response window in your Charter."}, {"name": "The Liaison", "kind": "Human", "owns": "Your single point of contact. Owns the communication loops and meeting cadence, translates the scoreboard into plain language, and gathers the approvals and assets you owe the team. You never wonder who to call."}, {"name": "The Editor", "kind": "Human", "owns": "Brand and voice guardian. The final human read on everything public, protecting the Celestial Atelier voice and a category that trades on trust. This is the human gate on published creative and content, and the last eyes on any copy that touches grief or a seeker in crisis."}, {"name": "Scout", "kind": "AI", "owns": "Paid search and intent capture across Google and Bing. Turns high-intent demand into first readings inside a daily spend ceiling. New campaigns and budget increases route to the Conductor before they spend."}, {"name": "Kindler", "kind": "AI", "owns": "Paid social and creative distribution across Meta, TikTok, Pinterest, and YouTube. Feeds discovery for personas who do not search yet, reads early signal, and retires fatigued creative fast."}, {"name": "Muse", "kind": "AI", "owns": "Creative production. Drafts ad concepts, static and video variants, and landing copy at volume in the Atelier voice. Every asset is a draft until a human approves it. Muse proposes, the Editor publishes."}, {"name": "Scribe", "kind": "AI", "owns": "SEO and content hub. Builds the compounding organic base that lowers blended CAC over time. Publishing to the live site is gated on human editorial approval."}, {"name": "Shepherd", "kind": "AI", "owns": "Lifecycle and CRM. Owns email and SMS, segmentation, retention, and win-back, the engine that turns a first reading into Loyal Rosa. Any full-list send or discount needs human sign-off."}, {"name": "Envoy", "kind": "AI", "owns": "Advocacy, referral, and reputation. Runs reviews, testimonial capture, and the gifting loop, routing real social proof back into creative. Every public-facing ask is human-approved before it sends."}, {"name": "Ledger", "kind": "AI", "owns": "Analytics and attribution. The single scoreboard every agent optimizes to: CAC, first-reading conversion, repeat rate, LTV:CAC. It measures and flags anomalies. It has no spend authority."}, {"name": "Warden", "kind": "AI", "owns": "Ad policy and compliance. Pre-clears every ad, claim, and landing page against platform and consumer-protection rules before it can go live. You remain account-holder-of-record on every account. Nothing publishes over a Warden block, and when Warden and a growth agent disagree, the Conductor rules."}, {"name": "Sentinel", "kind": "AI", "owns": "Monitoring and anomaly response. The 24/7 watch on spend pacing, pixel health, and CAC spikes. It can pause a runaway campaign inside the pre-authorized safety envelope, then escalates to a human with full context. It cannot launch or expand."}], "timeline": [{"phase": "Week 0 — Onboarding and Ignition", "window": "The quiet week before launch", "actions": ["Access handshake across ad accounts, analytics, ESP, the booking system, and the CMS. Scoped and revocable, read-only wherever execution does not demand more, and you stay account-holder-of-record throughout.", "Ledger installs and QAs the full tracking spine. Nothing launches until a test conversion flows end to end and lands in the dashboard.", "We map the ten researched personas to acquisition lanes and lifecycle paths.", "Muse drafts the opening creative wave in the Celestial Atelier voice.", "We lock the baseline by a written formula: current CAC, first-reading conversion, repeat rate, and LTV:CAC, so every later claim is measured against a real starting line.", "Kickoff call and a one-page Execution Charter you sign, with the Day-90 first-reading CAC target, the media floor, and the guarantee terms written in before any money moves."], "dependencies": ["Partner access granted across every platform, the single most common thing that stalls a start", "A named approver with authority over creative and spend", "Monthly media budget confirmed at or above the agreed floor and billing verified in-platform", "Brand kit, advisor imagery, and any existing proof delivered", "The first-reading offer locked: price, minutes, and terms"]}, {"phase": "Days 0 to 30 — Launch and Learn", "window": "Prove the funnel moves", "actions": ["Scout, Kindler, and Shepherd go live. Each persona lane runs a controlled test at a capped daily budget so no single test burns the month.", "Three landing variants split-test proof placement and the first-reading call to action. Skeptical Sam leads with reviews, Heartbroken Hannah leads with empathy and immediacy.", "Foundational lifecycle flows switch on from day one so no early traffic leaks: welcome, browse-abandon, booking recovery, and post-reading follow-up.", "Scribe begins a steady content cadence seeded to the search-intent personas.", "Ledger reallocates toward winners every 24 to 48 hours. A human reviews before anything is killed or scaled.", "A 30-day readout: CAC by lane, conversion by variant, and the two or three lanes worth doubling."], "dependencies": ["Week 0 tracking verified and clean", "Approved creative batch and at least one live, tested landing page", "Budget funded and live on the accounts at or above the floor", "Booking capacity confirmed on the advisor side"]}, {"phase": "Days 31 to 60 — Concentrate and Compound", "window": "Pour into what converts", "actions": ["We pull budget from the losers and concentrate it on the two or three persona-channel combinations with the best CAC and conversion, watching for efficiency decay as spend climbs.", "Muse ships a second creative wave built on month-one winners, scaling without fatiguing the audience.", "Shepherd deepens the repeat-reading engine with 7-day and 30-day re-engagement flows. This is where LTV:CAC starts to move.", "We open the Gift-Giver Greg path and a first cross-sell to warm buyers.", "A retargeting layer catches everyone who reached the offer and did not book."], "dependencies": ["A statistically real winner set from the first 30 days", "A repeat-rate baseline, so retention lift is measurable", "Advisor availability confirmed for repeat demand", "Approval on any new offer, gifting mechanic, or price test"]}, {"phase": "Days 61 to 90 — Systematize and Scale", "window": "Make the machine repeatable", "actions": ["We push validated lanes toward their efficient ceiling, adding lookalike audiences seeded from your best first-reading buyers.", "The lifecycle program reaches full coverage, with a mapped journey for every persona from first touch to advocacy, including a VIP path for Loyal Rosa.", "Envoy activates reviews, referrals, and testimonial capture, feeding real proof back into acquisition creative. This is the flywheel that quietly drops CAC.", "We test one new channel on a controlled budget, using the same discipline as day one.", "A board-grade 90-day review against the 30/60/90 targets and the LTV:CAC line moving toward and past 3:1."], "dependencies": ["Retention flows live and producing repeat-rate data", "A testimonial and review bank large enough to fuel advocacy creative", "Agreement on a higher spend envelope to fund scaling", "Sign-off to open a new channel before its budget goes live"]}, {"phase": "Day 90 — The Graduation", "window": "One honest decision", "actions": ["We measure the Sprint against the first-reading CAC target written in your Charter, by the formula we agreed, and honor the guarantee if we missed it on anything inside our control.", "You make one clear decision: graduate into the ongoing retainer, or walk with everything you own intact.", "The founding-cohort rate you locked at reservation carries into the retainer for as long as you stay."], "dependencies": ["The Day-90 review delivered", "The Charter target and formula on the table, measured, in writing"]}, {"phase": "Ongoing — Steady State", "window": "Day 91 and beyond", "actions": ["A new creative or offer test enters the queue every week. Winners scale, tired plays retire.", "Budget rebalances monthly as intent shifts across seasons and personas, from grief seasons to Career-Crossroads Carla's spikes.", "Scribe keeps the organic base compounding, lowering blended CAC month over month.", "Envoy harvests reviews and referrals on a permanent loop.", "A quarterly reset re-baselines the scoreboard and sets the next quarter's targets."], "dependencies": ["Continued account access and a funded monthly budget at or above the floor", "Advisor supply that keeps pace with demand, flagged before it caps growth", "A live approval lane so tests never sit waiting"]}], "requirements": [{"group": "Accounts and Access", "items": ["Meta Business Manager partner access to the Ad Account, Pages, and Pixel, assigned as a partner so revoking is one click and you stay account-holder-of-record", "Google Ads manager-account link, plus TikTok and Pinterest where the plan calls for them", "GA4 and Tag Manager publish access to deploy and QA tracking without a developer in the loop", "CMS editor access and a campaign subdomain or path we can own", "ESP and SMS platform manager access, with the account holder available for carrier registration", "DNS access or a named contact who can add email-authentication records within 24 hours", "A shared Slack Connect channel where the human leads and your team meet daily"]}, {"group": "Brand and Assets", "items": ["The confirmed Celestial Atelier brand kit: logo, the violet and champagne palette, and type", "Photography and video usage rights in writing", "Approved advisor imagery, names, and specialties, with written consent for paid media", "A voice and claims guide we draft and you ratify", "Reviews, ratings, and testimonials cleared for marketing use", "Your current best-converting ads, subject lines, and pages, so we start from what already works"]}, {"group": "Ad Budget", "items": ["A committed monthly media budget for the channels in the plan, funded on your own card", "A stated media floor, the minimum monthly spend the plan needs to exit the learning phase and read signal inside two weeks. We propose it, you approve it, and we never sell the retainer against an impossible budget", "A verified billing method on file in each ad platform before launch", "A stated ceiling and a scaling trigger, both proposed by us and approved by you. Retainer and media stay separate line items, and the retainer fee is fixed regardless of spend"]}, {"group": "Approval Authority and Turnaround", "items": ["One empowered approver who can green-light creative and spend, and a named backup", "A pre-approved playbook for routine moves so the team never idles on small calls", "Agreed turnaround: 1 business day for creative, 2 for pages and offers, 3 for anything touching compliance", "A default-forward rule so pre-cleared work ships in silence and anything sensitive holds, logged either way"]}, {"group": "Legal and Compliance", "items": ["Your standing 'for entertainment purposes' and jurisdiction-specific disclaimers", "A clear do-not-say line on health, medical, financial, legal, and outcome claims", "Your 18-plus policy and any regions you do not serve, for the targeting layer", "Subscription, cancellation, and pre-charge disclosure for any recurring offer", "SMS and email consent language, opt-in records, and A2P 10DLC registration you sign as brand of record", "Your privacy and cookie-consent posture, and a named legal reviewer reachable on the 3-day SLA"]}, {"group": "Data", "items": ["Customer and reading history, anonymized or hashed as your policy requires, to model LTV and build lookalikes", "Suppression lists: current customers, refunds, do-not-contact records, and known chargeback sources", "First-reading and repeat events fed to the platforms through the conversions API, so we optimize to revenue", "Historical CAC by channel and seasonal patterns where you have them", "A signed data processing agreement, our template and your counsel's edits. Every data point stays yours."]}, {"group": "The Fast-Start Checklist (clear these six in week one)", "items": ["Partner access granted across ads, analytics, CMS, ESP, and SMS, with you account-holder-of-record", "Brand kit, creative rights, and proof assets delivered to the shared library", "Monthly media budget committed at or above the floor and billing verified in-platform", "Approver and backup named, SLAs agreed, routine-moves playbook signed", "Disclaimers, claims boundaries, and consent language confirmed by your counsel", "Data shared and the processing agreement signed"]}], "comms": [{"channel": "The Shared Constellation (Slack and Portal)", "cadence": "Continuous, median human reply under two hours in business hours", "purpose": "The daily pulse. Async agent standups, approvals with clear deadlines, creative review, live signals, and direct access to your named humans in one place."}, {"channel": "The Live Dashboard", "cadence": "Always on, refreshed in real time", "purpose": "The four numbers that decide whether the machine is working: CAC, first-reading conversion, repeat rate, LTV:CAC. Broken down by persona, clickable down to the campaign and the creative behind it."}, {"channel": "The Weekly Atelier Brief", "cadence": "Every Friday by 9am your time", "purpose": "One human-written page: the week in one line, the scoreboard versus target, what moved and why, what we shipped, what we need from you, and next week's bet. If it is not in the Brief, it did not happen."}, {"channel": "The Escalation Loop", "cadence": "Same-day, event-triggered", "purpose": "The moments the system reaches for a person: spend guardrail breaches, a metric cliff, threshold approvals, an account suspension, and any copy touching grief or a seeker in crisis, pulled to a human before it publishes."}], "meetings": [{"name": "Daily Agent Standup", "cadence": "Async, every morning", "who": "The full agent team posting to the pulse; human leads skim; you are welcome and never required", "purpose": "Keep the machine coherent and surface blockers within hours, not days. This is the sound of work happening."}, {"name": "Weekly Growth Review", "cadence": "30 minutes, live", "who": "Your Liaison, the Conductor, the three GTM leads, and you or a delegate", "purpose": "Hands on the wheel. Steer spend, approve the next creative wave, and set the week's bets. You leave knowing exactly what happens over the next seven days."}, {"name": "Monthly Strategic Review", "cadence": "60 minutes, live", "who": "Your Liaison, the Conductor, the GTM panel, and your stakeholder or founder", "purpose": "The map. The month against the 30/60/90 plan, the LTV:CAC trajectory, which personas earn their budget, and a one-page allocation decision you approve."}, {"name": "Quarterly Reset", "cadence": "Half-day working session", "who": "Full Atelier leadership, your executive stakeholders, and the founder", "purpose": "The horizon. We re-examine the strategy itself, refresh what the data taught us about the ten personas, retire tired plays, and set a fresh 90-day plan."}]};
-  window.ENGINE = {"name": "The Atelier Engine", "badge": "FOUNDING COHORT", "anchor": "A senior lead who holds one lane runs $12,000 a month and carries none of the risk. Your whole funnel, held to one test, runs $15,000: it should return more first-reading revenue than it costs, and if it does not by Day 90, the Proof makes you whole.", "included": [{"n": "A Day-90 guarantee on your cost per first reading, in writing", "d": "In Week 0 we lock your cost per first reading. By Day 90 we bring it to or below the target in your Charter, or you choose: we keep working at zero retainer until we hit it, or we refund your most recent 30 days."}, {"n": "Repeat readings engineered from day one", "d": "We keep Loyal Rosa coming back and protect your margin before we ever chase the next click. Acquisition is easy. Keeping buyers is the business."}, {"n": "A standing team with names you know", "d": "Nine AI agents running acquisition, lifecycle, analytics, and the night watch around the clock, with three senior humans holding the money, the voice, and your relationship."}, {"n": "You stay account-holder-of-record", "d": "Scoped, revocable access, and you own every account, audience, and asset. If a platform ever suspends an account, a named human owns recovery inside a defined response window, written into your Charter."}, {"n": "Psychic-category compliance built in", "d": "Every ad, claim, and page pre-cleared against platform and consumer-protection rules, so your accounts stay live in a vertical that bans the careless and flags the reckless."}, {"n": "One live scoreboard", "d": "CAC, first-reading conversion, repeat rate, and LTV:CAC, moving in real time and broken down by persona, so you always know where the next dollar should go."}, {"n": "One human, one brief every Friday", "d": "A named Liaison, a weekly written note on what moved and what it cost, and a rule that nothing irreversible ships without a human yes."}], "charter": "In your Charter: the 90-Day Proof Sprint runs at $7,500 ignition plus $15,000 a month, and starts only after Week 0, once access is granted and your baseline is locked. Media runs on your own card at or above an agreed floor, never through us. The Day-90 Proof: we lock your cost per first reading in Week 0 and bring it to or below your Charter target by Day 90, or you choose zero retainer until we hit it, or a refund of your most recent 30 days. Every funnel, page, and line we build is work-for-hire, yours on your own accounts the day it ships. The only commitment is the Sprint. After it, month-to-month on 30-day notice, and you keep every account, asset, and audience."};
+  window.ENGINE = {"name": "The Atelier Engine", "badge": "FOUNDING COHORT", "anchor": "A senior lead who holds one lane runs $12,000 a month and carries none of the risk. Your whole funnel, held to one test, runs $15,000: it should return more first-reading revenue than it costs, and if it does not by Day 90, the Proof makes you whole.", "included": [{"n": "A Day-90 guarantee on your cost per first reading, in writing", "d": "In Week 0 we lock your cost per first reading. Miss your baseline by Day 90 and you pay only your $5,000, a capped experiment. Hit the target and the retainer is earned. Beat the stretch and a success fee applies. All three numbers are written into your Charter before you pay."}, {"n": "Repeat readings engineered from day one", "d": "We keep Loyal Rosa coming back and protect your margin before we ever chase the next click. Acquisition is easy. Keeping buyers is the business."}, {"n": "A standing team with names you know", "d": "Nine AI agents running acquisition, lifecycle, analytics, and the night watch around the clock, with three senior humans holding the money, the voice, and your relationship."}, {"n": "You stay account-holder-of-record", "d": "Scoped, revocable access, and you own every account, audience, and asset. If a platform ever suspends an account, a named human owns recovery inside a defined response window, written into your Charter."}, {"n": "Psychic-category compliance built in", "d": "Every ad, claim, and page pre-cleared against platform and consumer-protection rules, so your accounts stay live in a vertical that bans the careless and flags the reckless."}, {"n": "One live scoreboard", "d": "CAC, first-reading conversion, repeat rate, and LTV:CAC, moving in real time and broken down by persona, so you always know where the next dollar should go."}, {"n": "One human, one brief every Friday", "d": "A named Liaison, a weekly written note on what moved and what it cost, and a rule that nothing irreversible ships without a human yes."}], "charter": "In your Charter: the 90-Day Proof Sprint is a flat $5,000, and starts only after Week 0, once access is granted and your baseline is locked. Media runs on your own card at or above an agreed floor, never through us. The Proof, in three numbers, on cost per first reading: miss your Week-0 baseline by Day 90 and the $5,000 is all you pay, a capped experiment. Hit the target and you graduate to the $15,000 a month retainer, your $5,000 credited in. Beat the stretch and a success fee applies, 10% of the first-reading revenue we add beyond target. Every funnel, page, and line we build is work-for-hire, yours on your own accounts the day it ships. The only commitment is the Sprint, then month-to-month on 30-day notice, and you keep every account, asset, and audience."};
     function renderGTM(){var gb=document.getElementById('gtmBody');if(!gb||!window.GTM)return;gb.className='';clear(gb);
       gb.appendChild(H('div','gen-tag','<b>&#10022; Generated</b> from the market sizing and the ten personas'));
       gb.appendChild(T('p','g-intro',GTM.intro));
@@ -1704,20 +1749,93 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     window.__renderGTM=renderGTM;
 
     // ---- "Go-To-Market Plan, Executed" (the Atelier Engine) ----
+    window.PROOF = {
+      kpi:'Cost per first reading',
+      tiers:[
+        {label:'Baseline',sub:'locked in Week 0',value:'Your CAC today',rel:1,note:'the starting line'},
+        {label:'Target',sub:'by Day 90',value:'$45',rel:0.62,note:'the retainer is earned'},
+        {label:'Stretch',sub:'the upside',value:'$30',rel:0.41,note:'a success fee kicks in'}
+      ],
+      outcomes:[
+        {zone:'We miss the bar',pay:'$5,000',cap:'total',kind:'riskfree',desc:'If we do not beat your Week-0 baseline by Day 90, you pay only your $5,000 and keep the Growth Diagnostic. A capped experiment, nothing more.'},
+        {zone:'We hit target',pay:'$15,000',per:'/mo',kind:'target',desc:'Cross the target and the retainer is earned from Day 91. Your $5,000 credits toward it, and media stays on your own card.'},
+        {zone:'We beat the stretch',pay:'+ success fee',kind:'stretch',desc:'Push past the stretch and a success fee kicks in: 10% of the first-reading revenue we add beyond target. We win more only when you do.'}
+      ],
+      deposit:5000, depositLabel:'$5,000'
+    };
+    var HAVATARS={'The Conductor':'assets/team/conductor.jpg','The Liaison':'assets/team/liaison.jpg','The Editor':'assets/team/editor.jpg'};
+    var SIGILS={
+      Scout:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="2.2"/></svg>',
+      Kindler:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c3 4 4.5 6 4.5 9a4.5 4.5 0 0 1-9 0c0-1.4.7-2.6 1.8-3.6C10 11 12 8.5 12 3z"/></svg>',
+      Muse:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19L17 7"/><path d="M17 7l3-3-1.5 5-5-1.5z"/><path d="M6.5 17.5l1.6-1.6"/></svg>',
+      Scribe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7h14M5 12h14M5 17h9"/></svg>',
+      Shepherd:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 20V9a3.5 3.5 0 0 1 7 0"/><circle cx="9" cy="20" r="1.6"/></svg>',
+      Envoy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10v4l10 4V6z"/><path d="M15 9a4 4 0 0 1 0 6"/></svg>',
+      Ledger:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>',
+      Warden:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 3v5c0 4.4-3 7.4-7 9-4-1.6-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+      Sentinel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.4"/></svg>'
+    };
     function gxRole(r){
       var c=E('div','gx-role'+(r.kind==='Human'?' human':' ai'));
+      if(r.kind==='Human' && HAVATARS[r.name]){var av=E('div','gx-av');var im=E('img');im.src=HAVATARS[r.name];im.alt=r.name;im.loading='lazy';av.appendChild(im);c.appendChild(av);}
+      else {c.appendChild(H('div','gx-av sigil',SIGILS[r.name]||SIGILS.Scout));}
+      var meta=E('div','gx-r-meta');
       var top=E('div','gx-r-top');
       top.appendChild(T('span','gx-r-name',r.name));
       top.appendChild(T('span','gx-r-kind',r.kind==='Human'?'Human':'AI agent'));
-      c.appendChild(top);
-      c.appendChild(T('div','gx-r-owns',r.owns));
+      meta.appendChild(top);
+      meta.appendChild(T('div','gx-r-owns',r.owns));
+      c.appendChild(meta);
       return c;
     }
+    var CLIENT_ICONS={
+      approver:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>',
+      billing:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>',
+      legal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M6 8l-3 6a3 3 0 0 0 6 0zM18 8l-3 6a3 3 0 0 0 6 0z"/><path d="M6 8h12"/></svg>',
+      advisor:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>',
+      founder:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg>'
+    };
+    var CLIENT=[
+      {icon:'approver',role:'An empowered approver, and a backup',does:'Green-lights creative and spend inside the agreed SLAs, so the team never idles on a small call.',when:'Daily to weekly'},
+      {icon:'billing',role:'Account and billing owner',does:'Grants scoped partner access and keeps the media card funded at or above the floor. You stay account-holder-of-record.',when:'Week 0, then as budgets change'},
+      {icon:'legal',role:'A legal or compliance reviewer',does:'Confirms your claims boundaries, disclaimers, and consent language, reachable on the 3-day SLA for anything sensitive.',when:'Week 0, then on exception'},
+      {icon:'advisor',role:'An advisor-operations contact',does:'Confirms booking capacity and advisor availability, so demand never outruns supply.',when:'Weekly'},
+      {icon:'founder',role:'A founder or stakeholder',does:'Sets the horizon and approves the monthly allocation and the quarterly plan.',when:'Monthly and quarterly'}
+    ];
     function gxList(title,items,cls){var g=E('div','gx-l '+cls);g.appendChild(T('h6',null,title));var ul=E('ul');(items||[]).forEach(function(x){ul.appendChild(T('li',null,x));});g.appendChild(ul);return g;}
     function renderGTMX(){
       var gx=document.getElementById('gtmxBody'); if(!gx||!window.GTMX)return; clear(gx);
       gx.appendChild(T('p','gx-lead',GTMX.subtitle));
-      gx.appendChild(T('div','gx-h','The standing team'));
+      // ---- The Proof, in three numbers (KPI chart + payoff) ----
+      if(window.PROOF){
+        var P=window.PROOF;
+        gx.appendChild(T('div','gx-h','The Proof, in three numbers'));
+        gx.appendChild(T('p','gx-lead2','One number decides everything: cost per first reading. Lower is better. We lock your baseline in Week 0, then hold ourselves to these by Day 90.'));
+        var chart=E('div','pf-chart');
+        P.tiers.forEach(function(t,i){
+          var col=E('div','pf-bar t'+i);
+          col.appendChild(T('div','pf-bv',t.value));
+          var track=E('div','pf-track');var bar=E('div','pf-col');bar.style.height=Math.round(t.rel*100)+'%';track.appendChild(bar);col.appendChild(track);
+          col.appendChild(T('div','pf-bl',t.label));
+          col.appendChild(T('div','pf-bs',t.sub));
+          col.appendChild(T('div','pf-bn',t.note));
+          chart.appendChild(col);
+        });
+        gx.appendChild(chart);
+        gx.appendChild(T('div','pf-cap','Cost per first reading, Day 90. Lower is better.'));
+        gx.appendChild(T('div','gx-sub2','What you pay depends only on what we deliver'));
+        var po=E('div','pf-payoff');
+        P.outcomes.forEach(function(o){
+          var c=E('div','pf-out '+o.kind);
+          c.appendChild(T('div','pf-o-zone',o.zone));
+          var pay=E('div','pf-o-pay');pay.appendChild(document.createTextNode(o.pay));if(o.per)pay.appendChild(T('span','pf-o-per',o.per));if(o.cap)pay.appendChild(T('span','pf-o-cap',' '+o.cap));c.appendChild(pay);
+          c.appendChild(T('div','pf-o-desc',o.desc));
+          po.appendChild(c);
+        });
+        gx.appendChild(po);
+      }
+      gx.appendChild(T('div','gx-h','The team, both sides'));
+      gx.appendChild(T('div','gx-side-lbl our','Our side · The Atelier Engine'));
       var humans=GTMX.roles.filter(function(r){return r.kind==='Human';});
       var ais=GTMX.roles.filter(function(r){return r.kind!=='Human';});
       gx.appendChild(T('div','gx-sub2','Three senior humans hold the money, the voice, and your relationship'));
@@ -1725,6 +1843,19 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       gx.appendChild(T('div','gx-sub2','Nine AI agents run the funnel around the clock, humans at every gate that matters'));
       var ag=E('div','gx-roles');ais.forEach(function(r){ag.appendChild(gxRole(r));});gx.appendChild(ag);
       gx.appendChild(T('p','gx-owned','Your Conductor signs your Charter and answers for every gate personally. The nine agents carry the volume. One person carries the outcome, and you have their name before you pay.'));
+      gx.appendChild(T('div','gx-side-lbl yours','Your side · Who you involve'));
+      gx.appendChild(T('div','gx-sub2','A short bench on your end keeps the machine moving. Most weeks it is one approver and a Friday read'));
+      var cg=E('div','gx-client');
+      CLIENT.forEach(function(cl){
+        var card=E('div','gx-cl');
+        card.appendChild(H('div','gx-cl-ic',CLIENT_ICONS[cl.icon]||''));
+        var m=E('div','gx-cl-m');
+        var t=E('div','gx-cl-top');t.appendChild(T('span','gx-cl-role',cl.role));t.appendChild(T('span','gx-cl-when',cl.when));m.appendChild(t);
+        m.appendChild(T('div','gx-cl-does',cl.does));
+        card.appendChild(m);
+        cg.appendChild(card);
+      });
+      gx.appendChild(cg);
       gx.appendChild(T('div','gx-h','Actions over time'));
       var tl=E('div','gx-timeline');
       GTMX.timeline.forEach(function(p){
