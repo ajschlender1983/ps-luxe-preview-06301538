@@ -229,9 +229,9 @@
   .oav::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(232,207,154,.2);background:linear-gradient(180deg,transparent 50%,rgba(9,6,20,.74));pointer-events:none;transition:box-shadow .3s}
   .onode:hover .oav::after{box-shadow:inset 0 0 0 2px var(--gold)}
   .odot{position:absolute;top:7%;right:7%;width:9px;height:9px;border-radius:50%;z-index:2;box-shadow:0 0 0 2px rgba(0,0,0,.4)}
-  .opct{margin-top:9px;text-align:center;font-family:var(--serif);font-weight:600;font-size:22px;color:var(--gold-bright);line-height:1;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+  .opct{margin-top:4px;text-align:center;font-size:11px;letter-spacing:.05em;color:var(--gold);line-height:1;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
   .ocap{margin-top:7px;font-family:var(--serif);font-size:13.5px;color:var(--ivory);white-space:nowrap;line-height:1}
-  .odol{margin-top:3px;font-size:10.5px;letter-spacing:.05em;color:var(--gold);white-space:nowrap;line-height:1;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+  .odol{margin-top:10px;font-family:var(--serif);font-weight:600;font-size:21px;color:var(--gold-bright);white-space:nowrap;line-height:1;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
   .mkt-legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:13px;font-size:12px;color:var(--muted)}
   .mkt-legend b{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
   .mkt-legend .est{margin-left:auto;font-style:italic}
@@ -1771,7 +1771,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     var minS=Math.min.apply(null,shares),maxS=Math.max.apply(null,shares);
     function diam(s){var t=(maxS===minS)?0.5:(Math.sqrt(s)-Math.sqrt(minS))/(Math.sqrt(maxS)-Math.sqrt(minS));return minDiam+(maxDiam-minDiam)*t;}
     var R=Math.min(234*scale, W/2 - maxDiam/2 - 8);
-    var H=Math.round(2*(R+maxDiam/2+38));
+    var RY=Math.round(R*1.55);
+    var H=Math.round(2*(RY+maxDiam/2+92));
     market.style.height=H+'px';
     var cx=W/2, cy=H/2, n=P.length;
     var hub=E('div','ohub');market.appendChild(hub);
@@ -1782,15 +1783,15 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     market.appendChild(hlab);
     P.forEach(function(p,i){
       var ang=-Math.PI/2 + i*(2*Math.PI/n), d=diam(SHARES[p.name]||1);
-      var nx=cx+R*Math.cos(ang), ny=cy+R*Math.sin(ang);
+      var nx=cx+R*Math.cos(ang), ny=cy+RY*Math.sin(ang);
       var node=E('div','onode');
       node.style.left=(nx-d/2)+'px';node.style.top=(ny-d/2)+'px';node.style.width=d+'px';
       var av=E('div','oav');av.style.height=d+'px';
       var img=E('img');var src=avatarFor(p.name);if(src)img.src=src;img.alt=p.name;av.appendChild(img);
       node.appendChild(av);
-      node.appendChild(T('div','opct',(SHARES[p.name]||'')+'%'));
-      node.appendChild(T('div','ocap',p.name.split(' ').pop()));
       node.appendChild(T('div','odol',shareDollars(SHARES[p.name]||0)));
+      node.appendChild(T('div','ocap',p.name.split(' ').pop()));
+      node.appendChild(T('div','opct',(SHARES[p.name]||'')+'%'));
       node.title=p.name+' — '+shortArc(p.archetype)+' · '+(SHARES[p.name]||'')+'% of target market ≈ '+shareDollars(SHARES[p.name]||0);
       node.onclick=(function(pp){return function(){openAgent(pp);};})(p);
       market.appendChild(node);
