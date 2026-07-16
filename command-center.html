@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  :root{--gold:#C9A86A;--gold-bright:#E8CF9A;--ink:#140F38;--ivory:#F7F2E8;--muted:rgba(247,242,232,.62);--faint:rgba(247,242,232,.12);--hair:rgba(201,168,106,.22);
+  :root{--gold:#C9A86A;--gold-bright:#E8CF9A;--gold-deep:#9C7E48;--ink:#140F38;--ivory:#F7F2E8;--muted:rgba(247,242,232,.62);--faint:rgba(247,242,232,.12);--hair:rgba(201,168,106,.22);
     --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;--good:#8FB98A;--warn:#E8B45A;--bad:#E0736B;--violet:#B254DC;--blue:#8FA6C4}
   body{background:radial-gradient(130% 90% at 50% -10%,#241a45,#160f33 55%,#0d0a1e);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.6;min-height:100vh}
   .wrap{max-width:1140px;margin:0 auto;padding:0 26px}
@@ -727,6 +727,11 @@
   .dsh-note{font-size:12px;color:var(--muted);line-height:1.6;margin:10px 0 18px;padding:11px 14px;border-left:2px solid var(--gold);background:linear-gradient(90deg,rgba(232,207,154,.06),transparent);border-radius:0 8px 8px 0}
   .dd-h{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
   .dd-row{display:flex;align-items:center;gap:12px;margin-bottom:7px}
+  .dd-av{flex:none;width:27px;height:27px;border-radius:50%;object-fit:cover;object-position:center 22%;border:1px solid var(--hair)}
+  .dd-g{flex:0 0 30px;text-align:center;font-size:9px;letter-spacing:.06em;font-weight:600;border-radius:999px;padding:2px 0}
+  .dd-g.a{color:#8fcdb8;border:1px solid rgba(120,190,170,.4);background:rgba(120,190,170,.08)}
+  .dd-g.b{color:var(--gold-bright);border:1px solid rgba(232,207,154,.4);background:rgba(232,207,154,.07)}
+  .dd-g.c{color:#e0a48f;border:1px solid rgba(224,150,120,.4);background:rgba(224,150,120,.08)}
   .dd-n{flex:0 0 168px;font-size:12px;color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .dd-track{flex:1;height:9px;border-radius:999px;background:rgba(247,242,232,.07);overflow:hidden}
   .dd-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold-bright),var(--gold-deep))}
@@ -2250,11 +2255,11 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       db.appendChild(T('div','dsh-note','What this means: six weeks in, a first reading costs $52 instead of $78. The solid line is measured, the dashed line is the current trajectory. It crosses $45 and the retainer is earned. It crosses $30 and we share the upside.'));
       db.appendChild(H('div','dsh-drill',
         '<div class="dd-h">Drill down · CAC by persona lane</div>'+
-        '<div class="dd-row"><span class="dd-n">Loyal Rosa</span><span class="dd-track"><i style="width:60%"></i></span><span class="dd-v">$38</span></div>'+
-        '<div class="dd-row"><span class="dd-n">Heartbroken Hannah</span><span class="dd-track"><i style="width:65%"></i></span><span class="dd-v">$41</span></div>'+
-        '<div class="dd-row"><span class="dd-n">Night-Owl Wendy</span><span class="dd-track"><i style="width:75%"></i></span><span class="dd-v">$47</span></div>'+
-        '<div class="dd-row"><span class="dd-n">Career-Crossroads Carla</span><span class="dd-track"><i style="width:87%"></i></span><span class="dd-v">$55</span></div>'+
-        '<div class="dd-row warm"><span class="dd-n">Skeptical Sam</span><span class="dd-track"><i style="width:100%"></i></span><span class="dd-v">$63</span></div>'+
+        '<div class="dd-row"><img class="dd-av" src="assets/personas/rosa.jpg" alt=""/><span class="dd-n">Loyal Rosa</span><span class="dd-track"><i style="width:60%"></i></span><span class="dd-g a">A+</span><span class="dd-v">$38</span></div>'+
+        '<div class="dd-row"><img class="dd-av" src="assets/personas/hannah.jpg" alt=""/><span class="dd-n">Heartbroken Hannah</span><span class="dd-track"><i style="width:65%"></i></span><span class="dd-g a">A</span><span class="dd-v">$41</span></div>'+
+        '<div class="dd-row"><img class="dd-av" src="assets/personas/wendy.jpg" alt=""/><span class="dd-n">Night-Owl Wendy</span><span class="dd-track"><i style="width:75%"></i></span><span class="dd-g b">B+</span><span class="dd-v">$47</span></div>'+
+        '<div class="dd-row"><img class="dd-av" src="assets/personas/carla.jpg" alt=""/><span class="dd-n">Career-Crossroads Carla</span><span class="dd-track"><i style="width:87%"></i></span><span class="dd-g b">B</span><span class="dd-v">$55</span></div>'+
+        '<div class="dd-row warm"><img class="dd-av" src="assets/personas/sam.jpg" alt=""/><span class="dd-n">Skeptical Sam</span><span class="dd-track"><i style="width:100%"></i></span><span class="dd-g c">C</span><span class="dd-v">$63</span></div>'+
         '<div class="dd-foot">Every number clicks down to the campaign and the creative behind it.</div>'));
       dash.appendChild(db);
       gx.appendChild(dash);
