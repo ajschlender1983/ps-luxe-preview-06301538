@@ -1425,6 +1425,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     });
   }
   var _mktT;window.addEventListener('resize',function(){clearTimeout(_mktT);_mktT=setTimeout(function(){var m=document.querySelector('#researchBody .market');if(m&&MARKET_P)renderMarket(MARKET_P,m);},170);});
+  // callable directly when the constellation becomes visible (panel opened), so it lays out at real width
+  window.__relayoutMarket=function(){var m=document.querySelector('#researchBody .market');if(m&&MARKET_P&&m.clientWidth>0)renderMarket(MARKET_P,m);};
   function ctoPanel(T2){
     var p=E('div','panel');var xh=E('div','xhead');
     xh.appendChild(expertAvatar('cto','xcard',true));
@@ -1478,7 +1480,6 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     var mh=E('div','mkt-h');mh.appendChild(T('span','mkt-t','The market, in orbit'));mh.appendChild(T('span','mkt-d','Each portrait is one user persona, a segment of the market sized by its share of demand. Click any persona to meet them and read how they reacted to the redesign.'));rb.appendChild(mh);
     var market=E('div','market');rb.appendChild(market);
     MARKET_P=P;renderMarket(P,market);
-    rb.appendChild(H('div','mkt-legend','<span><b style="background:var(--good)"></b>Would convert</span><span><b style="background:var(--warn)"></b>Leaning yes</span><span><b style="background:var(--bad)"></b>Not yet</span>'));
     rb.appendChild(H('div','mkt-cite',
       '<span class="ct-h">How the numbers are grounded</span>'+
       '<span><b>Total market ($2.3B):</b> U.S. psychic services reached <b>$2.3B in 2025</b> (5.5% CAGR since 2020, 103,340 businesses) per <a href="https://www.ibisworld.com/united-states/market-size/psychic-services/4413/" target="_blank" rel="noopener">IBISWorld</a>. The same <b>~$2.3B</b> U.S. figure is carried by <a href="https://www.statista.com/statistics/1224176/psychic-services-market-size-us/" target="_blank" rel="noopener">Statista</a>. Wider online-readings estimates bracket it — roughly <b>$3.7B</b> global (~6.4% CAGR) per <a href="https://www.marketresearchfuture.com/reports/online-psychic-reading-service-market-24253" target="_blank" rel="noopener">Market Research Future</a>, and <b>$2.29B</b> (2024, 8.8% CAGR) per <a href="https://www.verifiedmarketresearch.com/product/online-psychic-reading-service-market/" target="_blank" rel="noopener">Verified Market Research</a>. We anchor on the conservative <b>$2.3B U.S. base</b>.</span>'+
@@ -1545,7 +1546,11 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       var body = document.getElementById(head.getAttribute('aria-controls'));
       if(!body) return;
       var open = body.hasAttribute('hidden');
-      if(open){ body.removeAttribute('hidden'); head.setAttribute('aria-expanded','true'); }
+      if(open){ body.removeAttribute('hidden'); head.setAttribute('aria-expanded','true');
+        // content shown for the first time (e.g. the market constellation) laid out at width 0;
+        // re-layout now that it has a real width (a couple of passes as layout settles)
+        if(window.__relayoutMarket){ setTimeout(window.__relayoutMarket, 60); setTimeout(window.__relayoutMarket, 260); }
+      }
       else { body.setAttribute('hidden',''); head.setAttribute('aria-expanded','false'); }
     });
   });
