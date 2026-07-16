@@ -614,15 +614,13 @@
   @media(max-width:820px){.sys-duo{grid-template-columns:1fr}.dsh-kpis{grid-template-columns:repeat(2,1fr)}.dd-n{flex-basis:118px}}
   /* The Proof: KPI bar chart + payoff */
   .gx-lead2{font-size:14px;color:var(--muted);line-height:1.65;margin:14px 0 20px;max-width:80ch}
-  .pf-chart{display:flex;gap:16px;align-items:flex-end;max-width:640px}
-  .pf-bar{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center}
-  .pf-bv{font-family:var(--serif);font-size:clamp(15px,2.1vw,22px);font-weight:600;color:var(--gold-bright);margin-bottom:10px;min-height:1.1em}
-  .pf-track{width:100%;max-width:118px;height:150px;display:flex;align-items:flex-end;border-bottom:1px solid var(--faint)}
-  .pf-col{width:100%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--gold-bright),var(--gold-deep));box-shadow:0 -6px 20px -8px rgba(232,207,154,.5);transition:height .7s var(--ease)}
-  .pf-bar.t0 .pf-col{opacity:.5}
-  .pf-bar.t2 .pf-col{background:linear-gradient(180deg,#fff3d6,var(--gold))}
-  .pf-bl{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ivory);margin-top:12px}
+  .pf-path{max-width:680px;margin:2px auto 0}
+  .pf-svgwrap svg{width:100%;height:auto;display:block}
+  .pf-stations{position:relative;height:88px}
+  .pf-st{position:absolute;top:4px;transform:translateX(-50%);text-align:center;width:34%}
+  .pf-bl{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ivory)}
   .pf-bs{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+  @media(max-width:640px){.pf-stations{height:104px}.pf-st{width:33%}.pf-bl{font-size:13.5px}.pf-bn{font-size:10.5px}}
   .pf-bn{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.4}
   .pf-cap{font-size:11px;color:var(--muted);margin-top:12px;font-style:italic;max-width:640px;text-align:center}
   .pf-payoff{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
@@ -637,7 +635,7 @@
   .pf-o-per{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400}
   .pf-o-cap{font-family:var(--sans);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
   .pf-o-desc{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
-  @media(max-width:640px){.pf-payoff{grid-template-columns:1fr}.pf-track{height:112px}}
+  @media(max-width:640px){.pf-payoff{grid-template-columns:1fr}}
   .gx-timeline{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
   .gx-phase{border:1px solid var(--faint);border-radius:12px;padding:18px 18px;background:linear-gradient(165deg,rgba(245,240,230,.04),rgba(245,240,230,.01))}
   .gx-p-win{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
@@ -1915,16 +1913,35 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         var P=window.PROOF;
         gx.appendChild(T('div','gx-h','The Proof, in three numbers'));
         gx.appendChild(T('p','gx-lead2','One number decides everything: cost per first reading. Lower is better. We lock your baseline in Week 0, then hold ourselves to these by Day 90.'));
-        var chart=E('div','pf-chart');
+        // one integrated descent path: Baseline -> Target -> Stretch on a single falling line
+        var chart=E('div','pf-path');
+        chart.appendChild(H('div','pf-svgwrap',
+          '<svg viewBox="0 0 700 175" aria-label="Cost per first reading falling from your baseline through the target to the stretch">'+
+          '<defs><linearGradient id="pfArea" x1="0" y1="0" x2="1" y2="0">'+
+          '<stop offset="0" stop-color="#E8CF9A" stop-opacity=".05"/><stop offset=".55" stop-color="#E8CF9A" stop-opacity=".12"/><stop offset="1" stop-color="#E8CF9A" stop-opacity=".26"/></linearGradient>'+
+          '<linearGradient id="pfLine" x1="0" y1="0" x2="1" y2="0">'+
+          '<stop offset="0" stop-color="#E8CF9A" stop-opacity=".45"/><stop offset=".55" stop-color="#E8CF9A"/><stop offset="1" stop-color="#FFF3D6"/></linearGradient></defs>'+
+          '<path d="M70,38 C190,48 300,88 385,108 C480,130 570,141 623,144 L623,171 L70,171 Z" fill="url(#pfArea)"/>'+
+          '<path d="M70,38 C190,48 300,88 385,108 C480,130 570,141 623,144" fill="none" stroke="url(#pfLine)" stroke-width="2.5" stroke-linecap="round"/>'+
+          '<line x1="385" y1="108" x2="385" y2="171" stroke="rgba(232,207,154,.28)" stroke-width="1" stroke-dasharray="3 5"/>'+
+          '<line x1="623" y1="144" x2="623" y2="171" stroke="rgba(232,207,154,.28)" stroke-width="1" stroke-dasharray="3 5"/>'+
+          '<circle cx="70" cy="38" r="10" fill="rgba(232,207,154,.14)"/><circle cx="70" cy="38" r="5" fill="rgba(247,242,232,.55)"/>'+
+          '<circle cx="385" cy="108" r="12" fill="rgba(232,207,154,.18)"/><circle cx="385" cy="108" r="6" fill="#E8CF9A"/>'+
+          '<circle cx="623" cy="144" r="15" fill="rgba(232,207,154,.22)"/><circle cx="623" cy="144" r="7" fill="#FFF3D6"/>'+
+          '<text x="70" y="20" fill="#F7F2E8" font-size="15" text-anchor="start" font-weight="600">'+P.tiers[0].value+'</text>'+
+          '<text x="385" y="88" fill="#E8CF9A" font-size="19" text-anchor="middle" font-weight="600">'+P.tiers[1].value+'</text>'+
+          '<text x="623" y="124" fill="#FFF3D6" font-size="19" text-anchor="middle" font-weight="600">'+P.tiers[2].value+'</text>'+
+          '</svg>'));
+        var st=E('div','pf-stations');
+        var POS=[10,55,89];
         P.tiers.forEach(function(t,i){
-          var col=E('div','pf-bar t'+i);
-          col.appendChild(T('div','pf-bv',t.value));
-          var track=E('div','pf-track');var bar=E('div','pf-col');bar.style.height=Math.round(t.rel*100)+'%';track.appendChild(bar);col.appendChild(track);
-          col.appendChild(T('div','pf-bl',t.label));
-          col.appendChild(T('div','pf-bs',t.sub));
-          col.appendChild(T('div','pf-bn',t.note));
-          chart.appendChild(col);
+          var el=E('div','pf-st');el.style.left=POS[i]+'%';
+          el.appendChild(T('div','pf-bl',t.label));
+          el.appendChild(T('div','pf-bs',t.sub));
+          el.appendChild(T('div','pf-bn',t.note));
+          st.appendChild(el);
         });
+        chart.appendChild(st);
         gx.appendChild(chart);
         gx.appendChild(T('div','pf-cap','Cost per first reading, Day 90. Lower is better.'));
         gx.appendChild(T('div','pf-ref','How the Proof is refereed: your Week-0 baseline comes out of your own analytics, over the trailing 60 days, and your approver signs it before we spend a dollar. We can only win by beating a number you set. The success fee is measured from that same signed baseline, in that same analytics account. One referee for every tier.'));
