@@ -552,6 +552,56 @@
   .gx-cl-does{font-size:12px;color:var(--muted);line-height:1.5}
   @media(max-width:640px){.gx-client{grid-template-columns:1fr}}
   .gx-p-note{margin-top:12px;padding-top:10px;border-top:1px dashed var(--faint);font-size:11.5px;color:var(--gold);line-height:1.5}
+  /* The system, on screen: interface mockups */
+  .sys-win{border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#0b0818;box-shadow:0 26px 60px -34px #000;margin-top:16px}
+  .sw-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(245,240,230,.045);border-bottom:1px solid var(--faint)}
+  .sw-dots{display:inline-flex;gap:5px}
+  .sw-dots i{width:9px;height:9px;border-radius:50%;background:rgba(247,242,232,.16)}
+  .sw-title{font-size:10.5px;letter-spacing:.08em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+  .sw-live{display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:.16em;color:#8fcdb8;font-weight:600}
+  .sw-live i{width:7px;height:7px;border-radius:50%;background:#7BD389;box-shadow:0 0 8px rgba(123,211,137,.8)}
+  .sw-body{padding:18px 20px 20px}
+  .dsh-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+  .dk{border:1px solid var(--faint);border-radius:10px;padding:12px 13px;background:rgba(245,240,230,.03)}
+  .dk-l{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .dk-v{font-family:var(--serif);font-size:clamp(19px,2.4vw,27px);font-weight:600;color:var(--gold-bright);line-height:1.15;margin:4px 0 2px;font-variant-numeric:lining-nums tabular-nums}
+  .dk-d{font-size:10px;color:var(--muted)}
+  .dk-d.good{color:#8fcdb8}
+  .dsh-chart svg{width:100%;height:auto;display:block}
+  .dsh-note{font-size:12px;color:var(--muted);line-height:1.6;margin:10px 0 18px;padding:11px 14px;border-left:2px solid var(--gold);background:linear-gradient(90deg,rgba(232,207,154,.06),transparent);border-radius:0 8px 8px 0}
+  .dd-h{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .dd-row{display:flex;align-items:center;gap:12px;margin-bottom:7px}
+  .dd-n{flex:0 0 168px;font-size:12px;color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .dd-track{flex:1;height:9px;border-radius:999px;background:rgba(247,242,232,.07);overflow:hidden}
+  .dd-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold-bright),var(--gold-deep))}
+  .dd-row.warm .dd-track i{background:linear-gradient(90deg,rgba(224,150,120,.85),rgba(224,115,107,.7))}
+  .dd-v{flex:0 0 38px;text-align:right;font-size:12px;color:var(--gold-bright);font-variant-numeric:tabular-nums}
+  .dd-foot{font-size:10.5px;color:var(--muted);font-style:italic;margin-top:10px}
+  .sys-duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  .sw-feed{display:flex;flex-direction:column;gap:13px}
+  .fd-item{display:flex;gap:11px;align-items:flex-start}
+  .fd-av{flex:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold-bright);border:1px solid rgba(232,207,154,.3);background:radial-gradient(circle at 50% 40%,rgba(138,87,224,.25),rgba(20,15,45,.6))}
+  .fd-av svg{width:16px;height:16px}
+  .fd-m{flex:1;min-width:0}
+  .fd-t{display:flex;align-items:baseline;gap:8px}
+  .fd-t b{font-size:12.5px;color:var(--ivory);font-weight:600}
+  .fd-t span{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .fd-x{font-size:12px;color:var(--muted);line-height:1.5;margin-top:2px}
+  .fd-gate{display:inline-block;font-size:9.5px;letter-spacing:.06em;border-radius:999px;padding:3px 10px;margin-top:6px}
+  .fd-gate.approved{color:#8fcdb8;border:1px solid rgba(120,190,170,.35);background:rgba(120,190,170,.08)}
+  .fd-gate.blocked{color:#e0a48f;border:1px solid rgba(224,150,120,.35);background:rgba(224,150,120,.08)}
+  .sw-brief .bf-week{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .sw-brief .bf-one{font-family:var(--serif);font-size:16.5px;font-weight:600;color:var(--ivory);line-height:1.35;margin-bottom:13px}
+  .bf-grid{border:1px solid var(--faint);border-radius:10px;padding:4px 13px;margin-bottom:13px}
+  .bf-row{display:flex;align-items:baseline;gap:10px;padding:8px 0;border-bottom:1px solid rgba(247,242,232,.06);font-size:11.5px;color:var(--muted)}
+  .bf-row:last-child{border-bottom:0}
+  .bf-row b{margin-left:auto;font-family:var(--serif);font-size:15px;color:var(--gold-bright);font-variant-numeric:lining-nums tabular-nums}
+  .bf-row .bf-vs{flex:0 0 auto;font-size:9.5px;color:var(--muted)}
+  .bf-h{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:11px 0 3px}
+  .bf-x{font-size:12px;color:var(--muted);line-height:1.55}
+  .bf-sign{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--gold-bright);margin-top:14px}
+  .sys-fine{font-size:10.5px;color:var(--muted);font-style:italic;margin-top:12px;text-align:center}
+  @media(max-width:820px){.sys-duo{grid-template-columns:1fr}.dsh-kpis{grid-template-columns:repeat(2,1fr)}.dd-n{flex-basis:118px}}
   /* The Proof: KPI bar chart + payoff */
   .gx-lead2{font-size:14px;color:var(--muted);line-height:1.65;margin:14px 0 20px;max-width:80ch}
   .pf-chart{display:flex;gap:16px;align-items:flex-end;max-width:640px}
@@ -1875,6 +1925,72 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         });
         gx.appendChild(po);
       }
+      // ---- The system, on screen: real interfaces with drill data ----
+      gx.appendChild(T('div','gx-h','The system, on screen'));
+      gx.appendChild(T('p','gx-lead2','These are the surfaces you live in from Week 0: one live dashboard, one feed where the agents work in the open, one human brief every Friday. Shown here with illustrative mid-Sprint data.'));
+      // 1. Live Dashboard
+      var dash=E('div','sys-win');
+      dash.appendChild(H('div','sw-bar','<span class="sw-dots"><i></i><i></i><i></i></span><span class="sw-title">The Live Dashboard · engine.atelier / psychic-source</span><span class="sw-live"><i></i>LIVE</span>'));
+      var db=E('div','sw-body');
+      db.appendChild(H('div','dsh-kpis',
+        '<div class="dk"><div class="dk-l">Cost per first reading</div><div class="dk-v">$52</div><div class="dk-d good">▾ from $78 baseline</div></div>'+
+        '<div class="dk"><div class="dk-l">First-reading conversion</div><div class="dk-v">7.4%</div><div class="dk-d good">▴ target 6 to 9%</div></div>'+
+        '<div class="dk"><div class="dk-l">30-day repeat rate</div><div class="dk-v">24%</div><div class="dk-d good">▴ target 22%</div></div>'+
+        '<div class="dk"><div class="dk-l">LTV:CAC</div><div class="dk-v">2.7:1</div><div class="dk-d">on the way to 3:1</div></div>'));
+      db.appendChild(H('div','dsh-chart',
+        '<svg viewBox="0 0 560 200" preserveAspectRatio="none" aria-label="Cost per first reading over the 13-week Sprint">'+
+        '<line x1="30" y1="33" x2="540" y2="33" stroke="rgba(247,242,232,.14)" stroke-width="1"/>'+
+        '<line x1="30" y1="120" x2="540" y2="120" stroke="rgba(232,207,154,.55)" stroke-width="1" stroke-dasharray="5 4"/>'+
+        '<line x1="30" y1="159" x2="540" y2="159" stroke="rgba(232,207,154,.3)" stroke-width="1" stroke-dasharray="2 5"/>'+
+        '<text x="34" y="28" fill="rgba(247,242,232,.5)" font-size="10">Baseline $78 · Week 0</text>'+
+        '<text x="446" y="114" fill="#E8CF9A" font-size="10">Target $45</text>'+
+        '<text x="446" y="153" fill="rgba(232,207,154,.55)" font-size="10">Stretch $30</text>'+
+        '<polygon points="30,33 72,44 115,57 158,65 200,80 242,94 285,101 285,196 30,196" fill="rgba(232,207,154,.09)"/>'+
+        '<polyline points="30,33 72,44 115,57 158,65 200,80 242,94 285,101" fill="none" stroke="#E8CF9A" stroke-width="2.5" stroke-linecap="round"/>'+
+        '<polyline points="285,101 370,108 455,115 540,121" fill="none" stroke="rgba(232,207,154,.5)" stroke-width="2" stroke-dasharray="3 6"/>'+
+        '<circle cx="285" cy="101" r="5" fill="#E8CF9A"/>'+
+        '<text x="285" y="88" fill="#F7F2E8" font-size="11" text-anchor="middle" font-weight="600">Week 6 · $52</text>'+
+        '</svg>'));
+      db.appendChild(T('div','dsh-note','What this means: six weeks in, a first reading costs $52 instead of $78. The solid line is measured, the dashed line is the current trajectory. It crosses $45 and the retainer is earned. It crosses $30 and we share the upside.'));
+      db.appendChild(H('div','dsh-drill',
+        '<div class="dd-h">Drill down · CAC by persona lane</div>'+
+        '<div class="dd-row"><span class="dd-n">Loyal Rosa</span><span class="dd-track"><i style="width:60%"></i></span><span class="dd-v">$38</span></div>'+
+        '<div class="dd-row"><span class="dd-n">Heartbroken Hannah</span><span class="dd-track"><i style="width:65%"></i></span><span class="dd-v">$41</span></div>'+
+        '<div class="dd-row"><span class="dd-n">Night-Owl Wendy</span><span class="dd-track"><i style="width:75%"></i></span><span class="dd-v">$47</span></div>'+
+        '<div class="dd-row"><span class="dd-n">Career-Crossroads Carla</span><span class="dd-track"><i style="width:87%"></i></span><span class="dd-v">$55</span></div>'+
+        '<div class="dd-row warm"><span class="dd-n">Skeptical Sam</span><span class="dd-track"><i style="width:100%"></i></span><span class="dd-v">$63</span></div>'+
+        '<div class="dd-foot">Every number clicks down to the campaign and the creative behind it.</div>'));
+      dash.appendChild(db);
+      gx.appendChild(dash);
+      // 2 + 3. Constellation feed + Weekly Brief
+      var duo=E('div','sys-duo');
+      var feed=E('div','sys-win');
+      feed.appendChild(H('div','sw-bar','<span class="sw-dots"><i></i><i></i><i></i></span><span class="sw-title">The Shared Constellation · agents working in the open</span>'));
+      feed.appendChild(H('div','sw-body sw-feed',
+        '<div class="fd-item"><span class="fd-av">'+SIGILS.Sentinel+'</span><div class="fd-m"><div class="fd-t"><b>Sentinel</b><span>03:12</span></div><div class="fd-x">CAC spike on the Wendy late-night lane, paused inside the safety envelope. Context posted for morning review.</div></div></div>'+
+        '<div class="fd-item"><span class="fd-av">'+SIGILS.Scout+'</span><div class="fd-m"><div class="fd-t"><b>Scout</b><span>06:41</span></div><div class="fd-x">Hannah search lane at $41 CAC. Requesting +$40/day to scale.</div><div class="fd-gate approved">Human gate · Approved by The Conductor, 08:05</div></div></div>'+
+        '<div class="fd-item"><span class="fd-av">'+SIGILS.Warden+'</span><div class="fd-m"><div class="fd-t"><b>Warden</b><span>07:58</span></div><div class="fd-x">Blocked one ad variant: outcome-claim risk in the psychic vertical. Rewrite queued to Muse.</div><div class="fd-gate blocked">Compliance block · nothing publishes over it</div></div></div>'+
+        '<div class="fd-item"><span class="fd-av">'+SIGILS.Muse+'</span><div class="fd-m"><div class="fd-t"><b>Muse</b><span>09:20</span></div><div class="fd-x">Six new Reels hooks drafted on the month-one winners.</div><div class="fd-gate approved">Human gate · The Editor approved 4 of 6</div></div></div>'+
+        '<div class="fd-item"><span class="fd-av">'+SIGILS.Shepherd+'</span><div class="fd-m"><div class="fd-t"><b>Shepherd</b><span>11:03</span></div><div class="fd-x">48-hour rebooking flow at a 31% open rate. Second-reading rate up 4 points this week.</div></div></div>'));
+      duo.appendChild(feed);
+      var brief=E('div','sys-win');
+      brief.appendChild(H('div','sw-bar','<span class="sw-dots"><i></i><i></i><i></i></span><span class="sw-title">The Weekly Atelier Brief · Friday, 9am</span>'));
+      brief.appendChild(H('div','sw-body sw-brief',
+        '<div class="bf-week">Week 6 of 13</div>'+
+        '<div class="bf-one">The week in one line: the funnel got cheaper and the repeat engine woke up.</div>'+
+        '<div class="bf-grid">'+
+        '<div class="bf-row"><span>Cost per first reading</span><b>$52</b><span class="bf-vs">target $45</span></div>'+
+        '<div class="bf-row"><span>First-reading conversion</span><b>7.4%</b><span class="bf-vs">target 6 to 9%</span></div>'+
+        '<div class="bf-row"><span>30-day repeat</span><b>24%</b><span class="bf-vs">target 22%</span></div>'+
+        '<div class="bf-row"><span>LTV:CAC</span><b>2.7:1</b><span class="bf-vs">goal 3:1</span></div>'+
+        '</div>'+
+        '<div class="bf-h">Shipped</div><div class="bf-x">Second creative wave live. Rebooking flow tuned. Wendy lane repriced after the overnight pause.</div>'+
+        '<div class="bf-h">We need from you</div><div class="bf-x">One approval: the Gift-Giver Greg offer, waiting in the Constellation.</div>'+
+        '<div class="bf-h">Next week’s bet</div><div class="bf-x">Concentrate spend on the two lanes under $45 and open the retargeting layer.</div>'+
+        '<div class="bf-sign">— The Liaison</div>'));
+      duo.appendChild(brief);
+      gx.appendChild(duo);
+      gx.appendChild(T('div','sys-fine','Illustrative mid-Sprint data. Your dashboard runs live from Week 0, wired to your own accounts.'));
       gx.appendChild(T('div','gx-h','The team, both sides'));
       gx.appendChild(T('div','gx-side-lbl our','Our side · The Atelier Engine'));
       var humans=GTMX.roles.filter(function(r){return r.kind==='Human';});
