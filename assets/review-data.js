@@ -1,10 +1,10 @@
 window.REVIEW = {
   "brand": {
     "score": 10,
-    "headline": "A fully realized Celestial Upgrade — the last-mile governance is in place, and it reads as a heritage luxury house end to end.",
-    "summary": "The two things that held this back from a 10 are resolved. Motion and glow are now GOVERNED: a single primary 'Get Your Reading' leads each viewport, competing motion is quieted, and the ambient cosmos sits near-subliminal so intent — not decoration — guides the eye. And the conversion surface now carries real reassurance: a plain-numbers cost example with a spending cap, a ~60-second 'a real person' promise, a giftable session, and a returning-member welcome — the exact frictions that kept the experience from feeling effortless. With button-contrast and a genuine reduced-motion path honored, this is a premium, accessible build that out-classes the category. 10/10.",
+    "headline": "A finished Celestial Upgrade. The last details are handled, and it reads as a heritage luxury brand end to end.",
+    "summary": "The two things holding this back are fixed. Motion is under control: one 'Get Your Reading' leads each screen, competing movement is quieted, and the background cosmos sits low so intent guides the eye. And the page now reassures where it counts: plain-numbers pricing with a spending cap, a ~60-second 'real person' promise, a giftable session, and a returning-member welcome. With button contrast and a real reduced-motion path in place, this is a premium, accessible build that out-classes the category. 10/10.",
     "strengths": [
-      "Motion hierarchy is now disciplined — one primary CTA carries the breathing glow; background cosmos is near-subliminal; signature set-pieces never fire all at once.",
+      "Motion is disciplined: one CTA carries the glow, the background sits low, and signature moments never fire all at once.",
       "The champagne-gold accent now reads as scarce and precious rather than ambient, so the eye is guided decisively to the next step.",
       "A dedicated 'Peace of mind' band answers the seeker's real anxieties (cost, speed, gifting, returning members) in the brand's own calm, editorial voice.",
       "Signature moments (3D tarot, constellation sky, source-seal, the new 'million seekers' vision) remain distinctive assets competitors cannot cheaply copy.",
@@ -24,7 +24,7 @@ window.REVIEW = {
         "priority": "low"
       }
     ],
-    "motion_notes": "Governance achieved: active pulsing is reserved for the single primary CTA, background motion is low-opacity and slow, and signature effects are one-per-view. The result reads as composed luxury at rest — restraint as the differentiator.",
+    "motion_notes": "Only the primary CTA pulses; background motion is slow and faint; signature effects run one per view. The result reads as composed luxury at rest.",
     "risks": [
       "The only standing risk is discipline — keep the one-primary-CTA-per-viewport and one-signature-motion-per-page rules as new pages are added."
     ],
@@ -90,15 +90,15 @@ window.REVIEW = {
       }
     ],
     "score": 10,
-    "headline": "Every friction the funnel had is now answered above the fold — this is a 10.",
-    "summary": "The gap between 8 and 10 was subtraction and clarity, and both are done. The primary CTA has singular dominance with competing motion quieted; trust and the guarantee sit inside the CTA's visual group; and the biggest conversion blockers the market surfaced — cost opacity, uncertainty about speed, no gift path, and returning-member anxiety — are resolved with a plain-numbers price ('$1/min, ten minutes is $10'), a spending cap, a '~60 seconds, no account to start' promise, a giftable session, and a returning-member welcome. Choice architecture on the psychics page is the last optional lever. Expected impact on first-reading conversion is strongly positive.",
+    "headline": "Every objection is answered above the fold. This is a 10.",
+    "summary": "Getting from 8 to 10 was subtraction and clarity. The primary CTA now dominates, with trust and the guarantee beside it, and the market's biggest blockers are resolved: unclear cost, uncertain speed, no gift path, and returning-member doubt. The fixes: plain pricing ('$1/min, ten minutes is $10'), a spending cap, a '~60 seconds, no account to start' promise, a giftable session, and a returning-member welcome. Curating the psychics page is the last optional lever. Expected impact on first-reading conversion is strongly positive.",
     "quick_wins": [
       "Shipped: plain-numbers cost example + spending-cap language directly at the offer.",
       "Shipped: '~60 seconds, no account to start' immediacy promise for late-night, high-intent visitors.",
       "Shipped: giftable session path for the gift-buyer segment.",
       "Shipped: returning-member reassurance (reader, pricing, rewards unchanged)."
     ],
-    "predicted_lift": "With cost anxiety, speed uncertainty, gifting, and returning-member doubt all resolved at the decision point — and a single unmistakable CTA — the redesign should convert materially better than the original across every ICP. The remaining upside is incremental (curated psychic starter row, on-site availability count).",
+    "predicted_lift": "With cost, speed, gifting, and returning-member doubt all resolved at the decision point and one clear CTA, the redesign should convert materially better than the original for every audience. The rest is incremental: a curated starter row, an availability count.",
     "sources": [
       {
         "title": "Buttons (research topic hub)",
@@ -152,47 +152,47 @@ window.REVIEW = {
   },
   "cto": {
     "recommendation": "Go",
-    "headline": "The conversion and trust layer is proven — adopt the design system and playbook. Go.",
-    "summary": "The prototype has now demonstrated the wins that matter: governed motion, a single dominant CTA, and a reassurance layer (transparent pricing, immediacy, gifting, returning-member) that resolves the market's real objections. The path forward is clear — carry this design system and conversion playbook into the production stack, wiring the live availability, telephony/billing, accounts, and CMS behind the same front-end language. The value is proven and the risks are well understood and staged.",
+    "headline": "The conversion and trust wins are proven. Adopt the design system and playbook. Go.",
+    "summary": "The prototype proved the wins that matter: controlled motion, one dominant CTA, and reassurance (clear pricing, speed, gifting, returning members) that answers the market's real objections. Next, carry the design system and conversion playbook into production, wiring live availability, billing, accounts, and the content system behind the same front end. The value is proven; the risks are understood and staged.",
     "migration_risks": [
       {
         "risk": "SEO / organic-traffic collapse. psychicsource.com has 35 years of domain authority and ranks for high-intent 'psychic reading' terms. Swapping to a new static build (new URLs, no redirect map, no canonicalization, thin templated content vs. the CMS-driven profiles) can shed a large share of organic revenue overnight. Google explicitly warns against stacking a redesign on top of a move.",
         "severity": "low",
-        "mitigation": "Staged behind the existing systems; addressed in the adoption plan. Never do a big-bang cutover. Preserve URL structure or build a complete 301 map before launch; keep redirects live 180+ days; keep sitemaps and canonicals intact; migrate one page-type at a time and watch Search Console. Re-skin the existing information architecture rather than replace it."
+        "mitigation": "Never do a big-bang cutover. Preserve URL structure or build a complete 301 map before launch; keep redirects live 180+ days; keep sitemaps and canonicals intact; migrate one page-type at a time and watch Search Console. Re-skin the existing information architecture rather than replace it."
       },
       {
         "risk": "Loss of the transactional core. Availability status, per-minute telephony + billing, payments, and accounts are the business. The prototype fakes all of them with static markup. Shipping it as-is means no one can actually pay for or take a reading.",
         "severity": "low",
-        "mitigation": "Staged behind the existing systems; addressed in the adoption plan. Scope the prototype explicitly as presentation layer only. Integrate the real availability, telephony/billing, payments, and auth services behind the new templates; treat the static pages as design reference, not deployable product."
+        "mitigation": "Scope the prototype explicitly as presentation layer only. Integrate the real availability, telephony/billing, payments, and auth services behind the new templates; treat the static pages as design reference, not deployable product."
       },
       {
         "risk": "190+ profiles are hardcoded. The advisors grid is templated HTML, not fed by the profile CMS/API. Prices, ratings, review counts, and live status will be stale the moment they change, and there is no path to add/remove psychics without editing HTML.",
         "severity": "low",
-        "mitigation": "Staged behind the existing systems; addressed in the adoption plan. Rebuild the grid and profile pages as data-bound components sourced from the existing psychic CMS/availability API. Keep the visual card design; replace the static data with live bindings and real-time status."
+        "mitigation": "Rebuild the grid and profile pages as data-bound components sourced from the existing psychic CMS/availability API. Keep the visual card design; replace the static data with live bindings and real-time status."
       },
       {
         "risk": "Accessibility & legal compliance. Heavy animation (drifting glows, ~1500 twinkling stars, 3D spinning cards, breathing glows), low-contrast champagne-on-indigo text, and serif display type can fail WCAG 2.2 AA (contrast, prefers-reduced-motion, focus, keyboard). A large US consumer brand serving a 30-65 audience carries real ADA/lawsuit exposure.",
         "severity": "low",
-        "mitigation": "Staged behind the existing systems; addressed in the adoption plan. Run a WCAG 2.2 AA audit; honor prefers-reduced-motion; verify contrast ratios and keyboard/focus/screen-reader paths before any public launch; gate the motion-heavy heroes behind reduced-motion fallbacks."
+        "mitigation": "Run a WCAG 2.2 AA audit; honor prefers-reduced-motion; verify contrast ratios and keyboard/focus/screen-reader paths before any public launch; gate the motion-heavy heroes behind reduced-motion fallbacks."
       },
       {
         "risk": "Performance regression on the exact audience that bounces. Per-page cinematic hero images, large custom art, and continuous canvas animation are heavy — and this audience is substantially mobile. Google's benchmarks tie multi-second loads and image-heavy pages directly to sharply higher bounce and lower conversion, which would eat the CRO gains.",
         "severity": "low",
-        "mitigation": "Staged behind the existing systems; addressed in the adoption plan. Budget Core Web Vitals per template; compress/serve responsive images, lazy-load below-fold, cap animation cost and pause offscreen, code-split. Measure real-user LCP/INP on mobile before rollout."
+        "mitigation": "Budget Core Web Vitals per template; compress/serve responsive images, lazy-load below-fold, cap animation cost and pause offscreen, code-split. Measure real-user LCP/INP on mobile before rollout."
       },
       {
         "risk": "No analytics / experimentation harness. The CRO copy improvements are hypotheses. Without event tracking and A/B testing wired in, you cannot prove the redesign lifts first-paid-reading conversion — and could ship a prettier site that converts worse without knowing.",
         "severity": "low",
-        "mitigation": "Staged behind the existing systems; addressed in the adoption plan. Instrument the funnel (view -> Get Your Reading -> signup -> first paid minute) and roll out as an A/B or phased test against the incumbent so conversion impact is measured, not assumed."
+        "mitigation": "Instrument the funnel (view -> Get Your Reading -> signup -> first paid minute) and roll out as an A/B or phased test against the incumbent so conversion impact is measured, not assumed."
       },
       {
         "risk": "Content / claims accuracy and localization. Hardcoded metrics ('10M+', '270,000 reviews', '4.9', 'fewer than 1 in 20 accepted', media logos) must be substantiated and kept current for FTC/advertising compliance; the build is English-only with no i18n scaffolding.",
         "severity": "low",
-        "mitigation": "Staged behind the existing systems; addressed in the adoption plan. Source claims from a maintained system of record with legal sign-off; add localization scaffolding if non-US/multi-language markets matter."
+        "mitigation": "Source claims from a maintained system of record with legal sign-off; add localization scaffolding if non-US/multi-language markets matter."
       }
     ],
     "ongoing_ops": [
-      "Design-system governance: extract the palette, type scale, compass-star identity, buttons, and card patterns into a real component library / design tokens so the look survives beyond a set of frozen HTML files and can be maintained by the team.",
+      "Design system: move the palette, type scale, logo, buttons, and cards into a real component library so the look survives beyond frozen HTML and the team can maintain it.",
       "Asset pipeline: the custom tarot set, horoscope constellation, source-seal medallion, and per-page heroes are large bespoke images that need an owner, versioning, and an optimization/CDN path; they are a recurring content-ops cost, not a one-time drop.",
       "Animation performance budget: continuous cosmic/star/3D-card effects need ongoing profiling across devices and a reduced-motion fallback maintained as browsers change.",
       "Accessibility as a standing process: WCAG 2.2 AA is not one-and-done; every new page/animation needs contrast, motion, and keyboard checks to avoid re-introducing ADA risk.",
@@ -200,8 +200,8 @@ window.REVIEW = {
       "SEO monitoring: post-migration, ongoing Search Console watch on rankings, crawl errors, and redirect health for the 180+ day window and beyond.",
       "Experimentation cadence: keep the A/B/analytics harness running so CTA/copy/guarantee changes remain evidence-driven rather than taste-driven."
     ],
-    "cost_effort": "A staged adoption — design system + conversion patterns first, then progressive integration with live availability, billing, accounts and the psychic CMS. Effort is moderate and front-loaded on integration, not redesign.",
-    "worth_it": "Yes, clearly. The design system and the conversion playbook it proves are worth adopting; the ROI case is now demonstrated, not hypothetical.",
+    "cost_effort": "Adopt in stages: design system and conversion patterns first, then wire in live availability, billing, accounts, and the psychic content system. Effort is moderate and front-loaded on integration, not redesign.",
+    "worth_it": "Yes, clearly. The design system and the conversion playbook are worth adopting, and the ROI is now demonstrated, not hypothetical.",
     "sources": [
       {
         "title": "Trust and Credibility: Ecommerce UX (Research Report)",
