@@ -578,6 +578,34 @@
   .or-keep{display:inline-block;font-size:11px;letter-spacing:.08em;color:var(--gold-bright);border:1px dashed rgba(232,207,154,.45);border-radius:999px;padding:7px 14px}
   .or-keep span{color:var(--muted);letter-spacing:0}
   .or-honest{font-size:10.5px;color:var(--muted);font-style:italic;margin-top:12px}
+  /* oracle explainer + diagram + demo door */
+  .orc-door{position:relative;display:flex;gap:16px;align-items:center;margin-top:18px;padding:20px 22px;border:1px solid var(--gold);border-radius:16px;text-decoration:none;background:linear-gradient(135deg,rgba(232,207,154,.16),rgba(201,168,106,.05) 60%,transparent);transition:box-shadow .3s,transform .3s}
+  .orc-door:hover{box-shadow:0 22px 55px -30px #000,0 0 0 1px var(--gold);transform:translateY(-2px)}
+  .orc-door-ic{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold))}
+  .orc-door-ic svg{width:22px;height:22px}
+  .orc-door-t{flex:1}
+  .orc-door-t b{display:block;font-family:var(--serif);font-size:19px;font-weight:600;color:var(--gold-bright)}
+  .orc-door-t span{display:block;font-size:12px;color:var(--muted);line-height:1.5;margin-top:3px}
+  .orc-door-go{flex:none;color:var(--gold);font-size:20px}
+  .orc-expl{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:14px}
+  .orc-col h6{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--gold-bright);margin:0 0 10px}
+  .orc-pt{padding:10px 0;border-bottom:1px solid rgba(247,242,232,.06)}
+  .orc-pt:last-child{border-bottom:0}
+  .orc-pt b{display:block;font-size:13px;color:var(--ivory);font-weight:500}
+  .orc-pt span{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:2px}
+  .orc-diag{margin-top:14px}
+  .orc-spine{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .orc-n{border:1px solid rgba(232,207,154,.34);border-radius:10px;padding:8px 11px;background:linear-gradient(165deg,rgba(232,207,154,.07),transparent)}
+  .orc-n b{display:block;font-family:var(--serif);font-size:12.5px;font-weight:600;color:var(--ivory);line-height:1.1}
+  .orc-n span{display:block;font-size:8px;letter-spacing:.08em;color:var(--gold);margin-top:2px}
+  .orc-n.big{border-color:var(--gold);background:linear-gradient(165deg,rgba(232,207,154,.16),rgba(232,207,154,.03));box-shadow:0 0 22px -8px rgba(232,207,154,.4)}
+  .orc-n.big b{color:var(--gold-bright);font-size:14px}
+  .orc-a{flex:none;color:var(--gold);font-style:normal;font-size:12px}
+  .orc-rec{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}
+  .orc-r{border:1px dashed var(--hair);border-radius:10px;padding:9px 12px;background:rgba(9,6,20,.25)}
+  .orc-r b{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright);font-weight:600}
+  .orc-r span{display:block;font-size:11px;color:var(--muted);line-height:1.5;margin-top:2px}
+  @media(max-width:700px){.orc-expl,.orc-rec{grid-template-columns:1fr}}
   /* gold-thread wireframe filmstrips */
   .wf-row{display:flex;gap:10px;align-items:flex-start;margin-top:16px;overflow-x:auto;padding-bottom:10px;scrollbar-width:thin}
   .wf-unit{flex:none;width:196px;display:flex;flex-direction:column}
@@ -2415,6 +2443,34 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
           '<div class="wf-kpi"><span>38 to 45% open \u00b7 industry</span><span>6 to 9% book \u00b7 target</span></div>'+
           '<div class="wf-ghost">No click? Variant B at 48h. Silent by day 10: \u201cThe Moon has one more thing to say.\u201d</div>')
       ]);
+      // The Oracle: demo door + explainer + workflow diagram
+      var door=E('a','orc-door');door.href='oracle-demo.html';door.target='_blank';door.rel='noopener';
+      door.appendChild(H('span','orc-door-ic','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.2 4.6 5 .7-3.6 3.6.9 5.1-4.5-2.4-4.5 2.4.9-5.1L4.8 8.3l5-.7z"/></svg>'));
+      var dt=E('span','orc-door-t');dt.appendChild(T('b',null,'Enter the Oracle · a working demo'));dt.appendChild(T('span',null,'Ask a real question. Watch the summoning, meet your oracle, receive the reading, and book the call. Fully functioning, staged data.'));door.appendChild(dt);
+      door.appendChild(T('span','orc-door-go','→'));
+      sx.appendChild(door);
+      sx.appendChild(T('div','gx-h','What it is, and why it works'));
+      var expl=E('div','orc-expl');
+      var colA=E('div','orc-col');colA.appendChild(T('h6',null,'What it is'));
+      [{l:'A question, spoken into a listening room.',b:'The seeker asks aloud or types, and the house responds with a staged summoning, a card that arrives for them, and a personalized three-movement reading in under a minute.'},{l:'An oracle that chooses you.',b:'The card blooms forward and explains why it came, replacing a directory of 300 strangers with a single meant-for-you arrival.'},{l:'A four-cent front door.',b:'Each agentic reading costs roughly $0.04 to produce and delivers a warm, emotionally invested seeker to a $1 per minute human channel.'}].forEach(function(p){var it=E('div','orc-pt');it.appendChild(T('b',null,p.l));it.appendChild(T('span',null,p.b));colA.appendChild(it);});
+      var colB=E('div','orc-col');colB.appendChild(T('h6',null,'Why it works'));
+      [{l:'Confession creates investment.',b:'Typing a real question is an act of disclosure, and once someone has disclosed, the answer matters to them before it even arrives.'},{l:'Being chosen inverts the marketplace.',b:'Choice paralysis is the category\'s silent killer; when the oracle and the psychic both arrive already matched, the seeker\'s only decision is when.'},{l:'The loop stays open on purpose.',b:'The reading names what comes next without resolving it, so the call with a human arrives as its natural completion.'}].forEach(function(p){var it=E('div','orc-pt');it.appendChild(T('b',null,p.l));it.appendChild(T('span',null,p.b));colB.appendChild(it);});
+      expl.appendChild(colA);expl.appendChild(colB);sx.appendChild(expl);
+      sx.appendChild(T('div','gx-h','The funnel, as a working system'));
+      sx.appendChild(T('p','gx-lead2','The main path runs left to right. The recovery loops underneath catch everyone who stalls, and feed them back in.'));
+      var dg=E('div','orc-diag');
+      var spine=E('div','orc-spine');
+      [['The Ask','question spoken'],['The Summoning','theme detected · $0.04'],['The Arrival','card + why'],['The Reading','three movements'],['Keep It','email · decision'],['The Match','psychic + why her'],['Availability','live or window'],['Schedule','slots + cap'],['Held','confirmation'],['The Channel','$1/min · live'],['The Record','the keepsake'],['The Circle','membership']].forEach(function(n,i,arr){
+        var c=E('div','orc-n'+(n[0]==='The Channel'?' big':''));c.appendChild(T('b',null,n[0]));c.appendChild(T('span',null,n[1]));spine.appendChild(c);
+        if(i<arr.length-1)spine.appendChild(T('i','orc-a','→'));
+      });
+      dg.appendChild(spine);
+      var rec=E('div','orc-rec');
+      [['No email','→ retarget pool, ad recall returns them to the Ask'],['Email, no click','→ variant B at 48 hours, re-enters at the Reading'],['Silent by day 10','→ re-summoning: “the cards have moved”'],['Held, not booked','→ 24-hour held-window note returns them to Schedule']].forEach(function(r){
+        var c=E('div','orc-r');c.appendChild(T('b',null,r[0]));c.appendChild(T('span',null,r[1]));rec.appendChild(c);
+      });
+      dg.appendChild(rec);
+      sx.appendChild(dg);
       // THE CHANNEL · 3 screens
       wfFlow('The Channel \u00b7 The room is the product',
         'The paid heart of the subscription, and the demo moment of the pitch. Safety at the threshold, presence in the room, continuity at the record, and the question travels through all three acts.',
