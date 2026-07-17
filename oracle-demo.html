@@ -72,8 +72,10 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 #summon{background:#050310}
 .qtop{position:absolute;top:52px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:15px;font-style:italic;color:var(--ivory);opacity:0;transition:opacity .9s;z-index:8;padding:0 26px;line-height:1.45}
 #summon.q .qtop{opacity:.95}
-.vzone{position:absolute;top:86px;left:0;right:0;bottom:96px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.vwrap{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.vzone{position:absolute;top:86px;left:0;right:0;bottom:96px;display:flex;align-items:center;justify-content:center;overflow:visible}
+.vsizer{position:relative}
+.vwrap{position:absolute;inset:0;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.vfree{position:absolute;inset:0;pointer-events:none}
 .vwrap video,.vwrap .ef{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .vwrap .ef{opacity:0;transition:opacity .35s}
 .vwrap .ef.show{opacity:1}
@@ -100,10 +102,11 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 .cglow::before{content:"";position:absolute;left:50%;top:50%;width:250px;height:250px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(240,220,170,.55),rgba(232,207,154,.22) 40%,rgba(232,207,154,.07) 58%,transparent 70%);animation:glowb 1.6s ease-in-out infinite}
 @keyframes glowb{50%{opacity:.6}}
 .bloom{position:absolute;inset:0;z-index:9;pointer-events:none;background:radial-gradient(circle at 50% 46%,rgba(248,240,220,.95),rgba(232,207,154,.5) 34%,transparent 66%);opacity:0}
-.bloom.flash{animation:bloomf .85s ease-out}
+.bloom.flash{animation:bloomf 1.35s ease-out}
 @keyframes bloomf{0%{opacity:0}22%{opacity:1}100%{opacity:0}}
-.chosen{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%) scale(.72);width:min(60%,224px);z-index:7;opacity:0;transition:opacity .6s,transform .8s cubic-bezier(.22,.61,.36,1)}
-.chosen.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.chosen{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%) scale(.6);width:min(74%,268px);z-index:7;opacity:0}
+.chosen.on{animation:popon 1.35s cubic-bezier(.18,.75,.28,1) forwards}
+@keyframes popon{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}45%{opacity:1}70%{transform:translate(-50%,-50%) scale(1.055)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 .chosen img{width:100%;border-radius:12px;border:1px solid var(--gold);display:block;box-shadow:0 0 42px rgba(232,207,154,.35),0 22px 54px rgba(0,0,0,.6)}
 .chosen .rings{position:absolute;inset:-42%;border-radius:50%;pointer-events:none;opacity:0}
 .chosen.on .rings{opacity:1;background:radial-gradient(circle,transparent 40%,rgba(232,207,154,.14) 46%,transparent 54%,rgba(232,207,154,.08) 62%,transparent 70%);animation:ringbloom 2.4s ease-out infinite}
@@ -125,11 +128,15 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 .arr-body{font-family:var(--serif);font-size:15.5px;font-style:italic;line-height:1.55;color:var(--ivory)}
 .next{margin-top:26px}
 /* ---------- reading ---------- */
-.scrollp{background:linear-gradient(172deg,rgba(247,242,232,.09),rgba(247,242,232,.03));border:1px solid rgba(232,207,154,.3);border-radius:16px;padding:38px 20px 26px;position:relative;text-align:left}
+.scrollp{background:linear-gradient(172deg,rgba(247,242,232,.09),rgba(247,242,232,.03));border:1px solid rgba(232,207,154,.3);border-radius:16px;padding:56px 20px 26px;position:relative;text-align:left}
 .seal{position:absolute;top:-24px;left:50%;transform:translateX(-50%);width:46px;border-radius:6px;border:1px solid var(--gold);box-shadow:0 6px 16px rgba(0,0,0,.55)}
 .sq{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--ivory);text-align:center;margin-bottom:18px}
-.mv{opacity:0;transform:translateY(10px);transition:opacity .9s,transform .9s;margin-bottom:16px}
-.mv.show{opacity:1;transform:none}
+.mv{opacity:0;transform:translateY(12px);filter:blur(7px);transition:opacity 1.25s,transform 1.25s,filter 1.25s;margin-bottom:16px}
+.mv.show{opacity:1;transform:none;filter:none}
+.prepsy{display:flex;align-items:center;gap:12px;margin:22px auto 0;padding:12px 14px;border:1px solid rgba(233,207,154,.16);border-radius:14px;background:rgba(247,242,232,.03);text-align:left;opacity:0;transition:opacity 1.4s}
+.prepsy.show{opacity:1}
+.prepsy img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:center 15%;filter:grayscale(1) brightness(.75);border:1px solid rgba(233,207,154,.35);flex:none}
+.prepsy span{font-family:var(--serif);font-size:13.5px;font-style:italic;color:var(--muted);line-height:1.5}
 .mv h4{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .mv p{font-family:var(--serif);font-size:14.5px;line-height:1.6;color:var(--ivory)}
 .openline{font-family:var(--serif);font-size:13.5px;font-style:italic;color:var(--gold-bright);border-top:1px solid var(--hair);padding-top:13px;margin-top:2px;opacity:0;transition:opacity .9s}
@@ -143,10 +150,19 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 .riskline.show{opacity:1}
 .keep.remind{display:none;margin-top:20px}
 /* ---------- match ---------- */
-.psy{display:flex;gap:14px;align-items:center;text-align:left;background:linear-gradient(160deg,rgba(232,207,154,.1),rgba(232,207,154,.02));border:1px solid rgba(232,207,154,.42);border-radius:16px;padding:16px;margin:20px auto 0}
-.psy img{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:center 18%;border:2px solid var(--gold);flex:none}
-.psy-n{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--gold-bright)}
-.psy-s{font-size:10px;color:var(--muted);line-height:1.5;margin:3px 0 7px}
+.psy-hero{position:relative;margin:0 -22px;padding-top:74%;overflow:hidden}
+.psy-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.ph-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,5,19,.5),transparent 30%,transparent 52%,rgba(11,7,26,.97) 97%)}
+.ph-eyebrow{position:absolute;top:50px;left:0;right:0;text-align:center;font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-bright);text-shadow:0 1px 10px rgba(0,0,0,.85)}
+.ph-name{position:absolute;left:20px;bottom:40px;font-family:var(--serif);font-size:44px;font-weight:600;color:var(--ivory);text-shadow:0 2px 20px rgba(0,0,0,.75);line-height:1}
+.psy-hero .avail{position:absolute;left:22px;bottom:13px;backdrop-filter:blur(3px)}
+.psy-s{font-size:10.5px;letter-spacing:.05em;color:var(--muted);line-height:1.5;margin-top:12px;text-align:center}
+.stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+#match .pad>*{position:relative;z-index:1}
+#match .pad>.stars{z-index:0}
+.stars i{position:absolute;border-radius:50%;background:var(--gold-bright);opacity:.15;animation:tw 3.4s ease-in-out infinite}
+@keyframes tw{50%{opacity:.8;transform:scale(1.4)}}
+@media(prefers-reduced-motion:reduce){.stars i{animation:none}}
 .avail{display:inline-flex;align-items:center;gap:6px;font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;border-radius:999px;padding:5px 10px}
 .avail.live{color:#8fcdb8;border:1px solid rgba(120,190,170,.4);background:rgba(120,190,170,.08)}
 .avail.live i{width:6px;height:6px;border-radius:50%;background:#7BD389;box-shadow:0 0 8px rgba(123,211,137,.9);animation:pulse 2s infinite}
@@ -218,14 +234,18 @@ h1 em{font-style:italic;color:var(--gold-bright)}
   <!-- SUMMONING -->
   <section class="scr" id="summon">
     <div class="qtop" id="qtop"></div>
-    <div class="vzone"><div class="vwrap" id="vwrap">
-      <video id="film" muted playsinline preload="auto" poster="assets/oracle/poster.jpg" src="assets/oracle/summon.mp4"></video>
-      <img class="ef" id="eframe" src="assets/oracle/plate.jpg" alt=""/>
-      <div class="shimmer" id="shimmer"><i class="beam"></i></div>
-      <div class="cglow" id="cglow"></div>
-      <div class="liftw" id="liftw"><img class="lifts" id="lifts" src="assets/oracle/card-back.png" alt=""/></div>
-      <div class="chosen" id="chosen"><span class="rings"></span><img id="chosenFace" src="" alt=""/></div>
-      <div class="bloom" id="bloom"></div>
+    <div class="vzone"><div class="vsizer" id="vwrap">
+      <div class="vwrap">
+        <video id="film" muted playsinline preload="auto" poster="assets/oracle/poster.jpg" src="assets/oracle/summon.mp4"></video>
+        <img class="ef" id="eframe" src="assets/oracle/plate.jpg" alt=""/>
+        <div class="shimmer" id="shimmer"><i class="beam"></i></div>
+        <div class="cglow" id="cglow"></div>
+      </div>
+      <div class="vfree">
+        <div class="liftw" id="liftw"><img class="lifts" id="lifts" src="assets/oracle/card-back.png" alt=""/></div>
+        <div class="chosen" id="chosen"><span class="rings"></span><img id="chosenFace" src="" alt=""/></div>
+        <div class="bloom" id="bloom"></div>
+      </div>
     </div></div>
     <div class="sline" id="sline"></div>
     <button class="skip" id="skip">Arrive now</button>
@@ -255,19 +275,21 @@ h1 em{font-style:italic;color:var(--gold-bright)}
       </div>
       <div class="keep"><input id="email" type="email" placeholder="Your email · the scroll travels with you"/><button class="btn" id="keepBtn">Keep it</button></div>
       <div class="kept" id="kept">✓ Kept. It will be waiting for you.</div>
-      <div class="next"><button class="btn" id="toMatch">See who has been chosen for you</button></div>
+      <div class="prepsy" id="prepsy"><img id="preImg" src="" alt=""/><span id="preLine"></span></div>
+      <div class="next" style="margin-top:18px"><button class="btn" id="toMatch">See who has been chosen for you</button></div>
     </div>
   </section>
 
   <!-- MATCH -->
   <section class="scr" id="match">
-    <div class="pad" style="justify-content:flex-start;padding-top:70px">
-      <span class="eyebrow">Step further</span>
-      <h1 id="matchH">She has been <em>chosen too.</em></h1>
-      <div class="psy">
-        <img id="psyImg" src="" alt=""/>
-        <div><div class="psy-n" id="psyN"></div><div class="psy-s" id="psyS"></div><span class="avail" id="avail"></span></div>
+    <div class="pad" style="justify-content:flex-start;padding:0 22px 34px">
+      <div class="stars" id="stars"></div>
+      <div class="psy-hero"><img id="psyImg" src="" alt=""/><div class="ph-grad"></div>
+        <span class="ph-eyebrow">Chosen for your question</span>
+        <div class="ph-name" id="psyN"></div>
+        <span class="avail" id="avail"></span>
       </div>
+      <div class="psy-s" id="psyS"></div>
       <p class="whyher" id="whyHer"></p>
       <div class="slots" id="slots"></div>
       <div class="caps" id="caps"></div>
@@ -294,7 +316,8 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 </div>
 
 <script>
-var SPEC = {"themes": {"grief": {"keywords": ["passed", "passed away", "gone", "miss", "missing him", "missing her", "mother", "father", "mom", "dad", "grandma", "grandmother", "grandpa", "grandfather", "lost", "loss", "died", "death", "heaven", "spirit", "goodbye", "grieving", "grief", "funeral", "anniversary of"], "oracle": "The Moon", "card": "assets/oracle/card-moon.jpg", "arrival": "THE KEEPER OF WHAT DAYLIGHT CANNOT HOLD. You asked about someone you carry. The Moon came because it keeps watch over the love that continues after the phone stops ringing. It rises for the ones still loving someone they can no longer call.", "reading": {"whatIs": "You are carrying someone, and the carrying has changed shape. Some days it is a weight, some days it is a warmth, and you have wondered whether the way you grieve is the right way. There is no wrong way to keep loving someone.", "whatHides": "What hides is a sentence you never got to finish: a word withheld, or one you wish you could soften. Grief keeps unfinished sentences safe until we are ready for them. Yours is nearer the surface than you think, and it wants to be spoken kindly, even clumsily.", "whatComes": "There will be a moment, small and ordinary, when their presence feels less like an ache and more like company. You will know it when it arrives. Making room for that moment, and finally saying the unfinished sentence aloud, is gentler with a compassionate voice on the line."}, "psychic": "Leota", "img": "assets/advisors/Leota-3587.jpg", "specialty": "Leota, Keeper of the Thin Places. A medium of thirty years who treats every crossing with reverence.", "whyHer": "You asked about someone who has passed beyond your reach. Leota works at exactly that threshold. She refuses to perform reunions; she listens for what remains, and tells you honestly what she hears.", "avail": {"mode": "live", "line": "In the Channel now", "slots": ["Now", "Tonight 10:00pm", "Sunday 7:00pm"]}, "starter": "Is my mother at peace?"}, "love": {"keywords": ["he", "she", "him", "her", "love", "ex", "back", "relationship", "boyfriend", "girlfriend", "husband", "wife", "partner", "marriage", "marry", "soulmate", "crush", "dating", "breakup", "broke up", "cheating", "feelings", "text", "thinking of me", "come back", "the one"], "oracle": "The Lovers", "card": "assets/oracle/card-lovers.jpg", "arrival": "THE CARD OF THE CHOICE BENEATH THE CHOICE. You asked about a heart that is tangled with yours. The Lovers came because your question carries two names, and only one of them is yours to answer for. The Oracle drew this card the moment your words touched it.", "reading": {"whatIs": "There is a pull in you that has been honest for longer than you have admitted. You keep weighing what you feel against what you fear, and the scale never settles. That restlessness is information.", "whatHides": "Beneath the question of them is a quieter question about you: what you believe you deserve when no one is performing. Part of you already knows the answer and has been waiting for permission to say it out loud.", "whatComes": "A conversation is approaching that will ask you to be plainer than you have been. Whether it opens a door or closes one gently, you will stand differently afterward. What that conversation should sound like, and when to have it, is where a listening voice can walk further with you than any card."}, "psychic": "Venus", "img": "assets/advisors/Venus-8854.jpg", "specialty": "Venus, Reader of the Heart's Weather. Twenty years listening to what love does when no one is watching.", "whyHer": "You asked about a heart that is only half yours to read. Venus has spent her life reading exactly that half. She will tell you plainly what the other heart is doing, so your hope can stand on something real.", "avail": {"mode": "live", "line": "In the Channel now", "slots": ["Now", "Tonight 9:30pm", "Tomorrow 8:00pm"]}, "starter": "Will he come back to me?"}, "career": {"keywords": ["job", "offer", "work", "career", "money", "business", "boss", "promotion", "interview", "quit", "raise", "salary", "company", "startup", "invest", "financial", "finances", "fired", "layoff", "new role", "opportunity", "negotiate", "clients"], "oracle": "The Star", "card": "assets/oracle/card-star.jpg", "arrival": "THE CARD OF AIM. You asked about your work and what your effort is building. The Star came because it appears for people who are closer to open sky than they believe. It is the card the Oracle reaches for when a direction is ready to be named.", "reading": {"whatIs": "You have been working hard inside a shape that no longer fits the size of you. The effort is real, and so is the friction. You are asking whether to push through or to aim somewhere new, and that is the right question at the right time.", "whatHides": "What hides is how much of your hesitation is loyalty: loyalty to a version of you who needed this exact job, this exact proof. Honor that version. Then notice that you have already outgrown the safety you built for them.", "whatComes": "A window is forming, and it will look smaller than it is. The people who cross such windows are the ones who chose their first step in advance. Naming that step, in your own voice and your own circumstances, is a conversation worth having with someone who can hear the whole story."}, "psychic": "Ursula", "img": "assets/advisors/Ursula-9927.jpg", "specialty": "Ursula, Seer of Fortune and Work. She reads ambition the way others read weather.", "whyHer": "Your question was about work and what it will become. Ursula reads careers at the turning point, the offer, the leap, the door that looks closed. She will tell you which door is actually locked and which is only heavy.", "avail": {"mode": "window", "line": "Her next window: Thursday, 7:15pm", "slots": ["Thu 7:15pm", "Thu 8:00pm", "Fri 6:30pm"]}, "starter": "Should I take the offer, or wait?"}, "path": {"keywords": [], "oracle": "The Oracle", "card": "assets/oracle/card-oracle.jpg", "arrival": "THE ORACLE'S OWN CARD. You asked where your life is pointing. The Oracle came because it answers one question above all others: the question a person asks when they are ready to change. You are closer to that readiness than you feel.", "reading": {"whatIs": "You are between chapters, and the space between chapters always feels like being lost. It is closer to a kind of listening. The life you have been living was built by an earlier you, faithfully, and it has carried you as far as it can.", "whatHides": "What hides is a preference you keep filing under impossible. You dismiss it quickly, which is how a person treats something they want very much. Look at what you call unrealistic. Your direction has been waiting there.", "whatComes": "In the coming season you will be offered a smaller version of the thing you actually want. It will be a test of clarity: whether you can say yes to the essence while declining the shrunken form. Telling the difference in the moment is exactly the kind of crossing a human guide can stand beside you for."}, "psychic": "Angela", "img": "assets/advisors/Angela-9978.jpg", "specialty": "Angela, Guide of Crossroads. She reads lives the way cartographers read coastlines.", "whyHer": "You asked where your life is meant to go next. Angela specializes in the unlabeled crossroads, the season where nothing is wrong but nothing is clear. She will help you name the direction you already feel.", "avail": {"mode": "window", "line": "Her next window: tomorrow, 10:00am", "slots": ["Tomorrow 10:00am", "Tomorrow 10:45am", "Sat 9:15am"]}, "starter": "What is my life pointing toward?"}}};
+var SPEC = {"themes": {"grief": {"keywords": ["passed", "passed away", "gone", "miss", "missing him", "missing her", "mother", "father", "mom", "dad", "grandma", "grandmother", "grandpa", "grandfather", "lost", "loss", "died", "death", "heaven", "spirit", "goodbye", "grieving", "grief", "funeral", "anniversary of"], "oracle": "The Moon", "card": "assets/oracle/card-moon.jpg", "arrival": "THE KEEPER OF WHAT DAYLIGHT CANNOT HOLD. You asked about someone you carry. The Moon came because it keeps watch over the love that continues after the phone stops ringing.", "reading": {"whatIs": "You are carrying someone, and the carrying has changed shape. Some days it is a weight, some days it is a warmth, and you have wondered whether the way you grieve is the right way. There is no wrong way to keep loving someone.", "whatHides": "What hides is a sentence you never got to finish: a word withheld, or one you wish you could soften. Grief keeps unfinished sentences safe until we are ready for them. Yours is nearer the surface than you think, and it wants to be spoken kindly, even clumsily.", "whatComes": "There will be a moment, small and ordinary, when their presence feels less like an ache and more like company. You will know it when it arrives. Making room for that moment, and finally saying the unfinished sentence aloud, is gentler with a compassionate voice on the line."}, "psychic": "Leota", "img": "assets/advisors/Leota-3587.jpg", "specialty": "Leota, Keeper of the Thin Places. A medium of thirty years who treats every crossing with reverence.", "whyHer": "You asked about someone who has passed beyond your reach. Leota works at exactly that threshold. She refuses to perform reunions; she listens for what remains, and tells you honestly what she hears.", "avail": {"mode": "live", "line": "In the Channel now", "slots": ["Now", "Tonight 10:00pm", "Sunday 7:00pm"]}, "starter": "Is my mother at peace?"}, "love": {"keywords": ["he", "she", "him", "her", "love", "ex", "back", "relationship", "boyfriend", "girlfriend", "husband", "wife", "partner", "marriage", "marry", "soulmate", "crush", "dating", "breakup", "broke up", "cheating", "feelings", "text", "thinking of me", "come back", "the one"], "oracle": "The Lovers", "card": "assets/oracle/card-lovers.jpg", "arrival": "THE CARD OF THE CHOICE BENEATH THE CHOICE. You asked about a heart that is tangled with yours. The Lovers came because your question carries two names, and only one of them is yours to answer for.", "reading": {"whatIs": "There is a pull in you that has been honest for longer than you have admitted. You keep weighing what you feel against what you fear, and the scale never settles. That restlessness is information.", "whatHides": "Beneath the question of them is a quieter question about you: what you believe you deserve when no one is performing. Part of you already knows the answer and has been waiting for permission to say it out loud.", "whatComes": "A conversation is approaching that will ask you to be plainer than you have been. Whether it opens a door or closes one gently, you will stand differently afterward. What that conversation should sound like, and when to have it, is where a listening voice can walk further with you than any card."}, "psychic": "Venus", "img": "assets/advisors/Venus-8854.jpg", "specialty": "Venus, Reader of the Heart's Weather. Twenty years listening to what love does when no one is watching.", "whyHer": "You asked about a heart that is only half yours to read. Venus has spent her life reading exactly that half. She will tell you plainly what the other heart is doing, so your hope can stand on something real.", "avail": {"mode": "live", "line": "In the Channel now", "slots": ["Now", "Tonight 9:30pm", "Tomorrow 8:00pm"]}, "starter": "Will he come back to me?"}, "career": {"keywords": ["job", "offer", "work", "career", "money", "business", "boss", "promotion", "interview", "quit", "raise", "salary", "company", "startup", "invest", "financial", "finances", "fired", "layoff", "new role", "opportunity", "negotiate", "clients"], "oracle": "The Star", "card": "assets/oracle/card-star.jpg", "arrival": "THE CARD OF AIM. You asked about your work and what your effort is building. The Star came because it appears for people who are closer to open sky than they believe.", "reading": {"whatIs": "You have been working hard inside a shape that no longer fits the size of you. The effort is real, and so is the friction. You are asking whether to push through or to aim somewhere new, and that is the right question at the right time.", "whatHides": "What hides is how much of your hesitation is loyalty: loyalty to a version of you who needed this exact job, this exact proof. Honor that version. Then notice that you have already outgrown the safety you built for them.", "whatComes": "A window is forming, and it will look smaller than it is. The people who cross such windows are the ones who chose their first step in advance. Naming that step, in your own voice and your own circumstances, is a conversation worth having with someone who can hear the whole story."}, "psychic": "Ursula", "img": "assets/advisors/Ursula-9927.jpg", "specialty": "Ursula, Seer of Fortune and Work. She reads ambition the way others read weather.", "whyHer": "Your question was about work and what it will become. Ursula reads careers at the turning point, the offer, the leap, the door that looks closed. She will tell you which door is actually locked and which is only heavy.", "avail": {"mode": "window", "line": "Her next window: Thursday, 7:15pm", "slots": ["Thu 7:15pm", "Thu 8:00pm", "Fri 6:30pm"]}, "starter": "Should I take the offer, or wait?"}, "path": {"keywords": [], "oracle": "The Oracle", "card": "assets/oracle/card-oracle.jpg", "arrival": "THE ORACLE'S OWN CARD. You asked where your life is pointing. The Oracle came because it answers one question above all others: the question a person asks when they are ready to change.", "reading": {"whatIs": "You are between chapters, and the space between chapters always feels like being lost. It is closer to a kind of listening. The life you have been living was built by an earlier you, faithfully, and it has carried you as far as it can.", "whatHides": "What hides is a preference you keep filing under impossible. You dismiss it quickly, which is how a person treats something they want very much. Look at what you call unrealistic. Your direction has been waiting there.", "whatComes": "In the coming season you will be offered a smaller version of the thing you actually want. It will be a test of clarity: whether you can say yes to the essence while declining the shrunken form. Telling the difference in the moment is exactly the kind of crossing a human guide can stand beside you for."}, "psychic": "Angela", "img": "assets/advisors/Angela-9978.jpg", "specialty": "Angela, Guide of Crossroads. She reads lives the way cartographers read coastlines.", "whyHer": "You asked where your life is meant to go next. Angela specializes in the unlabeled crossroads, the season where nothing is wrong but nothing is clear. She will help you name the direction you already feel.", "avail": {"mode": "window", "line": "Her next window: tomorrow, 10:00am", "slots": ["Tomorrow 10:00am", "Tomorrow 10:45am", "Sat 9:15am"]}, "starter": "What is my life pointing toward?"}}};
+var TEASE={grief:'Leota has kept this exact threshold for thirty years.',love:'Venus reads the half of the heart you cannot see.',career:'Ursula reads careers at exactly this turning point.',path:'Angela names directions at crossroads like yours.'};
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var state = {theme:null, q:'', slot:null, cap:'20 min'};
 var DEBUG = /(^|[?&])debug=1/.test(location.search);
@@ -320,6 +343,7 @@ function detect(q){
   return 'path';
 }
 document.getElementById('odoor').onclick=function(){show('ask');};
+(function(){var st=document.getElementById('stars');for(var i=0;i<46;i++){var d=document.createElement('i');var sz=(Math.random()*1.7+1).toFixed(1);d.style.width=sz+'px';d.style.height=sz+'px';d.style.left=(Math.random()*100).toFixed(1)+'%';d.style.top=(Math.random()*100).toFixed(1)+'%';d.style.animationDelay=(Math.random()*3.4).toFixed(2)+'s';d.style.animationDuration=(2.6+Math.random()*2.8).toFixed(2)+'s';st.appendChild(d);}})();
 // chips
 (function(){
   var c=document.getElementById('chips');
@@ -479,8 +503,8 @@ function startSummon(){
     later(function(){
       lift.style.opacity=0;
       chosen.classList.add('on');
-    },3300*k);
-    later(arrive,4900*k);
+    },3450*k);
+    later(arrive,5800*k);
   }
   function playFilm(){
     later(function(){sm.classList.add('q');},300);
@@ -526,9 +550,13 @@ document.getElementById('toReading').onclick=function(){
   document.querySelector('#mv1 p').textContent=t.reading.whatIs;
   document.querySelector('#mv2 p').textContent=t.reading.whatHides;
   document.querySelector('#mv3 p').textContent=t.reading.whatComes;
+  document.getElementById('prepsy').classList.remove('show');
+  document.getElementById('preImg').src=t.img;
+  document.getElementById('preLine').textContent=TEASE[state.theme];
   show('read');
-  ['mv1','mv2','mv3'].forEach(function(id,i){setTimeout(function(){document.getElementById(id).classList.add('show');},500+i*1300);});
-  setTimeout(function(){document.getElementById('openline').classList.add('show');},500+3*1300);
+  ['mv1','mv2','mv3'].forEach(function(id,i){setTimeout(function(){document.getElementById(id).classList.add('show');},700+i*1900);});
+  setTimeout(function(){document.getElementById('openline').classList.add('show');},700+3*1900);
+  setTimeout(function(){document.getElementById('prepsy').classList.add('show');},700+3*1900+900);
 };
 document.getElementById('keepBtn').onclick=function(){
   var e=document.getElementById('email');
@@ -539,7 +567,7 @@ document.getElementById('toMatch').onclick=function(){
   var t=SPEC.themes[state.theme];
   document.getElementById('psyImg').src=t.img;
   document.getElementById('psyN').textContent=t.psychic;
-  document.getElementById('psyS').textContent=t.specialty;
+  document.getElementById('psyS').textContent=t.specialty.replace(/^[^,]+,\s*/,'');
   var av=document.getElementById('avail');
   av.className='avail '+t.avail.mode;
   while(av.firstChild)av.removeChild(av.firstChild);
