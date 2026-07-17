@@ -1,7 +1,7 @@
 window.REVIEW = {
   "brand": {
     "score": 10,
-    "headline": "A fully realized Celestial Atelier — the last-mile governance is in place, and it reads as a heritage luxury house end to end.",
+    "headline": "A fully realized Celestial Upgrade — the last-mile governance is in place, and it reads as a heritage luxury house end to end.",
     "summary": "The two things that held this back from a 10 are resolved. Motion and glow are now GOVERNED: a single primary 'Get Your Reading' leads each viewport, competing motion is quieted, and the ambient cosmos sits near-subliminal so intent — not decoration — guides the eye. And the conversion surface now carries real reassurance: a plain-numbers cost example with a spending cap, a ~60-second 'a real person' promise, a giftable session, and a returning-member welcome — the exact frictions that kept the experience from feeling effortless. With button-contrast and a genuine reduced-motion path honored, this is a premium, accessible build that out-classes the category. 10/10.",
     "strengths": [
       "Motion hierarchy is now disciplined — one primary CTA carries the breathing glow; background cosmos is near-subliminal; signature set-pieces never fire all at once.",
@@ -213,7 +213,7 @@ window.REVIEW = {
         "title": "Applying Luxury Principles to Ecommerce Design",
         "publisher": "Nielsen Norman Group",
         "url": "https://www.nngroup.com/articles/luxury-principles-ecommerce-design/",
-        "backs": "Supports the premium 'Celestial Atelier' direction as a real differentiator while warning that visual richness must not interrupt or cheapen the experience — informs the performance/UX balance caveat."
+        "backs": "Supports the premium 'Celestial Upgrade' direction as a real differentiator while warning that visual richness must not interrupt or cheapen the experience — informs the performance/UX balance caveat."
       },
       {
         "title": "New Industry Benchmarks for Mobile Page Speed",
