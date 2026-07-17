@@ -86,13 +86,15 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 @keyframes tremble{0%,100%{transform:none}10%{transform:rotate(.6deg) translateY(-1.5px)}25%{transform:rotate(-.7deg) translateY(1px)}40%{transform:rotate(.8deg) translate(1px,-3px)}55%{transform:rotate(-.6deg) translateY(1px)}70%{transform:rotate(.9deg) translate(-1px,-4px)}85%{transform:rotate(-.4deg)}}
 .vwrap .ef{transition:opacity .35s,filter 1.2s}
 .vwrap .ef.dim{filter:brightness(.62) saturate(.8)}
-.shimmer{position:absolute;inset:-8%;z-index:3;pointer-events:none;opacity:0;transition:opacity 1.4s;mix-blend-mode:screen}
+.shimmer{position:absolute;inset:-8%;z-index:3;pointer-events:none;opacity:0;transition:opacity 1s;mix-blend-mode:screen}
 .shimmer.on{opacity:1}
-.shimmer::before{content:"";position:absolute;width:75%;height:52%;left:-12%;top:-8%;background:radial-gradient(ellipse at center,rgba(255,214,140,.22),rgba(255,190,110,.08) 45%,transparent 70%);animation:drift1 7.5s ease-in-out infinite alternate}
-.shimmer::after{content:"";position:absolute;width:60%;height:42%;right:-10%;bottom:2%;background:radial-gradient(ellipse at center,rgba(196,170,255,.13),transparent 65%);animation:drift2 9.5s ease-in-out infinite alternate}
-@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(30%,16%) scale(1.18)}}
-@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-24%,-14%)}}
-@media(prefers-reduced-motion:reduce){.shimmer::before,.shimmer::after{animation:none}}
+.shimmer::before{content:"";position:absolute;width:95%;height:70%;left:-18%;top:-14%;background:radial-gradient(ellipse at center,rgba(255,216,146,.42),rgba(255,190,110,.16) 42%,transparent 68%);animation:drift1 6.5s ease-in-out infinite alternate}
+.shimmer::after{content:"";position:absolute;width:70%;height:52%;right:-14%;bottom:-2%;background:radial-gradient(ellipse at center,rgba(196,170,255,.24),transparent 62%);animation:drift2 8.5s ease-in-out infinite alternate}
+.shimmer .beam{position:absolute;top:-12%;bottom:-12%;left:0;width:60%;background:linear-gradient(105deg,transparent 18%,rgba(255,224,170,.14) 42%,rgba(255,228,178,.30) 50%,rgba(255,224,170,.14) 58%,transparent 82%);transform:translateX(-140%);animation:beam 5.4s ease-in-out infinite}
+@keyframes beam{0%{transform:translateX(-140%)}62%{transform:translateX(250%)}100%{transform:translateX(250%)}}
+@keyframes drift1{0%{transform:translate(0,0) scale(1);opacity:.85}45%{opacity:1}100%{transform:translate(34%,20%) scale(1.22);opacity:.9}}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-28%,-16%)}}
+@media(prefers-reduced-motion:reduce){.shimmer::before,.shimmer::after,.shimmer .beam{animation:none}}
 .cglow{position:absolute;width:0;height:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .8s}
 .cglow.on{opacity:1}
 .cglow::before{content:"";position:absolute;left:50%;top:50%;width:250px;height:250px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(240,220,170,.55),rgba(232,207,154,.22) 40%,rgba(232,207,154,.07) 58%,transparent 70%);animation:glowb 1.6s ease-in-out infinite}
@@ -106,9 +108,12 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 .chosen .rings{position:absolute;inset:-42%;border-radius:50%;pointer-events:none;opacity:0}
 .chosen.on .rings{opacity:1;background:radial-gradient(circle,transparent 40%,rgba(232,207,154,.14) 46%,transparent 54%,rgba(232,207,154,.08) 62%,transparent 70%);animation:ringbloom 2.4s ease-out infinite}
 @keyframes ringbloom{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.25);opacity:0}}
-.sline{position:absolute;bottom:56px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:14.5px;font-style:italic;color:var(--gold-bright);opacity:0;transition:opacity .8s;z-index:8;padding:0 26px}
+.sline{position:absolute;top:46%;left:0;right:0;transform:translateY(-50%);text-align:center;font-family:var(--serif);font-size:21px;font-style:italic;line-height:1.5;color:var(--gold-bright);opacity:0;transition:opacity .5s;z-index:8;padding:0 34px;pointer-events:none}
 .sline.show{opacity:1}
-.sline::after{content:"";display:block;width:46px;height:1px;background:var(--gold);margin:9px auto 0;opacity:.5}
+.sline.low{top:auto;bottom:7%;transform:none;font-size:17px}
+.sline .gw{display:inline-block;opacity:0;filter:blur(8px);animation:glowon .95s ease forwards;white-space:pre}
+@keyframes glowon{0%{opacity:0;filter:blur(9px);text-shadow:0 0 28px rgba(232,207,154,1),0 0 60px rgba(232,207,154,.6),0 2px 18px rgba(5,3,16,.95)}55%{opacity:1;filter:blur(1.5px);text-shadow:0 0 18px rgba(232,207,154,.8),0 2px 16px rgba(5,3,16,.95)}100%{opacity:1;filter:blur(0);text-shadow:0 0 10px rgba(232,207,154,.45),0 2px 14px rgba(5,3,16,.9)}}
+@media(prefers-reduced-motion:reduce){.sline .gw{animation-duration:.01s}}
 .skip{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:10;background:transparent;border:0;color:var(--muted);font-family:var(--sans);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .8s}
 .skip.show{opacity:.55}
 .skip:hover{opacity:1}
@@ -216,7 +221,7 @@ h1 em{font-style:italic;color:var(--gold-bright)}
     <div class="vzone"><div class="vwrap" id="vwrap">
       <video id="film" muted playsinline preload="auto" poster="assets/oracle/poster.jpg" src="assets/oracle/summon.mp4"></video>
       <img class="ef" id="eframe" src="assets/oracle/plate.jpg" alt=""/>
-      <div class="shimmer" id="shimmer"></div>
+      <div class="shimmer" id="shimmer"><i class="beam"></i></div>
       <div class="cglow" id="cglow"></div>
       <div class="liftw" id="liftw"><img class="lifts" id="lifts" src="assets/oracle/card-back.png" alt=""/></div>
       <div class="chosen" id="chosen"><span class="rings"></span><img id="chosenFace" src="" alt=""/></div>
@@ -391,10 +396,10 @@ function freezeStage(stage,idx){
     lift.classList.add('on','float');eframe.classList.add('dim');
     var dx=VW/2-c.cx*VW, dy=VH*.46-c.cy*VH;
     lift.style.transform='translate('+dx+'px,'+dy+'px) rotate(0deg) scale(2.1)';
-    document.getElementById('sline').textContent='It has chosen you.';document.getElementById('sline').classList.add('show');
+    var sl=document.getElementById('sline');sl.textContent='It has chosen you.';sl.classList.add('low','show');
   }
   if(stage==='reveal'){eframe.classList.add('dim');chosen.classList.add('on');
-    document.getElementById('sline').textContent='It has chosen you.';document.getElementById('sline').classList.add('show');}
+    var sl2=document.getElementById('sline');sl2.textContent='It has chosen you.';sl2.classList.add('low','show');}
 }
 var LINES=['The Oracle has heard you.','Five cards. One is turning toward your question.','Be still.'];
 function startSummon(){
@@ -415,13 +420,26 @@ function startSummon(){
   document.getElementById('chosenFace').src=t.card;
   show('summon');
   layoutSummon();
+  document.getElementById('shimmer').classList.add('on');
   if(DEBUG){drawDebug();return;}
   if(FREEZE){freezeStage(FREEZE,FCARD);return;}
   clearTimers();
   var slow=(state.theme==='grief');
   film.playbackRate=slow?0.88:1;
   var done=false;
-  function say(txt){line.classList.remove('show');setTimeout(function(){line.textContent=txt;line.classList.add('show');},420);}
+  function say(txt,low){
+    line.classList.remove('show');
+    setTimeout(function(){
+      while(line.firstChild)line.removeChild(line.firstChild);
+      line.classList.toggle('low',!!low);
+      txt.split(' ').forEach(function(w,i){
+        var sp=document.createElement('span');sp.className='gw';sp.textContent=w+' ';
+        sp.style.animationDelay=(i*120)+'ms';
+        line.appendChild(sp);
+      });
+      line.classList.add('show');
+    },360);
+  }
   function takeover(fast){
     if(done)return;done=true;
     clearTimers();
@@ -452,7 +470,7 @@ function startSummon(){
       lift.style.transform='translate('+dx+'px,'+dy+'px) rotate(0deg) scale(2.1)';
       eframe.classList.add('dim');
       glow.classList.remove('on');
-      say('It has chosen you.');
+      say('It has chosen you.',true);
     },1650*k);
     // the reveal
     later(function(){
@@ -468,7 +486,6 @@ function startSummon(){
     later(function(){sm.classList.add('q');},300);
     if(reduced){ eframe.classList.add('show'); later(function(){takeover(true);},600); return; }
     if(film.error){ eframe.classList.add('show'); later(function(){takeover(false);},900); return; }
-    shimmer.classList.add('on');
     var played=film.play();
     if(played&&played.catch){played.catch(function(){eframe.classList.add('show');takeover(false);});}
     later(function(){say(lines[0]);},1100);
