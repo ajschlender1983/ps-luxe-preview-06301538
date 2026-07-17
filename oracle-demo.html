@@ -86,6 +86,13 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 @keyframes tremble{0%,100%{transform:none}10%{transform:rotate(.6deg) translateY(-1.5px)}25%{transform:rotate(-.7deg) translateY(1px)}40%{transform:rotate(.8deg) translate(1px,-3px)}55%{transform:rotate(-.6deg) translateY(1px)}70%{transform:rotate(.9deg) translate(-1px,-4px)}85%{transform:rotate(-.4deg)}}
 .vwrap .ef{transition:opacity .35s,filter 1.2s}
 .vwrap .ef.dim{filter:brightness(.62) saturate(.8)}
+.shimmer{position:absolute;inset:-8%;z-index:3;pointer-events:none;opacity:0;transition:opacity 1.4s;mix-blend-mode:screen}
+.shimmer.on{opacity:1}
+.shimmer::before{content:"";position:absolute;width:75%;height:52%;left:-12%;top:-8%;background:radial-gradient(ellipse at center,rgba(255,214,140,.22),rgba(255,190,110,.08) 45%,transparent 70%);animation:drift1 7.5s ease-in-out infinite alternate}
+.shimmer::after{content:"";position:absolute;width:60%;height:42%;right:-10%;bottom:2%;background:radial-gradient(ellipse at center,rgba(196,170,255,.13),transparent 65%);animation:drift2 9.5s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(30%,16%) scale(1.18)}}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-24%,-14%)}}
+@media(prefers-reduced-motion:reduce){.shimmer::before,.shimmer::after{animation:none}}
 .cglow{position:absolute;width:0;height:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .8s}
 .cglow.on{opacity:1}
 .cglow::before{content:"";position:absolute;left:50%;top:50%;width:250px;height:250px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(240,220,170,.55),rgba(232,207,154,.22) 40%,rgba(232,207,154,.07) 58%,transparent 70%);animation:glowb 1.6s ease-in-out infinite}
@@ -209,6 +216,7 @@ h1 em{font-style:italic;color:var(--gold-bright)}
     <div class="vzone"><div class="vwrap" id="vwrap">
       <video id="film" muted playsinline preload="auto" poster="assets/oracle/poster.jpg" src="assets/oracle/summon.mp4"></video>
       <img class="ef" id="eframe" src="assets/oracle/plate.jpg" alt=""/>
+      <div class="shimmer" id="shimmer"></div>
       <div class="cglow" id="cglow"></div>
       <div class="liftw" id="liftw"><img class="lifts" id="lifts" src="assets/oracle/card-back.png" alt=""/></div>
       <div class="chosen" id="chosen"><span class="rings"></span><img id="chosenFace" src="" alt=""/></div>
@@ -333,7 +341,7 @@ var CARDS=[
   {cx:.500,cy:.503,rot:0},
   {cx:.653,cy:.512,rot:7},
   {cx:.818,cy:.534,rot:13.5}];
-var CW=.190,CH=.300;
+var CW=.175,CH=.268;
 var CARD_INDEX={'The High Priestess':0,'The Moon':1,'The Lovers':2,'The Star':3,'The Oracle':4};
 var timers=[];
 function later(fn,ms){timers.push(setTimeout(fn,ms));}
@@ -376,7 +384,8 @@ function freezeStage(stage,idx){
   lift.style.width=w+'px';lift.style.height=h+'px';
   lift.style.left=(c.cx*VW-w/2)+'px';lift.style.top=(c.cy*VH-h/2)+'px';
   lift.style.transform='rotate('+c.rot+'deg)';
-  if(stage==='glow'){glow.classList.add('on');}
+  if(stage==='shimmer'){document.getElementById('shimmer').classList.add('on');}
+  if(stage==='glow'){glow.classList.add('on');document.getElementById('shimmer').classList.add('on');}
   if(stage==='tremble'){glow.classList.add('on');lift.classList.add('on');}
   if(stage==='float'){
     lift.classList.add('on','float');eframe.classList.add('dim');
@@ -397,10 +406,10 @@ function startSummon(){
   document.getElementById('qtop').textContent='“'+state.q+'”';
   var film=document.getElementById('film'), eframe=document.getElementById('eframe'),
       lift=document.getElementById('liftw'), glow=document.getElementById('cglow'),
-      chosen=document.getElementById('chosen'), bloom=document.getElementById('bloom'),
+      chosen=document.getElementById('chosen'), bloom=document.getElementById('bloom'), shimmer=document.getElementById('shimmer'),
       line=document.getElementById('sline'), skip=document.getElementById('skip');
   // reset
-  eframe.classList.remove('show','dim');lift.className='liftw';lift.style.cssText='';
+  eframe.classList.remove('show','dim');shimmer.classList.remove('on');lift.className='liftw';lift.style.cssText='';
   glow.className='cglow';chosen.className='chosen';bloom.className='bloom';
   line.classList.remove('show');skip.classList.remove('show');
   document.getElementById('chosenFace').src=t.card;
@@ -419,13 +428,14 @@ function startSummon(){
     skip.classList.remove('show');
     try{film.pause();}catch(e){}
     eframe.classList.add('show');
+    shimmer.classList.remove('on');
     line.classList.remove('show');
     var idx=CARD_INDEX[t.oracle];
     var c=CARDS[idx];
     var k=fast?0.45:1;
     // glow beneath the chosen card
     glow.style.left=(c.cx*VW)+'px';glow.style.top=(c.cy*VH)+'px';
-    later(function(){glow.classList.add('on');},400*k);
+    later(function(){glow.classList.add('on');},250*k);
     // the card stirs
     later(function(){
       var w=CW*VW,h=CH*VH;
@@ -433,7 +443,7 @@ function startSummon(){
       lift.style.left=(c.cx*VW-w/2)+'px';lift.style.top=(c.cy*VH-h/2)+'px';
       lift.style.transform='rotate('+c.rot+'deg)';
       lift.classList.add('on','tremble');
-    },900*k);
+    },600*k);
     // it rises, the room dims
     later(function(){
       lift.classList.remove('tremble');
@@ -443,21 +453,22 @@ function startSummon(){
       eframe.classList.add('dim');
       glow.classList.remove('on');
       say('It has chosen you.');
-    },2150*k);
+    },1650*k);
     // the reveal
     later(function(){
       bloom.classList.add('flash');
-    },3650*k);
+    },3050*k);
     later(function(){
       lift.style.opacity=0;
       chosen.classList.add('on');
-    },3900*k);
-    later(arrive,5600*k);
+    },3300*k);
+    later(arrive,4900*k);
   }
   function playFilm(){
     later(function(){sm.classList.add('q');},300);
     if(reduced){ eframe.classList.add('show'); later(function(){takeover(true);},600); return; }
     if(film.error){ eframe.classList.add('show'); later(function(){takeover(false);},900); return; }
+    shimmer.classList.add('on');
     var played=film.play();
     if(played&&played.catch){played.catch(function(){eframe.classList.add('show');takeover(false);});}
     later(function(){say(lines[0]);},1100);
@@ -465,6 +476,7 @@ function startSummon(){
     later(function(){say(lines[1]);},4300);
     later(function(){say(lines[2]);},6500);
     film.onended=function(){takeover(false);};
+    film.ontimeupdate=function(){if(film.duration&&isFinite(film.duration)&&film.currentTime>film.duration-0.55){takeover(false);}};
     film.onerror=function(){eframe.classList.add('show');takeover(false);};
     // guard: if the film stalls, take over anyway
     later(function(){takeover(false);},(film.duration&&isFinite(film.duration)?film.duration*1000/film.playbackRate:9000)+3500);
