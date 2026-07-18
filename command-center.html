@@ -918,6 +918,7 @@
   .film-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
   .film-tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
   .film-t{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ivory);line-height:1.12}
+  .film-t .film-hi{font-style:italic;color:var(--gold-bright)}
   .film-d{font-size:13px;color:var(--muted);line-height:1.55;flex:1}
   .film-actions{display:flex;gap:9px;margin-top:8px}
   .film-btn{font:inherit;font-size:12px;letter-spacing:.03em;cursor:pointer;border-radius:999px;padding:8px 15px;border:1px solid var(--faint);background:transparent;color:var(--ivory)}
@@ -1470,7 +1471,7 @@
     "STYLE FRAMES / FIRST FRAMES: before = assets/story/orig-*.jpg; after = assets/story/re-*.jpg and assets/heroes/*.jpg; agents = assets/personas/*.jpg; deck = assets/tarot/*.jpg and assets/deck/*.jpg. Trailer grade, rising score, confident cuts."
   ].join("\n");
   var FILMS=[
-    {tag:'Brand film',t:'The house of source',dur:'60-90s',poster:'assets/films/brand-poster.jpg',
+    {tag:'Brand film',t:'The house of source',hi:'source',dur:'60-90s',poster:'assets/films/brand-poster.jpg',
      d:'An atmospheric, wordless brand film - from a single point of source-light, guidance emerges. A perfume film, not a sales ad.',prompt:BRAND_PROMPT},
     {tag:'The ad',t:'I’m here. I see.',dur:'~18s · vertical 9:16',poster:'assets/films/ad-poster.jpg',video:'assets/films/ad.mp4',
      d:'A compassion-beat spot: a chorus of real readers - present, seeing, then the pause, the touched card, and a warm “yes.” Told in the tarot-illustration style, then into their real world.',prompt:AD_PROMPT},
@@ -1631,7 +1632,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     card.appendChild(pos);
     var body=E('div','film-body');
     body.appendChild(T('span','film-tag',f.tag));
-    body.appendChild(T('div','film-t',f.t));
+    (function(){var d=E('div','film-t');var x=f.hi?f.t.indexOf(f.hi):-1;if(x>-1){d.appendChild(document.createTextNode(f.t.slice(0,x)));var em=E('span','film-hi');em.textContent=f.hi;d.appendChild(em);d.appendChild(document.createTextNode(f.t.slice(x+f.hi.length)));}else{d.textContent=f.t;}body.appendChild(d);})();
     body.appendChild(T('div','film-d',f.d));
     var acts=E('div','film-actions');
     var copy=T('button','film-btn primary','Copy prompt');copy.type='button';
