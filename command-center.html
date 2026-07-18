@@ -1010,13 +1010,22 @@
   .th-h em{font-style:italic;color:var(--gold-bright)}
   .th-lede{color:var(--muted);font-size:clamp(15px,1.6vw,18.5px);line-height:1.6;max-width:60ch;margin:20px 0 0}
   .th-lede b{color:var(--ivory);font-weight:500}
-  .th-grid{display:grid;grid-template-columns:repeat(3,1fr);margin:46px 0 0;border-top:1px solid var(--hair)}
+  .th-grid{display:grid;grid-template-columns:repeat(2,1fr);margin:40px 0 0;border-top:1px solid var(--hair)}
   .th-col{padding:24px 28px 6px 0}
   .th-col + .th-col{padding-left:28px;border-left:1px solid var(--hair)}
   .th-k{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
   .th-col p{color:var(--muted);font-size:14.5px;line-height:1.62;margin:0}
   .th-col p b{color:var(--ivory);font-weight:500}
   .th-col p .fig{color:var(--gold-bright);font-weight:500}
+  .th-snap{display:grid;grid-template-columns:.82fr 1.18fr;gap:26px;align-items:center;margin:30px 0 4px;padding:22px 24px;border:1px solid var(--hair);border-radius:16px;background:linear-gradient(150deg,rgba(233,207,154,.05),rgba(233,207,154,.012))}
+  .th-stats{display:flex;flex-direction:column;gap:15px}
+  .ts{display:flex;flex-direction:column;line-height:1.12}
+  .ts b{font-family:var(--serif);font-size:25px;font-weight:600;color:var(--gold-bright)}
+  .ts span{font-size:12px;color:var(--muted);margin-top:3px}
+  .th-rivals{border-left:1px solid var(--hair);padding-left:26px}
+  .th-rivals .names{color:var(--ivory);font-weight:500}
+  .th-rivals p{color:var(--muted);font-size:14px;line-height:1.6;margin-top:2px}
+  @media(max-width:680px){.th-snap{grid-template-columns:1fr;gap:18px}.th-rivals{border-left:0;border-top:1px solid var(--hair);padding-left:0;padding-top:16px}.th-stats{flex-direction:row;flex-wrap:wrap;gap:18px 26px}}
   .th-offer{margin:44px 0 0;padding-left:20px;border-left:2px solid var(--gold);font-family:var(--serif);font-size:clamp(18px,2.2vw,25px);font-style:italic;line-height:1.42;color:var(--ivory);max-width:54ch}
   .th-cta{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:13px 24px;text-decoration:none;transition:filter .2s}
   .th-cta:hover{filter:brightness(1.07)}
@@ -1074,14 +1083,23 @@
     </div>
   </div>
   <span class="th-eyebrow"><i></i>An AI-native creative &amp; go-to-market studio</span>
-  <h1 class="th-h">We rebuild near-category leaders around <em>brand, experience, and an agentic go-to-market.</em></h1>
-  <p class="th-lede">For a decade we have worked inside wellness tech and other fast-growing categories, and we run the work with agentic, AI-native systems, the same ones we install for the clients we take on.</p>
-  <div class="th-grid">
-    <div class="th-col"><span class="th-k">How we choose</span><p>We scan high-margin, high-growth categories, then look for a near-leader where three levers compound: <b>brand positioning</b>, <b>user experience</b>, and an <b>agent-enabled go-to-market</b>. That is where our work moves the numbers most.</p></div>
-    <div class="th-col"><span class="th-k">What we found</span><p>Psychic services cleared both filters: a <span class="fig">$2.3B</span> U.S. category where love and relationships drive <span class="fig">more than half</span> of every reading. Psychic Source is a 35-year near-leader, trusted and profitable, and visibly under-designed for what it could be.</p></div>
-    <div class="th-col"><span class="th-k">Why Psychic Source</span><p>An incumbent this established with an experience this dated is exactly our leverage. Reposition the brand, sharpen the funnel, and wire an agentic GTM that compounds. The upside is large, and the downside is bounded by everything they have already built.</p></div>
+  <h1 class="th-h">A <em>$2.3B category</em> that still looks like a 1-800 hotline.</h1>
+  <p class="th-lede">For a decade we have rebuilt near-leaders in wellness tech and other fast-growing categories, on the same agentic systems we install for clients. We went looking for the one brand in this space with the most to gain. It is yours.</p>
+  <div class="th-snap">
+    <div class="th-stats">
+      <div class="ts"><b>$2.3B</b><span>U.S. category, steady demand</span></div>
+      <div class="ts"><b>50%+</b><span>of readings are love &amp; relationships</span></div>
+      <div class="ts"><b>Late-night, mobile</b><span>high intent, willing to pay</span></div>
+    </div>
+    <div class="th-rivals"><span class="th-k">Who you are up against</span>
+      <p><span class="names">California Psychics, Keen, Kasamba, Purple Garden, Mysticsense.</span> Different logos, one look: transactional directories that feel like a discount hotline. No one owns premium. No one owns trust as a brand.</p>
+    </div>
   </div>
-  <p class="th-offer">So we built the proof: a full PsychicSource.com rebrand and an agentic go-to-market plan, the opportunity we see and exactly how we would take it.</p>
+  <div class="th-grid">
+    <div class="th-col"><span class="th-k">The opening</span><p>The audience is emotional, loyal, and spends, and the category treats them like a phone bill. Whoever looks like a heritage brand takes the premium tier, and it is unclaimed.</p></div>
+    <div class="th-col"><span class="th-k">Why Psychic Source</span><p>35 years, 10M+ readings, trust already banked, and a site that hides all of it. The most brand equity in the category, the least premium expression. That gap is the leverage.</p></div>
+  </div>
+  <p class="th-offer">So we built the proof: a full PsychicSource.com rebrand and an agentic go-to-market plan.</p>
   <div><a class="th-cta" href="#rebrand">See the rebrand and the plan &darr;</a></div>
 </div></section>
 <header class="top" id="rebrand"><span class="star"></span><div class="wrap">
