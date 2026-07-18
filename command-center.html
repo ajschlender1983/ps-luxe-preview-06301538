@@ -1055,6 +1055,30 @@
   .ctbl .rd{color:var(--muted);font-size:12.5px}
   .th-take{margin:16px 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(16px,2vw,20px);color:var(--gold-bright)}
   @media(max-width:680px){.ctbl .rd{display:none}.ctbl{min-width:380px}}
+    .th-rlogos{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 12px}
+  .rl{font-size:12px;letter-spacing:.02em;color:rgba(247,242,232,.55);border:1px solid rgba(233,207,154,.18);border-radius:8px;padding:7px 12px;background:rgba(247,242,232,.02);font-weight:500;white-space:nowrap}
+  .th-brand{margin:26px 0 0;border:1px solid var(--hair);border-radius:16px;padding:20px 22px;background:rgba(247,242,232,.02)}
+  .th-brand>.th-k{margin-bottom:16px}
+  .tb-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
+  .tb-side{display:flex;flex-direction:column;gap:12px}
+  .tb-cap{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .tb-tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tb-tag.gold{color:var(--gold-bright)}
+  .tb-reads{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ivory)}
+  .tb-logo{border-radius:12px;height:104px;display:flex;align-items:center;justify-content:center;gap:13px;overflow:hidden;border:1px solid rgba(233,207,154,.14)}
+  .tb-logo img{max-width:80%;max-height:60%;display:block}
+  .tb-logo.violet{background:radial-gradient(130% 140% at 30% 0,#1c1442,#0d0a1e)}
+  .tb-mark{width:46px;height:46px;flex:none}
+  .tb-wm-name{font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:.02em;color:var(--ivory);display:block;line-height:1}
+  .tb-wm-sub{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-top:5px}
+  .tb-basics{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+  .tb-basics li{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12.5px;color:var(--muted);border-bottom:1px solid rgba(233,207,154,.08);padding-bottom:8px}
+  .tb-basics li:last-child{border-bottom:0;padding-bottom:0}
+  .tb-basics li b{color:var(--ivory);font-weight:500;text-align:right}
+  .tb-basics .sw{display:inline-flex;gap:5px}
+  .tb-basics .sw i{width:15px;height:15px;border-radius:4px;border:1px solid rgba(255,255,255,.14)}
+  .tb-arrow{align-self:center;color:var(--gold);font-size:22px}
+  @media(max-width:680px){.tb-grid{grid-template-columns:1fr;gap:14px}.tb-arrow{transform:rotate(90deg)}}
   .th-offer{margin:36px 0 0;padding-left:20px;border-left:2px solid var(--gold);font-family:var(--serif);font-size:clamp(18px,2.2vw,25px);font-style:italic;line-height:1.42;color:var(--ivory);max-width:54ch}
   .th-cta{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:13px 24px;text-decoration:none;transition:filter .2s}
   .th-cta:hover{filter:brightness(1.07)}
@@ -1121,7 +1145,8 @@
       <div class="ts"><b>10M+ readings</b><span>35 years, ~1M customers &middot; <span class="src">Psychic Source</span></span></div>
     </div>
     <div class="th-rivals"><span class="th-k">Who you are up against</span>
-      <p><span class="names">California Psychics, Keen, Kasamba, Mysticsense, Oranum.</span> Different logos, one look: transactional directories that feel like a discount hotline. No one owns premium. No one owns trust as a brand. <span class="src" style="color:rgba(201,168,106,.72)">(nearest peers &middot; Similarweb)</span></p>
+      <div class="th-rlogos"><span class="rl">California Psychics</span><span class="rl">Keen</span><span class="rl">Kasamba</span><span class="rl">Mysticsense</span><span class="rl">Oranum</span></div>
+      <p>Different logos, one look: transactional directories that feel like a discount hotline. No one owns premium. No one owns trust as a brand. <span class="src" style="color:rgba(201,168,106,.72)">(nearest peers &middot; Similarweb)</span></p>
     </div>
   </div>
   <div class="th-src"><b>Sources</b><a href="https://www.ibisworld.com/united-states/market-size/psychic-services/4413/" target="_blank" rel="noopener">IBISWorld &mdash; Psychic Services in the US</a> &nbsp;&middot;&nbsp; <a href="https://www.similarweb.com/website/kasamba.com/competitors/" target="_blank" rel="noopener">Similarweb &mdash; category leaders</a> &nbsp;&middot;&nbsp; <a href="https://www.psychicsource.com/about-us" target="_blank" rel="noopener">Psychic Source &mdash; About</a></div>
@@ -1141,6 +1166,30 @@
     <div class="th-col"><span class="th-k">Why Psychic Source</span><p>35 years, 10M+ readings, nearly 1M customers, and only 2% of advisors accepted. Trust already banked, and a site that hides all of it.</p></div>
   </div>
   <p class="th-pull">The best brand equity in the category. The <em>worst expression</em> of it.<span class="u">That gap is the entire opportunity, and it is the one thing money cannot buy back once a challenger takes it.</span></p>
+  <div class="th-brand">
+    <span class="th-k">The brand, before and after</span>
+    <div class="tb-grid">
+      <div class="tb-side">
+        <div class="tb-cap"><span class="tb-tag">Today</span><span class="tb-reads">1-800 heritage</span></div>
+        <div class="tb-logo" style="background:#760303"><img src="assets/logos/ps-old.png" alt="Psychic Source current logo"/></div>
+        <ul class="tb-basics">
+          <li><span>Palette</span><span class="sw"><i style="background:#7A0A10"></i><i style="background:#B4141C"></i><i style="background:#F2F2F2"></i></span></li>
+          <li><span>Type</span><b>Serif caps</b></li>
+          <li><span>Feel</span><b>Dated, transactional</b></li>
+        </ul>
+      </div>
+      <div class="tb-arrow" aria-hidden="true">&rarr;</div>
+      <div class="tb-side">
+        <div class="tb-cap"><span class="tb-tag gold">The Celestial Upgrade</span><span class="tb-reads">Heritage luxury</span></div>
+        <div class="tb-logo violet"><svg class="tb-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="19" stroke="#C9A86A" stroke-width=".6" opacity=".5"/><circle cx="20" cy="20" r="13" stroke="#C9A86A" stroke-width=".5" opacity=".28"/><path d="M20 1.5 L21.5 18.5 L38.5 20 L21.5 21.5 L20 38.5 L18.5 21.5 L1.5 20 L18.5 18.5 Z" fill="#E8CF9A"/><path d="M20 7 L20.8 19.2 L33 20 L20.8 20.8 L20 33 L19.2 20.8 L7 20 L19.2 19.2 Z" fill="#C9A86A"/></svg><div><span class="tb-wm-name">Psychic Source</span><span class="tb-wm-sub">Insight you can feel</span></div></div>
+        <ul class="tb-basics">
+          <li><span>Palette</span><span class="sw"><i style="background:#140F38"></i><i style="background:#C9A86A"></i><i style="background:#F7F2E8"></i></span></li>
+          <li><span>Type</span><b>Cormorant &middot; Jost</b></li>
+          <li><span>Feel</span><b>Premium, trusted, calm</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <p class="th-offer">So we built the proof: a full PsychicSource.com rebrand and an agentic go-to-market plan.</p>
   <div><a class="th-cta" href="#rebrand">See the rebrand and the plan &darr;</a></div>
 </div></section>
