@@ -1034,6 +1034,27 @@
   .th-pull{margin:40px 0 0;font-family:var(--serif);font-size:clamp(26px,4vw,44px);font-weight:600;line-height:1.12;letter-spacing:-.01em;color:var(--ivory);max-width:20ch;text-wrap:balance}
   .th-pull em{font-style:italic;color:var(--gold-bright)}
   .th-pull .u{color:var(--muted);font-size:clamp(14px,1.5vw,17px);font-weight:400;display:block;margin-top:16px;font-family:var(--sans);max-width:44ch}
+    .th-comp{margin:22px 0 0;border:1px solid var(--hair);border-radius:14px;background:rgba(247,242,232,.02);overflow:hidden}
+  .th-comp>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);font-weight:600}
+  .th-comp>summary::-webkit-details-marker{display:none}
+  .th-comp>summary .chev{margin-left:auto;transition:transform .25s;color:var(--gold);font-size:13px}
+  .th-comp[open]>summary .chev{transform:rotate(180deg)}
+  .th-comp .cbody{padding:0 20px 20px}
+  .th-comp .cnote{font-size:12.5px;color:var(--muted);margin:0 0 14px;line-height:1.55;max-width:70ch}
+  .ctwrap{overflow-x:auto}
+  .ctbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
+  .ctbl th{text-align:left;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600;padding:0 14px 10px 0;border-bottom:1px solid var(--hair);white-space:nowrap}
+  .ctbl td{padding:13px 14px 13px 0;border-bottom:1px solid rgba(233,207,154,.1);color:var(--ivory);vertical-align:middle}
+  .ctbl tr.you td{background:linear-gradient(90deg,rgba(232,207,154,.12),rgba(232,207,154,.015))}
+  .ctbl .bn{font-family:var(--serif);font-size:16.5px;white-space:nowrap}
+  .ctbl .you-badge{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--gold-bright);border-radius:5px;padding:2px 7px;margin-left:9px;font-weight:700}
+  .rate{display:inline-flex;gap:4px}
+  .rate i{width:9px;height:9px;border-radius:50%;background:rgba(247,242,232,.15)}
+  .rate i.on{background:var(--gold-bright)}
+  .rate.weak i.on{background:#cf8f97}
+  .ctbl .rd{color:var(--muted);font-size:12.5px}
+  .th-take{margin:16px 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(16px,2vw,20px);color:var(--gold-bright)}
+  @media(max-width:680px){.ctbl .rd{display:none}.ctbl{min-width:380px}}
   .th-offer{margin:36px 0 0;padding-left:20px;border-left:2px solid var(--gold);font-family:var(--serif);font-size:clamp(18px,2.2vw,25px);font-style:italic;line-height:1.42;color:var(--ivory);max-width:54ch}
   .th-cta{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:13px 24px;text-decoration:none;transition:filter .2s}
   .th-cta:hover{filter:brightness(1.07)}
@@ -1104,6 +1125,17 @@
     </div>
   </div>
   <div class="th-src"><b>Sources</b><a href="https://www.ibisworld.com/united-states/market-size/psychic-services/4413/" target="_blank" rel="noopener">IBISWorld &mdash; Psychic Services in the US</a> &nbsp;&middot;&nbsp; <a href="https://www.similarweb.com/website/kasamba.com/competitors/" target="_blank" rel="noopener">Similarweb &mdash; category leaders</a> &nbsp;&middot;&nbsp; <a href="https://www.psychicsource.com/about-us" target="_blank" rel="noopener">Psychic Source &mdash; About</a></div>
+    <details class="th-comp">
+    <summary>The field, scored &mdash; brand equity vs. brand expression <span class="chev">&#9662;</span></summary>
+    <div class="cbody">
+      <p class="cnote">Our read of the category. <b style="color:var(--ivory)">Brand equity</b> is trust, history, and scale. <b style="color:var(--ivory)">Brand expression</b> is how premium and modern the experience actually feels. Scored one to five.</p>
+      <div class="ctwrap"><table class="ctbl">
+        <thead><tr><th>Brand</th><th>Brand equity</th><th>Brand expression</th><th class="rd">Our read</th></tr></thead>
+        <tbody><tr class="you"><td><span class="bn">Psychic Source</span><span class="you-badge">You</span></td><td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td><span class="rate weak"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td class="rd">The trust leader, hidden in a dated storefront.</td></tr><tr><td><span class="bn">California Psychics</span></td><td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td><span class="rate weak"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td class="rd">Known and vetted, but generic.</td></tr><tr><td><span class="bn">Keen</span></td><td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td><span class="rate weak"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td class="rd">A huge marketplace that feels like one.</td></tr><tr><td><span class="bn">Oranum</span></td><td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td><span class="rate weak"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td class="rd">Live-video niche, thin brand.</td></tr><tr><td><span class="bn">Kasamba</span></td><td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td><span class="rate weak"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td class="rd">Chat-first and cluttered.</td></tr><tr><td><span class="bn">Mysticsense</span></td><td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td><span class="rate weak"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td class="rd">Newer and cleaner, no history.</td></tr></tbody>
+      </table></div>
+      <p class="th-take">Psychic Source ranks highest on equity, lowest on expression. That crossing is the opening.</p>
+    </div>
+  </details>
   <div class="th-grid">
     <div class="th-col"><span class="th-k">The opening</span><p>The audience is emotional, loyal, and spends, and the category treats them like a phone bill. Whoever looks like a heritage brand takes the premium tier, and it is unclaimed.</p></div>
     <div class="th-col"><span class="th-k">Why Psychic Source</span><p>35 years, 10M+ readings, nearly 1M customers, and only 2% of advisors accepted. Trust already banked, and a site that hides all of it.</p></div>
