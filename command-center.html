@@ -1244,7 +1244,7 @@
 
   <div class="collapse-card" id="gtmCard">
     <button class="cc-head" type="button" aria-expanded="false" aria-controls="gtmBodyWrap" data-collapse>
-            <div class="cc-tease"><span class="ct-i"><b>$1.1M+</b><em>a year at target</em></span><span class="ct-i"><b>3:1</b><em>LTV:CAC by Day 90</em></span><span class="ct-i"><b>$5,000</b><em>caps your risk</em></span></div>
+            <div class="cc-tease"><span class="ct-i"><b>$1.1M+</b><em>&#8776;4,000 new &#215; $275 LTV</em></span><span class="ct-i"><b>3:1</b><em>LTV:CAC by Day 90</em></span><span class="ct-i"><b>$5,000</b><em>caps your risk</em></span></div>
 <div class="cc-avatars">
         <img src="assets/personas/grace.jpg" alt="" loading="lazy" /><img src="assets/personas/hannah.jpg" alt="" loading="lazy" /><img src="assets/personas/dana.jpg" alt="" loading="lazy" /><img src="assets/personas/wendy.jpg" alt="" loading="lazy" /><img src="assets/personas/sofia.jpg" alt="" loading="lazy" /><img src="assets/personas/carla.jpg" alt="" loading="lazy" /><img src="assets/personas/sam.jpg" alt="" loading="lazy" />
       </div>
@@ -1294,6 +1294,11 @@
         </div>
       </div>
     </div>
+    <div class="build-sub">
+      <div class="bs-h">The launch films</div>
+      <div class="bs-d">Two short films for the launch: the brand film and the ad. Placeholders, each with a copyable prompt. <span style="color:var(--gold-bright)">Password protected.</span></div>
+      <div class="films-grid" id="filmsGrid"></div>
+    </div>
     <div id="buildContents" hidden>
       <div class="build-sub">
         <div class="bs-h">The Story — the audit trail</div>
@@ -1324,14 +1329,6 @@
     </div>
   </div>
 
-  <section class="films" id="films">
-    <div class="films-h">
-      <span class="eyebrow">The films</span>
-      <h2>Three films tell the story</h2>
-      <p>Three short films open the presentation: a brand film, an ad, and an explainer trailer. These are placeholders, each with a generation prompt you can copy. <span style="color:var(--gold-bright)">Password protected.</span></p>
-    </div>
-    <div class="films-grid" id="filmsGrid"></div>
-  </section>
 </div>
 
 <div class="lb" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><div class="lb-inner" id="lbInner"></div></div>
@@ -1474,9 +1471,7 @@
     {tag:'Brand film',t:'The house of source',hi:'source',dur:'60-90s',poster:'assets/films/brand-poster.jpg',
      d:'An atmospheric, wordless brand film - from a single point of source-light, guidance emerges. A perfume film, not a sales ad.',prompt:BRAND_PROMPT},
     {tag:'The ad',t:'I’m here. I see.',dur:'~18s · vertical 9:16',poster:'assets/films/ad-poster.jpg',video:'assets/films/ad.mp4',
-     d:'A compassion-beat spot: a chorus of real readers - present, seeing, then the pause, the touched card, and a warm “yes.” Told in the tarot-illustration style, then into their real world.',prompt:AD_PROMPT},
-    {tag:'The explainer',t:'Everything that was built',dur:'1:30 · narrated',poster:'assets/heroes/compare-thumb.jpg',video:'assets/films/explainer.mp4',
-     d:'A movie-trailer for the whole project - the old brand, the need, the AI studio, the agents and avatars, and the reveal.',prompt:TRAILER_PROMPT}
+     d:'A compassion-beat spot: a chorus of real readers - present, seeing, then the pause, the touched card, and a warm “yes.” Told in the tarot-illustration style, then into their real world.',prompt:AD_PROMPT}
   ];
 
   // ---- The full tarot deck (fanned) ----
@@ -2376,7 +2371,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       gx.appendChild(T('p','gx-lead2','Before the how, the why: what this engagement is worth, what it costs, and what it costs to run.'));
       var opp=E('div','opp-band');
       [
-        {l:'The revenue opportunity',v:'$1.1M+',d:'New customer lifetime value per year at target: $15,000 a month in media buying first readings at $45, retained at 3:1 LTV:CAC. At the $30 stretch it passes $1.6M.'},
+        {l:'The revenue opportunity',v:'$1.1M+',d:'First-reading customers times their lifetime value. At $15,000 a month in media and a $45 acquisition cost, that is about 4,000 new customers a year at roughly $275 LTV, so $1.1M. At the $30 stretch cost, about 6,000 customers, or ~$1.65M.'},
         {l:'What the engagement is valued at',v:'6 to 9x',d:'Year-one fee runs about $185,000 all in. The same coverage from a human pod runs roughly $540,000 a year. Value created at target is 6x the fee, 9x at stretch.'},
         {l:'The fuel: agent token cost',v:'≈ $2,000/mo',d:'Nine agents at full tilt burn an estimated 2 to 4 million tokens a day, plus creative generation: roughly $1,200 to $2,500 a month. About 1% of the engagement. Intelligence is the cheap part. You pay for the hands on the wheel.'}
       ].forEach(function(t){
