@@ -624,6 +624,92 @@
   .orc-r b{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright);font-weight:600}
   .orc-r span{display:block;font-size:11px;color:var(--muted);line-height:1.5;margin-top:2px}
   @media(max-width:700px){.orc-expl,.orc-rec{grid-template-columns:1fr}}
+  /* ---- The Experiment: adjacent domain ---- */
+  .exp-name{display:flex;gap:16px;align-items:flex-start;margin-top:16px;padding:18px 20px;border:1px solid var(--gold);border-radius:16px;background:linear-gradient(135deg,rgba(232,207,154,.14),rgba(201,168,106,.04) 60%,transparent)}
+  .exp-name-mark{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold))}
+  .exp-name-mark svg{width:23px;height:23px}
+  .exp-name-t b{display:block;font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold-bright)}
+  .exp-name-t span{display:block;font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:4px}
+  .exp-name-t span b{display:inline;font-family:inherit;font-size:inherit;color:var(--ivory)}
+  /* two-territory map */
+  .exp-terr{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-top:14px;border:1px solid var(--hair);border-radius:16px;overflow:hidden}
+  .exp-side{padding:15px 15px;display:flex;flex-direction:column;gap:8px}
+  .exp-side.ours{background:rgba(138,87,224,.07)}
+  .exp-side.theirs{background:rgba(232,207,154,.05)}
+  .exp-side-h{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;margin-bottom:3px}
+  .exp-side.ours .exp-side-h{color:#b79be8}
+  .exp-side.theirs .exp-side-h{color:var(--gold-bright)}
+  .exp-node{border:1px solid var(--hair);border-radius:10px;padding:8px 11px;background:rgba(9,6,20,.28)}
+  .exp-node b{display:block;font-family:var(--serif);font-size:13px;font-weight:600;color:var(--ivory);line-height:1.2}
+  .exp-node span{display:block;font-size:10.5px;color:var(--muted);line-height:1.45;margin-top:2px}
+  .exp-node.lock{border-color:rgba(232,207,154,.28);background:rgba(232,207,154,.05)}
+  .exp-node.lock b{display:flex;align-items:center;gap:6px}
+  .exp-shield{flex:none;font-style:normal;width:15px;height:15px;border-radius:50%;background:var(--gold);color:var(--ink);font-size:9px;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+  .exp-wires{border-left:1px dashed rgba(232,207,154,.4);border-right:1px dashed rgba(232,207,154,.4);padding:15px 13px;display:flex;flex-direction:column;gap:8px;justify-content:center;background:rgba(9,6,20,.35);min-width:200px}
+  .exp-wires-h{font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:2px}
+  .exp-wire{display:flex;gap:9px;align-items:flex-start}
+  .exp-wtag{flex:none;display:flex;flex-direction:column;align-items:center;width:34px}
+  .exp-wtag i{font-style:normal;width:22px;height:22px;border-radius:50%;background:linear-gradient(120deg,var(--gold-bright),var(--gold));color:var(--ink);font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center}
+  .exp-wtag em{font-style:normal;font-size:7px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:3px;display:flex;align-items:center;gap:2px}
+  .exp-wire .exp-wtag em::after{content:"\2192"}
+  .exp-wire.back .exp-wtag em::after{content:"\2190"}
+  .exp-wt b{display:block;font-size:11.5px;color:var(--ivory);font-weight:600;line-height:1.15}
+  .exp-wt span{display:block;font-size:10px;color:var(--muted);line-height:1.4;margin-top:1px}
+  .exp-flowcap{font-size:11px;color:var(--muted);font-style:italic;text-align:center;margin-top:10px}
+  @media(max-width:720px){.exp-terr{grid-template-columns:1fr}.exp-wires{border:none;border-top:1px dashed rgba(232,207,154,.4);border-bottom:1px dashed rgba(232,207,154,.4)}}
+  /* guard grid */
+  .exp-guard{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+  .exp-g{border:1px solid var(--hair);border-radius:12px;padding:12px 14px;background:rgba(232,207,154,.03)}
+  .exp-g b{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--gold-bright);font-weight:600;font-family:var(--serif)}
+  .exp-g span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:5px}
+  .exp-g:last-child{grid-column:1/-1}
+  /* A/B */
+  .exp-ab{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin-top:14px}
+  .exp-arm{border-radius:14px;padding:14px 16px;border:1px solid var(--hair)}
+  .exp-arm.treat{border-color:var(--gold);background:linear-gradient(160deg,rgba(232,207,154,.13),transparent)}
+  .exp-arm.ctrl{background:rgba(247,242,232,.03)}
+  .exp-arm-tag{font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+  .exp-arm.treat .exp-arm-tag{color:var(--gold-bright)}
+  .exp-arm.ctrl .exp-arm-tag{color:var(--muted)}
+  .exp-arm b{display:block;font-family:var(--serif);font-size:16px;color:var(--ivory);margin:5px 0 5px}
+  .exp-arm-d{display:block;font-size:11.5px;color:var(--muted);line-height:1.55}
+  .exp-vs{font-family:var(--serif);font-size:13px;color:var(--gold);letter-spacing:.1em;white-space:nowrap}
+  .exp-mets{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}
+  .exp-met{border:1px solid var(--hair);border-radius:11px;padding:11px 12px;background:rgba(9,6,20,.25)}
+  .exp-met b{display:block;font-size:12px;color:var(--gold-bright);font-weight:600;line-height:1.25}
+  .exp-met span{display:block;font-size:10px;color:var(--muted);line-height:1.45;margin-top:4px}
+  .exp-rule{margin-top:13px;border:1px dashed rgba(232,207,154,.4);border-radius:12px;padding:13px 16px;font-size:12px;color:var(--muted);line-height:1.6;background:rgba(9,6,20,.25)}
+  .exp-rule b{color:var(--ivory)}
+  /* phases */
+  .exp-phases{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+  .exp-ph{display:flex;gap:13px;align-items:stretch;border:1px solid var(--hair);border-radius:12px;padding:11px 14px;background:rgba(247,242,232,.02)}
+  .exp-ph-n{flex:none;width:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--hair);padding-right:12px}
+  .exp-ph-ph{font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .exp-ph-n b{font-family:var(--serif);font-size:24px;color:var(--gold-bright);line-height:1}
+  .exp-ph-hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .exp-ph-hd b{font-size:14px;color:var(--ivory);font-weight:600;font-family:var(--serif)}
+  .exp-ph-wk{flex:none;font-size:10px;letter-spacing:.05em;color:var(--gold);white-space:nowrap}
+  .exp-ph-d{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:4px}
+  .exp-need{margin-top:12px;border:1px solid var(--hair);border-radius:14px;padding:14px 16px;background:rgba(232,207,154,.04)}
+  .exp-need-h{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bright);font-weight:600;margin-bottom:10px}
+  .exp-need-l{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+  .exp-need-i{font-size:12px;color:var(--ivory);line-height:1.45;display:flex;gap:8px}
+  .exp-need-i i{font-style:normal;color:var(--gold);font-weight:700;flex:none}
+  .exp-need-f{font-size:11px;color:var(--muted);font-style:italic;line-height:1.55;margin-top:11px;padding-top:11px;border-top:1px solid var(--hair)}
+  /* merge path */
+  .exp-merge{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:14px}
+  .exp-ms{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--hair);border-radius:12px;padding:12px 14px;background:rgba(247,242,232,.02)}
+  .exp-ms-n{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--gold);color:var(--gold-bright);font-family:var(--serif);font-size:13px;display:flex;align-items:center;justify-content:center}
+  .exp-ms-t b{display:block;font-size:13px;color:var(--ivory);font-weight:600;font-family:var(--serif)}
+  .exp-ms-t span{display:block;font-size:11px;color:var(--muted);line-height:1.5;margin-top:3px}
+  /* risks */
+  .exp-risks{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+  .exp-risk{border:1px solid var(--hair);border-radius:12px;padding:12px 15px;background:rgba(9,6,20,.22)}
+  .exp-risk>b{font-size:13px;color:var(--gold-bright);font-weight:600;font-family:var(--serif)}
+  .exp-risk-r{display:block;font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+  .exp-risk-m{display:flex;gap:7px;font-size:11.5px;color:var(--ivory);line-height:1.55;margin-top:7px}
+  .exp-risk-m i{font-style:normal;color:var(--gold);flex:none}
+  @media(max-width:700px){.exp-guard,.exp-mets,.exp-need-l,.exp-merge{grid-template-columns:1fr}.exp-ab{grid-template-columns:1fr}.exp-vs{text-align:center}.exp-g:last-child{grid-column:auto}}
   /* gold-thread wireframe filmstrips */
   .wf-row{display:flex;gap:10px;align-items:flex-start;margin-top:16px;overflow-x:auto;padding-bottom:10px;scrollbar-width:thin}
   .wf-unit{flex:none;width:196px;display:flex;flex-direction:column}
@@ -1099,7 +1185,9 @@
   .th-take{margin:16px 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(16px,2vw,20px);color:var(--gold-bright)}
   @media(max-width:680px){.ctbl .rd{display:none}.ctbl{min-width:380px}}
     .th-rlogos{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 12px}
-  .rl{font-size:12px;letter-spacing:.02em;color:rgba(247,242,232,.55);border:1px solid rgba(233,207,154,.18);border-radius:8px;padding:7px 12px;background:rgba(247,242,232,.02);font-weight:500;white-space:nowrap}
+  .rl{font-size:12px;letter-spacing:.02em;color:rgba(247,242,232,.55);border:1px solid rgba(233,207,154,.18);border-radius:8px;padding:7px 12px;background:rgba(247,242,232,.02);font-weight:500;white-space:nowrap;text-decoration:none;display:inline-block;transition:color .2s,border-color .2s,background .2s}
+  a.rl:hover{color:var(--gold-bright);border-color:rgba(233,207,154,.5);background:rgba(233,207,154,.06)}
+  a.rl::after{content:" ↗";opacity:.5;font-size:10px}
   .th-brand{margin:26px 0 0;border:1px solid var(--hair);border-radius:16px;padding:20px 22px;background:rgba(247,242,232,.02)}
   .th-brand>.th-k{margin-bottom:16px}
   .tb-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
@@ -1230,7 +1318,7 @@
       <div class="ts"><b>10M+ readings</b><span>35 years, ~1M customers &middot; <span class="src">Psychic Source</span></span></div>
     </div>
     <div class="th-rivals"><span class="th-k">Who you are up against</span>
-      <div class="th-rlogos"><span class="rl">California Psychics</span><span class="rl">Keen</span><span class="rl">Kasamba</span><span class="rl">Mysticsense</span><span class="rl">Oranum</span></div>
+      <div class="th-rlogos"><a class="rl" href="https://www.californiapsychics.com/" target="_blank" rel="noopener noreferrer">California Psychics</a><a class="rl" href="https://www.keen.com/" target="_blank" rel="noopener noreferrer">Keen</a><a class="rl" href="https://www.kasamba.com/" target="_blank" rel="noopener noreferrer">Kasamba</a><a class="rl" href="https://mysticsense.com/" target="_blank" rel="noopener noreferrer">Mysticsense</a><a class="rl" href="https://www.oranum.com/" target="_blank" rel="noopener noreferrer">Oranum</a></div>
       <p>Different logos, one look: transactional directories that feel like a discount hotline. No one owns premium. No one owns trust as a brand. <span class="src" style="color:rgba(201,168,106,.72)">(nearest peers &middot; Similarweb)</span></p>
     </div>
   </div>
@@ -1356,6 +1444,14 @@
           <span class="gx-sub">Agentic readings, a session experience worth staying for, and an automated funnel that turns readings into members. The Oracle, the Channel, the Circle.</span>
         </button>
         <div class="gtmx-body" id="subxBody" hidden></div>
+      </div>
+      <div class="gtmx-wrap">
+        <button class="gtmx-cta expx" id="expxToggle" type="button" aria-expanded="false" aria-controls="expxBody">
+          <span class="gx-eyebrow">How we prove it, at near-zero risk</span>
+          <span class="gx-title">The Experiment: <em>proof without touching the business</em><span class="gx-chev" aria-hidden="true">▾</span></span>
+          <span class="gx-sub">We stand the whole new experience up on its own domain, wire it into your real advisors and billing, and run it as a clean A/B against your live site. Nothing on psychicsource.com changes. This is what the $5,000 sprint buys.</span>
+        </button>
+        <div class="gtmx-body" id="expxBody" hidden></div>
       </div></section>
     </div>
   </div>
@@ -1755,7 +1851,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       });
     }
     if(dl){
-      var ZIP='downloads/celestial-atelier-build.zip';
+      var ZIP='downloads/celestial-upgrade-build.zip';
       var CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
       var STACK=[
         {n:'The complete 17-page redesign',d:'Every production page: all HTML, CSS and JS.',v:'$14,000'},
@@ -2909,13 +3005,140 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       sx.appendChild(T('p','gx-owned','The rule that holds it together: the Oracle is a bridge, never a replacement. Every agentic reading ends by opening a door to a human, grief and crisis route to the care path, and the Editor gates anything that touches a raw moment.'));
     }
     window.__renderSUBX=renderSUBX;
+
+    // ---- The Experiment: adjacent domain, real rails, clean A/B ----
+    function renderEXPX(){
+      var ex=document.getElementById('expxBody'); if(!ex)return; clear(ex);
+      ex.appendChild(T('p','gx-lead','Do not redesign the site that pays the bills. Build the luxury version of Psychic Source on its own domain, wire it straight into your advisors, availability, and billing, and run it as a live A/B test against your real funnel. Keep only what beats your current numbers. You are not betting the site. You are running a measured experiment with a clean holdout and a kill switch.'));
+
+      // The name
+      var nm=E('div','exp-name');
+      nm.appendChild(H('div','exp-name-mark','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.2 4.6 5 .7-3.6 3.6.9 5.1-4.5-2.4-4.5 2.4.9-5.1L4.8 8.3l5-.7z"/></svg>'));
+      var nmt=E('div','exp-name-t');
+      nmt.appendChild(T('b',null,'The Oracle'));
+      nmt.appendChild(H('span',null,'The adjacent domain. A sibling front door to the same house, not a second brand. It runs the Celestial experience and the free agentic reading, carries an <b>&ldquo;in partnership with Psychic Source&rdquo;</b> mark, and stays <b>noindex</b> so it can never touch your rankings. If it wins, this name survives the merge: it becomes the free front door on psychicsource.com itself.'));
+      nm.appendChild(nmt);
+      ex.appendChild(nm);
+
+      // The two-territory map — the core reassurance
+      ex.appendChild(T('div','gx-h','The architecture, and where the line is drawn'));
+      ex.appendChild(T('p','gx-lead2','Everything on the left is new and ours to build. Everything on the right is your live business, touched only through read-only reads and one deep link. Real seekers reach real advisors and everyone is paid exactly as they are today.'));
+      var terr=E('div','exp-terr');
+      // OURS
+      var oursC=E('div','exp-side ours');
+      oursC.appendChild(T('div','exp-side-h','The Oracle domain · new, ours to build'));
+      [['Paid click','a seeker arrives from an ad, carrying one tracking id'],['Celestial landing','the luxury front end, live in weeks'],['The Oracle reading','a ~$0.04 agentic reading warms and qualifies them'],['Availability-aware match','picks a live, on-topic advisor for them'],['Warm handoff','&ldquo;your reader is live now&rdquo;']].forEach(function(n){
+        var c=E('div','exp-node');c.appendChild(T('b',null,n[0]));c.appendChild(H('span',null,n[1]));oursC.appendChild(c);
+      });
+      terr.appendChild(oursC);
+      // WIRES
+      var wires=E('div','exp-wires');
+      wires.appendChild(T('div','exp-wires-h','4 wires cross the line'));
+      [['A','read','Advisor availability','read-only. Who is available now, their topics, their rate.'],
+       ['B','route','Lead routing','a deep link into your existing &ldquo;start a reading with advisor X&rdquo; flow.'],
+       ['C','handoff','Account & checkout','your guest checkout or new-member screen, prefilled. You own the account.'],
+       ['D','postback','Conversion event','you fire &ldquo;first reading started / completed&rdquo; back on the same id.']].forEach(function(w){
+        var c=E('div','exp-wire'+(w[0]==='D'?' back':''));
+        var tag=E('span','exp-wtag');tag.appendChild(T('i',null,w[0]));tag.appendChild(T('em',null,w[1]));
+        c.appendChild(tag);
+        var wt=E('span','exp-wt');wt.appendChild(T('b',null,w[2]));wt.appendChild(H('span',null,w[3]));
+        c.appendChild(wt);
+        wires.appendChild(c);
+      });
+      terr.appendChild(wires);
+      // THEIRS
+      var theirsC=E('div','exp-side theirs');
+      theirsC.appendChild(T('div','exp-side-h','psychicsource.com · yours, unchanged'));
+      [['Advisor database','the same 190+ vetted advisors, the same profiles'],['Live availability & telephony','the same queue, phone, chat, and video'],['Billing & payments','charges per minute on your PCI-compliant rails'],['Advisor payouts','advisors paid exactly as they are today'],['35 years of SEO','organic rankings never forked or touched']].forEach(function(n){
+        var c=E('div','exp-node lock');c.appendChild(H('b',null,'<i class="exp-shield">&#10003;</i>'+n[0]));c.appendChild(T('span',null,n[1]));theirsC.appendChild(c);
+      });
+      terr.appendChild(theirsC);
+      ex.appendChild(terr);
+      ex.appendChild(T('div','exp-flowcap','The seeker never feels the seam: one journey, your real advisor at the end of it.'));
+
+      // What it never touches — the low-risk enumeration
+      ex.appendChild(T('div','gx-h','Why it is low-risk: what it never touches'));
+      var guard=E('div','exp-guard');
+      [['Your live site','Zero code ships to psychicsource.com to go live. The new experience lives on a separate host.'],
+       ['Your SEO','The adjacent domain is noindex and competes for paid clicks, never your organic terms. Rankings unchanged.'],
+       ['Your payment rails','No card fields, no card data on our side. Checkout stays on your existing PCI surface. Our PCI scope is zero.'],
+       ['Your advisors & payouts','Advisors are paid by you, per minute, as today. They never see a new platform or a different paycheck.'],
+       ['Reversibility','One feature flag disables the funnel. Point the DNS away and psychicsource.com is byte-for-byte what it was this morning.']
+      ].forEach(function(g){
+        var c=E('div','exp-g');c.appendChild(H('b',null,'<i class="exp-shield">&#10003;</i>'+g[0]));c.appendChild(T('span',null,g[1]));guard.appendChild(c);
+      });
+      ex.appendChild(guard);
+
+      // The clean A/B
+      ex.appendChild(T('div','gx-h','The test: a clean A/B, one variable'));
+      ex.appendChild(T('p','gx-lead2','Both funnels feed the same advisor database and the same billing, so the only thing that differs is the front door. That is what makes the readout causal instead of a vanity dashboard.'));
+      var ab=E('div','exp-ab');
+      var abT=E('div','exp-arm treat');abT.appendChild(T('span','exp-arm-tag','TREATMENT'));abT.appendChild(T('b',null,'The Oracle funnel'));abT.appendChild(T('span','exp-arm-d',null));abT.lastChild.textContent='The Celestial landing + the ~$0.04 agentic reading + availability-aware match, on the adjacent domain.';
+      var abC=E('div','exp-arm ctrl');abC.appendChild(T('span','exp-arm-tag','CONTROL'));abC.appendChild(T('b',null,'Your existing pages'));abC.appendChild(T('span','exp-arm-d','A matched holdout of the same paid traffic pointed at your current landing pages. Same channels, same geos, same budgets.'));
+      ab.appendChild(abT);ab.appendChild(T('div','exp-vs','A / B'));ab.appendChild(abC);
+      ex.appendChild(ab);
+      var mets=E('div','exp-mets');
+      [['Cost per first reading','the primary number: ad spend ÷ completed first readings'],['First-reading conversion','landing → a completed reading with a human'],['Repeat rate · D7/D30','does the warm, matched seeker come back'],['LTV : CAC','by cohort, once first-reading revenue lands']].forEach(function(m){
+        var c=E('div','exp-met');c.appendChild(T('b',null,m[0]));c.appendChild(T('span',null,m[1]));mets.appendChild(c);
+      });
+      ex.appendChild(mets);
+      ex.appendChild(H('div','exp-rule','<b>The decision rule, set before launch:</b> adopt only if the Oracle funnel beats control cost-per-first-reading by a pre-registered margin at 95% confidence, over a run long enough to cover weekly seasonality, with no rise in refunds or drop in advisor-rated lead quality. Otherwise we iterate or turn it off. You are approving a measurement, not a redesign.'));
+
+      // CTO effort + what we need
+      ex.appendChild(T('div','gx-h','CTO effort: front-loaded on integration, not pixels'));
+      ex.appendChild(T('p','gx-lead2','About 8 to 10 weeks to a live, measured test. Half of that is talking to your systems. The one real dependency, a clean advisor deep link and a conversion postback, is answered in the first two weeks, before meaningful money is spent.'));
+      var ph=E('div','exp-phases');
+      [['0','Discovery & access','1–2 wks','Confirm the availability read, the deep-link handoff, and the postback. If you already run an affiliate program, these mostly exist.'],
+       ['1','Integration spike','2–3 wks','Read availability, hand one real seeker into a real reading, reconcile one conversion end to end. This retires the risk. Everything else is downstream of it working.'],
+       ['2','Oracle funnel & front end','3–4 wks','The Celestial design system, the streaming ~$0.04 reading, the availability-aware match, the warm handoff. Runs in parallel with Phase 1.'],
+       ['3','Instrumentation & A/B','1–2 wks','Event plumbing, the clean holdout, an isolated ad account, and the vertical-compliance review.']
+      ].forEach(function(p){
+        var c=E('div','exp-ph');
+        var n=E('div','exp-ph-n');n.appendChild(T('span','exp-ph-ph','PHASE'));n.appendChild(T('b',null,p[0]));c.appendChild(n);
+        var b=E('div','exp-ph-b');var hd=E('div','exp-ph-hd');hd.appendChild(T('b',null,p[1]));hd.appendChild(T('span','exp-ph-wk',p[2]));b.appendChild(hd);b.appendChild(T('span','exp-ph-d',p[3]));
+        c.appendChild(b);ph.appendChild(c);
+      });
+      ex.appendChild(ph);
+      var need=E('div','exp-need');
+      need.appendChild(T('div','exp-need-h','What we need from you · minimal, read-only where possible'));
+      var nl=E('div','exp-need-l');
+      ['A read-only view of advisor availability (or permission to poll your public one)','A deep link that starts a reading with a chosen available advisor','A conversion postback, or affiliate subID passthrough, on one shared id','A promo code so first readings are attributable'].forEach(function(t){nl.appendChild(H('span','exp-need-i','<i>+</i>'+t));});
+      need.appendChild(nl);
+      need.appendChild(H('div','exp-need-f','You stay the account-holder and payment-holder of record. We never request card data, payout access, or write access to your advisor database.'));
+      ex.appendChild(need);
+
+      // The merge path
+      ex.appendChild(T('div','gx-h','If it wins: the merge is a flag, not a migration'));
+      ex.appendChild(T('p','gx-lead2','There is no big-bang cutover, because the backend was yours the whole time. The winning funnel was already calling your systems. On-domain, it just calls them locally instead of through a deep link.'));
+      var mp=E('div','exp-merge');
+      [['Port the funnel','the Oracle becomes a new entry point on psychicsource.com behind a flag, rolled out 5% → 25% → 100%'],['Re-skin, page by page','the Celestial design system lands as tokens over your current pages, never a wholesale rewrite'],['Reuse the real systems','availability, telephony, billing, payouts, accounts stay exactly what they are'],['Retire the domain','keep it as a paid-traffic landing farm, or sunset it. The core site never had a risky cutover.']].forEach(function(m,i){
+        var c=E('div','exp-ms');c.appendChild(T('span','exp-ms-n',String(i+1)));var t=E('div','exp-ms-t');t.appendChild(T('b',null,m[0]));t.appendChild(T('span',null,m[1]));c.appendChild(t);mp.appendChild(c);
+      });
+      ex.appendChild(mp);
+
+      // Risks, honest
+      ex.appendChild(T('div','gx-h','The honest risks, and how each is held'));
+      var rk=E('div','exp-risks');
+      [['The integration dependency','If a clean advisor deep link or postback does not exist, the model stalls.','We retire this in Phase 1 before design spend. Fall back to polling your public availability and an affiliate-link handoff, and degrade gracefully to a &ldquo;top available reader&rdquo; hand-in.'],
+       ['Advisor supply vs. demand','A great funnel routing to “no one available” burns spend and trust.','Availability-aware routing only matches genuinely open advisors, and ad spend is throttled to live supply.'],
+       ['Two front doors feeling like two companies','Trust is everything in this category.','Shared design tokens, the same advisor names and photos from your data, and a visible &ldquo;powered by Psychic Source&rdquo; frame throughout.'],
+       ['Ad-account risk in a restricted vertical','Psychic advertising is restricted on Google and Meta; bans happen.','The experiment runs on an isolated ad account, so a ban never touches your existing spend, across diversified native and social channels.']
+      ].forEach(function(r){
+        var c=E('div','exp-risk');c.appendChild(T('b',null,r[0]));c.appendChild(T('span','exp-risk-r',r[1]));c.appendChild(H('span','exp-risk-m','<i>↳</i>'+r[2]));rk.appendChild(c);
+      });
+      ex.appendChild(rk);
+
+      ex.appendChild(H('p','gx-owned','This is the lowest-risk way you will ever see your own business&rsquo;s future running on your own rails, with a number at the end you cannot argue with. The $5,000 90-day sprint is exactly this: stand up The Oracle, wire it to your systems, run the clean test, and hand you the lift. The $15K/mo growth team is what you opt into on a hit, to merge the winner in. You fund the future on a validated result, never on faith.'));
+    }
+    window.__renderEXPX=renderEXPX;
   })();
 
   renderReview();
   if(window.__renderGTM)window.__renderGTM();
   if(window.__renderGTMX)window.__renderGTMX();
   if(window.__renderSUBX)window.__renderSUBX();
-  [['gtmxToggle','gtmxBody'],['subxToggle','subxBody']].forEach(function(pair){
+  if(window.__renderEXPX)window.__renderEXPX();
+  [['gtmxToggle','gtmxBody'],['subxToggle','subxBody'],['expxToggle','expxBody']].forEach(function(pair){
     var t=document.getElementById(pair[0]), b=document.getElementById(pair[1]);
     if(!t||!b)return;
     t.addEventListener('click',function(){
