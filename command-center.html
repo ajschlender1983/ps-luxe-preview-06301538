@@ -603,6 +603,22 @@
   .orc-n.big{border-color:var(--gold);background:linear-gradient(165deg,rgba(232,207,154,.16),rgba(232,207,154,.03));box-shadow:0 0 22px -8px rgba(232,207,154,.4)}
   .orc-n.big b{color:var(--gold-bright);font-size:14px}
   .orc-a{flex:none;color:var(--gold);font-style:normal;font-size:12px}
+  .orc-zones{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+  .orc-zone{flex:1 1 210px;border-radius:14px;padding:12px 13px;border:1px solid var(--hair);display:flex;flex-direction:column;gap:9px}
+  .orc-zone.free{background:rgba(247,242,232,.03)}
+  .orc-zone.warm{background:rgba(232,207,154,.06)}
+  .orc-zone.paid{background:rgba(232,207,154,.12);border-color:var(--gold)}
+  .orc-zh b{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-bright);font-weight:600;display:block}
+  .orc-zh span{font-size:9.5px;color:var(--muted);letter-spacing:.03em;display:block;margin-top:2px}
+  .orc-znodes{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .orc-entry{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:4px}
+  .orc-za{color:var(--gold);align-self:center;font-size:15px}
+  .orc-warmth{height:6px;border-radius:999px;margin:13px 0 12px;background:linear-gradient(90deg,rgba(150,162,196,.55),var(--gold) 52%,var(--gold-bright))}
+  .orc-xform{text-align:center;margin:2px 0 4px}
+  .orc-xform b{font-family:var(--serif);font-size:22px;color:var(--gold-bright);white-space:nowrap}
+  .orc-xform span{display:block;font-size:11px;color:var(--muted);font-style:italic;margin-top:3px}
+  .orc-reclabel{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:18px 0 4px}
+  .orc-r .ret{color:var(--gold-bright);font-weight:600}
   .orc-rec{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}
   .orc-r{border:1px dashed var(--hair);border-radius:10px;padding:9px 12px;background:rgba(9,6,20,.25)}
   .orc-r b{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright);font-weight:600}
@@ -2805,15 +2821,29 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       sx.appendChild(T('div','gx-h','The funnel, as a working system'));
       sx.appendChild(T('p','gx-lead2','The main path runs left to right. The recovery loops underneath catch everyone who stalls, and feed them back in.'));
       var dg=E('div','orc-diag');
-      var spine=E('div','orc-spine');
-      [['The Ask','question spoken'],['The Summoning','theme detected · $0.04'],['The Arrival','card + why'],['The Reading','three movements'],['Keep It','email · decision'],['The Match','psychic + why her'],['Availability','live or window'],['Schedule','slots + cap'],['Held','confirmation'],['The Channel','$1/min · live'],['The Record','the keepsake'],['The Circle','membership']].forEach(function(n,i,arr){
-        var c=E('div','orc-n'+(n[0]==='The Channel'?' big':''));c.appendChild(T('b',null,n[0]));c.appendChild(T('span',null,n[1]));spine.appendChild(c);
-        if(i<arr.length-1)spine.appendChild(T('i','orc-a','→'));
+      var ZONES=[
+        {cls:'free',h:'Free · The Oracle',sub:'≈ $0.04 to serve · nothing charged',entry:'Enters an anonymous stranger',nodes:[['The Ask','question spoken'],['The Summoning','a card turns · $0.04'],['The Arrival','card + why'],['The Reading','three movements'],['Keep It','email · decision']]},
+        {cls:'warm',h:'Warm · The Handoff',sub:'named, emailed, invested',entry:'Now a seeker with skin in it',nodes:[['The Match','psychic + why her'],['Availability','live or window'],['Schedule','slots + amount'],['Held','confirmation']]},
+        {cls:'paid',h:'Paid · The Human',sub:'$1 / min · a live reading',entry:'Becomes a paying relationship',nodes:[['The Channel','$1/min · live'],['The Record','the keepsake'],['The Circle','membership']]}
+      ];
+      var zwrap=E('div','orc-zones');
+      ZONES.forEach(function(z,zi){
+        var zc=E('div','orc-zone '+z.cls);
+        var zh=E('div','orc-zh');zh.appendChild(T('b',null,z.h));zh.appendChild(T('span',null,z.sub));zc.appendChild(zh);
+        var zn=E('div','orc-znodes');
+        z.nodes.forEach(function(n,i){var c=E('div','orc-n'+(n[0]==='The Channel'?' big':''));c.appendChild(T('b',null,n[0]));c.appendChild(T('span',null,n[1]));zn.appendChild(c);if(i<z.nodes.length-1)zn.appendChild(T('i','orc-a','→'));});
+        zc.appendChild(zn);zc.appendChild(T('div','orc-entry',z.entry));
+        zwrap.appendChild(zc);
+        if(zi<ZONES.length-1)zwrap.appendChild(T('i','orc-za','→'));
       });
-      dg.appendChild(spine);
+      dg.appendChild(zwrap);
+      dg.appendChild(E('div','orc-warmth'));
+      var xf=E('div','orc-xform');xf.appendChild(T('b',null,'$0.04 → $1 / min'));xf.appendChild(T('span',null,'pennies of compute in, a paying relationship out'));
+      dg.appendChild(xf);
+      dg.appendChild(T('div','orc-reclabel','↺ Recovery rail · nobody leaks'));
       var rec=E('div','orc-rec');
-      [['No email','→ retarget pool, ad recall returns them to the Ask'],['Email, no click','→ variant B at 48 hours, re-enters at the Reading'],['Silent by day 10','→ re-summoning: “the cards have moved”'],['Held, not booked','→ 24-hour held-window note returns them to Schedule']].forEach(function(r){
-        var c=E('div','orc-r');c.appendChild(T('b',null,r[0]));c.appendChild(T('span',null,r[1]));rec.appendChild(c);
+      [['No email','retarget and ad recall return them to','The Ask'],['Email, no click','variant B at 48 hours re-enters at','The Reading'],['Silent by day 10','a re-summoning brings them back to','The Summoning'],['Held, not booked','a 24-hour held note returns them to','Schedule']].forEach(function(r){
+        var c=E('div','orc-r');c.appendChild(T('b',null,r[0]));var sp=T('span',null,'↺ '+r[1]+' ');var rt=T('span','ret',r[2]);sp.appendChild(rt);c.appendChild(sp);rec.appendChild(c);
       });
       dg.appendChild(rec);
       sx.appendChild(dg);
