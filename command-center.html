@@ -474,7 +474,9 @@
   .ba-lb figcaption{font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-top:9px;text-align:center}
   .ba-lb .bcap{color:var(--muted)}.ba-lb .acap{color:var(--gold-bright)}
   /* ---- experience entry: two visual thumbnails ---- */
-  .enter-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+  .enter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
+  @media(max-width:900px){.enter-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.enter-grid{grid-template-columns:1fr}}
   .enter-card{position:relative;display:block;border:1px solid var(--hair);border-radius:16px;overflow:hidden;text-decoration:none;background:#0b0818;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
   .enter-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 26px 60px -30px #000}
   .enter-card .ec-thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
@@ -1104,6 +1106,29 @@
   .tb-basics .sw i{width:15px;height:15px;border-radius:4px;border:1px solid rgba(255,255,255,.14)}
   .tb-arrow{align-self:center;color:var(--gold);font-size:22px}
   @media(max-width:680px){.tb-grid{grid-template-columns:1fr;gap:14px}.tb-arrow{transform:rotate(90deg)}}
+    .sticky .in a .nn{color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums;margin-right:1px;opacity:.85}
+  .th-quick{margin:34px 0 6px;padding:22px 24px;border:1px solid rgba(233,207,154,.28);border-radius:18px;background:linear-gradient(160deg,rgba(232,207,154,.06),rgba(232,207,154,.015))}
+  .th-quick>.th-eyebrow{margin-bottom:14px}
+  .tq-rows{display:flex;flex-direction:column;gap:11px;margin-bottom:20px}
+  .tq-row{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid rgba(233,207,154,.1)}
+  .tq-row:last-child{border-bottom:0;padding-bottom:0}
+  .tq-k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .tq-row p{font-size:14.5px;line-height:1.5;color:var(--muted)}
+  .tq-row p b{color:var(--ivory);font-weight:600}
+  .tq-actions{display:grid;grid-template-columns:1.05fr 1fr;gap:14px;align-items:stretch}
+  .tq-primary{display:flex;align-items:center;gap:14px;text-decoration:none;border:1px solid var(--gold);border-radius:14px;padding:12px 16px 12px 12px;background:linear-gradient(115deg,rgba(201,168,106,.16),rgba(201,168,106,.03));transition:filter .2s;box-shadow:0 0 26px rgba(201,168,106,.1)}
+  .tq-primary:hover{filter:brightness(1.08)}
+  .tq-primary img{width:84px;height:64px;object-fit:cover;border-radius:9px;border:1px solid rgba(233,207,154,.4);flex:none}
+  .tq-primary .tt{display:flex;flex-direction:column}
+  .tq-primary b{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ivory);line-height:1.05}
+  .tq-primary em{font-style:normal;font-size:11px;letter-spacing:.05em;color:var(--muted);margin-top:3px}
+  .tq-go{margin-left:auto;color:var(--gold-bright);font-size:22px;align-self:center}
+  .tq-links{display:flex;flex-direction:column;gap:10px}
+  .tq-link{text-decoration:none;border:1px solid var(--hair);border-radius:12px;padding:11px 14px;background:rgba(247,242,232,.02);transition:border-color .2s}
+  .tq-link:hover{border-color:var(--gold-bright)}
+  .tq-link b{display:block;font-size:13px;color:var(--gold-bright);font-weight:600}
+  .tq-link span{display:block;font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:3px}
+  @media(max-width:680px){.tq-actions{grid-template-columns:1fr}.tq-row{grid-template-columns:1fr;gap:2px}}
   .th-offer{margin:36px 0 0;padding-left:20px;border-left:2px solid var(--gold);font-family:var(--serif);font-size:clamp(18px,2.2vw,25px);font-style:italic;line-height:1.42;color:var(--ivory);max-width:54ch}
   .th-cta{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:13px 24px;text-decoration:none;transition:filter .2s}
   .th-cta:hover{filter:brightness(1.07)}
@@ -1158,6 +1183,25 @@
       <span class="th-eyebrow"><i></i>Prepared for Gary Baron &middot; Founder &amp; CEO</span>
       <p class="th-note">Gary, we built the whole thing before asking for a meeting. A full <b>PsychicSource.com rebrand</b> and an <b>agentic go-to-market plan</b>, so you can see exactly what we see in the brand and how we would take it. The work is the pitch.</p>
       <div class="th-sign">Scroll on &mdash; it is all here.</div>
+    </div>
+  </div>
+  <div class="th-quick">
+    <span class="th-eyebrow"><i></i>The pitch, in 30 seconds</span>
+    <div class="tq-rows">
+      <div class="tq-row"><span class="tq-k">Opportunity</span><p>You hold the best brand equity in a <b>$2.3B</b> category and the worst expression of it. The premium tier is unclaimed.</p></div>
+      <div class="tq-row"><span class="tq-k">Proof</span><p>We built the whole thing: a full <b>PsychicSource.com rebrand</b> and an <b>agentic go-to-market plan</b>. Not a deck.</p></div>
+      <div class="tq-row"><span class="tq-k">The ask</span><p>A <b>$5,000</b> 90-day proof sprint. Hit the number and it is a <b>$15K/mo</b> growth team; miss it and the $5,000 is all you ever pay.</p></div>
+    </div>
+    <div class="tq-actions">
+      <a class="tq-primary" href="index.html">
+        <img src="assets/heroes/enter-thumb.jpg" alt="The redesigned Psychic Source home page" loading="lazy"/>
+        <span class="tt"><b>Enter the redesign</b><em>Your site, reimagined &middot; start here</em></span>
+        <span class="tq-go">&rarr;</span>
+      </a>
+      <div class="tq-links">
+        <a class="tq-link" href="oracle-demo.html" target="_blank" rel="noopener"><b>Try the live Oracle demo &rarr;</b><span>A ~$0.04 agentic reading that turns a stranger into a warm caller, then hands them to a $1/min human. A new top of funnel rivals cannot copy.</span></a>
+        <a class="tq-link" href="#gtmCard"><b>The plan and the numbers &rarr;</b><span>The funnel, the 90-day sprint, and what the engine is worth.</span></a>
+      </div>
     </div>
   </div>
   <span class="th-eyebrow"><i></i>An AI-native creative &amp; go-to-market studio</span>
@@ -1241,11 +1285,15 @@
       <div class="ec-thumb"><span class="ec-tag">The original</span><img src="assets/heroes/compare-thumb.jpg" alt="The original psychicsource.com beside the redesign" loading="lazy" /></div>
       <div class="ec-body"><div><div class="ec-t">See the original</div><div class="ec-d">The live psychicsource.com, right here in a frame</div></div><span class="ec-go">Open →</span></div>
     </a>
+    <a class="enter-card" href="oracle-demo.html" target="_blank" rel="noopener">
+      <div class="ec-thumb"><span class="ec-tag">The demo</span><img src="assets/oracle/card-oracle.jpg" alt="The Oracle interactive demo" loading="lazy" /></div>
+      <div class="ec-body"><div><div class="ec-t">Try the Oracle demo</div><div class="ec-d">A ~$0.04 reading that becomes a paid call. A new top of funnel.</div></div><span class="ec-go">Open →</span></div>
+    </a>
   </div>
 </div>
 
 <nav class="sticky"><div class="in">
-  <a href="index.html" class="redesign">The Redesign ↗</a><a href="#panel">The Expert Panel</a><a href="#gtmCard">Go-To-Market</a><a href="#build">The Build</a>
+  <a href="index.html" class="redesign">The Redesign ↗</a><a href="oracle-demo.html" target="_blank" rel="noopener" class="redesign">Oracle demo ↗</a><a href="#panel"><span class="nn">01</span> The Expert Panel</a><a href="#gtmCard"><span class="nn">02</span> Go-To-Market</a><a href="#build"><span class="nn">03</span> The Build</a>
 </div></nav>
 
 <div class="wrap">
@@ -1297,7 +1345,7 @@
   </div>
 
   <div class="pillar" id="build">
-    <div class="pillar-h"><span class="pn">02</span><h2>The Build</h2></div>
+    <div class="pillar-h"><span class="pn">03</span><h2>The Build</h2></div>
     <p class="pillar-sub">Everything that made the redesign: the build's audit trail, the prompts behind every image, the full change history, and every generated asset. Preview it free, or download the package.</p>
     <div class="build-card">
       <div class="bc-visual"><img src="assets/heroes/build-deck.jpg" alt="The Celestial Upgrade build, wrapped like a ribboned deck of tarot cards" loading="lazy" /></div>
