@@ -2595,16 +2595,16 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
        ['Fri','Your one-page brief and one decision: what to scale next week.']
       ].forEach(function(d){var c=E('div','oe-day');c.appendChild(T('div','d',d[0]));c.appendChild(T('p',null,d[1]));oeWk.appendChild(c);});
       gx.appendChild(oeWk);
-      // When you increase spend
-      gx.appendChild(T('div','gx-h','When you increase spend'));
-      gx.appendChild(T('div','gx-sub2','More budget buys more tests and faster learning, not more overhead. The retainer is fixed and the agents absorb the volume.'));
+      // The engine funds its own growth
+      gx.appendChild(T('div','gx-h','Revenue folds back into growth'));
+      gx.appendChild(T('div','gx-sub2','You prove the funnel once. After that, the revenue it earns funds the next wave, so growth compounds without bigger checks from you. The retainer never changes; what changes is where the fuel comes from.'));
       var oeSc=E('div','oe-scale');
-      [{sp:'$15K',l:'per month, the floor',mid:false,rows:[['Tests in flight','~6 / week'],['New customers','~4,000 / yr'],['Signal read in','~2 weeks']]},
-       {sp:'$30K',l:'per month',mid:true,rows:[['Tests in flight','~12 / week'],['New customers','~8,000 / yr'],['Signal read in','~1 week']]},
-       {sp:'$60K',l:'per month',mid:false,rows:[['Tests in flight','~24 / week'],['New customers','~16,000 / yr'],['Signal read in','days']]}
+      [{sp:'Prove',l:'the Sprint, months 0 to 3',mid:false,rows:[['Funded by','Your media budget'],['Focus','Find the winning lanes'],['Result','Cost per first reading to $45']]},
+       {sp:'Reinvest',l:'months 3 to 6',mid:true,rows:[['Funded by','First-reading revenue'],['Focus','Pour into the winners'],['Result','More customers, same check']]},
+       {sp:'Compound',l:'months 6 to 12',mid:false,rows:[['Funded by','Repeat readings + members'],['Focus','New lanes, organic, referral'],['Result','Blended cost keeps falling']]}
       ].forEach(function(c){var col=E('div','oe-col'+(c.mid?' mid':''));col.appendChild(T('div','sp',c.sp));col.appendChild(T('div','spl',c.l));var ul=E('ul');c.rows.forEach(function(r){var li=E('li');li.appendChild(T('span',null,r[0]));li.appendChild(T('b',null,r[1]));ul.appendChild(li);});col.appendChild(ul);oeSc.appendChild(col);});
       gx.appendChild(oeSc);
-      gx.appendChild(T('div','oe-note','New-customer figures assume the $45 first-reading target cost; at the $30 stretch, each tier buys about half again as many. More spend means more variants in flight and faster convergence, watched for efficiency decay as lanes scale. The retainer never changes with spend.'));
+      gx.appendChild(T('div','oe-note','The Sprint runs on your media budget to prove the winners. As first readings, repeat readings, and Circle memberships come in, a share folds back into the lanes that work, so volume climbs on earnings, not on a bigger monthly check. Organic and referral lower blended cost over time, and the flywheel keeps turning on its own revenue.'));
       gx.appendChild(T('div','gx-h','What we need from you'));
       var rq=E('div','gx-reqs');
       GTMX.requirements.forEach(function(g){
