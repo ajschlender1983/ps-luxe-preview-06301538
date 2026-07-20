@@ -710,6 +710,75 @@
   .exp-risk-m{display:flex;gap:7px;font-size:11.5px;color:var(--ivory);line-height:1.55;margin-top:7px}
   .exp-risk-m i{font-style:normal;color:var(--gold);flex:none}
   @media(max-width:700px){.exp-guard,.exp-mets,.exp-need-l,.exp-merge{grid-template-columns:1fr}.exp-ab{grid-template-columns:1fr}.exp-vs{text-align:center}.exp-g:last-child{grid-column:auto}}
+  /* ---- Book-a-call CTA (one action, everywhere) ---- */
+  .book-cta{display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;border:none;font-family:var(--sans);background:linear-gradient(120deg,var(--gold-bright),var(--gold));color:#1a1206;border-radius:14px;padding:15px 22px;box-shadow:0 18px 44px -22px rgba(232,207,154,.6);transition:transform .25s,box-shadow .25s}
+  .book-cta:hover{transform:translateY(-2px);box-shadow:0 24px 56px -22px rgba(232,207,154,.75)}
+  .book-cta .bc-go{font-size:20px;flex:none;color:#1a1206}
+  .book-cta.lg{display:flex;width:100%;justify-content:space-between;align-items:center;text-align:left;margin:4px 0 2px}
+  .book-cta .bc-t{display:flex;flex-direction:column;gap:3px}
+  .book-cta .bc-t b{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.1}
+  .book-cta .bc-t em{font-style:normal;font-size:12px;line-height:1.5;color:rgba(26,18,6,.78);max-width:62ch}
+  .tq-guar{font-size:13.5px;line-height:1.6;color:var(--ivory);margin:2px 0 12px;padding:13px 16px;border:1px solid rgba(232,207,154,.3);border-radius:12px;background:rgba(232,207,154,.05)}
+  .tq-guar b{color:var(--gold-bright)}
+  .book-cta.door-book{margin-top:14px;padding:12px 20px}
+  .book-cta.door-book b{font-family:var(--serif);font-size:16px}
+  /* sticky bar */
+  .book-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(120%);transition:transform .35s cubic-bezier(.2,.8,.2,1);background:linear-gradient(180deg,rgba(10,7,22,.86),rgba(10,7,22,.97));backdrop-filter:blur(10px);border-top:1px solid rgba(232,207,154,.28);padding:11px 16px}
+  .book-bar.show{transform:translateY(0)}
+  .bb-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .bb-t b{display:block;font-family:var(--serif);font-size:15px;color:var(--ivory);font-weight:600;line-height:1.15}
+  .bb-t span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+  .book-cta.bb-cta{padding:12px 18px;font-size:14px;font-weight:600;font-family:var(--serif);flex:none}
+  @media(max-width:640px){.bb-t{display:none}.book-cta.bb-cta{width:100%;justify-content:center}.book-bar{padding:9px 12px}}
+  /* ---- The offer section ---- */
+  .offer{padding:8px 0 6px}
+  .of-h{font-family:var(--serif);font-size:clamp(24px,3.4vw,36px);color:var(--ivory);font-weight:600;line-height:1.12;margin:8px 0 20px}
+  .of-two{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin-bottom:30px;border:1px solid var(--hair);border-radius:18px;overflow:hidden}
+  .of-lane{padding:22px 24px;display:flex;flex-direction:column;gap:8px}
+  .of-lane.build{background:rgba(247,242,232,.03)}
+  .of-lane.growth{background:rgba(232,207,154,.07)}
+  .of-tag{align-self:flex-start;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:4px 10px}
+  .of-tag.gold{color:var(--gold-bright);border-color:rgba(232,207,154,.4)}
+  .of-lane h3{font-family:var(--serif);font-size:22px;color:var(--ivory);font-weight:600;margin:4px 0 0}
+  .of-price{font-family:var(--serif);font-size:26px;color:var(--gold-bright);font-weight:600}
+  .of-price span{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.05em;color:var(--muted);font-weight:400;margin-top:2px}
+  .of-lane p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:2px 0 0}
+  .of-then{display:flex;align-items:center;justify-content:center;background:rgba(9,6,20,.4);border-left:1px solid var(--hair);border-right:1px solid var(--hair);padding:0 14px}
+  .of-then span{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold)}
+  .of-models-h{font-family:var(--serif);font-size:22px;color:var(--gold-bright);font-weight:600;margin:6px 0 6px}
+  .of-models-sub{font-size:13px;color:var(--muted);line-height:1.6;max-width:80ch;margin:0 0 16px}
+  .of-models{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch}
+  .of-model{position:relative;border:1px solid var(--hair);border-radius:16px;padding:18px 18px 20px;background:rgba(247,242,232,.02);display:flex;flex-direction:column;gap:9px}
+  .of-model.best{border-color:var(--gold);background:linear-gradient(170deg,rgba(232,207,154,.14),rgba(232,207,154,.03));box-shadow:0 24px 60px -34px rgba(232,207,154,.5)}
+  .om-badge{position:absolute;top:-11px;left:18px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#1a1206;background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:4px 11px}
+  .om-tag{align-self:flex-start;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .of-model.best .om-tag{color:var(--gold-bright)}
+  .om-name{font-family:var(--serif);font-size:18px;color:var(--ivory);font-weight:600;line-height:1.15}
+  .om-line{font-size:12.5px;color:var(--gold);font-style:italic;margin-top:-3px}
+  .om-rows{display:flex;flex-direction:column;gap:0;margin:4px 0 2px;border-top:1px solid var(--hair)}
+  .om-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(247,242,232,.06);align-items:baseline}
+  .om-k{flex:none;width:92px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .om-v{font-size:12px;color:var(--ivory);line-height:1.45}
+  .of-model.best .om-v{color:var(--gold-bright)}
+  .om-note{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:auto;padding-top:4px}
+  .book-cta.om-cta{margin-top:12px;padding:11px 16px;font-family:var(--serif);font-size:14px;font-weight:600;justify-content:center}
+  .book-cta.om-cta.ghost{background:transparent;border:1px solid rgba(232,207,154,.4);color:var(--gold-bright);box-shadow:none}
+  .book-cta.om-cta.ghost .bc-go{color:var(--gold-bright)}
+  .book-cta.om-cta.ghost:hover{background:rgba(232,207,154,.08);transform:translateY(-1px)}
+  .of-fine{font-size:11px;color:var(--muted);font-style:italic;line-height:1.55;margin:14px 0 0}
+  .tq-proof{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+  .tq-proof span{font-size:11px;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:5px 11px;background:rgba(247,242,232,.02)}
+  .tq-proof span::before{content:"✦ ";color:var(--gold)}
+  .of-monday{margin-top:20px;border-top:1px solid var(--hair);padding-top:16px}
+  .ofm-h{font-family:var(--serif);font-size:16px;color:var(--gold-bright);font-weight:600;margin-bottom:11px}
+  .ofm-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .of-week{border:1px solid var(--hair);border-radius:12px;padding:12px 14px;background:rgba(247,242,232,.02)}
+  .of-week .ow-n{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .of-week b{display:block;font-family:var(--serif);font-size:14px;color:var(--ivory);font-weight:600;margin:3px 0 4px}
+  .of-week span:not(.ow-n){display:block;font-size:11.5px;color:var(--muted);line-height:1.55}
+  @media(max-width:820px){.ofm-steps{grid-template-columns:1fr}}
+  .of-close{margin-top:22px}
+  @media(max-width:820px){.of-two{grid-template-columns:1fr}.of-then{border:none;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:8px}.of-models{grid-template-columns:1fr}}
   /* gold-thread wireframe filmstrips */
   .wf-row{display:flex;gap:10px;align-items:flex-start;margin-top:16px;overflow-x:auto;padding-bottom:10px;scrollbar-width:thin}
   .wf-unit{flex:none;width:196px;display:flex;flex-direction:column}
@@ -1322,8 +1391,14 @@
     <div class="tq-rows">
       <div class="tq-row"><span class="tq-k">Opportunity</span><p>You hold the best brand equity in a <b>$2.3B</b> category and the worst expression of it. The premium tier is unclaimed.</p></div>
       <div class="tq-row"><span class="tq-k">The work</span><p>A full <b>PsychicSource.com rebrand</b> and an <b>agentic go-to-market plan</b>, live and clickable.</p></div>
-      <div class="tq-row"><span class="tq-k">The ask</span><p>A <b>$5,000</b> 90-day proof sprint. Hit the number and it is a <b>$15K/mo</b> growth team; miss it and the $5,000 is all you ever pay.</p></div>
+      <div class="tq-row"><span class="tq-k">The ask</span><p>A <b>$5,000</b> 90-day proof sprint, then the model that fits you: fixed, a shared bet, or pure performance. Miss the number and the $5,000 is all you ever pay.</p></div>
     </div>
+    <p class="tq-guar">$5,000, fully refundable until Week&nbsp;0. If we miss your target by Day&nbsp;30 you walk away with a full refund, no conditions, and you keep the entire build. <b>The only way this ever costs you is if it works</b>, and your baseline is signed before we start, so the result is measured, not argued.</p>
+    <a class="book-cta lg" data-book>
+      <span class="bc-t"><b>Book your 20-minute baseline call</b><em>Bring your last 60 days. You leave with your true cost per first reading, and exactly what we would move it to, whether or not we work together.</em></span>
+      <span class="bc-go">&rarr;</span>
+    </a>
+    <div class="tq-proof"><span>Already built, not a mockup</span><span>Runs as a parallel A/B, your live site untouched</span><span>GO verdict from the agentic CTO, 10 of 10 personas converted</span></div>
     <div class="tq-actions">
       <a class="tq-primary" href="index.html">
         <img src="assets/heroes/compare-thumb.jpg" alt="Psychic Source today beside the redesign, side by side" loading="lazy"/>
@@ -1397,9 +1472,10 @@
   </div>
   <p class="th-offer">A full PsychicSource.com rebrand, and an agentic go-to-market plan to match.</p>
   <div class="th-door" id="offerDoor">
-    <div class="td-l"><span class="td-k">This invitation is open</span><span class="td-date" id="doorDate">through Sunday, July 26</span></div>
-    <div class="td-r"><span class="td-days" id="doorDays">7</span><span class="td-dl">days<br>remaining</span></div>
-    <p class="td-note">We hold one build slot for one leader at a time. When this window closes, the seat opens to the next brand on the short list. The $5,000 sprint is fully refundable, so the only thing this window protects is your place in line.</p>
+    <div class="td-l"><span class="td-k">Your category exclusive</span><span class="td-date" id="doorDate">through Sunday, July 26</span></div>
+    <div class="td-r"><span class="td-days" id="doorDays">7</span><span class="td-dl">days<br>to hold it</span></div>
+    <p class="td-note">We build for one category leader per vertical. The strategy we would design for you is one we would then have to decline California Psychics, Keen, and Kasamba. We hold your exclusive for seven days after your baseline call. Nothing is owed to hold it, the $5,000 sprint is fully refundable, and the call commits you to nothing.</p>
+    <a class="book-cta door-book" data-book><b>Book your 20-minute baseline call</b><span class="bc-go">&rarr;</span></a>
   </div>
   <div><a class="th-cta" href="#rebrand">See the rebrand and the plan &darr;</a></div>
 </div></section>
@@ -1432,6 +1508,44 @@
     </a>
   </div>
 </div>
+
+<section class="offer" id="offer"><div class="wrap">
+  <span class="th-eyebrow"><i></i>The offer, and how you engage</span>
+  <h2 class="of-h">Two ways in, and one number that decides everything.</h2>
+  <div class="of-two">
+    <div class="of-lane build">
+      <span class="of-tag">Own it</span>
+      <h3>Own the Upgrade</h3>
+      <div class="of-price">$9,997 <span>one-time &middot; founding cohort</span></div>
+      <p>The complete Celestial Upgrade is yours outright: the rebrand, the Oracle funnel, the design system and brand skill, the full source. It stays yours whether or not we ever run growth for you.</p>
+    </div>
+    <div class="of-then" aria-hidden="true"><span>then</span></div>
+    <div class="of-lane growth">
+      <span class="of-tag gold">Run it</span>
+      <h3>Run the Numbers Down</h3>
+      <div class="of-price">from $5,000 <span>90-day proof sprint</span></div>
+      <p>We operate what you own against one KPI, your cost per first reading, on a baseline you sign in Week&nbsp;0 from your own analytics. A service, not a purchase. Pick the risk posture that fits you.</p>
+    </div>
+  </div>
+  <div class="of-models-h">Choose your model</div>
+  <p class="of-models-sub">Every lane rides the same $5,000 refundable proof sprint and the same referee: a baseline you sign in Week&nbsp;0, measured in your own analytics. What changes is who carries the risk after that.</p>
+  <div id="offerModels" class="of-models loading">Loading the options…</div>
+  <p class="of-fine">Illustrative at roughly 500 first readings a month, against a $45 target, a $30 stretch, and a $275 first-reading lifetime value. Your real numbers set the baseline on the call.</p>
+  <div class="of-monday">
+    <div class="ofm-h">How Monday starts</div>
+    <div class="ofm-steps">
+      <div class="of-week"><span class="ow-n">Week 0</span><b>We sign your baseline</b><span>Your cost per first reading today, from your own analytics over the trailing 60 days. Every later claim is measured against it.</span></div>
+      <div class="of-week"><span class="ow-n">Week 1</span><b>The Upgrade goes live</b><span>The Celestial front end and the Oracle funnel deploy on an adjacent domain, wired to your real advisors. Nothing on psychicsource.com moves.</span></div>
+      <div class="of-week"><span class="ow-n">Weeks 2+</span><b>The first warm sends</b><span>Real seekers get a reading and a matched reader, and the clean A/B begins. You watch one number fall.</span></div>
+    </div>
+  </div>
+  <div class="of-close">
+    <a class="book-cta lg" data-book>
+      <span class="bc-t"><b>Book your 20-minute baseline call</b><em>We read your numbers together and set the target in writing. It commits you to nothing, and you leave knowing your true cost per first reading.</em></span>
+      <span class="bc-go">&rarr;</span>
+    </a>
+  </div>
+</div></section>
 
 <nav class="sticky"><div class="in">
   <a href="index.html" class="redesign">The Redesign ↗</a><a href="oracle-demo.html" target="_blank" rel="noopener" class="redesign">Oracle demo ↗</a><a href="#panel"><span class="nn">01</span> The Expert Panel</a><a href="#gtmCard"><span class="nn">02</span> Go-To-Market</a><a href="#build"><span class="nn">03</span> The Build</a>
@@ -1539,7 +1653,7 @@
       </div>
       <div class="sow-terms">
         <div class="st"><b>Deliverables</b><span>The complete build (site, assets, design system, brand skill), the Oracle and send system, and the A/B readout, all yours to keep.</span></div>
-        <div class="st"><b>Fees</b><span>A $5,000 90-day proof sprint, fully refundable until Week 0. On a hit, a $15K/mo growth team, with the sprint credited toward month one.</span></div>
+        <div class="st"><b>Fees</b><span>A $5,000 90-day proof sprint, fully refundable until Week 0, then your choice of model: a $15K/mo fixed team, a $10K/mo shared bet with upside, or pure performance. The sprint credits toward month one on a hit.</span></div>
         <div class="st noncompete"><b>Exclusivity &amp; non-compete</b><span>For the engagement and 12 months after, we will not build the Celestial Upgrade or the Oracle send funnel for any competing psychic-reading brand. In return, our agentic send system and its playbooks stay ours to license and are never ported to a competitor. One category leader at a time, and while this is live, that leader is you.</span></div>
         <div class="st"><b>Ownership &amp; license</b><span>You own the build outright. We license the agentic systems for the term, and hand over full documentation so your team can run them.</span></div>
       </div>
@@ -1958,11 +2072,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         w.appendChild(T('div','co-k','Premium build license'));
         w.appendChild(T('h3',null,'The complete Celestial Upgrade'));
         w.appendChild(T('p','co-sub','Own the entire redesign: the site, the asset library, the design system, and the hands-on support to make it yours.'));
-        var tm=E('div','co-timer');
-        tm.appendChild(T('span','ct-lbl','This bundle price expires in'));
-        tm.appendChild(T('span','ct-clock','15:00'));
-        w.appendChild(tm);
-        var sc=E('div','co-scar');sc.appendChild(E('span','dot'));sc.appendChild(T('span',null,'Only 3 build licenses released this month · 1 remaining'));w.appendChild(sc);
+        w.appendChild(T('div','co-founding-note','Founding-cohort pricing, held for the one category leader we build with at a time.'));
         var stack=E('div','co-stack');
         STACK.forEach(function(it){
           var r=E('div','co-row'+(it.star?' co-star':''));
@@ -2002,7 +2112,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         // ---- dynamic total + price + CTA ----
         var tot=E('div','co-total');tot.appendChild(T('span',null,'Total value'));tot.appendChild(T('b',null,TOTAL));w.appendChild(tot);
         var pr=E('div','co-price');pr.appendChild(T('span','cp-l','Due today'));var cpV=T('span','cp-v',price);pr.appendChild(cpV);w.appendChild(pr);
-        var save=T('div','co-save',applied?'You save $19,703 · 67% off · STAY500 applied':'You save $19,203 · 66% off');w.appendChild(save);
+        var save=T('div','co-save','Founding-cohort pricing, first in the category');w.appendChild(save);
         var pay=T('div','co-pay','or 3 interest-free payments of '+(applied?'$3,166':'$3,332'));w.appendChild(pay);
         var cta=E('button','btn co-cta');
         var ctaMain=T('span',null,'Secure my build · '+price);
@@ -2029,20 +2139,15 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
         guar.appendChild(H('span',null,'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.4-3 7.4-7 9-4-1.6-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>'));
         guar.appendChild(T('span',null,'14-day money-back guarantee · secure checkout'));
         w.appendChild(guar);
-        w.appendChild(T('div','co-fine','Prototype checkout for demonstration. Your download begins instantly and includes everything above.'));
+        w.appendChild(T('div','co-fine','The build downloads instantly. The 90-day sprint starts from a baseline call, set together, with nothing owed to reserve.'));
         return w;
       }
-      function openCheckout(applied){checkoutActive=true;allowClose=false;var node=checkoutNode(applied);lbOpen(node);var tm=node.querySelector('.co-timer');if(tm)startTimer(tm);}
+      function openCheckout(applied){checkoutActive=true;allowClose=false;var node=checkoutNode(applied);lbOpen(node);}
 
       window.__coBeforeClose=function(){
         if(!checkoutActive)return false;
-        if(!leaving&&!allowClose){showRetention();return true;}
         checkoutActive=false;leaving=false;allowClose=false;clearInterval(timer);return false;
       };
-      document.addEventListener('mouseout',function(e){
-        if(!checkoutActive||leaving||allowClose)return;
-        if((e.clientY<=0)&&!e.relatedTarget)showRetention();
-      });
 
       dl.addEventListener('click',function(){leaving=false;openCheckout(false);});
     }
@@ -3174,6 +3279,39 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       ex.appendChild(H('p','gx-owned','This is the lowest-risk way you will ever see your own business&rsquo;s future running on your own rails, with a number at the end you cannot argue with. The $5,000 90-day sprint is exactly this: stand up The Oracle, wire it to your systems, run the clean test, and hand you the lift. The $15K/mo growth team is what you opt into on a hit, to merge the winner in. You fund the future on a validated result, never on faith.'));
     }
     window.__renderEXPX=renderEXPX;
+
+    // ---- Choose your model: three comp lanes, Hybrid anchored ----
+    window.OFFERMODELS=[
+      {key:'fixed',tag:'Simplest',name:'Fixed',line:'You buy the team.',
+       pay:'$15,000 / mo',earn:'We earn the retainer whatever the result',risk:'You carry the performance risk',
+       at:'≈ $30 per first reading, in fee',note:'For when you just want it handled. A success fee applies only if we beat the $30 stretch.'},
+      {key:'hybrid',tag:'Most chosen',best:true,name:'Hybrid · the shared bet',line:'You buy the outcome.',
+       pay:'$10,000 / mo base + 10% of first-reading revenue above your $45 target',earn:'A lower base, and we earn on the upside only when we beat your target',risk:'Shared, both sides in it',
+       at:'≈ $10K + a share only on a win',note:'We lowered our own guaranteed fee to bet on the result. Chosen by operators who trust their funnel.'},
+      {key:'perf',tag:'We carry it',name:'Pure performance',line:'You pay only for readings.',
+       pay:'$0 base · $55 per verified first reading, or 20% of first-reading revenue',earn:'Nothing unless a real seeker converts',risk:'We carry it, all of it',
+       at:'≈ $27,500 / mo at volume',note:'Maximum risk-reversal. Offered after a green sprint, once we know your numbers cold, because at scale it is the most expensive lane per reading.'}
+    ];
+    function renderOFFER(){
+      var mount=document.getElementById('offerModels'); if(!mount)return; mount.className='of-models'; clear(mount);
+      window.OFFERMODELS.forEach(function(m){
+        var c=E('div','of-model'+(m.best?' best':''));
+        if(m.best)c.appendChild(T('span','om-badge','Recommended'));
+        c.appendChild(T('span','om-tag',m.tag));
+        c.appendChild(T('div','om-name',m.name));
+        c.appendChild(T('div','om-line',m.line));
+        var rows=E('div','om-rows');
+        [['You pay',m.pay],['We earn',m.earn],['Who carries risk',m.risk],['At ≈500/mo',m.at]].forEach(function(r){
+          var row=E('div','om-row');row.appendChild(T('span','om-k',r[0]));row.appendChild(T('span','om-v',r[1]));rows.appendChild(row);
+        });
+        c.appendChild(rows);
+        c.appendChild(T('div','om-note',m.note));
+        var cta=E('a','book-cta om-cta'+(m.best?'':' ghost'));cta.setAttribute('data-book','');cta.appendChild(T('b',null,m.best?'Start with the shared bet':'Talk this lane through'));cta.appendChild(T('span','bc-go','→'));
+        c.appendChild(cta);
+        mount.appendChild(c);
+      });
+    }
+    window.__renderOFFER=renderOFFER;
   })();
 
   renderReview();
@@ -3181,6 +3319,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   if(window.__renderGTMX)window.__renderGTMX();
   if(window.__renderSUBX)window.__renderSUBX();
   if(window.__renderEXPX)window.__renderEXPX();
+  if(window.__renderOFFER)window.__renderOFFER();
   [['gtmxToggle','gtmxBody'],['subxToggle','subxBody'],['expxToggle','expxBody']].forEach(function(pair){
     var t=document.getElementById(pair[0]), b=document.getElementById(pair[1]);
     if(!t||!b)return;
@@ -3307,6 +3446,12 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && gate.classList.contains('on')) closeGate(); });
 })();
 </script>
+<div class="book-bar" id="bookBar">
+  <div class="bb-in">
+    <div class="bb-t"><b>One number decides this: your cost per first reading.</b><span>Twenty minutes on your own analytics. No pitch.</span></div>
+    <a class="book-cta bb-cta" data-book>Book your 20-minute baseline call <span class="bc-go">&rarr;</span></a>
+  </div>
+</div>
 <script>
 (function(){
   var OFFER_CLOSES=new Date(2026,6,26,23,59,59);
@@ -3323,6 +3468,29 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     else {var door=document.getElementById('offerDoor');if(door)door.style.display='none';}
   }
   tick(); setInterval(tick,3600000);
+})();
+</script>
+<script>
+/* ---- Book-a-call: one CTA, wired everywhere. Swap BOOK_URL for the real scheduling link. ---- */
+(function(){
+  var BOOK_URL=''; // e.g. 'https://calendly.com/feelopus/baseline-call' — until set, falls back to email
+  var MAILTO='mailto:adam@feelopus.com'
+    +'?subject='+encodeURIComponent('Psychic Source · the 20-minute baseline call')
+    +'&body='+encodeURIComponent('Hi Adam,\n\nI would like to book the 20-minute baseline call for Psychic Source. I can bring our last 60 days of numbers.\n\nBest,\nGary');
+  var HREF=BOOK_URL||MAILTO, EXT=!!BOOK_URL;
+  document.querySelectorAll('[data-book]').forEach(function(a){
+    a.setAttribute('href',HREF);
+    if(EXT){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');}
+  });
+  // sticky bar: appears once the hero scrolls away, hides near the footer
+  var bar=document.getElementById('bookBar'); if(!bar)return;
+  function upd(){
+    var y=window.pageYOffset||document.documentElement.scrollTop||0;
+    var foot=document.querySelector('footer.end');
+    var nearFoot=foot&&(foot.getBoundingClientRect().top<window.innerHeight+40);
+    bar.classList.toggle('show', y>760 && !nearFoot);
+  }
+  window.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
 })();
 </script>
 </body>
