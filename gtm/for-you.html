@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Psychic Source — a path for you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#140F38; --void:#1C1550; --void-2:#2A1E66;
+  --gold:#C9A86A; --gold-bright:#E8CF9A; --ivory:#F7F2E8;
+  --muted:rgba(247,242,232,.68); --hair:rgba(201,168,106,.22);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--ink);color:var(--ivory);min-height:100vh;
+  background:radial-gradient(120% 90% at 50% 0,var(--void-2),var(--void) 45%,var(--ink) 80%);
+  display:flex;flex-direction:column}
+a{color:inherit}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px clamp(18px,5vw,48px)}
+.logo{font-family:var(--serif);font-size:20px;letter-spacing:.22em;color:var(--ivory);text-decoration:none;font-weight:600}
+.logo small{display:block;font-family:var(--sans);font-size:8px;letter-spacing:.3em;color:var(--gold);margin-top:2px}
+.back{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--gold)}
+.wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:24px clamp(18px,5vw,48px) 60px}
+.fy{max-width:720px;text-align:center}
+.fy-photo{width:96px;height:96px;border-radius:50%;overflow:hidden;margin:0 auto 22px;border:1px solid var(--hair);box-shadow:0 0 0 6px rgba(201,168,106,.06)}
+.fy-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.fy-eyebrow{display:inline-block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.fy-h{font-family:var(--serif);font-size:clamp(30px,6vw,52px);line-height:1.08;font-weight:600}
+.fy-h em{font-style:italic;color:var(--gold-bright)}
+.fy-intro{font-size:clamp(15px,2vw,18px);line-height:1.65;color:var(--muted);margin:20px auto 0;max-width:60ch}
+.fy-proof{font-size:13.5px;line-height:1.6;color:var(--ivory);margin:22px auto 0;max-width:58ch;padding:14px 18px;border:1px solid var(--hair);border-radius:14px;background:rgba(247,242,232,.03)}
+.fy-cta{display:inline-flex;align-items:center;gap:12px;margin-top:30px;text-decoration:none;
+  background:linear-gradient(120deg,var(--gold-bright),var(--gold));color:#1a1206;
+  font-family:var(--serif);font-size:19px;font-weight:600;padding:15px 30px;border-radius:14px;
+  box-shadow:0 18px 44px -22px rgba(232,207,154,.6);transition:transform .25s,box-shadow .25s}
+.fy-cta:hover{transform:translateY(-2px);box-shadow:0 24px 56px -22px rgba(232,207,154,.8)}
+.fy-cta .go{font-size:20px}
+.fy-micro{font-size:12px;color:var(--muted);margin-top:16px}
+.fy-alt{display:block;margin-top:22px;font-size:12.5px;letter-spacing:.06em;color:var(--muted);text-decoration:none}
+.fy-alt:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="logo" href="index.html">PSYCHIC SOURCE<small>EST. 1989</small></a>
+    <a class="back" href="index.html#start">All paths →</a>
+  </div>
+  <div class="wrap">
+    <div class="fy" id="fy" aria-live="polite">
+      <div class="fy-photo"><img id="fyPhoto" src="" alt="" /></div>
+      <span class="fy-eyebrow">A path for you</span>
+      <h1 class="fy-h" id="fyH"></h1>
+      <p class="fy-intro" id="fyIntro"></p>
+      <div class="fy-proof" id="fyProof"></div>
+      <a class="fy-cta" id="fyCta" href="#"><b id="fyCtaT"></b><span class="go">→</span></a>
+      <div class="fy-micro">Nothing is charged for asking. You set the limit before you ever speak.</div>
+      <a class="fy-alt" href="index.html#start">Not quite you? See every way in.</a>
+    </div>
+  </div>
+<script src="../assets/gtm-flows.js"></script>
+<script>
+(function(){
+  var m=(location.search.match(/[?&]p=([a-z]+)/i)||[])[1];
+  var f=(window.GTM_FLOWS||[]).filter(function(x){return x.key===(m||'').toLowerCase();})[0];
+  if(!f){ location.replace('index.html#start'); return; }
+  document.getElementById('fyPhoto').src=f.img;
+  document.getElementById('fyH').textContent=f.label;
+  document.getElementById('fyIntro').textContent=f.intro;
+  document.getElementById('fyProof').textContent=f.proof;
+  document.getElementById('fyCtaT').textContent=f.cta;
+  document.getElementById('fyCta').setAttribute('href', f.dest);
+  document.title='Psychic Source — '+f.label;
+})();
+</script>
+</body>
+</html>

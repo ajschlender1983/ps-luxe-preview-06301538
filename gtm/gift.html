@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Psychic Source — give a reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#140F38; --void:#1C1550; --void-2:#2A1E66;
+  --gold:#C9A86A; --gold-bright:#E8CF9A; --ivory:#F7F2E8;
+  --muted:rgba(247,242,232,.68); --hair:rgba(201,168,106,.22);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--ink);color:var(--ivory);min-height:100vh;
+  background:radial-gradient(120% 90% at 50% 0,var(--void-2),var(--void) 45%,var(--ink) 80%);
+  display:flex;flex-direction:column}
+a{color:inherit}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px clamp(18px,5vw,48px)}
+.logo{font-family:var(--serif);font-size:20px;letter-spacing:.22em;color:var(--ivory);text-decoration:none;font-weight:600}
+.logo small{display:block;font-family:var(--sans);font-size:8px;letter-spacing:.3em;color:var(--gold);margin-top:2px}
+.back{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--gold)}
+.wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:24px clamp(18px,5vw,48px) 60px}
+.g{max-width:760px;text-align:center}
+.g-eyebrow{display:inline-block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.g-h{font-family:var(--serif);font-size:clamp(30px,6vw,52px);line-height:1.08;font-weight:600}
+.g-h em{font-style:italic;color:var(--gold-bright)}
+.g-lead{font-size:clamp(15px,2vw,18px);line-height:1.65;color:var(--muted);margin:20px auto 0;max-width:60ch}
+.g-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0 0;text-align:left}
+.g-card{border:1px solid var(--hair);border-radius:14px;padding:16px 18px;background:rgba(247,242,232,.03)}
+.g-card b{display:block;font-family:var(--serif);font-size:17px;color:var(--gold-bright);font-weight:600;margin-bottom:6px}
+.g-card span{font-size:12.5px;color:var(--muted);line-height:1.55}
+.g-cta{display:inline-flex;align-items:center;gap:12px;margin-top:32px;text-decoration:none;
+  background:linear-gradient(120deg,var(--gold-bright),var(--gold));color:#1a1206;
+  font-family:var(--serif);font-size:19px;font-weight:600;padding:15px 30px;border-radius:14px;
+  box-shadow:0 18px 44px -22px rgba(232,207,154,.6);transition:transform .25s,box-shadow .25s}
+.g-cta:hover{transform:translateY(-2px);box-shadow:0 24px 56px -22px rgba(232,207,154,.8)}
+.g-cta .go{font-size:20px}
+.g-micro{font-size:12px;color:var(--muted);margin-top:16px}
+@media(max-width:640px){.g-cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="logo" href="index.html">PSYCHIC SOURCE<small>EST. 1989</small></a>
+    <a class="back" href="index.html#start">All paths →</a>
+  </div>
+  <div class="wrap">
+    <div class="g">
+      <span class="g-eyebrow">A gift for someone</span>
+      <h1 class="g-h">Give a reading that never feels like <em>a coupon.</em></h1>
+      <p class="g-lead">For the spiritually-inclined person in your life: a genuine session with a vetted reader, handed over as a real present. Chosen by them, whenever they are ready.</p>
+      <div class="g-cards">
+        <div class="g-card"><b>A real session</b><span>Not a gimmick. A reading by phone, chat, or video with one of our vetted psychics, at $1 a minute for their first.</span></div>
+        <div class="g-card"><b>A gift, beautifully given</b><span>A printable certificate with their name on it, ready to wrap or send. It looks like a present, because it is one.</span></div>
+        <div class="g-card"><b>Theirs to choose</b><span>They pick the reader and the moment. Nothing expires on a schedule, and nothing feels cheap.</span></div>
+      </div>
+      <a class="g-cta" href="advisors.html"><b>Choose a reader to gift</b><span class="go">→</span></a>
+      <div class="g-micro">Satisfaction guaranteed. A gift you would be glad to receive yourself.</div>
+    </div>
+  </div>
+</body>
+</html>

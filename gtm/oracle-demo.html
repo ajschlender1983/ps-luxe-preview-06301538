@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="robots" content="noindex, nofollow"/>
+<title>The Oracle · Psychic Source</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--gold:#C9A86A;--gold-bright:#E8CF9A;--gold-deep:#9C7E48;--ink:#140F38;--ivory:#F7F2E8;--muted:rgba(247,242,232,.66);--hair:rgba(233,207,154,.3);--serif:'Cormorant Garamond',serif;--sans:'Jost',system-ui,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:radial-gradient(130% 100% at 50% -10%,#1d1540,#140F38 50%,#0a0716);color:var(--ivory);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+.top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 22px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.top a{color:var(--gold);text-decoration:none}
+/* ---------- the device ---------- */
+.stagewrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:64px 14px 34px}
+.phone{position:relative;width:min(400px,94vw,calc((100vh - 108px)*.4626));aspect-ratio:390/844;background:#04030b;border-radius:52px;padding:10px;border:1px solid rgba(233,207,154,.22);box-shadow:0 0 0 9px #12101f,0 0 0 10px rgba(233,207,154,.16),0 46px 120px rgba(0,0,0,.72),0 0 90px rgba(201,168,106,.07)}
+.screen{position:relative;width:100%;height:100%;border-radius:43px;overflow:hidden;background:radial-gradient(130% 100% at 50% -8%,#1b1340,#120d30 52%,#080513);isolation:isolate}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:92px;height:25px;border-radius:14px;background:#000;z-index:44}
+.sbar{position:absolute;top:14px;left:24px;right:22px;display:flex;justify-content:space-between;align-items:center;z-index:43;font-size:12px;font-weight:500;color:var(--ivory);pointer-events:none}
+.sbar .sic{display:flex;gap:5px;align-items:center;opacity:.9}
+.sbar svg{display:block}
+/* ---------- screens ---------- */
+.scr{position:absolute;inset:0;display:none;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.scr::-webkit-scrollbar{display:none}
+.scr.on{display:block;animation:scrin .55s ease}
+@keyframes scrin{from{opacity:0}to{opacity:1}}
+.pad{padding:64px 22px 34px;min-height:100%;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.eyebrow{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px}
+h1{font-family:var(--serif);font-size:29px;font-weight:600;line-height:1.1}
+h1 em{font-style:italic;color:var(--gold-bright)}
+.lead{font-size:12.5px;color:var(--muted);line-height:1.65;max-width:40ch;margin:12px auto 0}
+.btn{border:0;border-radius:999px;padding:14px 26px;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));cursor:pointer;transition:filter .25s,opacity .25s;white-space:nowrap}
+.btn:hover{filter:brightness(1.07)}
+.btn:disabled{opacity:.35;cursor:default}
+/* ---------- home ---------- */
+#home .pad{justify-content:flex-start;padding-top:74px;text-align:left}
+.h-brand{text-align:center;margin-bottom:6px}
+.h-brand .wm{font-family:var(--serif);font-size:17px;letter-spacing:.3em;text-transform:uppercase;color:var(--ivory)}
+.h-brand .at{display:block;font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.h-night{display:flex;align-items:center;gap:8px;justify-content:center;margin:16px 0 20px;font-family:var(--serif);font-size:14.5px;font-style:italic;color:var(--muted)}
+.h-night svg{color:var(--gold);opacity:.85}
+.h-lbl{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 10px 2px}
+.adv{display:flex;align-items:center;gap:12px;padding:9px 12px;border:1px solid rgba(233,207,154,.12);border-radius:14px;margin-bottom:8px;background:rgba(247,242,232,.025)}
+.adv img{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:center 18%;filter:grayscale(.75) brightness(.72);border:1px solid rgba(233,207,154,.2)}
+.adv .an{font-family:var(--serif);font-size:15px;color:rgba(247,242,232,.75)}
+.adv .ar{font-size:9.5px;letter-spacing:.1em;color:rgba(247,242,232,.42);margin-top:1px;display:flex;align-items:center;gap:5px}
+.adv .ar svg{opacity:.7}
+.odoor{position:relative;display:block;width:100%;text-align:left;margin-top:18px;border-radius:18px;overflow:hidden;cursor:pointer;border:1px solid rgba(233,207,154,.55);background:linear-gradient(115deg,#1c1442 0%,#120d30 55%,#0a0618 100%);padding:20px 118px 20px 18px;box-shadow:0 0 26px rgba(201,168,106,.12),inset 0 0 40px rgba(201,168,106,.05);animation:doorglow 3.6s ease-in-out infinite}
+@keyframes doorglow{0%,100%{box-shadow:0 0 22px rgba(201,168,106,.1),inset 0 0 40px rgba(201,168,106,.05)}50%{box-shadow:0 0 38px rgba(201,168,106,.22),inset 0 0 52px rgba(201,168,106,.09)}}
+.odoor img{position:absolute;right:-12px;top:50%;transform:translateY(-50%) rotate(8deg);width:104px;border-radius:8px;border:1px solid rgba(233,207,154,.5);box-shadow:0 10px 30px rgba(0,0,0,.55)}
+.odoor .oe{font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-bright);display:flex;align-items:center;gap:6px}
+.odoor .oe i{width:6px;height:6px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 9px rgba(232,207,154,.9);animation:pulse 2.2s infinite}
+@keyframes pulse{50%{opacity:.45}}
+.odoor .ot{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ivory);margin:7px 0 6px;display:block}
+.odoor .ot em{font-style:italic;color:var(--gold-bright)}
+.odoor .ol{font-size:11.5px;color:var(--muted);line-height:1.55;max-width:24ch;display:block}
+.odoor .of{display:block;margin-top:9px;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,242,232,.4)}
+.odoor .op{display:inline-block;margin-top:14px;white-space:nowrap;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:7px 14px;font-weight:600}
+.h-foot{text-align:center;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,242,232,.3);margin-top:auto;padding-top:18px}
+/* ---------- ask ---------- */
+.mic{cursor:pointer;width:64px;height:64px;border-radius:50%;margin:26px auto 18px;display:flex;align-items:center;justify-content:center;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));box-shadow:0 0 0 9px rgba(232,207,154,.1),0 0 0 19px rgba(232,207,154,.04);animation:breathe 3.4s ease-in-out infinite}
+@keyframes breathe{0%,100%{box-shadow:0 0 0 9px rgba(232,207,154,.1),0 0 0 19px rgba(232,207,154,.04)}50%{box-shadow:0 0 0 14px rgba(232,207,154,.13),0 0 0 27px rgba(232,207,154,.05)}}
+.mic svg{width:26px;height:26px}
+.qwrap{display:flex;flex-direction:column;gap:10px;margin:0 auto;width:100%}
+.qwrap input{width:100%;background:rgba(247,242,232,.05);border:1px solid var(--hair);border-radius:999px;padding:14px 20px;color:var(--ivory);font-family:var(--serif);font-size:15.5px;font-style:italic;text-align:center}
+.qwrap input:focus{outline:none;border-color:var(--gold)}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.chip{font-family:var(--serif);font-size:12.5px;font-style:italic;color:var(--muted);border:1px dashed var(--hair);border-radius:999px;padding:8px 14px;cursor:pointer;transition:all .25s;background:transparent}
+.chip:hover{color:var(--gold-bright);border-color:var(--gold)}
+.hint{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:20px;opacity:.7}
+/* ---------- summoning ---------- */
+#summon{background:#050310}
+.qtop{position:absolute;top:52px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:15px;font-style:italic;color:var(--ivory);opacity:0;transition:opacity .9s;z-index:8;padding:0 26px;line-height:1.45}
+#summon.q .qtop{opacity:.95}
+.vzone{position:absolute;top:86px;left:0;right:0;bottom:96px;display:flex;align-items:center;justify-content:center;overflow:visible}
+.vsizer{position:relative}
+.vwrap{position:absolute;inset:0;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.vfree{position:absolute;inset:0;pointer-events:none}
+.vwrap video,.vwrap .ef{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vwrap .ef{opacity:0;transition:opacity .35s}
+.vwrap .ef.show{opacity:1}
+.liftw{position:absolute;opacity:0;will-change:transform;z-index:5;transition:opacity .5s}
+.liftw.on{opacity:1}
+.liftw.float{transition:transform 1.5s cubic-bezier(.22,.61,.36,1),opacity .45s}
+.lifts{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5));transition:filter 1.2s}
+.liftw.float .lifts{filter:drop-shadow(0 26px 40px rgba(0,0,0,.75)) brightness(1.12)}
+.liftw.tremble .lifts{animation:tremble 1.15s ease-in-out infinite}
+@keyframes tremble{0%,100%{transform:none}10%{transform:rotate(.6deg) translateY(-1.5px)}25%{transform:rotate(-.7deg) translateY(1px)}40%{transform:rotate(.8deg) translate(1px,-3px)}55%{transform:rotate(-.6deg) translateY(1px)}70%{transform:rotate(.9deg) translate(-1px,-4px)}85%{transform:rotate(-.4deg)}}
+.vwrap .ef{transition:opacity .35s,filter 1.2s}
+.vwrap .ef.dim{filter:brightness(.62) saturate(.8)}
+.shimmer{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;transition:opacity 1s;mix-blend-mode:screen;overflow:hidden}
+.shimmer.on{opacity:1}
+.shimmer::before{content:"";position:absolute;width:95%;height:70%;left:-18%;top:-14%;background:radial-gradient(ellipse at center,rgba(255,216,146,.42),rgba(255,190,110,.16) 42%,transparent 68%);animation:drift1 6.5s ease-in-out infinite alternate}
+.shimmer::after{content:"";position:absolute;width:70%;height:52%;right:-14%;bottom:-2%;background:radial-gradient(ellipse at center,rgba(196,170,255,.24),transparent 62%);animation:drift2 8.5s ease-in-out infinite alternate}
+.shimmer .beam{position:absolute;top:-12%;bottom:-12%;left:0;width:60%;background:linear-gradient(105deg,transparent 18%,rgba(255,224,170,.14) 42%,rgba(255,228,178,.30) 50%,rgba(255,224,170,.14) 58%,transparent 82%);transform:translateX(-140%);animation:beam 5.4s ease-in-out infinite}
+@keyframes beam{0%{transform:translateX(-140%)}62%{transform:translateX(250%)}100%{transform:translateX(250%)}}
+@keyframes drift1{0%{transform:translate(0,0) scale(1);opacity:.85}45%{opacity:1}100%{transform:translate(34%,20%) scale(1.22);opacity:.9}}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(-28%,-16%)}}
+@media(prefers-reduced-motion:reduce){.shimmer::before,.shimmer::after,.shimmer .beam{animation:none}}
+.cglow{position:absolute;width:0;height:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .8s}
+.cglow.on{opacity:1}
+.cglow::before{content:"";position:absolute;left:50%;top:50%;width:250px;height:250px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(240,220,170,.55),rgba(232,207,154,.22) 40%,rgba(232,207,154,.07) 58%,transparent 70%);animation:glowb 1.6s ease-in-out infinite}
+@keyframes glowb{50%{opacity:.6}}
+.bloom{position:absolute;inset:0;z-index:9;pointer-events:none;background:radial-gradient(circle at 50% 46%,rgba(248,240,220,.95),rgba(232,207,154,.5) 34%,transparent 66%);opacity:0}
+.bloom.flash{animation:bloomf 1.35s ease-out}
+@keyframes bloomf{0%{opacity:0}22%{opacity:1}100%{opacity:0}}
+.chosen{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%) scale(.6);width:min(74%,268px);z-index:7;opacity:0}
+.chosen.on{animation:popon 1.35s cubic-bezier(.18,.75,.28,1) forwards}
+@keyframes popon{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}45%{opacity:1}70%{transform:translate(-50%,-50%) scale(1.055)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.chosen .cfw{position:relative;width:100%;border-radius:12px;border:1px solid var(--gold);overflow:hidden;box-shadow:0 0 42px rgba(232,207,154,.35),0 22px 54px rgba(0,0,0,.6)}
+.chosen img{width:100%;display:block}
+.livec{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s}
+.livec.show{opacity:1}
+.chosen .rings{position:absolute;inset:-42%;border-radius:50%;pointer-events:none;opacity:0}
+.chosen.on .rings{opacity:1;background:radial-gradient(circle,transparent 40%,rgba(232,207,154,.14) 46%,transparent 54%,rgba(232,207,154,.08) 62%,transparent 70%);animation:ringbloom 2.4s ease-out infinite}
+@keyframes ringbloom{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.25);opacity:0}}
+.sline{position:absolute;top:46%;left:0;right:0;transform:translateY(-50%);text-align:center;font-family:var(--serif);font-size:21px;font-style:italic;line-height:1.5;color:var(--gold-bright);opacity:0;transition:opacity .5s;z-index:8;padding:0 34px;pointer-events:none}
+.sline.show{opacity:1}
+.sline.low{top:auto;bottom:7%;transform:none;font-size:17px}
+.sline .gw{display:inline-block;opacity:0;filter:blur(8px);animation:glowon .95s ease forwards;white-space:pre}
+@keyframes glowon{0%{opacity:0;filter:blur(9px);text-shadow:0 0 28px rgba(232,207,154,1),0 0 60px rgba(232,207,154,.6),0 2px 18px rgba(5,3,16,.95)}55%{opacity:1;filter:blur(1.5px);text-shadow:0 0 18px rgba(232,207,154,.8),0 2px 16px rgba(5,3,16,.95)}100%{opacity:1;filter:blur(0);text-shadow:0 0 10px rgba(232,207,154,.45),0 2px 14px rgba(5,3,16,.9)}}
+@media(prefers-reduced-motion:reduce){.sline .gw{animation-duration:.01s}}
+.skip{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:10;background:transparent;border:0;color:var(--muted);font-family:var(--sans);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .8s}
+.skip.show{opacity:.55}
+.skip:hover{opacity:1}
+/* ---------- arrival ---------- */
+.bigcard{width:min(52%,196px);margin:0 auto 20px;position:relative}
+.bigcard img{width:100%;border-radius:13px;border:1px solid var(--gold);box-shadow:0 0 40px rgba(232,207,154,.32),0 22px 52px rgba(0,0,0,.6);display:block}
+.bigcard .livec{border-radius:13px;border:1px solid var(--gold)}
+.bigcard::after{content:"";position:absolute;inset:-30%;border-radius:50%;background:radial-gradient(circle,rgba(232,207,154,.15),transparent 62%);pointer-events:none;z-index:-1}
+.arr-title{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;line-height:1.8}
+.arr-body{font-family:var(--serif);font-size:15.5px;font-style:italic;line-height:1.55;color:var(--ivory)}
+.next{margin-top:26px}
+/* ---------- reading ---------- */
+.scrollp{background:linear-gradient(172deg,rgba(247,242,232,.09),rgba(247,242,232,.03));border:1px solid rgba(232,207,154,.3);border-radius:16px;padding:56px 20px 26px;position:relative;text-align:left}
+.seal{position:absolute;top:-24px;left:50%;transform:translateX(-50%);width:46px;border-radius:6px;border:1px solid var(--gold);box-shadow:0 6px 16px rgba(0,0,0,.55)}
+.sq{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--ivory);text-align:center;margin-bottom:18px}
+.mv{opacity:0;transition:opacity .5s;margin-bottom:16px}
+.mv.show{opacity:1}
+.prepsy{display:flex;align-items:center;gap:12px;margin:22px auto 0;padding:12px 14px;border:1px solid rgba(233,207,154,.16);border-radius:14px;background:rgba(247,242,232,.03);text-align:left;opacity:0;transition:opacity 1.4s}
+.prepsy.show{opacity:1}
+.prepsy img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:center 15%;filter:grayscale(1) brightness(.75);border:1px solid rgba(233,207,154,.35);flex:none}
+.prepsy span{font-family:var(--serif);font-size:13.5px;font-style:italic;color:var(--muted);line-height:1.5}
+.mv h4{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.mv p{font-family:var(--serif);font-size:14.5px;line-height:1.6;color:var(--ivory)}
+.ackline{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold-bright);text-align:center;margin:-2px 0 16px;opacity:0;transition:opacity 1s;position:relative;z-index:1}
+.ackline.show{opacity:.92}
+.chpres{display:flex;align-items:center;justify-content:center;gap:8px;margin:-4px auto 14px;font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .7s,color .6s;position:relative;z-index:1}
+.chpres.on{opacity:.7}
+.chpres.lean{opacity:1;color:var(--gold-bright)}
+.chpres i{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(232,207,154,.8);animation:breathe 3.4s ease-in-out infinite}
+.chpres.lean i{animation-duration:2s;box-shadow:0 0 12px rgba(232,207,154,1)}
+.fieldmotes{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;border-radius:16px}
+.fieldmotes i{position:absolute;border-radius:50%;background:var(--gold-bright);opacity:0;animation:fmdrift linear infinite}
+@keyframes fmdrift{0%{opacity:0;transform:translateY(10px)}22%{opacity:var(--o)}80%{opacity:var(--o)}100%{opacity:0;transform:translateY(-16px)}}
+.mv .lw{display:inline-flex;gap:7px;padding:5px 0}
+.mv .lw i{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.55;animation:lwp 1.1s ease-in-out infinite}
+.mv .lw i:nth-child(2){animation-delay:.16s}
+.mv .lw i:nth-child(3){animation-delay:.32s}
+@keyframes lwp{50%{opacity:1;transform:translateY(-2px)}}
+.mv .ln{display:block;opacity:0;transform:scale(.965) translateY(6px);filter:blur(10px);transform-origin:50% 60%;transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s cubic-bezier(.2,.7,.2,1),text-shadow .9s}
+.mv .ln.on{opacity:1;transform:none;filter:none}
+.mv .ln.lit{text-shadow:0 0 22px rgba(232,207,154,.85),0 0 46px rgba(232,207,154,.4)}
+.sweep{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;border-radius:16px;opacity:0}
+.sweep.go{opacity:1}
+.sweep::before{content:"";position:absolute;top:-12%;bottom:-12%;left:0;width:55%;background:linear-gradient(105deg,transparent 20%,rgba(255,226,170,.14) 46%,rgba(255,228,178,.3) 50%,rgba(255,226,170,.14) 54%,transparent 80%);mix-blend-mode:screen;transform:translateX(-140%)}
+.sweep.go::before{animation:swpass 1.15s ease-in-out}
+@keyframes swpass{to{transform:translateX(250%)}}
+.conthint{display:block;margin:15px auto 0;background:none;border:0;color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .5s;position:relative;z-index:1}
+.conthint.show{opacity:.8;animation:contpulse 2.2s ease-in-out infinite}
+.conthint:hover{color:var(--gold-bright)}
+@keyframes contpulse{50%{opacity:.4}}
+.miclbl{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center;margin:-8px 0 4px;opacity:.72}
+.woke{font-size:11.5px;color:var(--gold);font-style:italic;font-family:var(--serif);text-align:center;margin-top:12px;opacity:.92}
+.scrollp>.sq,.scrollp>.mv,.scrollp>.openline{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.mv .ln{transition:opacity .5s}.chpres i,.mv .lw i,.fieldmotes i,.conthint.show{animation:none}.sweep{display:none}}
+.openline{font-family:var(--serif);font-size:13.5px;font-style:italic;color:var(--gold-bright);border-top:1px solid var(--hair);padding-top:13px;margin-top:2px;opacity:0;transition:opacity .9s}
+.openline.show{opacity:1}
+.keep{display:flex;gap:8px;margin:20px auto 0}
+.keep input{flex:1;min-width:0;background:rgba(247,242,232,.05);border:1px solid var(--hair);border-radius:999px;padding:11px 15px;color:var(--ivory);font-size:12px}
+.keep input:focus{outline:none;border-color:var(--gold)}
+.keep .btn{padding:11px 18px}
+.kept{color:#8fcdb8;font-size:11px;letter-spacing:.08em;margin-top:10px;display:none}
+.sendbox{opacity:0;transition:opacity 1.2s}
+.sendbox.show{opacity:1}
+.sendbox.sent{opacity:.4;pointer-events:none}
+.send-h{font-family:var(--serif);font-size:15.5px;color:var(--ivory);text-align:center;margin:24px 0 0;line-height:1.4}
+.send-sub{font-size:11.5px;color:var(--gold);font-style:italic;font-family:var(--serif);text-align:center;margin-top:9px;opacity:.92}
+.mailsent{margin:20px auto 0;max-width:346px}
+.ms-sent{font-size:11.5px;color:#8fcdb8;text-align:center;line-height:1.5;margin-bottom:12px}
+.ms-ic{display:inline-flex;width:16px;height:16px;border-radius:50%;background:#8fcdb8;color:#0a0716;align-items:center;justify-content:center;font-size:10px;margin-right:5px;vertical-align:middle}
+.ms-env{border:1px solid rgba(233,207,154,.32);border-radius:14px;background:rgba(247,242,232,.04);overflow:hidden;box-shadow:0 16px 40px -24px #000;text-align:left}
+.ms-subj{font-size:12.5px;color:var(--ivory);font-weight:600;padding:11px 14px;border-bottom:1px solid rgba(233,207,154,.14);background:rgba(232,207,154,.06);line-height:1.35}
+.ms-subj span{display:block;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:3px}
+.ms-env .prepsy{opacity:1;margin:12px 12px 0;border:0;background:none;padding:0}
+.ms-cta{display:block;width:calc(100% - 24px);margin:13px 12px}
+.ms-cta b{font-weight:600}
+.riskline{font-size:10.5px;color:var(--muted);margin-top:10px;opacity:0;transition:opacity .5s}
+.riskline.show{opacity:1}
+.keep.remind{display:none;margin-top:20px}
+/* ---------- match ---------- */
+.psy-hero{position:relative;margin:0 -22px;padding-top:74%;overflow:hidden}
+.psy-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hp,center 22%)}
+.ph-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,5,19,.5),transparent 30%,transparent 52%,rgba(11,7,26,.97) 97%)}
+.ph-eyebrow{position:absolute;top:50px;left:0;right:0;text-align:center;font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-bright);text-shadow:0 1px 10px rgba(0,0,0,.85)}
+.ph-name{position:absolute;left:20px;bottom:40px;font-family:var(--serif);font-size:44px;font-weight:600;color:var(--ivory);text-shadow:0 2px 20px rgba(0,0,0,.75);line-height:1}
+.psy-hero .avail{position:absolute;left:22px;bottom:13px;backdrop-filter:blur(3px)}
+.psy-s{font-size:10.5px;letter-spacing:.05em;color:var(--muted);line-height:1.5;margin-top:12px;text-align:center}
+.stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+#match .pad>*{position:relative;z-index:1}
+#match .pad>.stars{z-index:0}
+.stars i{position:absolute;border-radius:50%;background:var(--gold-bright);opacity:.15;animation:tw 3.4s ease-in-out infinite}
+@keyframes tw{50%{opacity:.8;transform:scale(1.4)}}
+@media(prefers-reduced-motion:reduce){.stars i{animation:none}}
+.avail{display:inline-flex;align-items:center;gap:6px;font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;border-radius:999px;padding:5px 10px}
+.avail.live{color:#8fcdb8;border:1px solid rgba(120,190,170,.4);background:rgba(120,190,170,.08)}
+.avail.live i{width:6px;height:6px;border-radius:50%;background:#7BD389;box-shadow:0 0 8px rgba(123,211,137,.9);animation:pulse 2s infinite}
+.avail.window{color:var(--gold-bright);border:1px solid rgba(232,207,154,.42);background:rgba(232,207,154,.07)}
+.whyher{font-family:var(--serif);font-size:14.5px;font-style:italic;line-height:1.6;color:var(--ivory);margin:18px auto 0}
+.slots{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px auto 0}
+.slot{position:relative;font-family:var(--sans);font-size:11.5px;letter-spacing:.04em;color:var(--ivory);border:1px solid var(--hair);border-radius:999px;padding:10px 16px;cursor:pointer;background:transparent;transition:all .25s}
+.slot:hover{border-color:var(--gold)}
+.slot.sel{background:linear-gradient(120deg,var(--gold-bright),var(--gold));color:var(--ink);font-weight:600;border-color:transparent}
+.slot .soon{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:6.5px;letter-spacing:.18em;color:var(--ink);background:var(--gold-bright);border-radius:999px;padding:2px 7px;font-weight:600}
+.caps{display:flex;gap:7px;justify-content:center;margin:15px auto 0;flex-wrap:wrap}
+.cap{font-size:10px;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:7px 12px;cursor:pointer;background:transparent;transition:all .25s}
+.cap.sel{color:var(--gold-bright);border-color:var(--gold);background:rgba(232,207,154,.08)}
+.reassure{font-size:10.5px;color:var(--muted);line-height:1.65;margin:18px auto 0;white-space:pre-line}
+.declink{display:inline-block;margin-top:15px;font-size:10.5px;color:rgba(247,242,232,.5);text-decoration:underline;text-underline-offset:3px;background:none;border:0;cursor:pointer}
+/* ---------- confirm ---------- */
+.held-ic{width:56px;height:56px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));font-size:23px}
+.confirm-body{font-size:12.5px;color:var(--muted);line-height:1.7;margin:12px auto 0}
+.confirm-body b{color:var(--gold-bright);font-weight:500}
+@media(prefers-reduced-motion:reduce){.mic{animation:none}.chosen.on .rings{animation:none!important}.odoor{animation:none}}
+.dbgbox{position:absolute;border:1px solid #7BD389;z-index:30;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="top"><span>Psychic Source · The Oracle</span><a href="../command-center.html">← Command center</a></div>
+
+<div class="stagewrap">
+<div class="phone">
+<div class="screen" id="screenEl">
+  <div class="island"></div>
+  <div class="sbar"><span id="clock">2:47</span><span class="sic">
+    <svg width="16" height="10" viewBox="0 0 16 10" fill="currentColor"><rect x="0" y="6" width="3" height="4" rx="1"/><rect x="4.5" y="4" width="3" height="6" rx="1"/><rect x="9" y="2" width="3" height="8" rx="1" opacity=".4"/><rect x="13" y="0" width="3" height="10" rx="1" opacity=".4"/></svg>
+    <svg width="22" height="11" viewBox="0 0 22 11" fill="none" stroke="currentColor"><rect x=".5" y=".5" width="18" height="10" rx="3"/><rect x="2.5" y="2.5" width="9" height="6" rx="1.5" fill="currentColor" stroke="none"/><path d="M20.5 3.5v4" stroke-linecap="round"/></svg>
+  </span></div>
+
+  <!-- HOME · where a seeker finds it -->
+  <section class="scr on" id="home">
+    <div class="pad">
+      <div class="h-brand"><span class="wm">Psychic Source</span><span class="at">The Celestial Upgrade</span></div>
+      <div class="h-night"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span>No readers are online right now.</span></div>
+      <p class="h-lbl">Your readers are resting</p>
+      <div class="adv"><img src="../assets/advisors/Venus-8854.jpg" alt=""/><div><div class="an">Venus</div><div class="ar"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Returns at 8:00am</div></div></div>
+      <div class="adv"><img src="../assets/advisors/Leota-3587.jpg" alt=""/><div><div class="an">Leota</div><div class="ar"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Returns at 9:00am</div></div></div>
+      <div class="adv"><img src="../assets/advisors/Ursula-9927.jpg" alt=""/><div><div class="an">Ursula</div><div class="ar"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Returns at 7:30am</div></div></div>
+      <button class="odoor" id="odoor" type="button">
+        <img src="../assets/oracle/card-oracle.jpg" alt=""/>
+        <span class="oe"><i></i>Always awake</span>
+        <span class="ot">Ask the <em>Oracle</em></span>
+        <span class="ol">The Oracle never sleeps. Ask, and a card will come to you.</span>
+        <span class="op">Ask now</span><span class="of">Nothing is charged for asking</span>
+      </button>
+      <div class="h-foot">Psychic Source · est. 1989</div>
+    </div>
+  </section>
+
+  <!-- ASK -->
+  <section class="scr" id="ask">
+    <div class="pad">
+      <span class="eyebrow">The Oracle</span>
+      <h1>Ask what <em>you carry.</em></h1>
+      <p class="lead">Speak it the way you would to a friend at midnight. The Oracle is listening, and a card is already turning toward you.</p>
+      <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+      <div class="miclbl">Tap to speak, or type below</div>
+      <div class="qwrap"><input id="q" type="text" placeholder="Ask it in your own words…" autocomplete="off"/><button class="btn" id="askBtn">Ask the Oracle</button></div>
+      <div class="chips" id="chips"></div>
+      <div class="hint">Nothing is charged for asking</div>
+    </div>
+  </section>
+
+  <!-- SUMMONING -->
+  <section class="scr" id="summon">
+    <div class="shimmer" id="shimmer"><i class="beam"></i></div>
+    <div class="qtop" id="qtop"></div>
+    <div class="vzone"><div class="vsizer" id="vwrap">
+      <div class="vwrap">
+        <video id="film" muted playsinline preload="auto" poster="../assets/oracle/poster.jpg" src="../assets/oracle/summon.mp4"></video>
+        <img class="ef" id="eframe" src="../assets/oracle/plate.jpg" alt=""/>
+        <div class="cglow" id="cglow"></div>
+      </div>
+      <div class="vfree">
+        <div class="liftw" id="liftw"><img class="lifts" id="lifts" src="../assets/oracle/card-back.png" alt=""/></div>
+        <div class="chosen" id="chosen"><span class="rings"></span><div class="cfw"><img id="chosenFace" src="" alt=""/><video class="livec" id="chosenLive" loop muted playsinline preload="auto"></video></div></div>
+        <div class="bloom" id="bloom"></div>
+      </div>
+    </div></div>
+    <div class="sline" id="sline"></div>
+    <button class="skip" id="skip">Arrive now</button>
+  </section>
+
+  <!-- ARRIVAL -->
+  <section class="scr" id="arrive">
+    <div class="pad">
+      <div class="bigcard"><img id="arrCard" src="" alt=""/><video class="livec" id="arrLive" loop muted playsinline preload="auto"></video></div>
+      <span class="eyebrow" id="arrOracle"></span>
+      <div class="arr-title" id="arrTitle"></div>
+      <p class="arr-body" id="arrBody"></p>
+      <div class="next"><button class="btn" id="toReading">Receive your reading</button></div>
+    </div>
+  </section>
+
+  <!-- READING -->
+  <section class="scr" id="read">
+    <div class="pad" style="justify-content:flex-start;padding-top:76px">
+      <div class="scrollp">
+        <div class="fieldmotes" id="fieldmotes"></div>
+        <div class="sweep" id="sweep"></div>
+        <img class="seal" id="sealImg" src="" alt=""/>
+        <div class="sq" id="sq"></div>
+        <div class="chpres" id="chpres"><i></i>The Oracle is present</div>
+        <div class="ackline" id="ackline"></div>
+        <div class="mv" id="mv1"><h4>What Is</h4><p></p></div>
+        <div class="mv" id="mv2"><h4>What Hides</h4><p></p></div>
+        <div class="mv" id="mv3"><h4>What Comes</h4><p></p></div>
+        <div class="openline" id="openline">There is more here than one card can carry. A human voice could take you further.</div>
+        <button class="conthint" id="contHint" type="button" hidden>continue</button>
+      </div>
+      <div class="sendbox" id="sendbox">
+        <div class="send-h">Your scroll is written. Where should it find you?</div>
+        <div class="keep"><input id="email" type="email" placeholder="your email"/><button class="btn" id="keepBtn">Send my scroll</button></div>
+        <div class="send-sub">One more movement is still forming for you. It arrives with the scroll.</div>
+      </div>
+      <div class="mailsent" id="mailsent" hidden>
+        <div class="ms-sent"><span class="ms-ic">&#10003;</span> On its way. The scroll, and the reader chosen for you, are in your inbox.</div>
+        <div class="ms-env">
+          <div class="ms-subj"><span>Psychic Source</span>Your scroll, and the reader the field chose</div>
+          <div class="prepsy show" id="prepsy"><img id="preImg" src="" alt=""/><span id="preLine"></span></div>
+          <button class="btn ms-cta" id="toMatch">Sit with <b id="msName">your reader</b> &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATCH -->
+  <section class="scr" id="match">
+    <div class="pad" style="justify-content:flex-start;padding:0 22px 34px">
+      <div class="stars" id="stars"></div>
+      <div class="psy-hero"><img id="psyImg" src="" alt=""/><div class="ph-grad"></div>
+        <span class="ph-eyebrow">Chosen for your question</span>
+        <div class="ph-name" id="psyN"></div>
+        <span class="avail" id="avail"></span>
+      </div>
+      <div class="psy-s" id="psyS"></div>
+      <div class="woke" id="woke"></div>
+      <p class="whyher" id="whyHer"></p>
+      <div class="slots" id="slots"></div>
+      <div class="caps" id="caps"></div>
+      <p class="reassure" id="reassure"></p>
+      <div class="next"><button class="btn" id="bookBtn" disabled>Choose a time above</button><div class="riskline" id="riskline">The first three minutes are yours to decide in.</div></div>
+      <button class="declink" id="decline">I need to sit with this first.</button>
+    </div>
+  </section>
+
+  <!-- CONFIRM -->
+  <section class="scr" id="confirm">
+    <div class="pad">
+      <div class="held-ic">✓</div>
+      <h1 id="confH">It is <em>held.</em></h1>
+      <p class="confirm-body" id="confBody"></p>
+      <div class="keep remind" id="remindRow"><input id="remind" type="text" placeholder=""/><button class="btn" id="remindBtn">Remind me</button></div>
+      <div class="kept" id="reminded">✓ The summons will find you.</div>
+      <div class="next"><button class="btn" id="again">Ask another question</button></div>
+    </div>
+  </section>
+
+</div>
+</div>
+</div>
+
+<script src="../assets/gtm-flows.js"></script>
+<script>
+var SPEC = {"themes": {"grief": {"keywords": ["passed", "passed away", "gone", "miss", "missing him", "missing her", "mother", "father", "mom", "dad", "grandma", "grandmother", "grandpa", "grandfather", "lost", "loss", "died", "death", "heaven", "spirit", "goodbye", "grieving", "grief", "funeral", "anniversary of"], "oracle": "The Moon", "card": "../assets/oracle/card-moon.jpg", "face": "../assets/oracle/face-moon.jpg", "live": "../assets/oracle/live-moon.mp4", "arrival": "THE KEEPER OF WHAT DAYLIGHT CANNOT HOLD. You asked about someone you carry. The Moon came because it keeps watch over the love that continues after the phone stops ringing.", "reading": {"whatIs": "You are carrying someone, and the carrying has changed shape. Some days it is a weight, some days it is a warmth, and you have wondered whether the way you grieve is the right way. There is no wrong way to keep loving someone.", "whatHides": "What hides is a sentence you never got to finish: a word withheld, or one you wish you could soften. Grief keeps unfinished sentences safe until we are ready for them. Yours is nearer the surface than you think, and it wants to be spoken kindly, even clumsily.", "whatComes": "There will be a moment, small and ordinary, when their presence feels less like an ache and more like company. You will know it when it arrives. Making room for that moment, and finally saying the unfinished sentence aloud, is gentler with a compassionate voice on the line."}, "psychic": "Leota", "img": "../assets/advisors/Leota-3587.jpg", "specialty": "Leota, Keeper of the Thin Places. A medium of thirty years who treats every crossing with reverence.", "whyHer": "You asked about someone who has passed beyond your reach. Leota works at exactly that threshold. She refuses to perform reunions; she listens for what remains, and tells you honestly what she hears.", "avail": {"mode": "live", "line": "In the Channel now", "slots": ["Now", "Tonight 10:00pm", "Sunday 7:00pm"]}, "starter": "Is my mother at peace?"}, "love": {"keywords": ["he", "she", "him", "her", "love", "ex", "back", "relationship", "boyfriend", "girlfriend", "husband", "wife", "partner", "marriage", "marry", "soulmate", "crush", "dating", "breakup", "broke up", "cheating", "feelings", "text", "thinking of me", "come back", "the one"], "oracle": "The Lovers", "card": "../assets/oracle/card-lovers.jpg", "arrival": "THE CARD OF THE CHOICE BENEATH THE CHOICE. You asked about a heart that is tangled with yours. The Lovers came because your question carries two names, and only one of them is yours to answer for.", "reading": {"whatIs": "There is a pull in you that has been honest for longer than you have admitted. You keep weighing what you feel against what you fear, and the scale never settles. That restlessness is information.", "whatHides": "Beneath the question of them is a quieter question about you: what you believe you deserve when no one is performing. Part of you already knows the answer and has been waiting for permission to say it out loud.", "whatComes": "A conversation is approaching that will ask you to be plainer than you have been. Whether it opens a door or closes one gently, you will stand differently afterward. What that conversation should sound like, and when to have it, is where a listening voice can walk further with you than any card."}, "psychic": "Venus", "img": "../assets/advisors/Venus-8854.jpg", "specialty": "Venus, Reader of the Heart's Weather. Twenty years listening to what love does when no one is watching.", "whyHer": "You asked about a heart that is only half yours to read. Venus has spent her life reading exactly that half. She will tell you plainly what the other heart is doing, so your hope can stand on something real.", "avail": {"mode": "live", "line": "In the Channel now", "slots": ["Now", "Tonight 9:30pm", "Tomorrow 8:00pm"]}, "starter": "Will he come back to me?"}, "career": {"keywords": ["job", "offer", "work", "career", "money", "business", "boss", "promotion", "interview", "quit", "raise", "salary", "company", "startup", "invest", "financial", "finances", "fired", "layoff", "new role", "opportunity", "negotiate", "clients"], "oracle": "The Star", "card": "../assets/oracle/card-star.jpg", "face": "../assets/oracle/face-star.jpg", "live": "../assets/oracle/live-star.mp4", "arrival": "THE CARD OF AIM. You asked about your work and what your effort is building. The Star came because it appears for people who are closer to open sky than they believe.", "reading": {"whatIs": "You have been working hard inside a shape that no longer fits the size of you. The effort is real, and so is the friction. You are asking whether to push through or to aim somewhere new, and that is the right question at the right time.", "whatHides": "What hides is how much of your hesitation is loyalty: loyalty to a version of you who needed this exact job, this exact proof. Honor that version. Then notice that you have already outgrown the safety you built for them.", "whatComes": "A window is forming, and it will look smaller than it is. The people who cross such windows are the ones who chose their first step in advance. Naming that step, in your own voice and your own circumstances, is a conversation worth having with someone who can hear the whole story."}, "psychic": "Ursula", "img": "../assets/advisors/Ursula-9927.jpg", "specialty": "Ursula, Seer of Fortune and Work. She reads ambition the way others read weather.", "whyHer": "Your question was about work and what it will become. Ursula reads careers at the turning point, the offer, the leap, the door that looks closed. She will tell you which door is actually locked and which is only heavy.", "avail": {"mode": "window", "line": "Her next window: Thursday, 7:15pm", "slots": ["Thu 7:15pm", "Thu 8:00pm", "Fri 6:30pm"]}, "starter": "Should I take the offer, or wait?"}, "path": {"keywords": [], "oracle": "The Oracle", "card": "../assets/oracle/card-oracle.jpg", "face": "../assets/oracle/face-oracle.jpg", "live": "../assets/oracle/live-oracle.mp4", "arrival": "THE ORACLE'S OWN CARD. You asked where your life is pointing. The Oracle came because it answers one question above all others: the question a person asks when they are ready to change.", "reading": {"whatIs": "You are between chapters, and the space between chapters always feels like being lost. It is closer to a kind of listening. The life you have been living was built by an earlier you, faithfully, and it has carried you as far as it can.", "whatHides": "What hides is a preference you keep filing under impossible. You dismiss it quickly, which is how a person treats something they want very much. Look at what you call unrealistic. Your direction has been waiting there.", "whatComes": "In the coming season you will be offered a smaller version of the thing you actually want. It will be a test of clarity: whether you can say yes to the essence while declining the shrunken form. Telling the difference in the moment is exactly the kind of crossing a human guide can stand beside you for."}, "psychic": "Angela", "img": "../assets/advisors/Angela-9978.jpg", "specialty": "Angela, Guide of Crossroads. She reads lives the way cartographers read coastlines.", "whyHer": "You asked where your life is meant to go next. Angela specializes in the unlabeled crossroads, the season where nothing is wrong but nothing is clear. She will help you name the direction you already feel.", "avail": {"mode": "window", "line": "Her next window: tomorrow, 10:00am", "slots": ["Tomorrow 10:00am", "Tomorrow 10:45am", "Sat 9:15am"]}, "starter": "What is my life pointing toward?"}}};
+var TEASE={grief:'Leota has kept this exact threshold for thirty years.',love:'Venus reads the half of the heart you cannot see.',career:'Ursula reads careers at exactly this turning point.',path:'Angela names directions at crossroads like yours.'};
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var state = {theme:null, q:'', slot:null, cap:'20 min'};
+/* persona preset from ?p= (Version 2 / GTM funnel). Forces the theme, prefills the question, tunes the intro. */
+var PP=(function(){var m=location.search.match(/[?&]p=([a-z]+)/i);if(!m||!window.GTM_FLOWS)return null;var f=(window.GTM_FLOWS||[]).filter(function(x){return x.key===m[1].toLowerCase();})[0];return (f&&f.mechanic==='oracle')?{theme:f.theme,q:f.starterQ,intro:f.intro}:null;})();
+var DEBUG = /(^|[?&])debug=1/.test(location.search);
+var FREEZE = (location.search.match(/[?&]freeze=(\w+)/)||[])[1]||null;
+var FCARD = parseInt((location.search.match(/[?&]card=(\d)/)||[])[1]||'2',10);
+function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});var el=document.getElementById(id);el.classList.add('on');el.scrollTop=0;}
+/* safe rich-text helper: seg = string or {b:string} */
+function fill(el,segs){
+  while(el.firstChild)el.removeChild(el.firstChild);
+  segs.forEach(function(s){
+    if(typeof s==='string'){el.appendChild(document.createTextNode(s));}
+    else if(s.b){var b=document.createElement('b');b.textContent=s.b;el.appendChild(b);}
+    else if(s.em){var m=document.createElement('em');m.textContent=s.em;el.appendChild(m);}
+  });
+}
+function detect(q){
+  var s=' '+q.toLowerCase().replace(/[^a-z0-9]+/g,' ')+' ';
+  var order=['grief','love','career'];
+  for(var i=0;i<order.length;i++){
+    var t=SPEC.themes[order[i]];
+    for(var j=0;j<t.keywords.length;j++){ if(s.indexOf(' '+t.keywords[j].toLowerCase()+' ')>-1){ return order[i]; } }
+  }
+  return 'path';
+}
+document.getElementById('odoor').onclick=function(){show('ask');};
+(function(){var st=document.getElementById('stars');for(var i=0;i<46;i++){var d=document.createElement('i');var sz=(Math.random()*1.7+1).toFixed(1);d.style.width=sz+'px';d.style.height=sz+'px';d.style.left=(Math.random()*100).toFixed(1)+'%';d.style.top=(Math.random()*100).toFixed(1)+'%';d.style.animationDelay=(Math.random()*3.4).toFixed(2)+'s';d.style.animationDuration=(2.6+Math.random()*2.8).toFixed(2)+'s';st.appendChild(d);}})();
+// chips
+(function(){
+  var c=document.getElementById('chips');
+  Object.keys(SPEC.themes).forEach(function(k){
+    var b=document.createElement('button');b.type='button';b.className='chip';b.textContent='“'+SPEC.themes[k].starter+'”';
+    b.onclick=function(){var q=SPEC.themes[k].starter;var inp=document.getElementById('q');inp.value='';inp.focus();var i=0;var iv=setInterval(function(){inp.value=q.slice(0,++i);if(i>=q.length){clearInterval(iv);setTimeout(begin,650);}},40);};
+    c.appendChild(b);
+  });
+})();
+document.getElementById('askBtn').onclick=begin;
+document.querySelector('.mic').onclick=function(){document.getElementById('q').focus();};
+document.getElementById('q').addEventListener('keydown',function(e){if(e.key==='Enter')begin();});
+/* apply the persona preset: land straight on the ask, question and intro tuned to who arrived */
+if(PP){var _q=document.getElementById('q');if(_q&&PP.q)_q.value=PP.q;var _l=document.querySelector('#ask .lead');if(_l&&PP.intro)_l.textContent=PP.intro;show('ask');}
+function begin(){
+  var q=document.getElementById('q').value.trim();
+  if(!q){document.getElementById('q').focus();return;}
+  state.q=q; state.theme=PP?PP.theme:detect(q);
+  startSummon();
+}
+/* ---------- the summoning: film + takeover ---------- */
+/* card geometry in the end frame, as fractions of the 9:16 frame */
+var CARDS=[
+  {cx:.180,cy:.539,rot:-13.5},
+  {cx:.324,cy:.513,rot:-7},
+  {cx:.500,cy:.503,rot:0},
+  {cx:.653,cy:.512,rot:7},
+  {cx:.818,cy:.534,rot:13.5}];
+var CW=.175,CH=.268;
+var CARD_INDEX={'The High Priestess':0,'The Moon':1,'The Lovers':2,'The Star':3,'The Oracle':4};
+var timers=[];
+function later(fn,ms){timers.push(setTimeout(fn,ms));}
+function clearTimers(){timers.forEach(clearTimeout);timers=[];}
+var VW=0,VH=0;
+function layoutSummon(){
+  var scr=document.getElementById('screenEl').getBoundingClientRect();
+  var zone=document.querySelector('.vzone').getBoundingClientRect();
+  var w=scr.width, h=w*16/9;
+  if(h>zone.height){h=zone.height;w=h*9/16;}
+  var vw=document.getElementById('vwrap');
+  vw.style.width=w+'px';vw.style.height=h+'px';
+  VW=w;VH=h;
+}
+function cardCorners(c,padW,padH){
+  var w=CW*VW*(padW||1),h=CH*VH*(padH||1),a=c.rot*Math.PI/180,cos=Math.cos(a),sin=Math.sin(a),cx=c.cx*VW,cy=c.cy*VH;
+  return [[-w/2,-h/2],[w/2,-h/2],[w/2,h/2],[-w/2,h/2]].map(function(p){
+    return (cx+p[0]*cos-p[1]*sin).toFixed(1)+'px '+(cy+p[0]*sin+p[1]*cos).toFixed(1)+'px';
+  }).join(',');
+}
+function drawDebug(){
+  var vw=document.getElementById('vwrap');
+  vw.querySelectorAll('.dbgbox').forEach(function(d){d.remove();});
+  CARDS.forEach(function(c){
+    var d=document.createElement('div');d.className='dbgbox';
+    d.style.left=(c.cx*VW-CW*VW/2)+'px';d.style.top=(c.cy*VH-CH*VH/2)+'px';
+    d.style.width=(CW*VW)+'px';d.style.height=(CH*VH)+'px';
+    d.style.transform='rotate('+c.rot+'deg)';
+    vw.appendChild(d);
+  });
+  document.getElementById('eframe').classList.add('show');
+}
+function freezeStage(stage,idx){
+  var eframe=document.getElementById('eframe'),lift=document.getElementById('liftw'),
+      glow=document.getElementById('cglow'),chosen=document.getElementById('chosen');
+  var c=CARDS[idx];
+  eframe.classList.add('show');
+  glow.style.left=(c.cx*VW)+'px';glow.style.top=(c.cy*VH)+'px';
+  var w=CW*VW,h=CH*VH;
+  lift.style.width=w+'px';lift.style.height=h+'px';
+  lift.style.left=(c.cx*VW-w/2)+'px';lift.style.top=(c.cy*VH-h/2)+'px';
+  lift.style.transform='rotate('+c.rot+'deg)';
+  if(stage==='shimmer'){document.getElementById('shimmer').classList.add('on');}
+  if(stage==='glow'){glow.classList.add('on');document.getElementById('shimmer').classList.add('on');}
+  if(stage==='tremble'){glow.classList.add('on');lift.classList.add('on');}
+  if(stage==='float'){
+    lift.classList.add('on','float');eframe.classList.add('dim');
+    var dx=VW/2-c.cx*VW, dy=VH*.46-c.cy*VH;
+    lift.style.transform='translate('+dx+'px,'+dy+'px) rotate(0deg) scale(2.1)';
+    var sl=document.getElementById('sline');sl.textContent='It has chosen you.';sl.classList.add('low','show');
+  }
+  if(stage==='reveal'){eframe.classList.add('dim');chosen.classList.add('on');
+    var sl2=document.getElementById('sline');sl2.textContent='It has chosen you.';sl2.classList.add('low','show');}
+}
+var LINES=['The Oracle has heard you.','One card has turned toward your question.','Be still.'];
+function startSummon(){
+  var t=SPEC.themes[state.theme];
+  var lines=LINES.slice();
+  if(state.theme==='grief')lines[1]='Someone is being remembered here.';
+  else if(state.theme==='love')lines[1]='Two names are in this question. Only one is yours to answer for.';
+  else if(state.theme==='career')lines[1]='You are already reaching past the shape you are in.';
+  else if(state.theme==='path')lines[1]='You are between chapters. The Oracle knows this quiet.';
+  var sm=document.getElementById('summon');
+  sm.classList.remove('q');
+  document.getElementById('qtop').textContent='“'+state.q+'”';
+  var film=document.getElementById('film'), eframe=document.getElementById('eframe'),
+      lift=document.getElementById('liftw'), glow=document.getElementById('cglow'),
+      chosen=document.getElementById('chosen'), bloom=document.getElementById('bloom'), shimmer=document.getElementById('shimmer'),
+      line=document.getElementById('sline'), skip=document.getElementById('skip');
+  // reset
+  eframe.classList.remove('show','dim');shimmer.classList.remove('on');lift.className='liftw';lift.style.cssText='';
+  glow.className='cglow';chosen.className='chosen';bloom.className='bloom';
+  line.classList.remove('show');skip.classList.remove('show');
+  document.getElementById('chosenFace').src=t.face||t.card;
+  var cl=document.getElementById('chosenLive');
+  cl.classList.remove('show');
+  if(!reduced&&t.live){cl.src=t.live;cl.load();}
+  show('summon');
+  layoutSummon();
+  document.getElementById('shimmer').classList.add('on');
+  if(DEBUG){drawDebug();return;}
+  if(FREEZE){freezeStage(FREEZE,FCARD);return;}
+  clearTimers();
+  var slow=(state.theme==='grief');
+  film.playbackRate=slow?0.88:1;
+  var done=false;
+  function say(txt,low){
+    line.classList.remove('show');
+    setTimeout(function(){
+      while(line.firstChild)line.removeChild(line.firstChild);
+      line.classList.toggle('low',!!low);
+      txt.split(' ').forEach(function(w,i){
+        var sp=document.createElement('span');sp.className='gw';sp.textContent=w+' ';
+        sp.style.animationDelay=(i*120)+'ms';
+        line.appendChild(sp);
+      });
+      line.classList.add('show');
+    },360);
+  }
+  function takeover(fast){
+    if(done)return;done=true;
+    clearTimers();
+    skip.classList.remove('show');
+    try{film.pause();}catch(e){}
+    eframe.classList.add('show');
+    shimmer.classList.remove('on');
+    line.classList.remove('show');
+    var idx=CARD_INDEX[t.oracle];
+    var c=CARDS[idx];
+    var k=fast?0.45:1;
+    // glow beneath the chosen card
+    glow.style.left=(c.cx*VW)+'px';glow.style.top=(c.cy*VH)+'px';
+    later(function(){glow.classList.add('on');},250*k);
+    // the card stirs
+    later(function(){
+      var w=CW*VW,h=CH*VH;
+      lift.style.width=w+'px';lift.style.height=h+'px';
+      lift.style.left=(c.cx*VW-w/2)+'px';lift.style.top=(c.cy*VH-h/2)+'px';
+      lift.style.transform='rotate('+c.rot+'deg)';
+      lift.classList.add('on','tremble');
+    },600*k);
+    // it rises, the room dims
+    later(function(){
+      lift.classList.remove('tremble');
+      lift.classList.add('float');
+      var dx=VW/2-c.cx*VW, dy=VH*.46-c.cy*VH;
+      lift.style.transform='translate('+dx+'px,'+dy+'px) rotate(0deg) scale(2.1)';
+      eframe.classList.add('dim');
+      glow.classList.remove('on');
+      say('It has chosen you.',true);
+    },1650*k);
+    // the reveal
+    later(function(){
+      bloom.classList.add('flash');
+    },3050*k);
+    later(function(){
+      lift.style.opacity=0;
+      chosen.classList.add('on');
+      var cl2=document.getElementById('chosenLive');
+      if(!reduced&&cl2.src){var pp=cl2.play();if(pp&&pp.then){pp.then(function(){cl2.classList.add('show');}).catch(function(){});}}
+    },3450*k);
+    later(arrive,5800*k);
+  }
+  function playFilm(){
+    later(function(){sm.classList.add('q');},300);
+    if(reduced){ eframe.classList.add('show'); later(function(){takeover(true);},600); return; }
+    if(film.error){ eframe.classList.add('show'); later(function(){takeover(false);},900); return; }
+    var played=film.play();
+    if(played&&played.catch){played.catch(function(){eframe.classList.add('show');takeover(false);});}
+    later(function(){say(lines[0]);},1100);
+    later(function(){skip.classList.add('show');},2600);
+    later(function(){say(lines[1]);},4300);
+    later(function(){say(lines[2]);},6500);
+    film.onended=function(){takeover(false);};
+    film.ontimeupdate=function(){if(film.duration&&isFinite(film.duration)&&film.currentTime>film.duration-0.55){takeover(false);}};
+    film.onerror=function(){eframe.classList.add('show');takeover(false);};
+    // guard: if the film stalls, take over anyway
+    later(function(){takeover(false);},(film.duration&&isFinite(film.duration)?film.duration*1000/film.playbackRate:9000)+3500);
+  }
+  try{film.currentTime=0;}catch(e){}
+  playFilm();
+  skip.onclick=function(){
+    skip.classList.remove('show');
+    try{film.pause();}catch(e){}
+    takeover(true);
+  };
+}
+window.addEventListener('resize',function(){if(document.getElementById('summon').classList.contains('on')){layoutSummon();if(DEBUG)drawDebug();}});
+function arrive(){
+  clearTimers();
+  var t=SPEC.themes[state.theme];
+  var parts=t.arrival.split('. ');
+  var title=parts[0].replace(/\.$/,'');
+  var body=t.arrival.slice(title.length+2);
+  document.getElementById('arrCard').src=t.face||t.card;
+  var al=document.getElementById('arrLive');
+  al.classList.remove('show');
+  if(!reduced&&t.live){al.src=t.live;var ap=al.play();if(ap&&ap.then){ap.then(function(){al.classList.add('show');}).catch(function(){});}}else{try{al.pause();}catch(e){}}
+  document.getElementById('arrOracle').textContent=t.oracle+' has come';
+  document.getElementById('arrTitle').textContent=title;
+  document.getElementById('arrBody').textContent=body;
+  show('arrive');
+}
+var OPENLINE={
+  grief:'The Oracle can see there is a sentence you never finished. What it cannot do is help you say it. That needs a voice that can hear yours back.',
+  love:'The Oracle can see the conversation coming. What it cannot tell you from here is what to say when it arrives.',
+  career:'The Oracle can see the window forming. Which first step is yours to take is the part only a voice can help you name.',
+  path:'The Oracle can see the smaller version of your want approaching. Telling it from the real thing, in the moment, is where a human stands beside you.'
+};
+function extractEcho(q){
+  var s=(q||'').trim();
+  var names=(s.replace(/^\S+\s*/,'').match(/\b[A-Z][a-z]{2,}\b/g)||[]);
+  var stop={The:1,Will:1,Should:1,Does:1,What:1,When:1,Why:1,How:1,Can:1,Are:1,Him:1,Her:1,She:1,His:1,God:1};
+  names=names.filter(function(n){return !stop[n];});
+  if(names.length)return 'You named someone in this question, '+names[0]+', and the Oracle went straight to it. ';
+  var rel=(s.match(/\b(mother|mom|mum|father|dad|husband|wife|partner|boyfriend|girlfriend|marriage|son|daughter|sister|brother|grandmother|grandma|grandfather|grandpa)\b/i)||[])[0];
+  if(rel)return 'You asked about your '+rel.toLowerCase()+', and the Oracle felt the weight in it. ';
+  return '';
+}
+function ackFor(theme,q){
+  var w=(q||'').trim().split(/\s+/).length;
+  if(w<=5)return 'Only a few words. You have already stripped this to the part that hurts.';
+  if(w>=16)return 'You wrote more than you meant to. That tells the Oracle this has been waiting a while.';
+  return {grief:'Before the cards: thank you for trusting a question this tender to a screen.',love:'You phrased it as a question, but a part of you has already decided.',career:'You asked it plainly. The Oracle likes a question with no hiding in it.',path:'You asked where, not whether. You are already moving.'}[theme]||'The Oracle has taken in how you asked.';
+}
+function sentences(txt){var m=txt.match(/[^.!?]+[.!?]+["”’)]*/g);return (m&&m.length?m:[txt]).map(function(x){return x.trim();});}
+function clearKids(el){while(el.firstChild)el.removeChild(el.firstChild);}
+function setupField(){
+  var f=document.getElementById('fieldmotes');clearKids(f);if(reduced)return;
+  for(var i=0;i<9;i++){var d=document.createElement('i');var sz=(Math.random()*2+1.4).toFixed(1);d.style.width=sz+'px';d.style.height=sz+'px';d.style.left=(Math.random()*96+2).toFixed(1)+'%';d.style.top=(Math.random()*90+5).toFixed(1)+'%';d.style.setProperty('--o',(Math.random()*.12+.05).toFixed(2));d.style.animationDuration=(14+Math.random()*8).toFixed(1)+'s';d.style.animationDelay=(-Math.random()*18).toFixed(1)+'s';f.appendChild(d);}
+}
+var rTimers=[];
+function rLater(fn,ms){var id=setTimeout(fn,ms);rTimers.push(id);return id;}
+function rClear(){rTimers.forEach(clearTimeout);rTimers=[];}
+function fireSweep(){if(reduced)return;var sw=document.getElementById('sweep');sw.classList.remove('go');void sw.offsetWidth;sw.classList.add('go');}
+function pulseSeal(){var s=document.getElementById('sealImg');s.style.transition='transform .5s ease';s.style.transform='translateX(-50%) scale(1.05)';setTimeout(function(){s.style.transform='translateX(-50%) scale(1)';},260);}
+function revealMv(el,text,cres,done){
+  el.classList.add('show');
+  var pres=document.getElementById('chpres');pres.classList.add('on','lean');
+  var p=el.querySelector('p');clearKids(p);
+  if(reduced){p.textContent=text;pres.classList.remove('lean');if(done)rLater(done,500);return;}
+  var lw=document.createElement('span');lw.className='lw';for(var d=0;d<3;d++)lw.appendChild(document.createElement('i'));p.appendChild(lw);
+  rLater(function(){
+    clearKids(p);var lines=sentences(text);var stagger=cres?300:220;
+    fireSweep();pulseSeal();
+    lines.forEach(function(ln,i){var sp=document.createElement('span');sp.className='ln';sp.textContent=ln+' ';p.appendChild(sp);rLater(function(){sp.classList.add('on','lit');rLater(function(){sp.classList.remove('lit');},900);},i*stagger);});
+    rLater(function(){if(!cres)pres.classList.remove('lean');if(done)done();},lines.length*stagger+950);
+  },cres?1150:800);
+}
+var readSeq=[],readIdx=0;
+function showCont(){var c=document.getElementById('contHint');c.hidden=false;c.classList.add('show');}
+function hideCont(){var c=document.getElementById('contHint');c.classList.remove('show');c.hidden=true;}
+function readNext(){
+  rClear();hideCont();
+  if(readIdx>=readSeq.length){finishReading();return;}
+  var m=readSeq[readIdx++];
+  revealMv(document.getElementById(m.id),m.text,m.cres,function(){
+    if(readIdx>=readSeq.length){rLater(finishReading,1200);}else{showCont();rLater(readNext,m.gap);}
+  });
+}
+function finishReading(){
+  rClear();hideCont();
+  document.getElementById('chpres').classList.add('lean');
+  document.getElementById('openline').classList.add('show');
+  rLater(function(){document.getElementById('sendbox').classList.add('show');},900);
+}
+document.getElementById('toReading').onclick=function(){
+  var t=SPEC.themes[state.theme];rClear();
+  document.getElementById('sealImg').src=t.card;
+  document.getElementById('sq').textContent='“'+state.q+'”';
+  var ol=document.getElementById('openline');ol.textContent=OPENLINE[state.theme]||'There is more here than one card can carry. A human voice could take you further.';ol.classList.remove('show');
+  document.getElementById('prepsy').classList.remove('show');
+  var _sb=document.getElementById('sendbox');_sb.classList.remove('show','sent');
+  document.getElementById('mailsent').hidden=true;
+  document.getElementById('email').value='';
+  document.getElementById('preImg').src=t.img;
+  document.getElementById('preLine').textContent=t.psychic+' is already in the channel. She read your question a moment ago and went quiet.';
+  ['mv1','mv2','mv3'].forEach(function(id){var m=document.getElementById(id);m.classList.remove('show');clearKids(m.querySelector('p'));});
+  document.getElementById('chpres').classList.remove('on','lean');
+  var echo=extractEcho(state.q);
+  readSeq=[{id:'mv1',text:(echo||'')+t.reading.whatIs,cres:false,gap:2000},{id:'mv2',text:t.reading.whatHides,cres:false,gap:2800},{id:'mv3',text:t.reading.whatComes,cres:true,gap:0}];
+  readIdx=0;show('read');setupField();
+  var ack=document.getElementById('ackline');ack.textContent=ackFor(state.theme,state.q);ack.classList.remove('show');
+  rLater(function(){ack.classList.add('show');document.getElementById('chpres').classList.add('on');},400);
+  rLater(readNext,1900);
+};
+document.getElementById('contHint').onclick=readNext;
+document.getElementById('keepBtn').onclick=function(){
+  var e=document.getElementById('email');
+  if(!e.value.trim()){e.focus();return;}
+  var t=SPEC.themes[state.theme];
+  document.getElementById('msName').textContent=t.psychic;
+  document.getElementById('sendbox').classList.add('sent');
+  var ms=document.getElementById('mailsent');ms.hidden=false;
+  try{ms.scrollIntoView({behavior:'smooth',block:'end'});}catch(_){}
+};
+document.getElementById('toMatch').onclick=function(){
+  var t=SPEC.themes[state.theme];
+  document.getElementById('psyImg').src=t.img;
+  document.querySelector('.psy-hero').style.setProperty('--hp',({grief:'center 30%',love:'center 42%',career:'center 22%',path:'center 30%'})[state.theme]);
+  document.getElementById('psyN').textContent=t.psychic;
+  document.getElementById('psyS').textContent=t.specialty.replace(/^[^,]+,\s*/,'');
+  var av=document.getElementById('avail');
+  av.className='avail '+t.avail.mode;
+  while(av.firstChild)av.removeChild(av.firstChild);
+  if(t.avail.mode==='live'){av.appendChild(document.createElement('i'));}
+  av.appendChild(document.createTextNode(t.avail.line));
+  document.getElementById('whyHer').textContent=t.whyHer;
+  document.getElementById('woke').textContent=(t.avail.mode==='live')?(t.psychic+' does not usually read at this hour. Your question reached her.'):'';
+  var sw=document.getElementById('slots');while(sw.firstChild)sw.removeChild(sw.firstChild);
+  t.avail.slots.forEach(function(s,i){
+    var b=document.createElement('button');b.type='button';b.className='slot';b.textContent=s;
+    if(i===0&&state.theme!=='grief'){var tag=document.createElement('span');tag.className='soon';tag.textContent='First open';b.appendChild(tag);}
+    b.onclick=function(){sw.querySelectorAll('.slot').forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');state.slot=s;
+      var bb=document.getElementById('bookBtn');bb.disabled=false;document.getElementById('riskline').classList.add('show');
+      bb.textContent=(t.avail.mode==='live'&&s==='Now')?'Enter the Channel':'Hold this window';};
+    sw.appendChild(b);
+  });
+  var cw=document.getElementById('caps');while(cw.firstChild)cw.removeChild(cw.firstChild);
+  ['10 min','20 min','30 min'].forEach(function(c){
+    var b=document.createElement('button');b.type='button';b.className='cap'+(c==='20 min'?' sel':'');b.textContent=c+' · held at $'+parseInt(c);
+    b.onclick=function(){cw.querySelectorAll('.cap').forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');state.cap=c;};
+    cw.appendChild(b);
+  });
+  document.getElementById('reassure').textContent='$1 per minute. The first three minutes are yours to decide in.\nYou set the amount before the call begins, and it rests there gently unless you choose to stay.\nNo account to start. If the channel does not serve you, Psychic Source makes it right.';
+  document.getElementById('bookBtn').disabled=true;
+  document.getElementById('bookBtn').textContent='Choose a time above';
+  show('match');
+};
+document.getElementById('bookBtn').onclick=function(){
+  var t=SPEC.themes[state.theme];
+  var when=(state.slot==='Now')?'now. The Channel is opening':state.slot;
+  var rr=document.getElementById('remindRow');rr.style.display='flex';document.getElementById('remind').placeholder='Where should the summons find you? · email or phone';document.getElementById('remindBtn').textContent='Remind me';document.getElementById('reminded').textContent='✓ The summons will find you.';document.getElementById('reminded').style.display='none';
+  fill(document.getElementById('confBody'),[{b:t.psychic},' will meet you ',{b:when},'. She has been given your question and everything the Oracle saw. You will begin where the cards left off, at $1 a minute, with your ceiling set at ',{b:state.cap},'. It ends gently when your offering is spent.']);
+  show('confirm');
+};
+document.getElementById('decline').onclick=function(){
+  var t=SPEC.themes[state.theme];
+  var kept=!document.getElementById('mailsent').hidden;
+  var rr2=document.getElementById('remindRow');
+  if(kept){rr2.style.display='none';}else{rr2.style.display='flex';document.getElementById('remind').placeholder='Where should the scroll wait for you?';document.getElementById('remindBtn').textContent='Send it with me';document.getElementById('reminded').textContent='✓ It will be waiting.';document.getElementById('reminded').style.display='none';}
+  fill(document.getElementById('confBody'),['Take the reading with you. It is kept, and so is your question. ',{b:t.psychic},' will hold a door open, and when you are ready, Psychic Source will remember where you left off.']);
+  fill(document.getElementById('confH'),['Take your ',{em:'time.'}]);
+  document.querySelector('.held-ic').textContent='☾';
+  show('confirm');
+};
+document.getElementById('remindBtn').onclick=function(){var r=document.getElementById('remind');if(!r.value.trim()){r.focus();return;}document.getElementById('reminded').style.display='block';};
+document.getElementById('again').onclick=function(){location.reload();};
+</script>
+</body>
+</html>
