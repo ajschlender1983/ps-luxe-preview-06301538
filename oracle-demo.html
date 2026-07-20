@@ -181,6 +181,20 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 .keep input:focus{outline:none;border-color:var(--gold)}
 .keep .btn{padding:11px 18px}
 .kept{color:#8fcdb8;font-size:11px;letter-spacing:.08em;margin-top:10px;display:none}
+.sendbox{opacity:0;transition:opacity 1.2s}
+.sendbox.show{opacity:1}
+.sendbox.sent{opacity:.4;pointer-events:none}
+.send-h{font-family:var(--serif);font-size:15.5px;color:var(--ivory);text-align:center;margin:24px 0 0;line-height:1.4}
+.send-sub{font-size:11.5px;color:var(--gold);font-style:italic;font-family:var(--serif);text-align:center;margin-top:9px;opacity:.92}
+.mailsent{margin:20px auto 0;max-width:346px}
+.ms-sent{font-size:11.5px;color:#8fcdb8;text-align:center;line-height:1.5;margin-bottom:12px}
+.ms-ic{display:inline-flex;width:16px;height:16px;border-radius:50%;background:#8fcdb8;color:#0a0716;align-items:center;justify-content:center;font-size:10px;margin-right:5px;vertical-align:middle}
+.ms-env{border:1px solid rgba(233,207,154,.32);border-radius:14px;background:rgba(247,242,232,.04);overflow:hidden;box-shadow:0 16px 40px -24px #000;text-align:left}
+.ms-subj{font-size:12.5px;color:var(--ivory);font-weight:600;padding:11px 14px;border-bottom:1px solid rgba(233,207,154,.14);background:rgba(232,207,154,.06);line-height:1.35}
+.ms-subj span{display:block;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:3px}
+.ms-env .prepsy{opacity:1;margin:12px 12px 0;border:0;background:none;padding:0}
+.ms-cta{display:block;width:calc(100% - 24px);margin:13px 12px}
+.ms-cta b{font-weight:600}
 .riskline{font-size:10.5px;color:var(--muted);margin-top:10px;opacity:0;transition:opacity .5s}
 .riskline.show{opacity:1}
 .keep.remind{display:none;margin-top:20px}
@@ -314,10 +328,19 @@ h1 em{font-style:italic;color:var(--gold-bright)}
         <div class="openline" id="openline">There is more here than one card can carry. A human voice could take you further.</div>
         <button class="conthint" id="contHint" type="button" hidden>continue</button>
       </div>
-      <div class="keep"><input id="email" type="email" placeholder="Your email · the scroll travels with you"/><button class="btn" id="keepBtn">Keep it</button></div>
-      <div class="kept" id="kept">✓ Kept. It will be waiting for you.</div>
-      <div class="prepsy" id="prepsy"><img id="preImg" src="" alt=""/><span id="preLine"></span></div>
-      <div class="next" style="margin-top:18px"><button class="btn" id="toMatch">See who has been chosen for you</button></div>
+      <div class="sendbox" id="sendbox">
+        <div class="send-h">Your scroll is written. Where should it find you?</div>
+        <div class="keep"><input id="email" type="email" placeholder="your email"/><button class="btn" id="keepBtn">Send my scroll</button></div>
+        <div class="send-sub">One more movement is still forming for you. It arrives with the scroll.</div>
+      </div>
+      <div class="mailsent" id="mailsent" hidden>
+        <div class="ms-sent"><span class="ms-ic">&#10003;</span> On its way. The scroll, and the reader chosen for you, are in your inbox.</div>
+        <div class="ms-env">
+          <div class="ms-subj"><span>Psychic Source</span>Your scroll, and the reader the field chose</div>
+          <div class="prepsy show" id="prepsy"><img id="preImg" src="" alt=""/><span id="preLine"></span></div>
+          <button class="btn ms-cta" id="toMatch">Sit with <b id="msName">your reader</b> &rarr;</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -657,7 +680,7 @@ function finishReading(){
   rClear();hideCont();
   document.getElementById('chpres').classList.add('lean');
   document.getElementById('openline').classList.add('show');
-  rLater(function(){document.getElementById('prepsy').classList.add('show');},900);
+  rLater(function(){document.getElementById('sendbox').classList.add('show');},900);
 }
 document.getElementById('toReading').onclick=function(){
   var t=SPEC.themes[state.theme];rClear();
@@ -665,6 +688,9 @@ document.getElementById('toReading').onclick=function(){
   document.getElementById('sq').textContent='“'+state.q+'”';
   var ol=document.getElementById('openline');ol.textContent=OPENLINE[state.theme]||'There is more here than one card can carry. A human voice could take you further.';ol.classList.remove('show');
   document.getElementById('prepsy').classList.remove('show');
+  var _sb=document.getElementById('sendbox');_sb.classList.remove('show','sent');
+  document.getElementById('mailsent').hidden=true;
+  document.getElementById('email').value='';
   document.getElementById('preImg').src=t.img;
   document.getElementById('preLine').textContent=t.psychic+' is already in the channel. She read your question a moment ago and went quiet.';
   ['mv1','mv2','mv3'].forEach(function(id){var m=document.getElementById(id);m.classList.remove('show');clearKids(m.querySelector('p'));});
@@ -680,7 +706,11 @@ document.getElementById('contHint').onclick=readNext;
 document.getElementById('keepBtn').onclick=function(){
   var e=document.getElementById('email');
   if(!e.value.trim()){e.focus();return;}
-  document.getElementById('kept').style.display='block';
+  var t=SPEC.themes[state.theme];
+  document.getElementById('msName').textContent=t.psychic;
+  document.getElementById('sendbox').classList.add('sent');
+  var ms=document.getElementById('mailsent');ms.hidden=false;
+  try{ms.scrollIntoView({behavior:'smooth',block:'end'});}catch(_){}
 };
 document.getElementById('toMatch').onclick=function(){
   var t=SPEC.themes[state.theme];
@@ -724,7 +754,7 @@ document.getElementById('bookBtn').onclick=function(){
 };
 document.getElementById('decline').onclick=function(){
   var t=SPEC.themes[state.theme];
-  var kept=document.getElementById('kept').style.display==='block';
+  var kept=!document.getElementById('mailsent').hidden;
   var rr2=document.getElementById('remindRow');
   if(kept){rr2.style.display='none';}else{rr2.style.display='flex';document.getElementById('remind').placeholder='Where should the scroll wait for you?';document.getElementById('remindBtn').textContent='Send it with me';document.getElementById('reminded').textContent='✓ It will be waiting.';document.getElementById('reminded').style.display='none';}
   fill(document.getElementById('confBody'),['Take the reading with you. It is kept, and so is your question. ',{b:t.psychic},' will hold a door open, and when you are ready, Psychic Source will remember where you left off.']);

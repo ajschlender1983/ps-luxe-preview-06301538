@@ -1236,6 +1236,34 @@
   .th-offer{margin:36px 0 0;padding-left:20px;border-left:2px solid var(--gold);font-family:var(--serif);font-size:clamp(18px,2.2vw,25px);font-style:italic;line-height:1.42;color:var(--ivory);max-width:54ch}
   .th-cta{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:13px 24px;text-decoration:none;transition:filter .2s}
   .th-cta:hover{filter:brightness(1.07)}
+  .th-select{margin:26px 0 0;padding:16px 20px;border:1px solid var(--hair);border-radius:14px;background:rgba(232,207,154,.04)}
+  .th-select p{margin:8px 0 0;font-size:14px;color:var(--ivory);line-height:1.65}
+  .th-select p b{color:var(--gold-bright)}
+  .th-door{margin:22px 0 0;padding:18px 22px;border:1px solid var(--gold);border-radius:16px;background:linear-gradient(135deg,rgba(232,207,154,.12),transparent 70%);display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:center}
+  .td-l{display:flex;flex-direction:column;gap:3px}
+  .td-k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);font-weight:600}
+  .td-date{font-family:var(--serif);font-size:21px;color:var(--ivory);font-style:italic}
+  .td-r{display:flex;align-items:baseline;gap:8px;justify-self:end}
+  .td-days{font-family:var(--serif);font-size:40px;line-height:1;color:var(--gold-bright)}
+  .td-dl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.25}
+  .td-note{grid-column:1/-1;margin:6px 0 0;font-size:12px;color:var(--muted);line-height:1.6;border-top:1px solid var(--hair);padding-top:11px}
+  @media(max-width:560px){.th-door{grid-template-columns:1fr}.td-r{justify-self:start}}
+  .sow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+  .sow-col{border:1px solid var(--hair);border-radius:12px;padding:13px 15px;background:rgba(247,242,232,.02)}
+  .sow-h{font-family:var(--serif);font-size:14.5px;font-weight:600;color:var(--gold-bright);display:flex;flex-direction:column;gap:2px;margin-bottom:9px}
+  .sow-h span{font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .sow-col ul{margin:0;padding-left:16px;list-style:none}
+  .sow-col li{position:relative;font-size:12px;color:var(--ivory);line-height:1.5;margin:0 0 8px;padding-left:2px}
+  .sow-col li::before{content:"";position:absolute;left:-13px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  .sow-terms{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+  .st{border:1px solid var(--hair);border-radius:12px;padding:12px 14px;background:rgba(9,6,20,.22)}
+  .st b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright);font-weight:600;margin-bottom:5px}
+  .st span{font-size:12px;color:var(--muted);line-height:1.6}
+  .st.noncompete{grid-column:1/-1;border-color:rgba(232,207,154,.4);background:rgba(232,207,154,.05)}
+  .st.noncompete b{color:var(--gold-bright)}
+  .st.noncompete span{color:var(--ivory)}
+  .sow-link{display:inline-block;margin-top:12px;font-size:12px;letter-spacing:.04em;color:var(--gold-bright);text-decoration:none;border-bottom:1px solid rgba(232,207,154,.4);padding-bottom:2px}
+  @media(max-width:640px){.sow-grid,.sow-terms{grid-template-columns:1fr}.st.noncompete{grid-column:auto}}
   @media(max-width:760px){.th-grid{grid-template-columns:1fr}.th-col{padding:22px 0 6px}.th-col + .th-col{padding-left:0;border-left:0;border-top:1px solid var(--hair)}}
   /* ---- how-we-work workflows ---- */
   .wf2-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin:2px 0 18px}
@@ -1339,6 +1367,10 @@
     <div class="th-col"><span class="th-k">Why Psychic Source</span><p>35 years, 10M+ readings, nearly 1M customers, and only 2% of advisors accepted. Trust already banked, and a site that hides all of it.</p></div>
   </div>
   <p class="th-pull">The best brand equity in the category, deserving of a premium expression, and it <em>still looks and feels like a 1-800 hotline.</em><span class="u">That gap is the entire opportunity, and it is the one thing money cannot buy back once a challenger takes it.</span></p>
+  <div class="th-select">
+    <span class="th-k">Why this is coming to you</span>
+    <p>The category leaders all still look like a 1-800 hotline. We mapped the field and found the short list of brands with the trust and the reader depth to lead what comes next. <b>Psychic Source is one of them.</b> We build the Celestial Upgrade with one leader at a time, and right now that seat is yours.</p>
+  </div>
   <div class="th-brand">
     <span class="th-k">The brand, before and after</span>
     <div class="tb-grid">
@@ -1364,6 +1396,11 @@
     </div>
   </div>
   <p class="th-offer">A full PsychicSource.com rebrand, and an agentic go-to-market plan to match.</p>
+  <div class="th-door" id="offerDoor">
+    <div class="td-l"><span class="td-k">This invitation is open</span><span class="td-date" id="doorDate">through Sunday, July 26</span></div>
+    <div class="td-r"><span class="td-days" id="doorDays">7</span><span class="td-dl">days<br>remaining</span></div>
+    <p class="td-note">We hold one build slot for one leader at a time. When this window closes, the seat opens to the next brand on the short list. The $5,000 sprint is fully refundable, so the only thing this window protects is your place in line.</p>
+  </div>
   <div><a class="th-cta" href="#rebrand">See the rebrand and the plan &darr;</a></div>
 </div></section>
 <header class="top" id="rebrand"><span class="star"></span><div class="wrap">
@@ -1482,6 +1519,31 @@
       <div class="bs-h">The launch films</div>
       <div class="bs-d">Two short films for the launch: the brand film and the ad. Placeholders, each with a copyable prompt. <span style="color:var(--gold-bright)">Password protected.</span></div>
       <div class="films-grid" id="filmsGrid"></div>
+    </div>
+    <div class="build-sub">
+      <div class="bs-h">The Scope of Work</div>
+      <div class="bs-d">What the engagement delivers, on what timeline, and on what terms. The plain version, ready for whoever reads contracts at your table.</div>
+      <div class="sow-grid">
+        <div class="sow-col">
+          <div class="sow-h">Phase 1 &middot; The Upgrade <span>Weeks 1&ndash;4</span></div>
+          <ul><li>The full Celestial Upgrade front end, deployed on an adjacent domain</li><li>Brand system, asset library, and the Claude brand skill</li><li>The Oracle free-reading funnel, wired to your advisor availability</li></ul>
+        </div>
+        <div class="sow-col">
+          <div class="sow-h">Phase 2 &middot; The Send <span>Weeks 3&ndash;6</span></div>
+          <ul><li>Email capture on the reading, then a matched-reader send with one CTA</li><li>The scheduling handoff into a live session with the chosen psychic</li><li>The 2&ndash;3 email sequence and the recovery rail for anyone who stalls</li></ul>
+        </div>
+        <div class="sow-col">
+          <div class="sow-h">Phase 3 &middot; The Test <span>Weeks 5&ndash;12</span></div>
+          <ul><li>A clean A/B against your live funnel, one variable at a time</li><li>Weekly optimization on cost per first reading and conversion</li><li>The reporting and the merge plan if it beats your numbers</li></ul>
+        </div>
+      </div>
+      <div class="sow-terms">
+        <div class="st"><b>Deliverables</b><span>The complete build (site, assets, design system, brand skill), the Oracle and send system, and the A/B readout, all yours to keep.</span></div>
+        <div class="st"><b>Fees</b><span>A $5,000 90-day proof sprint, fully refundable until Week 0. On a hit, a $15K/mo growth team, with the sprint credited toward month one.</span></div>
+        <div class="st noncompete"><b>Exclusivity &amp; non-compete</b><span>For the engagement and 12 months after, we will not build the Celestial Upgrade or the Oracle send funnel for any competing psychic-reading brand. In return, our agentic send system and its playbooks stay ours to license and are never ported to a competitor. One category leader at a time, and while this is live, that leader is you.</span></div>
+        <div class="st"><b>Ownership &amp; license</b><span>You own the build outright. We license the agentic systems for the term, and hand over full documentation so your team can run them.</span></div>
+      </div>
+      <a class="sow-link" href="proof-sprint-charter.html" target="_blank" rel="noopener">Read the full Proof Sprint Charter, in numbered clauses &rarr;</a>
     </div>
     <div id="buildContents" hidden>
       <div class="build-sub">
@@ -2899,8 +2961,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       sx.appendChild(T('p','gx-lead2','The main path runs left to right. The recovery loops underneath catch everyone who stalls, and feed them back in.'));
       var dg=E('div','orc-diag');
       var ZONES=[
-        {cls:'free',h:'Free · The Oracle',sub:'≈ $0.04 to serve · nothing charged',entry:'Enters an anonymous stranger',nodes:[['The Ask','question spoken'],['The Summoning','a card turns · $0.04'],['The Arrival','card + why'],['The Reading','three movements'],['Keep It','email · decision']]},
-        {cls:'warm',h:'Warm · The Handoff',sub:'named, emailed, invested',entry:'Now a seeker with skin in it',nodes:[['The Match','psychic + why her'],['Availability','live or window'],['Schedule','slots + amount'],['Held','confirmation']]},
+        {cls:'free',h:'Free · The Oracle',sub:'≈ $0.04 to serve · nothing charged',entry:'Enters an anonymous stranger',nodes:[['The Ask','question spoken'],['The Summoning','a card turns · $0.04'],['The Arrival','card + why'],['The Reading','three movements'],['Send the Scroll','to their inbox']]},
+        {cls:'warm',h:'Warm · The Handoff',sub:'named, emailed, invested',entry:'Now a seeker with skin in it',nodes:[['The Email','scroll + the chosen reader + one CTA'],['The Match','one reader · why her'],['Availability','live or window'],['Schedule','one held time']]},
         {cls:'paid',h:'Paid · The Human',sub:'$1 / min · a live reading',entry:'Becomes a paying relationship',nodes:[['The Channel','$1/min · live'],['The Record','the keepsake'],['The Circle','membership']]}
       ];
       var zwrap=E('div','orc-zones');
@@ -3243,6 +3305,24 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   pw.addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); });
   gate.addEventListener('click', function(e){ if(e.target===gate) closeGate(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && gate.classList.contains('on')) closeGate(); });
+})();
+</script>
+<script>
+(function(){
+  var OFFER_CLOSES=new Date(2026,6,26,23,59,59);
+  var el=document.getElementById('doorDays'), dt=document.getElementById('doorDate');
+  if(!el)return;
+  function fmt(d){var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];var mo=['January','February','March','April','May','June','July','August','September','October','November','December'];return 'through '+days[d.getDay()]+', '+mo[d.getMonth()]+' '+d.getDate();}
+  if(dt)dt.textContent=fmt(OFFER_CLOSES);
+  function tick(){
+    var now=new Date();
+    var days=Math.ceil((OFFER_CLOSES-now)/86400000);
+    if(days>1){el.textContent=days;}
+    else if(days===1){el.textContent='1';}
+    else if(days===0){el.textContent='today';el.style.fontSize='24px';var dl=el.nextElementSibling;if(dl)dl.textContent='the window closes';}
+    else {var door=document.getElementById('offerDoor');if(door)door.style.display='none';}
+  }
+  tick(); setInterval(tick,3600000);
 })();
 </script>
 </body>
