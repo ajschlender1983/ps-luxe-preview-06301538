@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Your horoscope — Psychic Source</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#140F38; --void:#1C1550; --void-2:#2A1E66;
+  --gold:#C9A86A; --gold-bright:#E8CF9A; --ivory:#F7F2E8;
+  --muted:rgba(247,242,232,.68); --hair:rgba(201,168,106,.22);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--ink);color:var(--ivory);min-height:100vh;
+  background:radial-gradient(120% 90% at 50% 0,var(--void-2),var(--void) 45%,var(--ink) 82%);
+  display:flex;flex-direction:column}
+a{color:inherit}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px clamp(18px,5vw,48px)}
+.logo{font-family:var(--serif);font-size:20px;letter-spacing:.22em;color:var(--ivory);text-decoration:none;font-weight:600}
+.logo small{display:block;font-family:var(--sans);font-size:8px;letter-spacing:.3em;color:var(--gold);margin-top:2px}
+.back{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--gold)}
+.wrap{flex:1;width:100%;max-width:680px;margin:0 auto;padding:16px clamp(18px,5vw,40px) 60px;text-align:center}
+.h-glyph{width:88px;height:88px;margin:6px auto 14px;opacity:.95}
+.h-glyph img{width:100%;height:100%;object-fit:contain}
+.h-name{font-family:var(--serif);font-size:clamp(34px,7vw,56px);font-weight:600;line-height:1}
+.h-dates{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+.h-today{font-size:12px;letter-spacing:.06em;color:var(--muted);margin-top:6px}
+.h-trait{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.6vw,23px);color:var(--gold-bright);line-height:1.4;margin:26px auto 4px;max-width:56ch}
+.h-block{text-align:left;border-top:1px solid var(--hair);padding:16px 0 2px;margin-top:16px}
+.h-k{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.h-t{font-size:15px;line-height:1.65;color:var(--ivory)}
+/* curated psychic */
+.h-reader{margin-top:34px;border:1px solid var(--gold);border-radius:18px;padding:20px;background:linear-gradient(160deg,rgba(232,207,154,.1),transparent);text-align:left;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.hr-photo{flex:none;width:78px;height:78px;border-radius:50%;overflow:hidden;border:1px solid var(--hair)}
+.hr-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hr-body{flex:1;min-width:200px}
+.hr-ey{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hr-name{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--gold-bright);line-height:1.1;margin-top:2px}
+.hr-spec{font-size:12px;color:var(--muted);font-style:italic}
+.hr-why{font-size:13px;color:var(--ivory);line-height:1.55;margin-top:8px}
+.hr-avail{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--gold-bright);margin-top:10px}
+.hr-avail i{width:7px;height:7px;border-radius:50%;background:#69d29a;box-shadow:0 0 8px #69d29a}
+.hr-avail.window i{background:var(--gold);box-shadow:none}
+.hr-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:12px;margin-top:14px;text-decoration:none;
+  background:linear-gradient(120deg,var(--gold-bright),var(--gold));color:#1a1206;
+  font-family:var(--serif);font-size:18px;font-weight:600;padding:14px 22px;border-radius:12px;
+  box-shadow:0 16px 40px -22px rgba(232,207,154,.6);transition:transform .25s,box-shadow .25s}
+.hr-cta:hover{transform:translateY(-2px);box-shadow:0 22px 52px -22px rgba(232,207,154,.8)}
+.h-micro{font-size:12px;color:var(--muted);margin-top:16px;font-style:italic}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="logo" href="index.html">PSYCHIC SOURCE<small>EST. 1989</small></a>
+    <a class="back" href="horoscopes.html">All signs →</a>
+  </div>
+  <div class="wrap" id="wrap" aria-live="polite">
+    <div class="h-glyph"><img id="hGlyph" src="" alt="" /></div>
+    <h1 class="h-name" id="hName"></h1>
+    <div class="h-dates" id="hDates"></div>
+    <div class="h-today" id="hToday"></div>
+    <p class="h-trait" id="hTrait"></p>
+    <div class="h-block"><div class="h-k">Today</div><div class="h-t" id="hOver"></div></div>
+    <div class="h-block"><div class="h-k">In love</div><div class="h-t" id="hLove"></div></div>
+    <div class="h-block"><div class="h-k">In work</div><div class="h-t" id="hWork"></div></div>
+    <div class="h-reader">
+      <div class="hr-photo"><img id="hrPhoto" src="" alt="" /></div>
+      <div class="hr-body">
+        <div class="hr-ey">Your reader for this sign</div>
+        <div class="hr-name" id="hrName"></div>
+        <div class="hr-spec" id="hrSpec"></div>
+        <div class="hr-why" id="hrWhy"></div>
+        <div class="hr-avail" id="hrAvail"><i></i><span id="hrAvailT"></span></div>
+      </div>
+      <a class="hr-cta" id="hrCta" href="#"><b id="hrCtaT"></b><span>→</span></a>
+    </div>
+    <div class="h-micro">The stars point. A reader tells you what to do about it, live, at $1 a minute with a ceiling you set.</div>
+  </div>
+<script src="../assets/gtm-horoscopes.js"></script>
+<script>
+(function(){
+  var key=((location.search.match(/[?&]sign=([a-z]+)/i)||[])[1]||'').toLowerCase();
+  var r=window.HORO&&window.HORO.read(key);
+  if(!r){ location.replace('horoscopes.html'); return; }
+  var s=r.sign, p=r.psychic;
+  document.getElementById('hGlyph').src='../assets/zodiac/'+s.key+'.png';
+  document.getElementById('hGlyph').alt=s.name;
+  document.getElementById('hName').textContent=s.name;
+  document.getElementById('hDates').textContent=s.dates;
+  document.getElementById('hToday').textContent='Your reading for today · '+r.date;
+  document.getElementById('hTrait').textContent=r.trait;
+  document.getElementById('hOver').textContent=r.overview;
+  document.getElementById('hLove').textContent=r.love;
+  document.getElementById('hWork').textContent=r.work;
+  document.getElementById('hrPhoto').src=p.img;
+  document.getElementById('hrName').textContent=p.name;
+  document.getElementById('hrSpec').textContent=p.spec+' · '+p.rate;
+  document.getElementById('hrWhy').textContent=r.why;
+  document.getElementById('hrAvailT').textContent=p.avail;
+  if(p.mode==='window'){ document.getElementById('hrAvail').className='hr-avail window'; }
+  document.getElementById('hrCtaT').textContent='Sit with '+p.name;
+  document.getElementById('hrCta').setAttribute('href','advisors.html?find='+encodeURIComponent(p.find));
+  document.title=s.name+' horoscope — Psychic Source';
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Daily Horoscopes & Astrology — Psychic Source</title>
+<meta name="description" content="Read the day in the stars. Daily and love horoscopes for all twelve signs, plus a live psychic to read the chart only you were born under." />
+<meta name="theme-color" content="#1A1346" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 1.5 L21.5 18.5 L38.5 20 L21.5 21.5 L20 38.5 L18.5 21.5 L1.5 20 L18.5 18.5 Z' fill='%23E8CF9A'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css" />
+<style>
+  /* ===== horoscopes hero: constellation sky + twinkling stars + magical quill ===== */
+  .horo-hero .ph-media img{opacity:.74}
+  .horo-hero .ph-inner{z-index:3}
+  /* dense field of the same four-point twinkling stars used on the psychic cards */
+  .horo-sky{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;mix-blend-mode:screen}
+  .hstar{position:absolute;background:radial-gradient(circle at 50% 50%,rgba(255,253,246,1) 0,rgba(240,220,170,.72) 40%,rgba(201,168,106,0) 72%);clip-path:polygon(50% 0,57% 43%,100% 50%,57% 57%,50% 100%,43% 57%,0 50%,43% 43%);animation:hTwinkle var(--tw,6.5s) ease-in-out infinite}
+  @keyframes hTwinkle{0%,100%{opacity:.14;transform:translate(-50%,-50%) scale(.45)}50%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+  /* the central star breathes */
+  .horo-core{position:absolute;left:50%;top:21%;width:40vw;height:40vw;max-width:520px;max-height:520px;transform:translate(-50%,-50%);z-index:1;pointer-events:none;border-radius:50%;mix-blend-mode:screen;background:radial-gradient(circle,rgba(232,207,154,.22),rgba(232,207,154,.06) 34%,transparent 62%);animation:coreBreath 6.5s ease-in-out infinite}
+  @keyframes coreBreath{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(.93)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
+  /* featured cosmic magical quill, glowing, gently drifting */
+  /* featured quill sits BEHIND the type as a glowing backdrop */
+  .horo-quill{position:absolute;z-index:2;pointer-events:none;left:50%;top:49%;width:clamp(260px,34vw,500px);mix-blend-mode:screen;opacity:.8;
+    -webkit-mask-image:radial-gradient(ellipse 50% 84% at 52% 47%,#000 10%,rgba(0,0,0,.5) 44%,transparent 78%);mask-image:radial-gradient(ellipse 50% 84% at 52% 47%,#000 10%,rgba(0,0,0,.5) 44%,transparent 78%);
+    animation:quillFloat 9.5s ease-in-out infinite alternate}
+  @keyframes quillFloat{from{transform:translate(-50%,-50%) translateY(8px) rotate(-8deg)}to{transform:translate(-50%,-50%) translateY(-14px) rotate(-3deg)}}
+  @media(max-width:820px){.horo-quill{width:270px;opacity:.62}}
+  @media(prefers-reduced-motion:reduce){.hstar,.horo-core,.horo-quill{animation:none}.hstar{opacity:.4}}
+  /* clean zodiac emblems — crisp gold vector line-art */
+  .zcard .zn,.zcard .zd{display:block}
+  .zcard .zico{display:flex;align-items:center;justify-content:center;width:80px;height:80px;margin:0 auto 12px}
+  .zcard .zico img{width:100%;height:100%;object-fit:contain;transition:transform .45s var(--ease)}
+  .zcard:hover .zico img{transform:scale(1.09)}
+  /* free daily horoscope — framed as a gift, above the fold */
+  .horo-gift{display:inline-flex;align-items:center;gap:16px;margin-top:30px;padding:13px 15px 13px 20px;border:1px solid var(--hair);border-radius:999px;background:linear-gradient(120deg,rgba(232,207,154,.15),rgba(178,84,220,.07));backdrop-filter:blur(6px);text-align:left}
+  .horo-gift .gift-ico{color:var(--gold-bright);flex-shrink:0;display:flex}
+  .horo-gift .gift-ico svg{width:30px;height:30px}
+  .horo-gift .gift-copy{display:flex;flex-direction:column;line-height:1.25}
+  .horo-gift .gift-k{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-bright)}
+  .horo-gift .gift-t{font-family:var(--serif);font-size:16.5px;color:var(--ivory)}
+  .horo-gift .gift-t b{color:var(--gold-bright);font-weight:500;font-style:italic}
+  .btn-gift{white-space:nowrap;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:linear-gradient(135deg,var(--gold-bright),var(--gold));padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:500;transition:transform .4s var(--ease),box-shadow .4s}
+  .btn-gift:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(232,207,154,.5)}
+  .btn-gift .arrow{margin-left:6px}
+  @media(max-width:600px){.horo-gift{flex-direction:column;border-radius:22px;text-align:center;gap:12px}.horo-gift .gift-copy{text-align:center}}
+</style>
+</head>
+<body data-page="horoscopes.html">
+<main id="main">
+
+  <section class="page-hero center tall horo-hero">
+    <div class="ph-media"><img src="../assets/heroes/horoscopes-sky.jpg" alt="" /></div>
+    <div class="horo-core" aria-hidden="true"></div>
+    <div class="horo-sky" id="horoSky" aria-hidden="true"></div>
+    <img class="horo-quill" src="../assets/heroes/horoscopes-quill.jpg" alt="" aria-hidden="true" />
+    <div class="wrap ph-inner">
+      <div class="breadcrumb reveal"><a href="index.html">Home</a><span>/</span>Horoscopes</div>
+      <span class="eyebrow reveal" data-d="1">Daily Horoscopes</span>
+      <h1 class="ph-title reveal" data-d="2">Written in the <em>stars</em></h1>
+      <p class="ph-lead reveal" data-d="3">The sky keeps a diary, and today's page is yours. Read what the planets are saying for your sign, then let a live psychic read the part the daily forecast never sees.</p>
+      <div class="ph-cta reveal" data-d="4"><a class="btn-primary" href="advisors.html">Get Your Reading</a><a class="btn-text" href="#signs">Find your sign <span class="arrow">→</span></a></div>
+      <div class="horo-gift reveal" data-d="5">
+        <span class="gift-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M20 12v8a1 1 0 01-1 1H5a1 1 0 01-1-1v-8"/><rect x="2.5" y="8" width="19" height="4" rx="1"/><path d="M12 8v13"/><path d="M12 8S9.6 8 8.5 6.7C7.8 5.8 8.3 4.3 9.6 4.7 11 5.1 12 8 12 8Z"/><path d="M12 8s2.4 0 3.5-1.3c.7-.9.2-2.4-1.1-2c-1.4.4-2.4 3.3-2.4 3.3Z"/></svg></span>
+        <div class="gift-copy"><span class="gift-k">A gift from the sky</span><span class="gift-t">Your daily horoscope, <b>free</b></span></div>
+        <a class="btn-gift" href="#signs">Get your free horoscope <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-pad" id="signs">
+    <div class="wrap">
+      <div class="sec-head center reveal"><span class="eyebrow">The Twelve</span><h2>Find your sign</h2><p>Choose the constellation you were born beneath. Each one carries its own weather, its own gifts, and its own way of moving through the day.</p></div>
+      <div class="zgrid">
+        <a class="zcard reveal" href="horoscope.html?sign=aries"><span class="zico"><img src="../assets/zodiac/aries.png" alt="Aries" loading="lazy" /></span><span class="zn">Aries</span><span class="zd">Mar 21 to Apr 19</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=taurus"><span class="zico"><img src="../assets/zodiac/taurus.png" alt="Taurus" loading="lazy" /></span><span class="zn">Taurus</span><span class="zd">Apr 20 to May 20</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=gemini"><span class="zico"><img src="../assets/zodiac/gemini.png" alt="Gemini" loading="lazy" /></span><span class="zn">Gemini</span><span class="zd">May 21 to Jun 20</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=cancer"><span class="zico"><img src="../assets/zodiac/cancer.png" alt="Cancer" loading="lazy" /></span><span class="zn">Cancer</span><span class="zd">Jun 21 to Jul 22</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=leo"><span class="zico"><img src="../assets/zodiac/leo.png" alt="Leo" loading="lazy" /></span><span class="zn">Leo</span><span class="zd">Jul 23 to Aug 22</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=virgo"><span class="zico"><img src="../assets/zodiac/virgo.png" alt="Virgo" loading="lazy" /></span><span class="zn">Virgo</span><span class="zd">Aug 23 to Sep 22</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=libra"><span class="zico"><img src="../assets/zodiac/libra.png" alt="Libra" loading="lazy" /></span><span class="zn">Libra</span><span class="zd">Sep 23 to Oct 22</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=scorpio"><span class="zico"><img src="../assets/zodiac/scorpio.png" alt="Scorpio" loading="lazy" /></span><span class="zn">Scorpio</span><span class="zd">Oct 23 to Nov 21</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=sagittarius"><span class="zico"><img src="../assets/zodiac/sagittarius.png" alt="Sagittarius" loading="lazy" /></span><span class="zn">Sagittarius</span><span class="zd">Nov 22 to Dec 21</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=capricorn"><span class="zico"><img src="../assets/zodiac/capricorn.png" alt="Capricorn" loading="lazy" /></span><span class="zn">Capricorn</span><span class="zd">Dec 22 to Jan 19</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=aquarius"><span class="zico"><img src="../assets/zodiac/aquarius.png" alt="Aquarius" loading="lazy" /></span><span class="zn">Aquarius</span><span class="zd">Jan 20 to Feb 18</span></a>
+        <a class="zcard reveal" href="horoscope.html?sign=pisces"><span class="zico"><img src="../assets/zodiac/pisces.png" alt="Pisces" loading="lazy" /></span><span class="zn">Pisces</span><span class="zd">Feb 19 to Mar 20</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-pad">
+    <div class="wrap">
+      <div class="split-feat reveal">
+        <div class="sf-media"><img src="../assets/hero-light.jpg" alt="Soft cosmic light" /></div>
+        <div>
+          <span class="eyebrow">Today's Cosmic Weather</span>
+          <h2 style="font-family:var(--serif);font-size:clamp(30px,3.6vw,46px);font-weight:500;line-height:1.1;margin:16px 0 22px;">The sky is moving. So are you.</h2>
+          <p style="color:var(--muted);font-size:17px;line-height:1.85;margin-bottom:18px;">The Moon leans toward the water signs today, softening the edges of every conversation and inviting you to say the tender thing you have been holding back. Mercury runs quick and clear, so plans made now tend to hold. Venus lingers in a generous corner of the chart, warming old bonds and making new ones feel less like risk and more like recognition.</p>
+          <p style="color:var(--muted);font-size:17px;line-height:1.85;margin-bottom:28px;">A daily forecast paints the sky in broad strokes. Your chart is far more particular. A live psychic can tell you which of these currents is actually pulling on your life right now.</p>
+          <a class="btn-text" href="advisors.html">Read the sky with a psychic <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-pad">
+    <div class="wrap">
+      <div class="sec-head center reveal"><span class="eyebrow">Beyond The Daily</span><h2>Go deeper than the daily</h2><p>The horoscope is where the conversation starts. A psychic is where it becomes about you.</p></div>
+      <div class="grid-3">
+        <div class="fcard reveal" data-d="1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg></div><h3>Daily Horoscope</h3><p>A quick read on the day ahead for your sign. When a line lands a little too close to home, a psychic can tell you why, and what to do about it.</p><a class="fcard-link" href="advisors.html">Ask about today <span>→</span></a></div>
+        <div class="fcard reveal" data-d="2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21C12 21 4 15 4 9a4 4 0 018-1 4 4 0 018 1c0 6-8 12-8 12z"/></svg></div><h3>Love Horoscope</h3><p>Where the heart is heading for your sign this season. Bring the name that keeps surfacing to a love psychic and read the connection between you.</p><a class="fcard-link" href="../love.html">Explore love readings <span>→</span></a></div>
+        <div class="fcard reveal" data-d="3"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/></svg></div><h3>Your Birth Chart</h3><p>The exact sky at the hour you arrived, mapped for you alone. An astrology psychic can walk you through it, house by house, in a live reading.</p><a class="fcard-link" href="advisors.html">Read my chart <span>→</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cine">
+    <div class="cine-bg"><img src="../assets/cine/horoscopes.jpg" alt="" /></div>
+    <div class="cine-scrim"></div>
+    <span class="cine-glow" aria-hidden="true"></span>
+    <div class="cine-inner reveal">
+      <span class="cine-eyebrow">The Turning Sky</span>
+      <p class="cine-line">The same sky that has guided seekers for five thousand <em>years</em>.</p>
+    </div>
+  </section>
+
+  <section class="ctaband">
+    <span class="glow-c" aria-hidden="true"></span>
+    <div class="ctaband-inner reveal">
+      <span class="eyebrow">Your reading awaits</span>
+      <h2>The stars set the scene. You choose the <em>story</em>.</h2>
+      <p>Bring today's horoscope to a live psychic and hear what it means for your life. New members read from $1 per minute.</p>
+      <a class="btn-primary" href="advisors.html">Get Your Reading</a>
+      <p class="cta-micro">New members from $1/min &middot; Satisfaction guaranteed.</p>
+      <p class="fine">Satisfied or your money back. For entertainment. 18+.</p>
+    </div>
+  </section>
+
+</main>
+<script src="../assets/site.js"></script>
+<script>
+/* scatter a dense field of twinkling four-point stars across the horoscopes hero */
+(function(){
+  var sky=document.getElementById('horoSky'); if(!sky) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var N=window.innerWidth<820?750:1500;
+  for(var i=0;i<N;i++){
+    var s=document.createElement('span'); s.className='hstar';
+    var sz=(Math.random()*Math.random()*7+2.5); // bias small, a few larger
+    s.style.width=sz.toFixed(1)+'px'; s.style.height=sz.toFixed(1)+'px';
+    s.style.left=(Math.random()*100).toFixed(2)+'%';
+    s.style.top=(Math.random()*100).toFixed(2)+'%';
+    s.style.setProperty('--tw',(Math.random()*4.5+4.5).toFixed(1)+'s');
+    if(reduce){ s.style.animation='none'; s.style.opacity='.4'; s.style.transform='translate(-50%,-50%)'; }
+    else { s.style.animationDelay=(-Math.random()*9).toFixed(1)+'s'; }
+    sky.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
