@@ -2997,6 +2997,53 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     function renderSUBX(){
       var sx=document.getElementById('subxBody'); if(!sx)return; clear(sx);
       sx.appendChild(T('p','gx-lead','Readings are a transaction. Members are a business. This add-on turns the redesign into a subscription: an agentic reading that never sleeps, a session room worth staying for, and a membership that makes the second reading a habit. One spoken question runs across all nine screens.'));
+
+      // ---- The Portal, elevated: where a reading becomes a relationship ----
+      var phero=E('div');phero.style.cssText='margin-top:14px;padding:22px 24px;border:1px solid var(--gold);border-radius:16px;background:linear-gradient(160deg,rgba(232,207,154,.11),transparent)';
+      phero.appendChild(H('div',null,'<span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)">The Portal</span>'));
+      var ph1=T('div',null,'Where a reading becomes a relationship.');ph1.style.cssText='font-family:var(--serif);font-size:clamp(22px,3vw,32px);color:var(--gold-bright);font-weight:600;line-height:1.12;margin:6px 0 8px';phero.appendChild(ph1);
+      phero.appendChild(H('p',null,'<span style="font-size:13.5px;color:var(--muted);line-height:1.65">The reading is the product. The Portal is the only surface where a one-off transaction becomes a member, at the emotional peak, before the feeling cools. Every rival pays to bring the seeker back later; the Portal converts the second purchase for free, in the room. <b style="color:var(--ivory)">The reading ends. The relationship does not have to.</b></span>'));
+      sx.appendChild(phero);
+      // three named beats — The Record is the signature
+      sx.appendChild(T('div','gx-h','One room, one keepsake, one circle'));
+      var beats=E('div');beats.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px';
+      [['The Channel','Presence','You and your reader in one quiet room. Safety at the threshold, warm light instead of a ticking meter.',false],
+       ['The Record','Memory','A keepsake generated live as the session closes, never a receipt: the insight, the card that came, a line your reader said, in the brand&rsquo;s sacred design. The thing a seeker screenshots, and the reason they return.',true],
+       ['The Circle','Belonging','The seekers who keep coming back have a home: a members&rsquo; rate, priority booking, and every Record kept forever. Leaving means losing your history.',false]
+      ].forEach(function(b){
+        var c=E('div');c.style.cssText='border:1px solid '+(b[3]?'var(--gold)':'var(--hair)')+';border-radius:14px;padding:15px 16px;background:'+(b[3]?'linear-gradient(165deg,rgba(232,207,154,.13),transparent)':'rgba(247,242,232,.02)');
+        if(b[3]){var sig=T('span',null,'The signature moment');sig.style.cssText='display:inline-block;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:#1a1206;background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:3px 9px;margin-bottom:8px';c.appendChild(sig);}
+        var t=T('div',null,b[0]);t.style.cssText='font-family:var(--serif);font-size:19px;font-weight:600;color:var(--gold-bright);line-height:1.1';c.appendChild(t);
+        var k=T('div',null,b[1]);k.style.cssText='font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:2px 0 7px';c.appendChild(k);
+        c.appendChild(H('span',null,'<span style="font-size:12px;color:var(--muted);line-height:1.55">'+b[2]+'</span>'));
+        beats.appendChild(c);
+      });
+      sx.appendChild(beats);
+      // the offer ladder — three verbs, cheapest commitment first, prices off the peak
+      sx.appendChild(T('div','gx-h','The second purchase, offered in the room'));
+      sx.appendChild(T('p','gx-lead2','No price at the emotional peak, and never a countdown. At the close, one soft line. One scroll down, on the Record, the way to keep going. Three rungs, and the eye travels up on its own.'));
+      var lad=E('div');lad.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px';
+      [['Continue','Book your next session','Finish the thread the reading left open. Time held with your reader, at the rate you paid today. Offered at the close, no price shown.','same $1/min'],
+       ['Save','A package with your reader','For seekers who know they will be back. A bundle that quietly corrects the per-minute overpayment.','60 min · $150'],
+       ['Belong','The Circle','Not a tier, an identity: your readers, your history, your rate, and every Record kept forever.','$49/mo']
+      ].forEach(function(r){
+        var c=E('div');c.style.cssText='border:1px solid var(--hair);border-radius:14px;padding:15px 16px;background:rgba(247,242,232,.02);display:flex;flex-direction:column;gap:4px';
+        var v=T('div',null,r[0]);v.style.cssText='font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)';c.appendChild(v);
+        var t=T('div',null,r[1]);t.style.cssText='font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ivory);line-height:1.15';c.appendChild(t);
+        var p=T('div',null,r[3]);p.style.cssText='font-family:var(--serif);font-size:15px;color:var(--gold-bright)';c.appendChild(p);
+        var d=T('span',null,r[2]);d.style.cssText='font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:2px';c.appendChild(d);
+        lad.appendChild(c);
+      });
+      sx.appendChild(lad);
+      // the retention math — one number moving
+      sx.appendChild(T('div','gx-h','Why this is the number that matters'));
+      var ltv=E('div');ltv.style.cssText='border:1px solid var(--hair);border-radius:14px;padding:18px 20px;background:rgba(9,6,20,.25)';
+      function bar(label,ratio,w,bright){var row=E('div');row.style.cssText='display:flex;align-items:center;gap:12px;margin:8px 0';var l=T('span',null,label);l.style.cssText='flex:none;width:150px;font-size:12px;color:var(--muted)';row.appendChild(l);var track=E('div');track.style.cssText='flex:1;height:22px;border-radius:6px;background:rgba(247,242,232,.06);overflow:hidden';var fill=E('div');fill.style.cssText='height:100%;width:'+w+'%;background:'+(bright?'linear-gradient(90deg,var(--gold),var(--gold-bright))':'rgba(150,162,196,.5)')+';border-radius:6px';track.appendChild(fill);row.appendChild(track);var r=T('span',null,ratio);r.style.cssText='flex:none;width:64px;text-align:right;font-family:var(--serif);font-size:17px;font-weight:600;color:'+(bright?'var(--gold-bright)':'var(--muted)');row.appendChild(r);return row;}
+      ltv.appendChild(bar('Per-minute today','1.5 : 1',33,false));
+      ltv.appendChild(bar('With the Portal','4.5 : 1',100,true));
+      ltv.appendChild(H('p',null,'<span style="font-size:11px;color:var(--muted);font-style:italic;line-height:1.55;display:block;margin-top:8px">Illustrative. Same $40 to acquire a first-reading seeker. The Portal lifts the second purchase from roughly one in seven to better than one in three, and a slice enter the Circle, so lifetime value moves from about $60 to about $180 against the same cost.</span>'));
+      sx.appendChild(ltv);
+      sx.appendChild(H('p','gx-owned','We do not need cheaper traffic. We need the second purchase, and the Portal is where the second purchase happens, at the peak, for free. Nothing here uses a countdown or false scarcity: the only honest urgency is the thread the reading left open. The gift comes first, the invitation second, and that order is what keeps it sacred.'));
       // ---- The gold thread: nine screens, one spoken question ----
       var A_IMG='assets/advisors/Angela-9978.jpg';
       var Q='\u201cWill he come back to me?\u201d';
@@ -3159,6 +3206,24 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     function renderEXPX(){
       var ex=document.getElementById('expxBody'); if(!ex)return; clear(ex);
       ex.appendChild(T('p','gx-lead','Do not redesign the site that pays the bills. Build the luxury version of Psychic Source on its own domain, wire it straight into your advisors, availability, and billing, and run it as a live A/B test against your real funnel. Keep only what beats your current numbers. You are not betting the site. You are running a measured experiment with a clean holdout and a kill switch.'));
+
+      // The simplest possible yes — the minimum to establish the three connections
+      ex.appendChild(T('div','gx-h','The simplest possible yes'));
+      ex.appendChild(T('p','gx-lead2','You do not build an integration to run this. The experiment rides three connections your business already runs every day, and the smallest version of each is enough to start. Here is the whole ask.'));
+      var minw=E('div');minw.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:8px';
+      [['Scheduling','You already have live availability and a booking system. The minimum is a read of who is free and one link that starts a session. Nothing new to stand up.'],
+       ['Telephony','Your readers already take calls at $1 a minute. The minimum is the click-to-connect you already hand customers. We never touch the phone stack.'],
+       ['Payments','You already charge per minute on your own PCI-compliant rails. The minimum is your existing guest checkout. No card data ever touches us.']
+      ].forEach(function(g){
+        var c=E('div');c.style.cssText='border:1px solid var(--hair);border-radius:12px;padding:14px 16px;background:rgba(232,207,154,.04)';
+        var b=H('b',null,'<i class="exp-shield">&#10003;</i>'+g[0]);b.style.cssText='display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:16px;color:var(--gold-bright);font-weight:600';
+        c.appendChild(b);
+        var s=T('span',null,g[1]);s.style.cssText='display:block;font-size:12px;color:var(--muted);line-height:1.6;margin-top:7px';
+        c.appendChild(s);
+        minw.appendChild(c);
+      });
+      ex.appendChild(minw);
+      ex.appendChild(T('p','exp-flowcap','Three links you could hand us in an afternoon. That is the yes. Everything else on this page, we build.'));
 
       // The name
       var nm=E('div','exp-name');
