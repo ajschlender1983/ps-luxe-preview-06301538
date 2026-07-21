@@ -1,4 +1,4 @@
-/* GTM_FLOWS — the single source of truth for the persona top-of-funnel flows (Version 2, /gtm/).
+/* GTM_FLOWS - the single source of truth for the persona top-of-funnel flows (Version 2, /gtm/).
    Consumed by /gtm/index.html (the chooser), /gtm/for-you.html (persona landing), and /gtm/oracle-demo.html (?p= preset).
    Image + dest paths are written relative to a page inside /gtm/ (so ../assets, and sibling .html). */
 window.GTM_FLOWS = [
@@ -14,8 +14,8 @@ window.GTM_FLOWS = [
     key:'carla', label:'A crossroads at work', sub:'A real decision, and everyone has an opinion but you.',
     img:'../assets/personas/carla.jpg', mechanic:'oracle', theme:'career',
     dest:'oracle-demo.html?p=carla', cta:'Ask the Oracle, free',
-    intro:'A real crossroads at work, and everyone has an opinion but you. Ask it straight. You will get a clear read, not a horoscope-flavored pep talk.',
-    proof:'A clear-eyed outside read that helps you commit or walk away. Then a career specialist who reads the turning point, not a fortune.',
+    intro:'A real crossroads at work, and everyone has an opinion but you. Ask it straight, and you will get a clear, grounded read you can act on.',
+    proof:'A clear-eyed outside read that helps you commit or walk away, then a career specialist who reads the real turning point in front of you.',
     starterQ:'Should I take the offer, or wait?'
   },
   {
@@ -38,14 +38,14 @@ window.GTM_FLOWS = [
     key:'wendy', label:'I need someone, now', sub:'A real person, in about a minute.',
     img:'../assets/personas/wendy.jpg', mechanic:'directory',
     dest:'advisors.html?status=now', cta:'See who is available now',
-    intro:'It is late and you want a real person now, not hoops. These readers are live this minute. No account to start.',
+    intro:'It is late and you want a real person right now. These readers are live this minute, with no account to start.',
     proof:'A real, trustworthy psychic in about a minute, by phone or chat. Someone is genuinely awake, and your question just reached them.'
   },
   {
-    key:'sofia', label:'A deeper reflection', sub:'A mirror, not a fortune.',
+    key:'sofia', label:'A deeper reflection', sub:'A mirror for the real question.',
     img:'../assets/personas/sofia.jpg', mechanic:'oracle', theme:'path',
     dest:'oracle-demo.html?p=sofia', cta:'Ask the Oracle, free',
-    intro:'You already read your own cards. Treat this as a mirror, not a fortune-teller who sells fear by the minute. Ask the real question.',
+    intro:'You already read your own cards. Treat this as a mirror held by someone who reads for depth, and ask the real question.',
     proof:'A genuine reader who holds up a mirror on a love-and-life-path question. Nothing mass-produced, nothing that trades on fear.',
     starterQ:'What is my next chapter asking of me?'
   },
@@ -77,6 +77,6 @@ window.GTM_FLOWS = [
     img:'../assets/personas/greg.jpg', mechanic:'gift',
     dest:'gift.html', cta:'Give a reading',
     intro:'A gift for the spiritually-inclined person in your life, one that never feels cheap or embarrassing. A real session, beautifully given.',
-    proof:'A giftable session and a printable certificate that looks like a real present, not a coupon. Handed over with a name on it, ready to open.'
+    proof:'A real session with a printable certificate that looks like a proper present, handed over with a name on it and ready to open.'
   }
 ];
