@@ -231,7 +231,17 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 .held-ic{width:56px;height:56px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));font-size:23px}
 .confirm-body{font-size:12.5px;color:var(--muted);line-height:1.7;margin:12px auto 0}
 .confirm-body b{color:var(--gold-bright);font-weight:500}
-@media(prefers-reduced-motion:reduce){.mic{animation:none}.chosen.on .rings{animation:none!important}.odoor{animation:none}}
+@media(prefers-reduced-motion:reduce){.mic{animation:none}.chosen.on .rings{animation:none!important}.odoor{animation:none}.oe i,.avail.live i,.chpres i{animation:none}}
+/* keyboard focus + tactile feedback */
+a:focus-visible,button:focus-visible,input:focus-visible,[role=button]:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
+.mic{transition:transform .16s ease}
+.mic:active{transform:scale(.93)}
+.btn{transition:filter .25s,opacity .25s,transform .16s ease}
+.btn:active:not(:disabled){transform:translateY(1px) scale(.99)}
+.chip:active,.slot:active,.cap:active{transform:scale(.96)}
+.odoor{transition:transform .2s ease}
+.odoor:active{transform:scale(.985)}
+.scr:focus{outline:none}
 .dbgbox{position:absolute;border:1px solid #7BD389;z-index:30;pointer-events:none}
 </style>
 </head>
@@ -248,7 +258,7 @@ h1 em{font-style:italic;color:var(--gold-bright)}
   </span></div>
 
   <!-- HOME · where a seeker finds it -->
-  <section class="scr on" id="home">
+  <section class="scr on" id="home" tabindex="-1">
     <div class="pad">
       <div class="h-brand"><span class="wm">Psychic Source</span><span class="at">The Celestial Upgrade</span></div>
       <div class="h-night"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span>No readers are online right now.</span></div>
@@ -268,21 +278,21 @@ h1 em{font-style:italic;color:var(--gold-bright)}
   </section>
 
   <!-- ASK -->
-  <section class="scr" id="ask">
+  <section class="scr" id="ask" tabindex="-1">
     <div class="pad">
       <span class="eyebrow">The Oracle</span>
       <h1>Ask what <em>you carry.</em></h1>
       <p class="lead">Speak it the way you would to a friend at midnight. The Oracle is listening, and a card is already turning toward you.</p>
-      <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+      <div class="mic" role="button" tabindex="0" aria-label="Type your question"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
       <div class="miclbl">Tap to speak, or type below</div>
-      <div class="qwrap"><input id="q" type="text" placeholder="Ask it in your own words…" autocomplete="off"/><button class="btn" id="askBtn">Ask the Oracle</button></div>
+      <div class="qwrap"><input id="q" type="text" placeholder="Ask it in your own words…" aria-label="Your question for the Oracle" autocomplete="off"/><button class="btn" id="askBtn">Ask the Oracle</button></div>
       <div class="chips" id="chips"></div>
       <div class="hint">Nothing is charged for asking</div>
     </div>
   </section>
 
   <!-- SUMMONING -->
-  <section class="scr" id="summon">
+  <section class="scr" id="summon" tabindex="-1">
     <div class="shimmer" id="shimmer"><i class="beam"></i></div>
     <div class="qtop" id="qtop"></div>
     <div class="vzone"><div class="vsizer" id="vwrap">
@@ -302,7 +312,7 @@ h1 em{font-style:italic;color:var(--gold-bright)}
   </section>
 
   <!-- ARRIVAL -->
-  <section class="scr" id="arrive">
+  <section class="scr" id="arrive" tabindex="-1">
     <div class="pad">
       <div class="bigcard"><img id="arrCard" src="" alt=""/><video class="livec" id="arrLive" loop muted playsinline preload="auto"></video></div>
       <span class="eyebrow" id="arrOracle"></span>
@@ -313,7 +323,7 @@ h1 em{font-style:italic;color:var(--gold-bright)}
   </section>
 
   <!-- READING -->
-  <section class="scr" id="read">
+  <section class="scr" id="read" tabindex="-1">
     <div class="pad" style="justify-content:flex-start;padding-top:76px">
       <div class="scrollp">
         <div class="fieldmotes" id="fieldmotes"></div>
@@ -330,7 +340,7 @@ h1 em{font-style:italic;color:var(--gold-bright)}
       </div>
       <div class="sendbox" id="sendbox">
         <div class="send-h">Your scroll is written. Where should it find you?</div>
-        <div class="keep"><input id="email" type="email" placeholder="your email"/><button class="btn" id="keepBtn">Send my scroll</button></div>
+        <div class="keep"><input id="email" type="email" placeholder="your email" aria-label="Email address to send your scroll" autocomplete="email" inputmode="email"/><button class="btn" id="keepBtn">Send my scroll</button></div>
         <div class="send-sub">One more movement is still forming for you. It arrives with the scroll.</div>
       </div>
       <div class="mailsent" id="mailsent" hidden>
@@ -345,7 +355,7 @@ h1 em{font-style:italic;color:var(--gold-bright)}
   </section>
 
   <!-- MATCH -->
-  <section class="scr" id="match">
+  <section class="scr" id="match" tabindex="-1">
     <div class="pad" style="justify-content:flex-start;padding:0 22px 34px">
       <div class="stars" id="stars"></div>
       <div class="psy-hero"><img id="psyImg" src="" alt=""/><div class="ph-grad"></div>
@@ -365,12 +375,12 @@ h1 em{font-style:italic;color:var(--gold-bright)}
   </section>
 
   <!-- CONFIRM -->
-  <section class="scr" id="confirm">
+  <section class="scr" id="confirm" tabindex="-1">
     <div class="pad">
       <div class="held-ic">✓</div>
       <h1 id="confH">It is <em>held.</em></h1>
       <p class="confirm-body" id="confBody"></p>
-      <div class="keep remind" id="remindRow"><input id="remind" type="text" placeholder=""/><button class="btn" id="remindBtn">Remind me</button></div>
+      <div class="keep remind" id="remindRow"><input id="remind" type="text" placeholder="" aria-label="Where the Oracle should reach you"/><button class="btn" id="remindBtn">Remind me</button></div>
       <div class="kept" id="reminded">✓ The summons will find you.</div>
       <div class="next"><button class="btn" id="again">Ask another question</button></div>
     </div>
@@ -388,7 +398,7 @@ var state = {theme:null, q:'', slot:null, cap:'20 min'};
 var DEBUG = /(^|[?&])debug=1/.test(location.search);
 var FREEZE = (location.search.match(/[?&]freeze=(\w+)/)||[])[1]||null;
 var FCARD = parseInt((location.search.match(/[?&]card=(\d)/)||[])[1]||'2',10);
-function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});var el=document.getElementById(id);el.classList.add('on');el.scrollTop=0;}
+function show(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});var el=document.getElementById(id);el.classList.add('on');el.scrollTop=0;try{el.focus({preventScroll:true});}catch(_){}}
 /* safe rich-text helper: seg = string or {b:string} */
 function fill(el,segs){
   while(el.firstChild)el.removeChild(el.firstChild);
@@ -414,12 +424,12 @@ document.getElementById('odoor').onclick=function(){show('ask');};
   var c=document.getElementById('chips');
   Object.keys(SPEC.themes).forEach(function(k){
     var b=document.createElement('button');b.type='button';b.className='chip';b.textContent='“'+SPEC.themes[k].starter+'”';
-    b.onclick=function(){var q=SPEC.themes[k].starter;var inp=document.getElementById('q');inp.value='';inp.focus();var i=0;var iv=setInterval(function(){inp.value=q.slice(0,++i);if(i>=q.length){clearInterval(iv);setTimeout(begin,650);}},40);};
+    b.onclick=function(){var q=SPEC.themes[k].starter;var inp=document.getElementById('q');inp.value='';var i=0;var iv=setInterval(function(){inp.value=q.slice(0,++i);if(i>=q.length){clearInterval(iv);setTimeout(begin,650);}},40);};
     c.appendChild(b);
   });
 })();
 document.getElementById('askBtn').onclick=begin;
-document.querySelector('.mic').onclick=function(){document.getElementById('q').focus();};
+(function(){var mic=document.querySelector('.mic');function toType(){document.getElementById('q').focus();}mic.onclick=toType;mic.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){e.preventDefault();toType();}});})();
 document.getElementById('q').addEventListener('keydown',function(e){if(e.key==='Enter')begin();});
 function begin(){
   var q=document.getElementById('q').value.trim();
@@ -696,7 +706,7 @@ document.getElementById('toReading').onclick=function(){
   ['mv1','mv2','mv3'].forEach(function(id){var m=document.getElementById(id);m.classList.remove('show');clearKids(m.querySelector('p'));});
   document.getElementById('chpres').classList.remove('on','lean');
   var echo=extractEcho(state.q);
-  readSeq=[{id:'mv1',text:(echo||'')+t.reading.whatIs,cres:false,gap:2000},{id:'mv2',text:t.reading.whatHides,cres:false,gap:2800},{id:'mv3',text:t.reading.whatComes,cres:true,gap:0}];
+  readSeq=[{id:'mv1',text:(echo||'')+t.reading.whatIs,cres:false,gap:3200},{id:'mv2',text:t.reading.whatHides,cres:false,gap:3800},{id:'mv3',text:t.reading.whatComes,cres:true,gap:0}];
   readIdx=0;show('read');setupField();
   var ack=document.getElementById('ackline');ack.textContent=ackFor(state.theme,state.q);ack.classList.remove('show');
   rLater(function(){ack.classList.add('show');document.getElementById('chpres').classList.add('on');},400);
@@ -705,7 +715,8 @@ document.getElementById('toReading').onclick=function(){
 document.getElementById('contHint').onclick=readNext;
 document.getElementById('keepBtn').onclick=function(){
   var e=document.getElementById('email');
-  if(!e.value.trim()){e.focus();return;}
+  var v=e.value.trim();
+  if(!v||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){e.focus();e.select();return;}
   var t=SPEC.themes[state.theme];
   document.getElementById('msName').textContent=t.psychic;
   document.getElementById('sendbox').classList.add('sent');

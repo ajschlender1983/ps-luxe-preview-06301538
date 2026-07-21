@@ -3001,7 +3001,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       // ---- The Portal, elevated: where a reading becomes a relationship ----
       var phero=E('div');phero.style.cssText='margin-top:14px;padding:22px 24px;border:1px solid var(--gold);border-radius:16px;background:linear-gradient(160deg,rgba(232,207,154,.11),transparent)';
       phero.appendChild(H('div',null,'<span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)">The Portal</span>'));
-      var ph1=T('div',null,'Where a reading becomes a relationship.');ph1.style.cssText='font-family:var(--serif);font-size:clamp(22px,3vw,32px);color:var(--gold-bright);font-weight:600;line-height:1.12;margin:6px 0 8px';phero.appendChild(ph1);
+      var ph1=T('div',null,'Where a reading becomes a relationship.');ph1.style.cssText='font-family:var(--serif);font-size:clamp(22px,3vw,32px);color:var(--gold-bright);font-weight:600;line-height:1.12;margin:6px 0 4px';phero.appendChild(ph1);
+      var pdek=T('div',null,'An enhanced session experience, with conversion and upsell built into the room.');pdek.style.cssText='font-size:13px;color:var(--gold);font-style:italic;margin:0 0 10px';phero.appendChild(pdek);
       phero.appendChild(H('p',null,'<span style="font-size:13.5px;color:var(--muted);line-height:1.65">The reading is the product. The Portal is the only surface where a one-off transaction becomes a member, at the emotional peak, before the feeling cools. Every rival pays to bring the seeker back later; the Portal converts the second purchase for free, in the room. <b style="color:var(--ivory)">The reading ends. The relationship does not have to.</b></span>'));
       sx.appendChild(phero);
       // three named beats — The Record is the signature
@@ -3025,7 +3026,7 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
       var lad=E('div');lad.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px';
       [['Continue','Book your next session','Finish the thread the reading left open. Time held with your reader, at the rate you paid today. Offered at the close, no price shown.','same $1/min'],
        ['Save','A package with your reader','For seekers who know they will be back. A bundle that quietly corrects the per-minute overpayment.','60 min · $150'],
-       ['Belong','The Circle','Not a tier, an identity: your readers, your history, your rate, and every Record kept forever.','$49/mo']
+       ['Belong','The Circle','More an identity than a tier: your readers, your history, your rate, and every Record kept forever.','$49/mo']
       ].forEach(function(r){
         var c=E('div');c.style.cssText='border:1px solid var(--hair);border-radius:14px;padding:15px 16px;background:rgba(247,242,232,.02);display:flex;flex-direction:column;gap:4px';
         var v=T('div',null,r[0]);v.style.cssText='font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)';c.appendChild(v);
