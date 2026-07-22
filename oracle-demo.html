@@ -94,7 +94,13 @@ h1 em{font-style:italic;color:var(--gold-bright)}
 .cheart::before{content:"";position:absolute;left:50%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(240,220,170,.5),rgba(232,207,154,.14) 45%,transparent 70%);animation:glowb 2s ease-in-out infinite}
 .angelwrap{position:absolute;inset:-86px 0 -96px 0;opacity:0;z-index:7;transition:opacity 1.8s ease,transform 1.9s cubic-bezier(.2,.7,.2,1);transform:scale(1.06)}
 .angelwrap.bloom{opacity:1;transform:scale(1)}
-.angelwrap img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;filter:drop-shadow(0 0 26px rgba(232,207,154,.28));-webkit-mask-image:linear-gradient(to bottom,#000 50%,rgba(0,0,0,.35) 78%,transparent 96%);mask-image:linear-gradient(to bottom,#000 50%,rgba(0,0,0,.35) 78%,transparent 96%)}
+.angelwrap img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;filter:drop-shadow(0 0 26px rgba(232,207,154,.28))}
+.angelwrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,8,24,0) 26%,rgba(11,8,24,.5) 50%,rgba(11,8,24,.88) 76%,rgba(11,8,24,.98) 100%);pointer-events:none}
+#summon.resolved #clines{opacity:0;transition:opacity 1.2s ease}
+#summon.resolved #cstars circle.fig{opacity:0;transition:opacity 1.2s ease}
+.astars{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.85;background-image:radial-gradient(1.5px 1.5px at 12% 16%,rgba(255,244,214,.95),transparent 60%),radial-gradient(1px 1px at 27% 40%,rgba(232,207,154,.8),transparent 60%),radial-gradient(2px 2px at 67% 20%,rgba(255,244,214,.9),transparent 60%),radial-gradient(1px 1px at 82% 46%,rgba(232,207,154,.7),transparent 60%),radial-gradient(1.5px 1.5px at 45% 60%,rgba(255,244,214,.8),transparent 60%),radial-gradient(1px 1px at 19% 70%,rgba(232,207,154,.6),transparent 60%),radial-gradient(1.5px 1.5px at 73% 74%,rgba(255,244,214,.75),transparent 60%),radial-gradient(1px 1px at 57% 32%,rgba(232,207,154,.7),transparent 60%),radial-gradient(1px 1px at 36% 26%,rgba(255,244,214,.7),transparent 60%),radial-gradient(1.5px 1.5px at 88% 66%,rgba(232,207,154,.7),transparent 60%);animation:astw 3.8s ease-in-out infinite}
+@keyframes astw{0%,100%{opacity:.5}50%{opacity:.95}}
+@media(prefers-reduced-motion:reduce){.astars{animation:none;opacity:.6}}
 @media(prefers-reduced-motion:reduce){.cstars circle.bg{animation:none;opacity:.3}.cstars circle.heart.lit{animation:none}.cheart::before{animation:none}.angelwrap{transition:opacity .5s}}
 .qtop{position:absolute;top:52px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:15px;font-style:italic;color:var(--ivory);opacity:0;transition:opacity .9s;z-index:8;padding:0 26px;line-height:1.45}
 #summon.q .qtop{opacity:.95}
@@ -303,7 +309,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role=button]:focus-vis
         <img src="assets/oracle/card-oracle.jpg" alt=""/>
         <span class="oe"><i></i>Always awake</span>
         <span class="ot">Ask the <em>Oracle</em></span>
-        <span class="ol">The Oracle never sleeps. Ask, and a light will gather for you.</span>
+        <span class="ol">The angels never sleep. Ask, and one will take shape from the stars for you.</span>
         <span class="op">Ask now</span><span class="of">Nothing is charged for asking</span>
       </button>
       <div class="h-foot">Psychic Source · est. 1989</div>
@@ -315,10 +321,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role=button]:focus-vis
     <div class="pad">
       <span class="eyebrow">The Oracle</span>
       <h1>Ask what <em>you carry.</em></h1>
-      <p class="lead">Speak it the way you would to a friend at midnight. The Oracle is listening, and a light is already gathering toward you.</p>
+      <p class="lead">Speak it the way you would to a friend at midnight. An angel is already taking shape from the stars for your question.</p>
       <div class="mic" role="button" tabindex="0" aria-label="Type your question"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
       <div class="miclbl">Tap to speak, or type below</div>
-      <div class="qwrap"><input id="q" type="text" placeholder="Ask it in your own words…" aria-label="Your question for the Oracle" autocomplete="off"/><button class="btn" id="askBtn">Ask the Oracle</button></div>
+      <div class="qwrap"><input id="q" type="text" placeholder="Ask it in your own words…" aria-label="Your question for the angels" autocomplete="off"/><button class="btn" id="askBtn">Ask the angels</button></div>
       <div class="modetoggle" id="modeToggle" role="radiogroup" aria-label="How to receive your answer">
         <span class="ml">Receive it as</span>
         <button type="button" class="mopt sel" data-mode="oracle" role="radio" aria-checked="true">the Oracle</button>
@@ -352,7 +358,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role=button]:focus-vis
         <g class="cstars" id="cstars"></g>
       </svg>
       <div class="cheart" id="cheart"></div>
-      <div class="angelwrap" id="angelwrap"><img id="angelImg" src="" alt=""/></div>
+      <div class="angelwrap" id="angelwrap"><img id="angelImg" src="" alt=""/><div class="astars" aria-hidden="true"></div></div>
     </div>
     <div class="sline" id="sline"></div>
     <button class="skip" id="skip">Arrive now</button>
@@ -360,7 +366,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[role=button]:focus-vis
 
   <!-- ARRIVAL -->
   <section class="scr" id="arrive" tabindex="-1">
-    <div class="arr-bg" id="arrBg"><img id="arrBgImg" src="" alt=""/></div>
+    <div class="arr-bg" id="arrBg"><img id="arrBgImg" src="" alt=""/><div class="astars" aria-hidden="true"></div></div>
     <div class="pad">
       <div class="bigcard"><img id="arrCard" src="" alt=""/><video class="livec" id="arrLive" loop muted playsinline preload="auto"></video></div>
       <span class="eyebrow" id="arrOracle"></span>
@@ -606,7 +612,7 @@ function buildConstellation(){
 function startAngelSummon(){
   var t=SPEC.themes[state.theme];
   var sm=document.getElementById('summon');
-  sm.classList.remove('q');sm.classList.add('angel');
+  sm.classList.remove('q','resolved');sm.classList.add('angel');
   document.getElementById('qtop').textContent='“'+state.q+'”';
   var line=document.getElementById('sline'), skip=document.getElementById('skip');
   var aw=document.getElementById('angelwrap'), aimg=document.getElementById('angelImg'),
@@ -628,7 +634,7 @@ function startAngelSummon(){
       line.classList.add('show');
     },360);
   }
-  function settle(){figs.forEach(function(s){s.classList.add('lit');});lns.forEach(function(l){l.classList.add('draw');});heart.classList.add('on');aw.classList.add('bloom');}
+  function settle(){figs.forEach(function(s){s.classList.add('lit');});lns.forEach(function(l){l.classList.add('draw');});heart.classList.add('on');aw.classList.add('bloom');sm.classList.add('resolved');}
   clearTimers();
   later(function(){sm.classList.add('q');},300);
   if(reduced){
@@ -648,7 +654,7 @@ function startAngelSummon(){
   later(function(){whisper(l2);},2700);
   // Phase 3 — the heart lights, the angel blooms up out of the stars
   later(function(){heart.classList.add('on');},3300);
-  later(function(){aw.classList.add('bloom');},3600);
+  later(function(){aw.classList.add('bloom');sm.classList.add('resolved');},3600);
   later(function(){whisper('She is taking shape out of the stars.',true);},4300);
   // settle → arrive
   later(arrive,5900);
