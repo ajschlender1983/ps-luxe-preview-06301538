@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Psychic Source — Wordmark Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#140F38; --void:#1C1550; --void-2:#2A1E66;
+  --gold:#C9A86A; --gold-bright:#E8CF9A; --gold-deep:#9C7E48; --ivory:#F7F2E8;
+  --muted:rgba(247,242,232,.62); --hair:rgba(201,168,106,.2);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+  --cinzel:'Cinzel',Georgia,serif; --play:'Playfair Display',Georgia,serif; --ebg:'EB Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ivory);background:radial-gradient(130% 100% at 50% -10%,var(--void-2),var(--void) 46%,var(--ink) 84%);min-height:100vh;padding:0 0 80px}
+.head{max-width:1100px;margin:0 auto;padding:54px clamp(20px,5vw,48px) 8px;text-align:center}
+.kick{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.head h1{font-family:var(--serif);font-size:clamp(30px,5vw,48px);font-weight:600;line-height:1.1;margin:12px 0 10px}
+.head p{font-size:14.5px;line-height:1.7;color:var(--muted);max-width:64ch;margin:0 auto}
+.grid{max-width:1180px;margin:34px auto 0;padding:0 clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.card{border:1px solid var(--hair);border-radius:18px;background:rgba(9,6,20,.34);overflow:hidden;display:flex;flex-direction:column}
+.stage{position:relative;min-height:200px;display:flex;align-items:center;justify-content:center;padding:34px 26px;background:radial-gradient(120% 120% at 50% 30%,rgba(42,30,102,.55),transparent 70%)}
+.stage::after{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(247,242,232,.5),transparent),radial-gradient(1px 1px at 72% 22%,rgba(247,242,232,.4),transparent),radial-gradient(1px 1px at 46% 74%,rgba(247,242,232,.35),transparent),radial-gradient(1px 1px at 86% 62%,rgba(247,242,232,.3),transparent);opacity:.5;pointer-events:none}
+.meta{padding:14px 18px 18px;border-top:1px solid var(--hair)}
+.meta .n{display:flex;align-items:baseline;gap:8px}
+.meta .num{font-family:var(--serif);font-size:14px;color:var(--gold)}
+.meta .t{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--gold-bright)}
+.meta .d{font-size:12px;color:var(--muted);line-height:1.5;margin-top:5px}
+/* gold helpers */
+.g{color:var(--gold-bright)} .gg{color:var(--gold)}
+.starmk{display:inline-block;color:var(--gold-bright)}
+/* ---- 1 · Refined compass lockup ---- */
+.w1{text-align:center}
+.w1 .mk{width:34px;height:34px;margin:0 auto 12px;display:block}
+.w1 .wm{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.22em;color:var(--ivory);text-indent:.22em;white-space:nowrap}
+.w1 .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto 8px}
+.w1 .sub{font-family:var(--sans);font-size:8.5px;letter-spacing:.42em;color:var(--gold);text-indent:.42em}
+/* ---- 2 · Orbed O ---- */
+.w2{font-family:var(--serif);font-weight:500;font-size:30px;letter-spacing:.2em;color:var(--ivory);display:flex;align-items:center;gap:.05em;text-align:center;flex-wrap:wrap;justify-content:center}
+.w2 .orb{display:inline-block;width:.82em;height:.82em;border-radius:50%;border:1.5px solid var(--gold-bright);position:relative;margin:0 .04em;box-shadow:0 0 14px -2px rgba(232,207,154,.6),inset -3px -3px 8px rgba(201,168,106,.5)}
+.w2 .orb::before{content:"";position:absolute;inset:2px;border-radius:50%;background:radial-gradient(circle at 38% 34%,rgba(247,242,232,.5),transparent 60%)}
+.w2 .lo{display:block;width:100%;font-size:.62em;letter-spacing:.16em}
+/* ---- 3 · Stacked seal serif ---- */
+.w3{font-family:var(--cinzel);text-align:center;color:var(--ivory)}
+.w3 .l1{font-size:24px;letter-spacing:.24em;font-weight:500;text-indent:.24em}
+.w3 .div{display:flex;align-items:center;gap:10px;justify-content:center;margin:8px 0;color:var(--gold)}
+.w3 .div i{height:1px;width:38px;background:linear-gradient(90deg,transparent,var(--gold))}
+.w3 .div i:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+.w3 .l2{font-size:24px;letter-spacing:.24em;font-weight:600;color:var(--gold-bright);text-indent:.24em}
+/* ---- 4 · PS monogram ---- */
+.w4{text-align:center}
+.w4 .mono{position:relative;width:96px;height:96px;margin:0 auto 12px;border-radius:50%;border:1px solid var(--hair);display:flex;align-items:center;justify-content:center}
+.w4 .mono .ps{font-family:var(--play);font-size:56px;font-weight:600;color:var(--gold-bright);letter-spacing:-.16em;text-shadow:0 0 20px rgba(232,207,154,.25)}
+.w4 .mono .st{position:absolute;top:7px;left:50%;transform:translateX(-50%);color:var(--gold)}
+.w4 .wm{font-family:var(--sans);font-size:10px;letter-spacing:.4em;color:var(--ivory);text-indent:.4em}
+/* ---- 5 · Didone editorial ---- */
+.w5{font-family:var(--play);font-weight:500;font-size:33px;letter-spacing:.12em;line-height:1.05;color:var(--ivory);text-align:center;text-indent:.12em}
+.w5 em{font-style:italic;font-weight:400;color:var(--gold-bright)}
+/* ---- 6 · Lowercase intimate ---- */
+.w6{font-family:var(--ebg);font-style:italic;font-size:38px;color:var(--gold-bright);text-align:center;letter-spacing:.01em;position:relative}
+.w6 .dot{color:var(--gold)}
+/* ---- 7 · Star as the connector ---- */
+.w7{font-family:var(--serif);font-weight:500;font-size:28px;letter-spacing:.2em;color:var(--ivory);display:flex;align-items:center;justify-content:center;gap:.4em;flex-wrap:wrap;text-align:center}
+.w7 .cs{width:24px;height:24px;color:var(--gold-bright)}
+/* ---- 8 · Two-tone split ---- */
+.w8{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:.12em;text-align:center;text-indent:.12em;white-space:nowrap}
+.w8 .a{color:var(--ivory);font-weight:400}
+.w8 .b{background:linear-gradient(100deg,var(--gold),var(--gold-bright));-webkit-background-clip:text;background-clip:text;color:transparent}
+.w8 .mid{display:inline-block;margin:0 .18em;color:var(--gold);font-size:.6em;vertical-align:middle}
+/* ---- 9 · Circular emblem ---- */
+.w9 svg{width:172px;height:172px}
+.w9 text{font-family:var(--cinzel);letter-spacing:4px}
+/* ---- 10 · Wide-tracked minimal ---- */
+.w10{text-align:center}
+.w10 .st{color:var(--gold-bright);margin-bottom:14px;display:block}
+.w10 .wm{font-family:var(--serif);font-weight:400;font-size:15px;letter-spacing:.46em;color:var(--ivory);text-indent:.46em;white-space:nowrap}
+.note{max-width:1100px;margin:34px auto 0;padding:0 clamp(20px,5vw,48px);font-size:12.5px;color:var(--muted);text-align:center;line-height:1.7;font-style:italic}
+</style>
+</head>
+<body>
+  <div class="head">
+    <div class="kick">Wordmark workshop</div>
+    <h1>Psychic&nbsp;Source, as a logotype</h1>
+    <p>Ten directions for a designed wordmark, not a typeset one. Each keeps the vibe you have now, heritage-luxury, gold on violet, the compass-star, but treats the name as a custom mark: tuned spacing, a drawn detail, an integrated star or orb, a lockup. Pick a direction and it gets refined into one final mark and rolled across everything.</p>
+  </div>
+  <div class="grid">
+
+    <!-- 1 -->
+    <div class="card"><div class="stage"><div class="w1">
+      <svg class="mk" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="19" stroke="#C9A86A" stroke-width=".6" opacity=".5"/><path d="M20 2 L21.6 18.4 L38 20 L21.6 21.6 L20 38 L18.4 21.6 L2 20 L18.4 18.4 Z" fill="#E8CF9A"/><path d="M20 8 L20.8 19.2 L32 20 L20.8 20.8 L20 32 L19.2 20.8 L8 20 L19.2 19.2 Z" fill="#C9A86A"/></svg>
+      <div class="wm">PSYCHIC&nbsp;SOURCE</div>
+      <div class="rule"></div>
+      <div class="sub">EST&nbsp;1989</div>
+    </div></div>
+      <div class="meta"><div class="n"><span class="num">01</span><span class="t">The Compass Lockup</span></div><div class="d">Your current vibe, disciplined: the star centered above, tighter tracking, a hairline rule and a small established line. The safest evolution.</div></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card"><div class="stage"><div class="w2">
+      <span>PSYCHIC</span>
+      <span class="lo">S<span class="orb"></span>URCE</span>
+    </div></div>
+      <div class="meta"><div class="n"><span class="num">02</span><span class="t">The Orb</span></div><div class="d">The O in Source becomes a luminous moon. One drawn letter turns a typeset word into a mark, and it reads instantly as celestial.</div></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card"><div class="stage"><div class="w3">
+      <div class="l1">PSYCHIC</div>
+      <div class="div"><i></i><span class="starmk">&#10022;</span><i></i></div>
+      <div class="l2">SOURCE</div>
+    </div></div>
+      <div class="meta"><div class="n"><span class="num">03</span><span class="t">The Stack</span></div><div class="d">Two words, centered, a star between them. In Cinzel it reads like an engraved seal, and it fits a square avatar or a stamp beautifully.</div></div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card"><div class="stage"><div class="w4">
+      <div class="mono"><span class="st"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 L13.4 10.6 L23 12 L13.4 13.4 L12 23 L10.6 13.4 L1 12 L10.6 10.6 Z" fill="currentColor"/></svg></span><span class="ps">PS</span></div>
+      <div class="wm">PSYCHIC&nbsp;SOURCE</div>
+    </div></div>
+      <div class="meta"><div class="n"><span class="num">04</span><span class="t">The Monogram</span></div><div class="d">An interlocking PS inside a ringed star, with the name small beneath. Gives you a compact icon for app tiles, favicons, and the corner of every page.</div></div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card"><div class="stage"><div class="w5">PSYCHIC<br><em>Source</em></div></div>
+      <div class="meta"><div class="n"><span class="num">05</span><span class="t">The Editorial</span></div><div class="d">High-contrast Didone, PSYCHIC in caps over an italic Source. Reads like a fashion house or a perfume, the most overtly premium of the set.</div></div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card"><div class="stage"><div class="w6">psych<span class="dot">&#10022;</span>c source</div></div>
+      <div class="meta"><div class="n"><span class="num">06</span><span class="t">The Intimate</span></div><div class="d">All lowercase italic, the dot on the i replaced by a star. Softer and more personal, it feels like a confidante rather than a marketplace.</div></div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card"><div class="stage"><div class="w7">
+      <span>PSYCHIC</span>
+      <svg class="cs" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 L13.4 10.6 L23 12 L13.4 13.4 L12 23 L10.6 13.4 L1 12 L10.6 10.6 Z" fill="currentColor"/><circle cx="12" cy="12" r="11" fill="none" stroke="#C9A86A" stroke-width=".5" opacity=".5"/></svg>
+      <span>SOURCE</span>
+    </div></div>
+      <div class="meta"><div class="n"><span class="num">07</span><span class="t">The Constellation</span></div><div class="d">The compass-star becomes the connector between the two words, so the mark works in a single horizontal line for headers and nav.</div></div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card"><div class="stage"><div class="w8"><span class="a">PSYCHIC</span><span class="mid">&#10022;</span><span class="b">SOURCE</span></div></div>
+      <div class="meta"><div class="n"><span class="num">08</span><span class="t">The Two-Tone</span></div><div class="d">Ivory PSYCHIC, a gold-gradient SOURCE, a star pivot between. The colour shift does the work, no ornament needed, and it stays legible tiny.</div></div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card"><div class="stage"><div class="w9">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="top" d="M 100,100 m -74,0 a 74,74 0 1 1 148,0" /><path id="bot" d="M 100,100 m 74,0 a 74,74 0 1 1 -148,0" /></defs>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#C9A86A" stroke-width="1" opacity=".55"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#9C7E48" stroke-width=".5" opacity=".5"/>
+        <text fill="#F7F2E8" font-size="15"><textPath href="#top" startOffset="50%" text-anchor="middle">PSYCHIC</textPath></text>
+        <text fill="#E8CF9A" font-size="15"><textPath href="#bot" startOffset="50%" text-anchor="middle">SOURCE</textPath></text>
+        <path d="M100 74 L102.4 96.6 L125 100 L102.4 103.4 L100 126 L97.6 103.4 L75 100 L97.6 96.6 Z" fill="#E8CF9A"/>
+        <circle cx="100" cy="100" r="30" fill="none" stroke="#C9A86A" stroke-width=".4" opacity=".4"/>
+      </svg>
+    </div></div>
+      <div class="meta"><div class="n"><span class="num">09</span><span class="t">The Emblem</span></div><div class="d">A heritage crest: the name curved around the compass-star in a ring. The most 35-years-of-trust option, and unforgettable as a seal.</div></div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card"><div class="stage"><div class="w10">
+      <span class="st"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 L13.4 10.6 L23 12 L13.4 13.4 L12 23 L10.6 13.4 L1 12 L10.6 10.6 Z" fill="currentColor"/></svg></span>
+      <span class="wm">PSYCHIC&nbsp;SOURCE</span>
+    </div></div>
+      <div class="meta"><div class="n"><span class="num">10</span><span class="t">The Wide Air</span></div><div class="d">Maximum letterspacing, a single hairline star, nothing else. Restraint reads as confidence, the quietest and most modern-luxury of the ten.</div></div>
+    </div>
+
+  </div>
+  <p class="note">These are directions, not the finish. Once you choose one (or a blend), it becomes a single refined wordmark with a locked spacing spec, a horizontal and a stacked lockup, and a favicon mark, then it replaces the current type everywhere: the redesign, the GTM site, the Oracle, the landing pages, and the pitch.</p>
+</body>
+</html>
