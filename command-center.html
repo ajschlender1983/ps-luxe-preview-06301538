@@ -1368,8 +1368,11 @@
   .wf-you b{color:var(--gold-bright);font-weight:600}
   /* ---- personalized note for Gary ---- */
   .th-for{display:flex;gap:30px;align-items:center;margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--hair)}
-  .th-for-pic{flex:0 0 auto;width:196px;border-radius:18px;overflow:hidden;border:1px solid rgba(233,207,154,.35);box-shadow:0 22px 54px rgba(0,0,0,.5),0 0 40px rgba(201,168,106,.08)}
-  .th-for-pic img{width:100%;display:block;aspect-ratio:660/858;object-fit:cover}
+  .th-for-pic{position:relative;flex:0 0 auto;width:196px;border-radius:18px;overflow:hidden;border:1px solid rgba(233,207,154,.35);box-shadow:0 22px 54px rgba(0,0,0,.5),0 0 40px rgba(201,168,106,.08)}
+  .th-for-pic img{width:100%;display:block;aspect-ratio:411/535;object-fit:cover}
+  .th-pic-bar{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;align-items:center;gap:7px;padding:10px 12px 12px;background:linear-gradient(180deg,rgba(9,7,20,.92) 0%,rgba(9,7,20,.55) 62%,transparent);font-size:9px;letter-spacing:.19em;text-transform:uppercase;color:var(--gold-bright);font-weight:600;line-height:1}
+  .th-pic-bar .st{color:var(--gold);font-size:10px;line-height:1}
+  .th-pic-bar::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,106,.5),transparent)}
   .th-for-msg{flex:1 1 auto;min-width:0}
   .th-note{font-family:var(--serif);font-size:clamp(19px,2.3vw,26px);font-style:italic;line-height:1.48;color:var(--ivory);max-width:52ch;margin:14px 0 0}
   .th-note b{color:var(--gold-bright);font-style:normal;font-weight:600}
@@ -1380,9 +1383,9 @@
 <body>
 <section class="thesis"><div class="wrap">
   <div class="th-for">
-    <div class="th-for-pic"><img src="assets/team/gary-hero.jpg" alt="Gary Baron, Founder and CEO" loading="lazy"/></div>
+    <div class="th-for-pic"><div class="th-pic-bar"><span class="st">&#10022;</span>Prepared for Gary Baron</div><img src="assets/team/gary-headshot.jpg" alt="Gary Baron, Founder and CEO" loading="lazy"/></div>
     <div class="th-for-msg">
-      <span class="th-eyebrow"><i></i>Prepared for Gary Baron &middot; Founder &amp; CEO</span>
+      <span class="th-eyebrow"><i></i>A note for you &middot; Founder &amp; CEO, Psychic Source</span>
       <p class="th-note">We are an AI-native creative and go-to-market studio. We sized your category, the <b>$2.3&nbsp;billion</b> U.S. psychic market, and studied <b>Psychic&nbsp;Source</b> inside it, and reached one finding every way we looked: the most trusted name in the space, wearing the weakest expression of it. Closing that exact gap is what our systems are built for, and in a category that still looks like a 1-800 hotline, that is enough to disrupt it. What follows is that work, built in full for your brand.</p>
     </div>
   </div>
