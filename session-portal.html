@@ -163,8 +163,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
         <div class="rsaid">&ldquo;What you keep calling unrealistic is your direction.&rdquo;</div>
         <div class="rsig">Angela</div>
         <div class="keeprow"><input id="recEmail" type="email" placeholder="your email" aria-label="Email to keep your Record" autocomplete="email" inputmode="email"/><button class="btn" id="keepBtn">Keep it</button></div>
-        <div class="kept" id="kept">&#10003; Sent to your inbox.</div>
-        <div class="rnext"><button class="btn ghost" id="toDoors">Continue &rarr;</button></div>
+        <div class="kept" id="kept">&#10003; Sent. Angela holds tomorrow, 10:00am for you.</div>
+        <div class="rnext"><button class="btn ghost" id="toDoors">Schedule your next session &rarr;</button></div>
       </div>
     </section>
 
@@ -261,6 +261,8 @@ document.getElementById('keepBtn').onclick=function(){
   if(!e||e.indexOf('@')<0){document.getElementById('recEmail').focus();return;}
   document.getElementById('kept').classList.add('show');
   document.getElementById('recEmail').value='';
+  clearTimers();
+  later(function(){show('doors');},reduced?600:1700);
 };
 document.getElementById('toDoors').onclick=function(){show('doors');};
 document.getElementById('bookBtn').onclick=function(){done('Held. Tomorrow, 10:00am.','Your Record travels with you.');};
