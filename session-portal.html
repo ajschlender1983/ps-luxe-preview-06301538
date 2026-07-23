@@ -52,22 +52,24 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 20px;background:linear-gradient(to top,rgba(8,5,19,.88),rgba(8,5,19,.45) 70%,transparent);z-index:3}
 .bar .side{flex:1;display:flex;align-items:center;gap:8px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .bar .side.r{justify-content:flex-end}
-/* the incentive: a progress bar that invites */
-.ext{display:flex;flex-direction:column;align-items:flex-end;gap:5px;min-width:210px}
-.ext .xl{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .6s}
-.ext .xl b{color:var(--gold-bright);font-weight:600}
-.ext .xt{position:relative;width:100%;height:4px;border-radius:99px;background:rgba(247,242,232,.14);overflow:visible}
-.ext .xt i{display:block;height:100%;width:8%;border-radius:99px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright));box-shadow:0 0 8px rgba(232,207,154,.5);transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
-.ext .xt .xstar{position:absolute;right:-3px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--gold-bright);text-shadow:0 0 8px rgba(232,207,154,.7)}
-.ext.unlocked .xl{color:var(--gold-bright)}
+/* the incentive: a wordless bar building toward an inflection point, then the reveal */
+.ext{display:flex;flex-direction:column;align-items:flex-end;gap:6px;min-width:230px}
+.ext .xl{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);opacity:0;transform:translateY(4px);transition:opacity 1.1s ease,transform 1.1s ease;white-space:nowrap}
+.ext .xt{position:relative;width:100%;height:3px;border-radius:99px;background:rgba(247,242,232,.13);overflow:visible}
+.ext .xt i{display:block;height:100%;width:8%;border-radius:99px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright));box-shadow:0 0 8px rgba(232,207,154,.5);transition:width 1.9s cubic-bezier(.2,.7,.2,1)}
+.ext .xstar{position:absolute;left:82%;top:50%;transform:translate(-50%,-50%);font-size:12px;color:var(--gold-bright);text-shadow:0 0 8px rgba(232,207,154,.6);animation:xw 3.2s ease-in-out infinite;transition:text-shadow .8s}
+@keyframes xw{50%{opacity:.45}}
+.ext.near .xstar{animation-duration:1.3s;text-shadow:0 0 14px rgba(232,207,154,.95)}
+.ext.unlocked .xstar{animation:xbloom 1.3s ease forwards;text-shadow:0 0 18px rgba(232,207,154,1),0 0 40px rgba(232,207,154,.5)}
+@keyframes xbloom{0%{transform:translate(-50%,-50%) scale(1)}45%{transform:translate(-50%,-50%) scale(1.9)}100%{transform:translate(-50%,-50%) scale(1.25);opacity:1}}
+.ext.unlocked .xl{opacity:1;transform:none}
 .ext.unlocked .xt i{box-shadow:0 0 14px rgba(232,207,154,.9)}
+@media(prefers-reduced-motion:reduce){.ext .xstar{animation:none}.ext.unlocked .xstar{animation:none;transform:translate(-50%,-50%) scale(1.25)}}
 .ctr{display:flex;gap:10px}
 .cbtn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(233,207,154,.25);background:rgba(8,5,19,.5);color:var(--ivory);display:flex;align-items:center;justify-content:center;cursor:default}
 .cbtn svg{width:15px;height:15px}
 .cbtn.end{background:rgba(190,70,70,.85);border-color:transparent}
 /* warmth — tiny, in the chrome */
-.warmline{display:inline-block;width:74px;height:3px;border-radius:99px;background:rgba(247,242,232,.14);overflow:hidden}
-.warmline i{display:block;height:100%;width:8%;border-radius:99px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
 /* captions */
 .cap{position:absolute;left:50%;bottom:148px;transform:translateX(-50%);max-width:min(620px,86%);text-align:center;z-index:3;opacity:0;transition:opacity .7s ease}
 .cap.on{opacity:1}
@@ -154,14 +156,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
       <div class="cardm" id="cardm"><img src="assets/oracle/card-oracle.jpg" alt="The Oracle"/><span>The Oracle</span></div>
       <div class="endcta" id="endcta"><button class="btn" id="endBtn">End session</button></div>
       <div class="bar">
-        <span class="side"><span class="warmline"><i id="warmFill"></i></span></span>
+        <span class="side"></span>
         <span class="ctr">
           <span class="cbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
           <span class="cbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="12" height="12" rx="2"/><path d="M15 10l6-3v10l-6-3"/></svg></span>
           <span class="cbtn end"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9c-3.6 0-6.8 1.2-9.2 3.2-.5.4-.8 1-.8 1.7v2.2c0 .7.6 1.2 1.3 1.1l3.9-.6c.6-.1 1-.5 1.1-1.1l.3-1.9c1.1-.4 2.2-.6 3.4-.6s2.3.2 3.4.6l.3 1.9c.1.6.5 1 1.1 1.1l3.9.6c.7.1 1.3-.4 1.3-1.1v-2.2c0-.7-.3-1.3-.8-1.7C18.8 10.2 15.6 9 12 9z"/></svg></span>
         </span>
         <span class="side r"><span class="ext" id="ext">
-          <span class="xl" id="extLbl">A gift unlocks at 20 min</span>
+          <span class="xl" id="extLbl">&nbsp;</span>
           <span class="xt"><i id="extFill"></i><span class="xstar">&#10022;</span></span>
         </span></span>
       </div>
@@ -190,7 +192,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
           <span class="de">With Angela</span>
           <h3>Your next session</h3>
           <p>Tomorrow, 10:00am. She keeps your Record and picks up where this ended.</p>
-          <div class="dp">Members&rsquo; rate</div>
+          <div class="dp">Members&rsquo; rate &middot; your +10 minutes applied</div>
           <button class="btn" id="bookBtn">Book it</button>
         </div>
         <div class="doorc feat">
@@ -246,14 +248,15 @@ function caption(b){
   document.getElementById('capLine').textContent=b.line;
   cap.classList.toggle('you',!!b.you);
   requestAnimationFrame(function(){requestAnimationFrame(function(){cap.classList.add('on');});});
-  document.getElementById('warmFill').style.width=b.warm+'%';
   extSet(b.warm);
 }
 function extSet(pct){
   document.getElementById('extFill').style.width=pct+'%';
-  var unlocked=pct>=90;
-  document.getElementById('ext').classList.toggle('unlocked',unlocked);
-  document.getElementById('extLbl').textContent=unlocked?'Unlocked: 20% off your next session':'A gift unlocks at 20 min';
+  var ext=document.getElementById('ext');
+  var unlocked=pct>=82;
+  ext.classList.toggle('near',pct>=60&&!unlocked);
+  ext.classList.toggle('unlocked',unlocked);
+  document.getElementById('extLbl').textContent=unlocked?'+10 minutes, rolled into your next session':' ';
 }
 function runCall(){
   clearTimers();
@@ -261,7 +264,6 @@ function runCall(){
   document.getElementById('cardm').classList.remove('on');
   document.getElementById('endcta').classList.remove('on');
   document.getElementById('cap').classList.remove('on');
-  document.getElementById('warmFill').style.width='8%';
   extSet(8);
   var t=reduced?500:2100, acc=700;
   BEATS.forEach(function(b){
@@ -300,7 +302,7 @@ document.getElementById('keepBtn').onclick=function(){
   later(function(){show('doors');},reduced?600:1700);
 };
 document.getElementById('toDoors').onclick=function(){show('doors');};
-document.getElementById('bookBtn').onclick=function(){done('Held. Tomorrow, 10:00am.','Your Record travels with you.');};
+document.getElementById('bookBtn').onclick=function(){done('Held. Tomorrow, 10:00am.','Your Record and your 10 bonus minutes travel with you.');};
 document.getElementById('packBtn').onclick=function(){done('Reserved. Three sessions, 20% off.','Tomorrow, 10:00am is your first. The price is locked.');};
 document.getElementById('joinBtn').onclick=function(){done('Welcome to the Circle.','Members’ rate, priority booking, every Record kept.');};
 document.getElementById('notNow').onclick=function(){done('Your Record is saved.','The door stays open.');};
@@ -314,7 +316,7 @@ document.getElementById('restart').onclick=function(){
 (function(){
   var m=location.search.match(/[?&]s=(\w+)/);if(!m)return;
   var s=m[1];
-  if(s==='call'){show('call');stage.classList.remove('dimmed');caption(BEATS[3]);document.getElementById('cardm').classList.add('on');document.getElementById('endcta').classList.add('on');document.getElementById('warmFill').style.width='96%';}
+  if(s==='call'){show('call');stage.classList.remove('dimmed');caption(BEATS[3]);document.getElementById('cardm').classList.add('on');document.getElementById('endcta').classList.add('on');}
   else if(s==='record'){showRecord();document.getElementById('recCard').classList.add('on');}
   else if(s==='doors'){stage.classList.add('dimmed');show('doors');}
   else if(s==='done'){stage.classList.add('dimmed');done('Held. Tomorrow, 10:00am.','Your Record travels with you.');}
