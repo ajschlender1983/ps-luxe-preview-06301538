@@ -279,6 +279,13 @@
   .doccard .dmeta span{font-size:12.5px;color:var(--muted)}
   .doccard .dgo{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
   /* ---- build tab ---- */
+  .build-duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+  .build-duo .build-card{grid-template-columns:1fr}
+  .build-duo .build-card .bc-visual{min-height:230px}
+  .build-duo .build-card .bc-body{padding:30px 28px 28px}
+  @media(max-width:1000px){.build-duo{grid-template-columns:1fr}}
+  .collapse-card.embedded{margin-top:16px}
+  .collapse-card.embedded .cc-head{display:none}
   .build-card{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid var(--hair);border-radius:18px;overflow:hidden;background:linear-gradient(150deg,rgba(232,207,154,.09),rgba(178,84,220,.06))}
   .build-card .bc-visual{position:relative;min-height:360px;background:#0b0818}
   .build-card .bc-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
@@ -517,7 +524,7 @@
   .films-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .film{border:1px solid var(--faint);border-radius:16px;overflow:hidden;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01));display:flex;flex-direction:column}
   .film-poster{position:relative;aspect-ratio:16/9;overflow:hidden;background:#140f2c}
-  .film-poster img{width:100%;height:100%;object-fit:cover}
+  .film-poster img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
   .film-poster::after{content:"";position:absolute;inset:0;background:radial-gradient(62% 62% at 50% 44%,transparent,rgba(18,13,42,.55))}
   .film-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:1px solid var(--gold);background:rgba(20,15,45,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:2}
   .film-play svg{width:20px;height:20px;margin-left:3px;fill:var(--gold-bright)}
@@ -1416,7 +1423,7 @@
   /* ---- personalized note for Gary: a dossier card, headshot integrated at the top of the frame ---- */
   .th-for{margin-bottom:40px;border:1px solid rgba(233,207,154,.35);border-radius:20px;overflow:hidden;background:linear-gradient(175deg,rgba(232,207,154,.07),rgba(247,242,232,.015) 45%,transparent);box-shadow:0 26px 64px rgba(0,0,0,.45),0 0 46px rgba(201,168,106,.07)}
   .th-for-pic{position:relative;width:100%;height:clamp(250px,32vw,400px)}
-  .th-for-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+  .th-for-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block}
   .th-for-pic::after{content:"";position:absolute;left:0;right:0;bottom:0;height:44%;background:linear-gradient(180deg,transparent,rgba(11,8,24,.82));pointer-events:none}
   .th-pic-bar{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;align-items:center;gap:8px;padding:13px 22px 16px;background:linear-gradient(180deg,rgba(9,7,20,.9) 0%,rgba(9,7,20,.5) 62%,transparent);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-bright);font-weight:600;line-height:1}
   .th-pic-bar .st{color:var(--gold);font-size:11px;line-height:1}
@@ -1436,7 +1443,7 @@
 <section class="thesis"><div class="wrap">
   <div class="th-for">
     <div class="th-for-pic">
-      <img src="assets/team/gary-headshot.jpg" alt="Gary Baron, Founder and CEO" loading="lazy"/>
+      <img src="assets/team/gary-banner.jpg" alt="Gary Baron, Founder and CEO" loading="lazy"/>
       <div class="th-pic-bar"><span class="st">&#10022;</span>Prepared for<span class="bar-r">Private &middot; July 2026</span></div>
       <div class="th-pic-name"><b>Gary Baron</b><span>Founder &amp; CEO &middot; Psychic Source</span></div>
     </div>
@@ -1574,8 +1581,49 @@
     </div>
   </div>
 
-  <p style="max-width:730px;margin:26px auto 20px;text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.4vw,22px);color:var(--gold-bright);line-height:1.42">Ten markets were hiding inside the one you already own. Here is how we would go get them.</p>
-  <div class="collapse-card" id="gtmCard">
+
+  <p style="max-width:730px;margin:26px auto 20px;text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.4vw,22px);color:var(--gold-bright);line-height:1.42">Strategy is easy to sell and hard to prove. So we did not stop at the plan. We built it.</p>
+  <div class="pillar" id="build">
+    <div class="pillar-h"><span class="pn">03</span><h2>The Build</h2></div>
+    <p class="pillar-sub">The whole thing is already built, and it is more than a website. It is a system you can operate: a brand skill you speak to in plain language to keep making on-brand pages, and an agentic layer that runs the funnel and matches seekers to readers while you sleep. Here is what is inside.</p>
+    <div class="build-duo">
+    <div class="build-card">
+      <div class="bc-visual"><img src="assets/heroes/build-deck.jpg" alt="The Celestial Upgrade build, wrapped like a ribboned deck of tarot cards" loading="lazy" /></div>
+      <div class="bc-body">
+        <span class="bc-eyebrow">The Celestial Upgrade · a living system</span>
+        <h3>A system you can speak to</h3>
+        <p class="bc-intro">You do not just receive files. You receive a brand that thinks in your voice and an engine that runs itself, both handed over and fully documented.</p>
+        <ul class="bc-list">
+          <li><b>A brand skill you talk to.</b> Ask it for a new landing page, a campaign, or a card, and it builds in the Celestial house style, every time.</li>
+          <li><b>An agentic funnel that operates itself.</b> The Oracle reading, the matched-reader send, and the recovery rail, run by agents on your seekers around the clock.</li>
+          <li><b>The complete front end.</b> The 17-page production site and the go-to-market version, every HTML, CSS and JS file.</li>
+          <li><b>The whole visual world.</b> 150+ bespoke images across 11 collections, and the full 20-card Art Nouveau tarot deck.</li>
+          <li><b>The making-of, opened up.</b> The build document, the three film briefs, and the core prompts, so nothing about how this was made stays a secret.</li>
+        </ul>
+        <div class="bc-cta">
+          <button class="btn" id="buildPreview" type="button">Preview</button>
+          <button class="btn btn-ghost bc-lock" id="buildDownload" type="button"><span class="lock">🔒</span> Download</button>
+        </div>
+      </div>
+    </div>
+    <div class="build-card">
+      <div class="bc-visual"><img src="assets/heroes/build-system.jpg" alt="The go-to-market plan, one source powering ten segments" loading="lazy" /></div>
+      <div class="bc-body">
+        <span class="bc-eyebrow">Go-To-Market · the plan</span>
+        <h3>Ten markets, one machine</h3>
+        <p class="bc-intro">Ten markets were hiding inside the one you already own. The plan to win them, the team that executes it, and the outcome it is priced against.</p>
+        <ul class="bc-list">
+          <li><b>$1.1M+ in year-one value.</b> Roughly 4,000 new customers at a $275 lifetime value.</li>
+          <li><b>3:1 LTV to CAC by Day 90.</b> The number the whole plan is priced against.</li>
+          <li><b>$5,000 caps your risk.</b> The refundable proof sprint, measured in your own analytics.</li>
+        </ul>
+        <div class="bc-cta">
+          <button class="btn" id="gtmOpen" type="button">Open the plan</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div class="collapse-card embedded" id="gtmCard">
     <button class="cc-head" type="button" aria-expanded="false" aria-controls="gtmBodyWrap" data-collapse>
             <div class="cc-tease"><span class="ct-i"><b>$1.1M+</b><em>&#8776;4,000 new &#215; $275 LTV</em></span><span class="ct-i"><b>3:1</b><em>LTV:CAC by Day 90</em></span><span class="ct-i"><b>$5,000</b><em>caps your risk</em></span></div>
 <div class="cc-avatars">
@@ -1612,30 +1660,6 @@
       </div></section>
     </div>
   </div>
-
-  <p style="max-width:730px;margin:26px auto 20px;text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.4vw,22px);color:var(--gold-bright);line-height:1.42">Strategy is easy to sell and hard to prove. So we did not stop at the plan. We built it.</p>
-  <div class="pillar" id="build">
-    <div class="pillar-h"><span class="pn">03</span><h2>The Build</h2></div>
-    <p class="pillar-sub">The whole thing is already built, and it is more than a website. It is a system you can operate: a brand skill you speak to in plain language to keep making on-brand pages, and an agentic layer that runs the funnel and matches seekers to readers while you sleep. Here is what is inside.</p>
-    <div class="build-card">
-      <div class="bc-visual"><img src="assets/heroes/build-system.jpg" alt="The Celestial Upgrade, a single point of source-light powering a constellation of capabilities" loading="lazy" /></div>
-      <div class="bc-body">
-        <span class="bc-eyebrow">The Celestial Upgrade · a living system</span>
-        <h3>A system you can speak to</h3>
-        <p class="bc-intro">You do not just receive files. You receive a brand that thinks in your voice and an engine that runs itself, both handed over and fully documented.</p>
-        <ul class="bc-list">
-          <li><b>A brand skill you talk to.</b> Ask it for a new landing page, a campaign, or a card, and it builds in the Celestial house style, every time.</li>
-          <li><b>An agentic funnel that operates itself.</b> The Oracle reading, the matched-reader send, and the recovery rail, run by agents on your seekers around the clock.</li>
-          <li><b>The complete front end.</b> The 17-page production site and the go-to-market version, every HTML, CSS and JS file.</li>
-          <li><b>The whole visual world.</b> 150+ bespoke images across 11 collections, and the full 20-card Art Nouveau tarot deck.</li>
-          <li><b>The making-of, opened up.</b> The build document, the three film briefs, and the core prompts, so nothing about how this was made stays a secret.</li>
-        </ul>
-        <div class="bc-cta">
-          <button class="btn" id="buildPreview" type="button">Preview</button>
-          <button class="btn btn-ghost bc-lock" id="buildDownload" type="button"><span class="lock">🔒</span> Download</button>
-        </div>
-      </div>
-    </div>
     <div class="build-sub">
       <div class="bs-h">The launch films</div>
       <div class="bs-d">Two short films for the launch: the brand film and the ad. Placeholders, each with a copyable prompt. <span style="color:var(--gold-bright)">Password protected.</span></div>
@@ -2063,6 +2087,8 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
 
   // ---- build tab: preview (reveal contents) + download (paywall) ----
   (function(){
+    var gtmOpenBtn=document.getElementById('gtmOpen'),gtmWrap=document.getElementById('gtmBodyWrap');
+    if(gtmOpenBtn&&gtmWrap){gtmOpenBtn.onclick=function(){var wasHidden=gtmWrap.hidden;gtmWrap.hidden=!wasHidden;gtmOpenBtn.textContent=wasHidden?'Close the plan':'Open the plan';if(wasHidden){document.getElementById('gtmCard').scrollIntoView({behavior:'smooth',block:'start'});}};}
     var pv=document.getElementById('buildPreview'), dl=document.getElementById('buildDownload'), contents=document.getElementById('buildContents');
     if(pv&&contents){
       pv.addEventListener('click',function(){
