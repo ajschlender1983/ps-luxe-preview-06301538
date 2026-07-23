@@ -525,6 +525,12 @@
   .film{border:1px solid var(--faint);border-radius:16px;overflow:hidden;background:linear-gradient(165deg,rgba(245,240,230,.05),rgba(245,240,230,.01));display:flex;flex-direction:column}
   .film-poster{position:relative;aspect-ratio:16/9;overflow:hidden;background:#140f2c}
   .film-poster img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+  /* vertical ad, shown in a mobile context */
+  .film.vert .film-poster{aspect-ratio:auto;display:flex;align-items:center;justify-content:center;padding:24px 0 20px;background:radial-gradient(120% 100% at 50% 0,#1b1340,#0c0820)}
+  .film.vert .phonemini{position:relative;width:min(52%,196px);aspect-ratio:390/844;background:#04030b;border-radius:30px;padding:6px;border:1px solid rgba(233,207,154,.28);box-shadow:0 0 0 5px #12101f,0 0 0 6px rgba(233,207,154,.14),0 26px 60px rgba(0,0,0,.62)}
+  .film.vert .pm-scr{position:relative;width:100%;height:100%;border-radius:24px;overflow:hidden}
+  .film.vert .pm-scr img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block}
+  .film.vert .pm-island{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:52px;height:14px;border-radius:9px;background:#000;z-index:3}
   .film-poster::after{content:"";position:absolute;inset:0;background:radial-gradient(62% 62% at 50% 44%,transparent,rgba(18,13,42,.55))}
   .film-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:1px solid var(--gold);background:rgba(20,15,45,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:2}
   .film-play svg{width:20px;height:20px;margin-left:3px;fill:var(--gold-bright)}
@@ -1908,7 +1914,7 @@
   var FILMS=[
     {tag:'Brand film',t:'The house of source',hi:'source',dur:'60-90s',poster:'assets/films/brand-poster.jpg',
      d:'An atmospheric, wordless brand film - from a single point of source-light, guidance emerges. A perfume film, not a sales ad.',prompt:BRAND_PROMPT},
-    {tag:'The ad',t:'I’m here. I see.',dur:'~18s · vertical 9:16',poster:'assets/films/ad-poster.jpg',video:'assets/films/ad.mp4',
+    {tag:'The ad',t:'I’m here. I see.',dur:'~18s · vertical 9:16',poster:'assets/films/ad-poster.jpg',video:'assets/films/ad.mp4',vert:true,
      d:'A compassion-beat spot: a chorus of real readers - present, seeing, then the pause, the touched card, and a warm “yes.” Told in the tarot-illustration style, then into their real world.',prompt:AD_PROMPT}
   ];
 
@@ -2048,9 +2054,11 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
   // ---- render the films (top) ----
   var fg=document.getElementById('filmsGrid');
   if(fg)FILMS.forEach(function(f){
-    var card=E('div','film');
+    var card=E('div','film'+(f.vert?' vert':''));
     var pos=E('div','film-poster');
-    var pimg=E('img');pimg.src=f.poster;pimg.alt=f.t;pimg.loading='lazy';pos.appendChild(pimg);
+    var pimg=E('img');pimg.src=f.poster;pimg.alt=f.t;pimg.loading='lazy';
+    if(f.vert){var pm=E('div','phonemini');var pscr=E('div','pm-scr');pscr.appendChild(pimg);pm.appendChild(pscr);pm.appendChild(E('div','pm-island'));pos.appendChild(pm);}
+    else{pos.appendChild(pimg);}
     pos.appendChild(T('span','film-badge',(f.video?'Film · ':'Placeholder · ')+f.tag));
     var play=E('div','film-play');play.appendChild(frag('<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'));pos.appendChild(play);
     pos.style.cursor='pointer';pos.title=(f.video?'Play ':'View ')+f.t;
