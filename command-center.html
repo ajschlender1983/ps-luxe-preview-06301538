@@ -2644,13 +2644,6 @@ im('assets/angel-wings.jpg','Winged figure'),im('assets/rise/wing-texture.jpg','
     eb.appendChild(xg);
 
     var rb=document.getElementById('researchBody');rb.className='';clear(rb);
-    var method=E('div','method');
-    [['10','Market segments','The reasons people seek a reading: love, grief, career, doubt, budget, gifting, loyalty and more.'],
-     ['10','User personas built','A researched, named persona for each segment, with age, context, goals and real objections.'],
-     ['10','Made design stakeholders','Each persona walked the redesign in character and shaped it, until its objections were answered.'],
-     [(yes+maybe)+'/'+P.length,'Would convert','After refinement: '+yes+' yes · '+maybe+' leaning yes · '+no+' not yet.']
-    ].forEach(function(m){var s=E('div','mstep');s.appendChild(H('div','mv',m[0]));s.appendChild(T('div','mi',m[1]));s.appendChild(T('div','md',m[2]));method.appendChild(s);});
-    rb.appendChild(method);
     var mh=E('div','mkt-h');mh.appendChild(T('span','mkt-t','The market, in orbit'));mh.appendChild(T('span','mkt-d','Each portrait is one user persona, a segment of the market sized by its share of demand. Click any persona to meet them and read how they reacted to the redesign.'));rb.appendChild(mh);
     var market=E('div','market');rb.appendChild(market);
     MARKET_P=P;renderMarket(P,market);
