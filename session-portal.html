@@ -96,9 +96,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 #doors{align-items:center;justify-content:center;flex-direction:column}
 #doors .dh{font-family:var(--serif);font-size:clamp(24px,3vw,32px);font-weight:600;color:var(--ivory);text-align:center}
 #doors .dh em{font-style:italic;color:var(--gold-bright)}
-.doorrow{display:flex;gap:16px;margin-top:24px;width:min(760px,90%)}
-.doorc{flex:1;text-align:left;border:1px solid var(--hair);border-radius:16px;background:rgba(10,7,22,.82);padding:20px;backdrop-filter:blur(6px);transition:border-color .25s,transform .16s ease}
+.doorrow{display:flex;gap:14px;margin-top:24px;width:min(940px,94%)}
+.doorc{position:relative;flex:1;text-align:left;border:1px solid var(--hair);border-radius:16px;background:rgba(10,7,22,.82);padding:20px;backdrop-filter:blur(6px);transition:border-color .25s,transform .16s ease}
 .doorc:hover{border-color:var(--gold)}
+.doorc.feat{border-color:rgba(233,207,154,.6);background:rgba(20,15,45,.88);box-shadow:0 0 30px rgba(201,168,106,.14)}
+.doorc .chip{position:absolute;top:-10px;right:14px;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);background:linear-gradient(120deg,var(--gold-bright),var(--gold));border-radius:999px;padding:4px 10px;font-weight:600}
+.doorc .was{text-decoration:line-through;opacity:.5;font-weight:400}
 .doorc .de{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
 .doorc h3{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ivory);margin:8px 0 4px}
 .doorc p{font-size:12px;color:var(--muted);line-height:1.55}
@@ -178,6 +181,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
           <p>Tomorrow, 10:00am. She keeps your Record and picks up where this ended.</p>
           <div class="dp">Members&rsquo; rate</div>
           <button class="btn" id="bookBtn">Book it</button>
+        </div>
+        <div class="doorc feat">
+          <span class="chip">Held for 48 hours</span>
+          <span class="de">Limited time</span>
+          <h3>3-session package</h3>
+          <p>Three sessions with Angela, and tomorrow is your first. The price locks today.</p>
+          <div class="dp"><b>$72</b> <span class="was">$90</span> &middot; save 20%</div>
+          <button class="btn" id="packBtn">Reserve it</button>
         </div>
         <div class="doorc">
           <span class="de">The Circle</span>
@@ -266,6 +277,7 @@ document.getElementById('keepBtn').onclick=function(){
 };
 document.getElementById('toDoors').onclick=function(){show('doors');};
 document.getElementById('bookBtn').onclick=function(){done('Held. Tomorrow, 10:00am.','Your Record travels with you.');};
+document.getElementById('packBtn').onclick=function(){done('Reserved. Three sessions, 20% off.','Tomorrow, 10:00am is your first. The price is locked.');};
 document.getElementById('joinBtn').onclick=function(){done('Welcome to the Circle.','Members’ rate, priority booking, every Record kept.');};
 document.getElementById('notNow').onclick=function(){done('Your Record is saved.','The door stays open.');};
 document.getElementById('restart').onclick=function(){
