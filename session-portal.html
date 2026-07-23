@@ -22,7 +22,7 @@ body{background:radial-gradient(130% 100% at 50% -10%,#1d1540,#140F38 50%,#0a071
 .stage{position:relative;aspect-ratio:16/9.6;background:#080513;isolation:isolate}
 /* Angela — the main event */
 .her{position:absolute;inset:0;z-index:0}
-.her img{width:100%;height:100%;object-fit:cover;object-position:center 14%;display:block;animation:kb 36s ease-in-out infinite alternate;transition:filter 1s ease,opacity 1s ease}
+.her img{width:100%;height:100%;object-fit:cover;object-position:center 32%;display:block;animation:kb 36s ease-in-out infinite alternate;transition:filter 1s ease,opacity 1s ease}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.055)}}
 .her::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,5,19,.32),transparent 30%,transparent 62%,rgba(8,5,19,.78) 96%);pointer-events:none}
 .stage.dimmed .her img{filter:blur(6px) brightness(.52) saturate(.85)}
@@ -51,8 +51,16 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .selfview{position:absolute;right:18px;bottom:74px;width:130px;aspect-ratio:16/10;border-radius:10px;border:1px solid rgba(233,207,154,.25);background:linear-gradient(140deg,#191430,#0b0819);display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,242,232,.45)}
 .bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 20px;background:linear-gradient(to top,rgba(8,5,19,.88),rgba(8,5,19,.45) 70%,transparent);z-index:3}
 .bar .side{flex:1;display:flex;align-items:center;gap:8px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.bar .side.r{justify-content:flex-end;color:var(--gold-bright)}
-.bar .side.r s{opacity:.45;letter-spacing:.08em}
+.bar .side.r{justify-content:flex-end}
+/* the incentive: a progress bar that invites */
+.ext{display:flex;flex-direction:column;align-items:flex-end;gap:5px;min-width:210px}
+.ext .xl{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .6s}
+.ext .xl b{color:var(--gold-bright);font-weight:600}
+.ext .xt{position:relative;width:100%;height:4px;border-radius:99px;background:rgba(247,242,232,.14);overflow:visible}
+.ext .xt i{display:block;height:100%;width:8%;border-radius:99px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright));box-shadow:0 0 8px rgba(232,207,154,.5);transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.ext .xt .xstar{position:absolute;right:-3px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--gold-bright);text-shadow:0 0 8px rgba(232,207,154,.7)}
+.ext.unlocked .xl{color:var(--gold-bright)}
+.ext.unlocked .xt i{box-shadow:0 0 14px rgba(232,207,154,.9)}
 .ctr{display:flex;gap:10px}
 .cbtn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(233,207,154,.25);background:rgba(8,5,19,.5);color:var(--ivory);display:flex;align-items:center;justify-content:center;cursor:default}
 .cbtn svg{width:15px;height:15px}
@@ -126,7 +134,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <div class="win">
   <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url"><b>portal.psychicsource.com</b>/session/angela</span><span style="width:46px"></span></div>
   <div class="stage dimmed" id="stage">
-    <div class="her"><img src="assets/advisors/Angela-9978.jpg" alt="Angela"/></div>
+    <div class="her"><img src="assets/advisors/angela-call.jpg" alt="Angela, on the call"/></div>
 
     <!-- THRESHOLD -->
     <section class="scr on" id="threshold">
@@ -152,7 +160,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
           <span class="cbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="12" height="12" rx="2"/><path d="M15 10l6-3v10l-6-3"/></svg></span>
           <span class="cbtn end"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9c-3.6 0-6.8 1.2-9.2 3.2-.5.4-.8 1-.8 1.7v2.2c0 .7.6 1.2 1.3 1.1l3.9-.6c.6-.1 1-.5 1.1-1.1l.3-1.9c1.1-.4 2.2-.6 3.4-.6s2.3.2 3.4.6l.3 1.9c.1.6.5 1 1.1 1.1l3.9.6c.7.1 1.3-.4 1.3-1.1v-2.2c0-.7-.3-1.3-.8-1.7C18.8 10.2 15.6 9 12 9z"/></svg></span>
         </span>
-        <span class="side r">No meter &middot; your cap $30 <s>$1/min</s></span>
+        <span class="side r"><span class="ext" id="ext">
+          <span class="xl" id="extLbl">A gift unlocks at 20 min</span>
+          <span class="xt"><i id="extFill"></i><span class="xstar">&#10022;</span></span>
+        </span></span>
       </div>
     </section>
 
@@ -236,6 +247,13 @@ function caption(b){
   cap.classList.toggle('you',!!b.you);
   requestAnimationFrame(function(){requestAnimationFrame(function(){cap.classList.add('on');});});
   document.getElementById('warmFill').style.width=b.warm+'%';
+  extSet(b.warm);
+}
+function extSet(pct){
+  document.getElementById('extFill').style.width=pct+'%';
+  var unlocked=pct>=90;
+  document.getElementById('ext').classList.toggle('unlocked',unlocked);
+  document.getElementById('extLbl').textContent=unlocked?'Unlocked: 20% off your next session':'A gift unlocks at 20 min';
 }
 function runCall(){
   clearTimers();
@@ -244,6 +262,7 @@ function runCall(){
   document.getElementById('endcta').classList.remove('on');
   document.getElementById('cap').classList.remove('on');
   document.getElementById('warmFill').style.width='8%';
+  extSet(8);
   var t=reduced?500:2100, acc=700;
   BEATS.forEach(function(b){
     later(function(){caption(b);if(b.card)document.getElementById('cardm').classList.add('on');},acc);
