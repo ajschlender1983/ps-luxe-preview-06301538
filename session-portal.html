@@ -38,7 +38,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .quiet{background:none;border:0;color:rgba(247,242,232,.5);font-size:10.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .quiet:hover{color:var(--muted)}
 /* ---------- threshold ---------- */
-#threshold{align-items:center;justify-content:center;text-align:center}
+#threshold{align-items:center;justify-content:center;text-align:center;cursor:pointer}
 .th-in .eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px}
 .th-in h1{font-family:var(--serif);font-size:clamp(30px,4vw,44px);font-weight:600;line-height:1.06}
 .th-in h1 em{font-style:italic;color:var(--gold-bright)}
@@ -284,7 +284,12 @@ function done(h,p){
   document.getElementById('doneP').textContent=p;
   show('done');
 }
-document.getElementById('enterBtn').onclick=function(){show('call');runCall();};
+function enter(){show('call');runCall();}
+document.getElementById('enterBtn').onclick=enter;
+document.getElementById('threshold').onclick=function(e){if(document.getElementById('threshold').classList.contains('on'))enter();};
+document.addEventListener('keydown',function(e){
+  if((e.key==='Enter'||e.key===' ')&&document.getElementById('threshold').classList.contains('on')){e.preventDefault();enter();}
+});
 document.getElementById('endBtn').onclick=showRecord;
 document.getElementById('keepBtn').onclick=function(){
   var e=document.getElementById('recEmail').value.trim();
