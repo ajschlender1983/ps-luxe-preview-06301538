@@ -64,7 +64,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .ext.near .xstar{animation-duration:1.3s;text-shadow:0 0 14px rgba(232,207,154,.95)}
 .ext.unlocked .xstar{animation:xbloom 1.3s ease forwards;text-shadow:0 0 18px rgba(232,207,154,1),0 0 40px rgba(232,207,154,.5)}
 @keyframes xbloom{0%{transform:translate(-50%,-50%) scale(1)}45%{transform:translate(-50%,-50%) scale(1.9)}100%{transform:translate(-50%,-50%) scale(1.25);opacity:1}}
-.ext.unlocked .xl{opacity:1;transform:none}
+.ext.unlocked .xl,.ext.earned .xl{opacity:1;transform:none}
 .ext.unlocked .xt i{box-shadow:0 0 14px rgba(232,207,154,.9)}
 @media(prefers-reduced-motion:reduce){.ext .xstar{animation:none}.ext.unlocked .xstar{animation:none;transform:translate(-50%,-50%) scale(1.25)}}
 .ctr{display:flex;gap:10px}
@@ -97,12 +97,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .rec .rcard b{font-family:var(--serif);font-size:17px;color:var(--ivory);font-weight:600}
 .rec .rsaid{margin-top:14px;padding-left:13px;border-left:2px solid var(--gold);font-family:var(--serif);font-size:15px;font-style:italic;line-height:1.5;color:var(--ivory)}
 .rec .rsig{margin-top:14px;text-align:right;font-family:var(--serif);font-size:18px;font-style:italic;color:var(--gold-bright)}
-.rec .keeprow{display:flex;gap:8px;margin-top:18px}
-.rec .keeprow input{flex:1;min-width:0;background:rgba(247,242,232,.06);border:1px solid var(--hair);border-radius:999px;padding:10px 15px;color:var(--ivory);font-size:12px}
-.rec .keeprow input:focus{outline:none;border-color:var(--gold)}
-.rec .keeprow .btn{padding:10px 18px}
-.rec .kept{display:none;color:#8fcdb8;font-size:11px;text-align:center;margin-top:10px}
-.rec .kept.show{display:block}
+.rec .rnote{color:#8fcdb8;font-size:11px;text-align:center;margin-top:18px}
 .rec .rnext{text-align:center;margin-top:14px}
 /* ---------- doors ---------- */
 #doors{align-items:center;justify-content:center;flex-direction:column}
@@ -179,9 +174,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
         <div class="rcard"><img src="assets/oracle/card-oracle.jpg" alt="The Oracle"/><div><b>The Oracle</b></div></div>
         <div class="rsaid">&ldquo;What you keep calling unrealistic is your direction.&rdquo;</div>
         <div class="rsig">Angela</div>
-        <div class="keeprow"><input id="recEmail" type="email" placeholder="your email" aria-label="Email to keep your Record" autocomplete="email" inputmode="email"/><button class="btn" id="keepBtn">Keep it</button></div>
-        <div class="kept" id="kept">&#10003; Sent. Angela holds tomorrow, 10:00am for you.</div>
-        <div class="rnext"><button class="btn ghost" id="toDoors">Schedule your next session &rarr;</button></div>
+        <div class="rnote">&#10003; Already in your inbox.</div>
+        <div class="rnext"><button class="btn" id="toDoors">Find more time with Angela &rarr;</button></div>
       </div>
     </section>
 
@@ -200,7 +194,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
           <span class="chip">Held for 48 hours</span>
           <span class="de">Limited time</span>
           <h3>3-session package</h3>
-          <p>Three sessions with Angela, and tomorrow is your first. The price locks today.</p>
+          <p>Three 30-minute sessions with Angela, and tomorrow is your first. The price locks today.</p>
           <div class="dp"><b>$72</b> <span class="was">$90</span> &middot; save 20%</div>
           <button class="btn" id="packBtn">Reserve it</button>
         </div>
@@ -251,13 +245,37 @@ function caption(b){
   requestAnimationFrame(function(){requestAnimationFrame(function(){cap.classList.add('on');});});
   extSet(b.warm);
 }
+var extPhase=0;
 function extSet(pct){
-  document.getElementById('extFill').style.width=pct+'%';
-  var ext=document.getElementById('ext');
+  if(extPhase!==0)return;
+  var ext=document.getElementById('ext'),fill=document.getElementById('extFill');
+  fill.style.width=pct+'%';
   var unlocked=pct>=82;
   ext.classList.toggle('near',pct>=60&&!unlocked);
-  ext.classList.toggle('unlocked',unlocked);
-  document.getElementById('extLbl').textContent=unlocked?'+10 minutes, rolled into your next session':' ';
+  if(unlocked){
+    extPhase=1;
+    ext.classList.remove('near');
+    ext.classList.add('unlocked','earned');
+    document.getElementById('extLbl').textContent='+10 minutes, rolled into your next session';
+    /* the reached milestone becomes the start: reset the track, present the next milestone, grow toward it */
+    later(function(){
+      ext.classList.remove('unlocked');
+      ext.querySelector('.xstar').textContent='\u2727';
+      fill.style.transition='none';fill.style.width='0%';
+      void fill.offsetWidth;
+      fill.style.transition='';
+      later(function(){fill.style.width='34%';},80);
+    },reduced?700:2200);
+  }
+}
+function extReset(){
+  extPhase=0;
+  var ext=document.getElementById('ext'),fill=document.getElementById('extFill');
+  ext.classList.remove('unlocked','near','earned');
+  ext.querySelector('.xstar').textContent='\u2726';
+  document.getElementById('extLbl').textContent=' ';
+  fill.style.transition='none';fill.style.width='8%';
+  void fill.offsetWidth;fill.style.transition='';
 }
 function runCall(){
   clearTimers();
@@ -265,7 +283,7 @@ function runCall(){
   document.getElementById('cardm').classList.remove('on');
   document.getElementById('endcta').classList.remove('on');
   document.getElementById('cap').classList.remove('on');
-  extSet(8);
+  extReset();
   var t=reduced?500:2100, acc=700;
   BEATS.forEach(function(b){
     later(function(){caption(b);if(b.card)document.getElementById('cardm').classList.add('on');},acc);
@@ -294,21 +312,12 @@ document.addEventListener('keydown',function(e){
   if((e.key==='Enter'||e.key===' ')&&document.getElementById('threshold').classList.contains('on')){e.preventDefault();enter();}
 });
 document.getElementById('endBtn').onclick=showRecord;
-document.getElementById('keepBtn').onclick=function(){
-  var e=document.getElementById('recEmail').value.trim();
-  if(!e||e.indexOf('@')<0){document.getElementById('recEmail').focus();return;}
-  document.getElementById('kept').classList.add('show');
-  document.getElementById('recEmail').value='';
-  clearTimers();
-  later(function(){show('doors');},reduced?600:1700);
-};
 document.getElementById('toDoors').onclick=function(){show('doors');};
 document.getElementById('bookBtn').onclick=function(){done('Held. Tomorrow, 10:00am.','Your Record and your 10 bonus minutes travel with you.');};
 document.getElementById('packBtn').onclick=function(){done('Reserved. Three sessions, 20% off.','Tomorrow, 10:00am is your first. The price is locked.');};
 document.getElementById('joinBtn').onclick=function(){done('Welcome to the Circle.','Members’ rate, priority booking, every Record kept.');};
 document.getElementById('notNow').onclick=function(){done('Your Record is saved.','The door stays open.');};
 document.getElementById('restart').onclick=function(){
-  document.getElementById('kept').classList.remove('show');
   stage.classList.add('dimmed');
   show('threshold');
 };
